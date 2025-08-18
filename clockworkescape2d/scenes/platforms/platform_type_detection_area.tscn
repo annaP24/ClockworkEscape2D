@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b54p8om8spa8e"]
+
+[ext_resource type="Script" uid="uid://brpnpbqsor5u1" path="res://scenes/platforms/platform_type_detection_area.gd" id="1_r8lrj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx0p"]
+size = Vector2(63, 19)
+
+[node name="PlatformTypeDetectionArea" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_r8lrj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-28, -1)
+shape = SubResource("RectangleShape2D_vxx0p")
