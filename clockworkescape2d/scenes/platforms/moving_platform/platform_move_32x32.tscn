@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://kam6j7r3bbrn"]
+
+[ext_resource type="PackedScene" uid="uid://rxjk0aftvp6t" path="res://scenes/platforms/platform_base.tscn" id="1_yl0vi"]
+[ext_resource type="Texture2D" uid="uid://gc0v1yjph0fu" path="res://scenes/platforms/assets/Block_32x32.png" id="2_yl0vi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbhgt"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yl0vi"]
+size = Vector2(32, 14)
+
+[node name="PlatformMove" instance=ExtResource("1_yl0vi")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_yl0vi")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+shape = SubResource("RectangleShape2D_dbhgt")
+
+[node name="CollisionShape2D" parent="PlatformTypeDetectionArea" index="0"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_yl0vi")
+
+[editable path="PlatformTypeDetectionArea"]

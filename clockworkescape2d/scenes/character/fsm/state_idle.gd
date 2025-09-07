@@ -3,9 +3,9 @@ extends FsmNodeState
 func Enter(player_node):
 	super(player_node)
 	player.jump_count = player.max_jump_count
-	Debug.print_value("FallDownTimestamp",  Time.get_time_dict_from_system() )
-	Debug.print_value("FallDownTimestampMS",  Time.get_ticks_msec() )
-	
+	player_node.wall_jump_count = player.wall_jump_count_max
+	Debug.print_value("WallJump", player.wall_jump_count)
+
 func Physics_Update(_delta):
 	if player.is_movable:
 		#Move player x-axis
@@ -20,12 +20,10 @@ func Physics_Update(_delta):
 		if Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 			change_state("RunState")	
 		elif Input.is_action_just_pressed("jump") and player.coil_push_active:
-			Debug.print_value("ColiJumpPressed", true)
 			player.coil_jump_pressed = true
 		elif Input.is_action_just_pressed("jump") and player.jump_count > 0:
 			change_state("JumpState")	
 		elif Input.is_action_just_pressed("jump") and player.jump_buffer:
-			Debug.print_value("ColiJumpPressed", false)
 			change_state("JumpState")
 		elif Input.is_action_just_pressed("dash"):
 			change_state("DashState")	

@@ -21,44 +21,33 @@ func Physics_Update(_delta):
 	
 	if Input.is_action_just_pressed("down"):
 		player.switch_rc_up_off()
-		if  player.rc_right():
+		change_state("FallState")
+		
+	if  player.rc_right() and Input.is_action_pressed("right"):
+		change_state("WallRightState")
+	elif  player.rc_left() and Input.is_action_pressed("left"):
+		change_state("WallLeftState")	
+	elif player.rc_left() and player.rc_up() and Input.is_action_pressed("up"):
+		change_state("WallLeftState")	
+	elif player.rc_right() and player.rc_up() and Input.is_action_pressed("up"):
+		change_state("WallRightState")
+	elif player.rc_up() and Input.is_action_pressed("up"):
+		if player.rc_right():
 			change_state("WallRightState")
-		elif  player.rc_left():
-			change_state("WallLeftState")
-		else:
-			change_state("FallState")
-	elif player.rc_up():
-		var wall = player.get_collider_up()
-		if wall.is_in_group("timed"):
-			is_auto_wall = false
-			is_inverse_wall = false
-			wall.start_timer()
-			if !wall.get_is_walkable():
-				player.switch_rc_up_off()
-				player.move_player_y(-1)
-				change_state("FallFromWallState")
-	
-		elif wall.is_in_group("inverse"):
-			is_auto_wall = false
-			is_inverse_wall = true
-		elif wall.is_in_group("auto"):
-			is_inverse_wall = false
-			auto_wall_direction = wall.direction_x
-			if auto_wall_direction != 0:
-				is_auto_wall = true
-				auto_wall_speed = wall.player_speed
-		elif  wall.is_in_group("basic"):
-			change_state("FallState")
-	if is_auto_wall:
-		player.move_player_x(auto_wall_direction, auto_wall_speed)
-	elif is_inverse_wall:
-		player.move_player_x(-1*inputX)
-	else:
-		player.move_player_x(inputX)
+		elif player.rc_left():
+			change_state("WallLeftState")	
+			
+	player.move_player_x(inputX)
 			
 	if !player.rc_up():
-		change_state("FallState")
-	
+		if Input.is_action_pressed("up"):
+			change_state("RunState")
+		if player.rc_left() and Input.is_action_pressed("left"):
+			change_state("WallLeftState")
+		elif player.rc_right() and Input.is_action_pressed("right"):
+			change_state("WallRightState")
+		else:	
+			change_state("FallState")	
 	#Update animations
 	if player.velocity.x > 0:
 		player.update_animation(player.animations.RUN_LEFT)

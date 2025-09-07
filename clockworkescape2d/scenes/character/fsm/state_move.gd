@@ -46,14 +46,8 @@ func Physics_Update(_delta):
 		change_state("Idle")
 #	----------Wall Walk ----------------------------
 	if player.rc_right():
-		var wall = player.get_collider_right()
-		if !wall.is_in_group("basic"):
-			change_state("WallRightState")
+		change_state("WallRightState")
 	elif player.rc_left():
-		var wall = player.get_collider_left()
-		if !wall.is_in_group("basic"):
-			change_state("WallLeftState")
+		change_state("WallLeftState")
 	elif player.rc_up():
-		var wall = player.get_collider_up()
-		if !wall.is_in_group("basic"):
-			change_state("CeelingState")
+		change_state("CeelingState")

@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://bykwbo0tsl4pp"]
+
+[ext_resource type="PackedScene" uid="uid://n412bh0u7lbs" path="res://scenes/ui/level_button.tscn" id="1_301ru"]
+[ext_resource type="Script" uid="uid://vyn6gyu6dipp" path="res://scenes/ui/level_manager.gd" id="1_txgmf"]
+
+[node name="LevelManager" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_txgmf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Arrow_Left" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="ButtonLeft" type="Button" parent="MarginContainer/HBoxContainer/Arrow_Left"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+disabled = true
+text = "<"
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="LevelButton1" parent="MarginContainer/HBoxContainer/CenterContainer/GridContainer" instance=ExtResource("1_301ru")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+level = 1
+
+[node name="LevelButton2" parent="MarginContainer/HBoxContainer/CenterContainer/GridContainer" instance=ExtResource("1_301ru")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+level = 2
+
+[node name="LevelButton3" parent="MarginContainer/HBoxContainer/CenterContainer/GridContainer" instance=ExtResource("1_301ru")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+level = 3
+
+[node name="LevelButton4" parent="MarginContainer/HBoxContainer/CenterContainer/GridContainer" instance=ExtResource("1_301ru")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+level = 4
+
+[node name="LevelButton5" parent="MarginContainer/HBoxContainer/CenterContainer/GridContainer" instance=ExtResource("1_301ru")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+level = 5
+
+[node name="LevelButton6" parent="MarginContainer/HBoxContainer/CenterContainer/GridContainer" instance=ExtResource("1_301ru")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+level = 6
+
+[node name="Arrow_Right2" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="ButtonRight" type="Button" parent="MarginContainer/HBoxContainer/Arrow_Right2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+text = ">"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Arrow_Left/ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton1" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton2" to="." method="_on_level_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton3" to="." method="_on_level_button_3_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton4" to="." method="_on_level_button_4_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton5" to="." method="_on_level_button_5_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton6" to="." method="_on_level_button_6_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Arrow_Right2/ButtonRight" to="." method="_on_button_right_pressed"]

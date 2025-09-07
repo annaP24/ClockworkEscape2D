@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cau51h5mbtpfw"]
+
+[ext_resource type="PackedScene" uid="uid://rxjk0aftvp6t" path="res://scenes/platforms/platform_base.tscn" id="1_gtd3x"]
+[ext_resource type="Texture2D" uid="uid://dt8nvvx1ybqy4" path="res://scenes/platforms/assets/Move_hold_64x64.png" id="2_llkq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ychq"]
+size = Vector2(13.5, 60.5)
+
+[node name="PlatformMoveAndHold" instance=ExtResource("1_gtd3x")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_llkq4")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="PlatformTypeDetectionArea" index="0"]
+visible = false
+position = Vector2(-24.75, -2.25)
+shape = SubResource("RectangleShape2D_8ychq")
+
+[editable path="PlatformTypeDetectionArea"]

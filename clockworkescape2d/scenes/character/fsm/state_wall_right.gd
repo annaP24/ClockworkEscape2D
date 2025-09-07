@@ -8,75 +8,84 @@ var is_inverse_wall : bool = false
 var is_moving_wall : bool = false
 var moving_wall_speed : float = 0.0
 var wall_moving_direction : Vector2 = Vector2.ZERO
-
+var timer : Timer 
+var is_player_moving : bool = false
 func Enter(player_node):
 	super(player_node)
 	player.jump_count = player.max_jump_count
-	if player.rc_right():
-		var wall = player.get_collider_right()
-		if wall.is_in_group("timed"):
-			wall.start_timer()
-			
+
 func Physics_Update(_delta):
+#Move player x-axis
 	player.velocity.x = 0
+	#Move player y-axis
 	player.gravity = Vector2(player.fall_gravity, 0)
-	
 	var inputY =  Input.get_axis("up", "down")
+	
 	if player.rc_right():
-		var wall = player.get_collider_right()
+		#if inputY == 0.0:
+			#if timer == null:
+				#timer = Timer.new()
+				#timer.connect("timeout", _on_player_move_timer_timeout)
+				#timer.one_shot = true
+				#add_child(timer)
+				#timer.start(0.3)
+				#is_player_moving = false
+		#else:
+			#is_player_moving = true
+			#if timer != null:
+				#timer.queue_free()
+		var wall = player.get_collider_right()		
 		check_if_moving_wall(wall)
-		if wall.is_in_group("inverse"):
-			is_inverse_wall = true
-		elif wall.is_in_group("auto"):
-			is_inverse_wall = false
-			auto_wall_direction = wall.direction_y
-			auto_wall_speed = wall.player_speed
-			if auto_wall_direction != 0:
-				is_auto_wall = true
-		else:
-			is_inverse_wall = false
-			is_auto_wall = false	
-	if is_auto_wall:
-		player.move_player_y(auto_wall_direction, auto_wall_speed)
-	elif is_inverse_wall:
-		player.move_player_y(-1*inputY)
-	else:
-		player.move_player_y(inputY)
+
+	player.move_player_y(inputY)
 		
 	#Change states	
-	if Input.is_action_just_pressed("left"):
-		player.switch_rc_right_off()
-		if player.rc_up():
-			change_state("CeelingState")
+	if Input.is_action_just_pressed("jump"):
+		if player.is_on_wall() and Input.is_action_pressed("left"):
+			player.switch_rc_right_off()
+			player.velocity.x = -1 * player.max_speed * GameManager.wall_jump_coaf
+			change_state("JumpState")	
 		else:
-			change_state("FallState")
-	elif Input.is_action_just_pressed("jump"):
-		player.switch_rc_right_off()
-		player.velocity.x = -1 * player.max_speed * GameManager.wall_jump_coaf
-		player.velocity.y = 1 * player.jump_gravity * GameManager.wall_jump_coaf
-		change_state("JumpState")
-	elif player.rc_right():
-		var wall = player.get_collider_right()
-		if wall.is_in_group("timed"):
-			if !wall.get_is_walkable():
-				player.switch_rc_right_off()
-				player.move_player_x(-1)
-				change_state("FallFromWallState")
-		elif  wall.is_in_group("basic"):
-			change_state("FallState")
+			player.switch_rc_right_off()
+			player.move_player_x(-1)
+			change_state("FallFromWallState")
+	elif Input.is_action_just_pressed("left"):
+		if player.rc_up():
+			player.switch_rc_right_off()
+			change_state("CeelingState")
+	elif player.rc_up():	
+		if player.rc_down() and Input.is_action_pressed("right"):
+			change_state("RunState")
+		elif player.rc_up() and Input.is_action_pressed("right"):
+			change_state("CeelingState")
 	elif !player.rc_right():
-		change_state("FallState")
-		
+		player.switch_rc_right_off()
+		if player.rc_down() and Input.is_action_pressed("right"):
+			change_state("RunState")
+		elif player.rc_up() and Input.is_action_pressed("right"):
+			change_state("CeelingState")
+		else:	
+			player.switch_rc_right_off()
+			player.move_player_x(-1)
+			change_state("FallFromWallState")
+			
+	#Animations
 	if player.velocity.y > 0:
 		player.update_animation(player.animations.RUN_LEFT)
 	elif player.velocity.y < 0:
 		player.update_animation(player.animations.RUN_RIGHT)
 	else:
 		if is_moving_wall:
-			player.move_player_x(wall_moving_direction.x, moving_wall_speed)
-			player.move_player_y(wall_moving_direction.y, moving_wall_speed)
+			player.move_player_x(int(wall_moving_direction.x), moving_wall_speed)
+			player.move_player_y(int(wall_moving_direction.y), moving_wall_speed)
 		player.update_animation(player.animations.IDLE)
 		
+func _on_player_move_timer_timeout():
+	player.switch_rc_right_off()
+	player.move_player_x(-1)
+	change_state("FallFromWallState")
+	timer.queue_free()
+			
 func check_if_moving_wall(wall):
 	if wall.has_method("get_is_moving") and wall.get_is_moving():
 		is_moving_wall = true

@@ -1,0 +1,242 @@
+[gd_scene load_steps=7 format=3 uid="uid://ruokhbdg6bjp"]
+
+[ext_resource type="Script" path="res://scenes/ui/fade_screen.gd" id="1_sjtla"]
+
+[sub_resource type="Animation" id="Animation_2e55t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopPart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1280, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerPart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1050)]
+}
+
+[sub_resource type="Animation" id="Animation_kqpb4"]
+resource_name = "fade"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopPart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.21, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1280, -100), Vector2(1280, 350), Vector2(1280, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerPart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 780), Vector2(0, 350), Vector2(0, 780)]
+}
+
+[sub_resource type="Animation" id="Animation_mrjxl"]
+resource_name = "fade_in"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopPart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 350), Vector2(1280, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerPart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 350), Vector2(0, 1050)]
+}
+
+[sub_resource type="Animation" id="Animation_jl5xp"]
+resource_name = "fade_out"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopPart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, -100), Vector2(1280, 350)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerPart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1050), Vector2(0, 950), Vector2(0, 350)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqpb4"]
+_data = {
+&"RESET": SubResource("Animation_2e55t"),
+&"fade": SubResource("Animation_kqpb4"),
+&"fade_in": SubResource("Animation_mrjxl"),
+&"fade_out": SubResource("Animation_jl5xp")
+}
+
+[node name="fade_screen" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_sjtla")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kqpb4")
+}
+
+[node name="TopPart" type="Node2D" parent="."]
+position = Vector2(1280, -200)
+rotation = -3.14159
+
+[node name="ColorRect" type="ColorRect" parent="TopPart"]
+offset_left = -338.0
+offset_right = 1472.0
+offset_bottom = 725.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="TopPart"]
+offset_top = -40.0
+offset_right = 128.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="TopPart"]
+offset_left = -256.0
+offset_top = -39.999
+offset_right = -128.0
+offset_bottom = 0.000999451
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="TopPart"]
+offset_left = 256.0
+offset_top = -40.0
+offset_right = 384.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="TopPart"]
+offset_left = 512.0
+offset_top = -40.0
+offset_right = 640.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="TopPart"]
+offset_left = 768.0
+offset_top = -40.0
+offset_right = 896.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="TopPart"]
+offset_left = 1282.0
+offset_top = -40.0
+offset_right = 1410.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="TopPart"]
+offset_left = 1024.0
+offset_top = -40.0
+offset_right = 1152.0
+color = Color(0, 0, 0, 1)
+
+[node name="LowerPart" type="Node2D" parent="."]
+position = Vector2(0, 1050)
+
+[node name="ColorRect" type="ColorRect" parent="LowerPart"]
+offset_right = 1604.0
+offset_bottom = 725.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="LowerPart"]
+offset_top = -40.0
+offset_right = 128.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="LowerPart"]
+offset_left = 256.0
+offset_top = -40.0
+offset_right = 384.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="LowerPart"]
+offset_left = 512.0
+offset_top = -40.0
+offset_right = 640.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="LowerPart"]
+offset_left = 768.0
+offset_top = -40.0
+offset_right = 896.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="LowerPart"]
+offset_left = 1024.0
+offset_top = -40.0
+offset_right = 1152.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect7" type="ColorRect" parent="LowerPart"]
+offset_left = 1282.0
+offset_top = -40.0
+offset_right = 1410.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect8" type="ColorRect" parent="LowerPart"]
+offset_left = 1538.0
+offset_top = -40.0
+offset_right = 1666.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=4 uid="uid://cw7t6aq2pd1e2"]
+
+[ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base_full_64x64.tscn" id="1_pecw0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ha63a"]
+load_path = "res://.godot/imported/block2.png-e445a1b640806d23b466c36c29f1df96.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pnvdu"]
+texture = SubResource("CompressedTexture2D_ha63a")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+8:0/0 = 0
+8:2/0 = 0
+6:2/0 = 0
+4:2/0 = 0
+2:2/0 = 0
+0:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+0:2/0 = 0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o1cnw"]
+load_path = "res://.godot/imported/block2_blue.png-c0facc50fb4e3e497bee5d17f92e3e01.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y4jno"]
+texture = SubResource("CompressedTexture2D_o1cnw")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wc4wy"]
+load_path = "res://.godot/imported/block2_green.png-4688e59ef2c4955a778fd9e95663038b.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcqgx"]
+texture = SubResource("CompressedTexture2D_wc4wy")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 1.10193, 32, 1.10193, 32, 32, -32, 32)
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -3.85674, -32, -5.50964)
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, -1.3774, -32, -2.47933, 32, -32, 32)
+0:0/0/physics_layer_1/polygon_1/points = PackedVector2Array(32, -32, 32, -17.0799, -4.13223, -15.427, -3.58126, -32)
+4:0/0 = 0
+4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(6.88705, -32, 32, -32, 32, 32, 5.78513, 32)
+4:0/0/physics_layer_1/polygon_1/points = PackedVector2Array(-32, -32, 5.23416, -32, 5.23416, -14.3251, -32, -17.6309)
+6:0/0 = 0
+6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:0/0 = 0
+8:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:2/0 = 0
+8:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:2/0 = 0
+6:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -5.78512, -32, -9.0909, 32, -32, 32)
+4:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(6.88705, -32, 32, -32, 32, 32, 5.78513, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.23416, -32, 32, -32, 32, 32, 5.78513, 32)
+0:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, -1.3774, -32, -2.47933, 32, -32, 32)
+4:4/0 = 0
+4:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(3.58127, 16.5289, 5.78513, -32, 32, -32, 32, 32, 5.78513, 32)
+4:4/0/physics_layer_1/polygon_1/points = PackedVector2Array(-32, 14.876, 2.47934, 15.978, 6.88705, 32, -32, 32)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 3.30579, -32, 3.30579)
+2:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, 5.50964, 32, 6.06061, 32, 32, -32, 32)
+0:4/0 = 0
+0:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, -1.3774, -32, -2.47933, 32, -32, 32)
+0:4/0/physics_layer_1/polygon_1/points = PackedVector2Array(32, 14.876, 32, 32, -3.58126, 32, -3.0303, 15.427)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uxlfg"]
+load_path = "res://.godot/imported/block2_orange.png-7283528b7bcd75459b4c0126de68d7ff.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_06vjo"]
+texture = SubResource("CompressedTexture2D_uxlfg")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x3rfw"]
+load_path = "res://.godot/imported/block2_red.png-2e54d2dd904e7dd94396017636be368b.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6rrm"]
+texture = SubResource("CompressedTexture2D_x3rfw")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="TileSet" id="TileSet_227yr"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 3
+physics_layer_1/collision_mask = 0
+sources/5 = SubResource("TileSetAtlasSource_pnvdu")
+sources/6 = SubResource("TileSetAtlasSource_y4jno")
+sources/7 = SubResource("TileSetAtlasSource_xcqgx")
+sources/8 = SubResource("TileSetAtlasSource_06vjo")
+sources/9 = SubResource("TileSetAtlasSource_h6rrm")
+
+[node name="Level_test_1" instance=ExtResource("1_pecw0")]
+
+[node name="Background" parent="." index="0"]
+position = Vector2(630, 406)
+
+[node name="TileMapLayer_2" parent="." index="1"]
+tile_map_data = PackedByteArray("AAATAAAABQAAAAAAAAASAAAABQAAAAAAAAARAAAABQAAAAAAAAAQAAAABQAAAAAAAAAPAAAABQAAAAAAAAAOAAAABQAAAAAAAAANAAAABQAAAAAAAAAMAAAABQAAAAAAAAALAAAABQAAAAAAAAAKAAAABQAAAAAAAAAJAAAABQAAAAAAAAAIAAAABQAAAAAAAAAHAAAABQAAAAAAAAAGAAAABQAAAAAAAAAFAAAABQAAAAAAAAAEAAAABQAAAAAAAAADAAAABQAAAAAAAAACAAAABQAAAAAAAAABAAAABQAAAAAAAAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAAMABQAAAAAAAAAAAAQABQAAAAAAAAAAAAUABQAAAAAAAAAAAAYABQAAAAAAAAAAAAcABQAAAAAAAAAAAAgABQAAAAAAAAAAAAkABwAEAAIAAAAAAAoABwAEAAIAAAATAAEABQAAAAAAAAATAAIABQAAAAAAAAATAAMABQAAAAAAAAATAAQABQAAAAAAAAATAAUABQAAAAAAAAATAAYABQAAAAAAAAATAAcABQAAAAAAAAATAAgABQAAAAAAAAATAAkABQAAAAAAAAATAAoABQAAAAAAAAAAAAsABwAEAAIAAAAEAAwABQAAAAAAAAAFAAwABQAAAAAAAAAGAAwABQAAAAAAAAAHAAwABQAAAAAAAAAIAAwABQAAAAAAAAAJAAwABQAAAAAAAAAKAAwABQAAAAAAAAALAAwABQAAAAAAAAAMAAwABQAAAAAAAAANAAwABQAAAAAAAAAOAAwABQAAAAAAAAAPAAwABQAAAAAAAAAQAAwABQAAAAAAAAARAAwABQAAAAAAAAASAAwABQAAAAAAAAATAAwABQAAAAAAAAATAAsABQAAAAAAAAADAAwABQAAAAAAAAACAAwABQAAAAAAAAABAAwABQAAAAAAAAAAAAwABQAAAAAAAAAEAAoABQAAAAAAAAAEAAsABQAAAAAAAAAEAAkABQAAAAAAAAAEAAUABwAAAAIAAAAEAAgABQAAAAAAAAAEAAQABwAAAAIAAAAEAAMABQAAAAAAAAAEAAYABwAAAAIAAAAEAAcABQAAAAAAAAA=")
+tile_set = SubResource("TileSet_227yr")
+
+[node name="SpawnMarker" parent="." index="2"]
+position = Vector2(159, 699)
+
+[node name="Collectable2" type="Marker2D" parent="Collectables" index="0"]
+position = Vector2(1106, 182)
+
+[node name="Collectable" parent="Collectables" index="1"]
+position = Vector2(154, 112)

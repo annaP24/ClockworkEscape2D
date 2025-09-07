@@ -39,5 +39,12 @@ func Physics_Update(_delta):
 		var wall = player.get_collider_left()
 		if !wall.is_in_group("basic"):
 			change_state("WallLeftState")
+	elif player.is_on_wall():
+		Debug.print_value("WallJump", player.wall_jump_count)
+		if player.wall_jump_count > 0:
+			player.jump_count = player.max_jump_count
+			player.wall_jump_count = 0
+			if Input.is_action_just_pressed("jump"):
+				change_state("JumpState")
 	elif player.velocity.y >= 0:
 		change_state("FallState") 

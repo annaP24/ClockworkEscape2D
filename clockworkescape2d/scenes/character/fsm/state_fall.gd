@@ -1,10 +1,14 @@
 extends FsmNodeState	
 var wall_direction : int = 0
-
+var externalXdirection : int = 0
 func Physics_Update(_delta):
+	
+	if externalXdirection != 0:
+		player.move_player_x(externalXdirection, player.max_speed)
+	else:	
 	#Move player x-axis
-	var inputX = Input.get_axis("left", "right")
-	player.move_player_x(inputX, player.max_speed)
+		var inputX = Input.get_axis("left", "right")
+		player.move_player_x(inputX, player.max_speed)
 	#Move player y-axis
 	player.gravity = Vector2(0, player.fall_gravity)
 
@@ -47,24 +51,20 @@ func Physics_Update(_delta):
 		var wall = player.get_collider_up()
 		if !wall.is_in_group("basic"):
 			change_state("CeelingState")
-			
 #	---------- Wall Jumps -----------------------
-	if player.is_on_wall() and Input.is_action_just_pressed("jump"):
-		player.jump_count  = 1	
-		if check_wall():
-			player.velocity.x = wall_direction * player.max_speed * GameManager.wall_jump_coaf			
-			player.velocity.y = 1 * player.max_speed * GameManager.wall_jump_coaf
-			change_state("JumpState")
+	if player.is_on_wall():
+		Debug.print_value("WallJump", player.wall_jump_count)
+		if Input.is_action_just_pressed("jump"):
+			if player.wall_jump_count > 0:
+				player.jump_count = player.max_jump_count
+				player.wall_jump_count = 0	
+				change_state("JumpState")
 		
 func check_wall() -> bool:
-		var wall
 		if player.rc_left():
-			wall = player.get_collider_left()
 			wall_direction = 1
 		elif player.rc_right():
-			wall = player.get_collider_right()
 			wall_direction = -1
-		if wall != null and wall.is_in_group("basic"):
-			return true
 		else:
 			return false
+		return true

@@ -1,0 +1,159 @@
+[gd_scene load_steps=19 format=4 uid="uid://4nbq3v20mld3"]
+
+[ext_resource type="Script" uid="uid://fvk5nc1cy38g" path="res://scenes/levels/level_base_full_64x64.gd" id="1_dx3t1"]
+[ext_resource type="PackedScene" uid="uid://otgcwtwam062" path="res://scenes/ui/background_shader.tscn" id="2_3e48u"]
+[ext_resource type="Texture2D" uid="uid://kqbsidqidlsp" path="res://scenes/ui/assets/background.png" id="2_dx3t1"]
+[ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="11_sdno0"]
+[ext_resource type="PackedScene" uid="uid://bd0enwr66l8nf" path="res://scenes/obstacles/lightning/lightning.tscn" id="12_m3ji7"]
+[ext_resource type="PackedScene" uid="uid://c6eq64g3e0jjy" path="res://scenes/platforms/moving_platform/platform_move_and_hold_64x64.tscn" id="12_u264g"]
+[ext_resource type="PackedScene" uid="uid://dl4v6kn8xyo5y" path="res://scenes/obstacles/swards/swards.tscn" id="13_jpf1o"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sncld"]
+load_path = "res://.godot/imported/block2.png-e445a1b640806d23b466c36c29f1df96.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_62hif"]
+texture = SubResource("CompressedTexture2D_sncld")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:2/0 = 0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3e48u"]
+load_path = "res://.godot/imported/block2_blue.png-c0facc50fb4e3e497bee5d17f92e3e01.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1h76"]
+texture = SubResource("CompressedTexture2D_3e48u")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sdno0"]
+load_path = "res://.godot/imported/block2_green.png-4688e59ef2c4955a778fd9e95663038b.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3ji7"]
+texture = SubResource("CompressedTexture2D_sdno0")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:0/0 = 0
+4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:0/0 = 0
+6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:0/0 = 0
+8:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:2/0 = 0
+8:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:2/0 = 0
+6:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:2/0 = 0
+4:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:4/0 = 0
+4:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:4/0 = 0
+2:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:4/0 = 0
+0:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7wa2w"]
+load_path = "res://.godot/imported/block2_orange.png-7283528b7bcd75459b4c0126de68d7ff.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dx3t1"]
+texture = SubResource("CompressedTexture2D_7wa2w")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sghgi"]
+load_path = "res://.godot/imported/block2_red.png-2e54d2dd904e7dd94396017636be368b.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6xrd"]
+texture = SubResource("CompressedTexture2D_sghgi")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="TileSet" id="TileSet_51sic"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 3
+sources/5 = SubResource("TileSetAtlasSource_62hif")
+sources/6 = SubResource("TileSetAtlasSource_t1h76")
+sources/7 = SubResource("TileSetAtlasSource_m3ji7")
+sources/8 = SubResource("TileSetAtlasSource_dx3t1")
+sources/9 = SubResource("TileSetAtlasSource_d6xrd")
+
+[node name="Level_test" type="Node2D"]
+script = ExtResource("1_dx3t1")
+
+[node name="BackgroundShader" parent="." instance=ExtResource("2_3e48u")]
+visible = false
+offset_left = -4.0
+offset_top = 5.0
+offset_right = 1276.0
+offset_bottom = 830.0
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(661, 412)
+texture = ExtResource("2_dx3t1")
+
+[node name="TileMapLayer_2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAATAAAABQAAAAAAAAASAAAABQAAAAAAAAARAAAABQAAAAAAAAAQAAAABQAAAAAAAAAPAAAABQAAAAAAAAAOAAAABQAAAAAAAAANAAAABQAAAAAAAAAMAAAABQAAAAAAAAALAAAABQAAAAAAAAAKAAAABQAAAAAAAAAJAAAABQAAAAAAAAAIAAAABQAAAAAAAAAHAAAABQAAAAAAAAAGAAAABQAAAAAAAAAFAAAABQAAAAAAAAAEAAAABQAAAAAAAAADAAAABQAAAAAAAAACAAAABQAAAAAAAAABAAAABQAAAAAAAAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAAMABQAAAAAAAAAAAAQABQAAAAAAAAAAAAUABwAEAAIAAAAAAAYABwAEAAIAAAAAAAcABwAEAAIAAAAAAAgABQAAAAIAAAAAAAkABQAAAAIAAAAAAAoABQAAAAIAAAAAAAsABQAAAAIAAAAAAAwABQAAAAIAAAAEAAwABQAAAAAAAAAEAAsABQAAAAAAAAAEAAoABQAAAAAAAAAEAAkABQAAAAAAAAAEAAgABQAAAAAAAAAFAAgABQAAAAAAAAAFAAkABwAEAAIAAAAFAAoABwAEAAIAAAAFAAsABwAEAAIAAAAFAAwABQAAAAAAAAAGAAgABQAAAAAAAAAHAAgABQAAAAAAAAAHAAcABQAAAAAAAAAGAAcABQAAAAAAAAAFAAcABQAAAAAAAAAEAAcABQAAAAAAAAABAAEABQAAAAAAAAABAAIABQAAAAAAAAACAAEABQAAAAAAAAACAAIABQAAAAAAAAADAAEABQAAAAAAAAADAAIABQAAAAAAAAAEAAEABQAAAAAAAAAEAAIABQAAAAAAAAAFAAEABQAAAAAAAAAFAAIABQAAAAAAAAAFAAMABQAAAAAAAAAFAAQABQAAAAAAAAAGAAEABQAAAAAAAAAGAAIABQAAAAAAAAAGAAMABQAAAAAAAAAGAAQABQAAAAAAAAAHAAEABQAAAAAAAAAHAAIABQAAAAAAAAAHAAMABQAAAAAAAAAHAAQABQAAAAAAAAAIAAEABQAAAAAAAAAIAAIABQAAAAAAAAAIAAMABQAAAAAAAAAIAAQABQAAAAAAAAAJAAEABQAAAAAAAAAJAAIABQAAAAAAAAAJAAMABQAAAAAAAAAJAAQABQAAAAAAAAATAAEABQAAAAAAAAATAAIABQAAAAAAAAATAAMABQAAAAAAAAAMAAwABQAAAAAAAAALAAwABQAAAAAAAAAKAAwABQAAAAAAAAAJAAwABQAAAAAAAAAIAAwABQAAAAAAAAAHAAwABQAAAAAAAAAGAAwABQAAAAAAAAADAAwABQAAAAAAAAACAAwABQAAAAAAAAABAAwABQAAAAAAAAAMAAsABwAEAAIAAAAMAAoABwAEAAIAAAAMAAkABwAEAAIAAAAMAAgABQAAAAAAAAAMAAcABQAAAAAAAAANAAwABQAAAAAAAAAOAAwABQAAAAAAAAAPAAwABQAAAAAAAAAQAAwABQAAAAAAAAARAAwABQAAAAAAAAASAAwABQAAAAAAAAATAAwABQAAAAAAAAATAAsABwAAAAIAAAATAAoABwAAAAIAAAATAAkABwAAAAIAAAATAAgABwAAAAIAAAATAAcABwAAAAIAAAATAAYABwAAAAIAAAATAAUABwAAAAIAAAATAAQABwAAAAIAAAA=")
+tile_set = SubResource("TileSet_51sic")
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+position = Vector2(1035, 726)
+
+[node name="Collectable" type="Marker2D" parent="."]
+position = Vector2(823, 141)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="PlatformMoveAndHold" parent="Platforms" instance=ExtResource("12_u264g")]
+position = Vector2(288, 392)
+is_moving = true
+is_start_right = true
+move_range = 400.0
+
+[node name="PlatformMoveAndHold2" parent="Platforms" instance=ExtResource("12_u264g")]
+position = Vector2(213, 746)
+is_moving = true
+is_move_vertical = true
+is_start_up = true
+move_range = 200.0
+
+[node name="Swards" parent="." instance=ExtResource("13_jpf1o")]
+position = Vector2(353, 352)
+rotation = -3.14159
+
+[node name="Swards2" parent="." instance=ExtResource("13_jpf1o")]
+position = Vector2(413, 352)
+rotation = -3.14159
+
+[node name="Pendent" parent="." instance=ExtResource("11_sdno0")]
+position = Vector2(601, 390)
+
+[node name="Blitz" parent="." instance=ExtResource("12_m3ji7")]
+position = Vector2(699, 141)
+scale = Vector2(0.131, 0.2)
+line_height = 1500.0

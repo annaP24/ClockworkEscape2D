@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw48g65rbks06"]
+
+[ext_resource type="Script" uid="uid://dd2ei73p7j0p8" path="res://scenes/obstacles/pendent/pendent.gd" id="1_nw4xq"]
+[ext_resource type="Texture2D" uid="uid://d3wawntl7ljq7" path="res://scenes/obstacles/pendent/assets/pendent.png" id="1_p6yeh"]
+[ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="2_nw4xq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ciggu"]
+radius = 4.5
+height = 19.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lwuq"]
+radius = 26.0
+height = 52.0
+
+[node name="Pendent" type="StaticBody2D"]
+script = ExtResource("1_nw4xq")
+sway_speed = 1.0
+max_rotation = 80.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_ciggu")
+
+[node name="RotationMarker" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="RotationMarker"]
+position = Vector2(1, 129)
+scale = Vector2(2, 2)
+texture = ExtResource("1_p6yeh")
+
+[node name="DetectionMarker" type="Marker2D" parent="RotationMarker/Sprite2D"]
+
+[node name="Comp2dHitbox" type="Area2D" parent="RotationMarker"]
+position = Vector2(-1, 64)
+script = ExtResource("2_nw4xq")
+metadata/_custom_type_script = "uid://wujupbok4pj0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationMarker/Comp2dHitbox"]
+position = Vector2(1, 161)
+shape = SubResource("CapsuleShape2D_5lwuq")

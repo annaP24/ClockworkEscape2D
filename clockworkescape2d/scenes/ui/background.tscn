@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbkkctgabv237"]
+
+[ext_resource type="Texture2D" uid="uid://kqbsidqidlsp" path="res://scenes/ui/assets/background.png" id="1_1iqp7"]
+[ext_resource type="Shader" uid="uid://bxrcmr83yextj" path="res://world.gdshader" id="1_qy2i1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlwt5"]
+render_priority = 0
+shader = ExtResource("1_qy2i1")
+shader_parameter/background_texture = ExtResource("1_1iqp7")
+shader_parameter/object_player = 0.0
+shader_parameter/scroll_speed = 0.03
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dcdg6"]
+material = SubResource("ShaderMaterial_tlwt5")
+size = Vector2(19.2, 10.8)
+
+[node name="Background" type="MeshInstance3D"]
+transform = Transform3D(1.52, 0, 0, 0, -6.64413e-08, -1.52, 0, 1.52, -6.64413e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_dcdg6")

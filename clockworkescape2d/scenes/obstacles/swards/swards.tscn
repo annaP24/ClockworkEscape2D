@@ -15,7 +15,7 @@ texture = ExtResource("1_vbeua")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(3, 16)
+position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_a84oq")
 
 [node name="Comp2dHitbox" type="Area2D" parent="."]
@@ -23,6 +23,5 @@ script = ExtResource("2_a84oq")
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHitbox"]
-visible = false
-position = Vector2(3, 16)
+position = Vector2(1, 16)
 shape = SubResource("RectangleShape2D_a84oq")
