@@ -3,6 +3,7 @@ extends FsmNodeState
 func Enter(player_node):
 	super(player_node)
 	player.jump_count = player.max_jump_count
+	player.jump_button_released = true
 
 func Physics_Update(_delta):
 	#Apply gravity
@@ -23,23 +24,20 @@ func Physics_Update(_delta):
 	if player.is_on_floor():
 		player.coyote_jump = true
 		player.coyote_jump_timer_started = true
-	#if not player.is_on_floor() and player.coyote_jump == true and player.coyote_jump_timer_started == true:
-		#player.coyote_jump_timer_started = false
-		#player.coyote_timer.start(player.coyote_timeout)
-		#
+	if not player.is_on_floor() and player.coyote_jump == true and player.coyote_jump_timer_started == true:
+		player.coyote_jump_timer_started = false
+		player.coyote_timer.start(player.coyote_timeout)
+
 	#Change states	
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		change_state("JumpState")
+	elif Input.is_action_just_pressed("jump") and !player.is_on_floor() and player.coyote_jump:
 		change_state("JumpState")
 	elif Input.is_action_just_pressed("jump") and player.jump_count > 0:
 		change_state("JumpState")
 	elif Input.is_action_just_pressed("jump") and  player.jump_buffer:
 		change_state("JumpState")
-	elif Input.is_action_just_pressed("jump") and player.coyote_jump:
-		change_state("JumpState")
-	elif Input.is_action_just_pressed("dash"):
-		change_state("DashState")
 	elif !player.is_on_floor():
-		#if !player.coil_push_active:
 		player.jump_count -= 1
 		change_state("FallState")
 	elif inputX == 0:

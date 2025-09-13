@@ -15,44 +15,38 @@ func _ready() -> void:
 	#FadeScreen.connect("fade_in_finished", _on_fade_in_finished)
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
 	#FadeScreen.level_transition()
-	
+	print(get_tree().current_scene.name)
+
 func load_level(path_to_level : String):
 	if path_to_level != "":
 		current_level_path = path_to_level
 		#Cleanup previous level
-		if current_level_instance:
-			current_level_instance.queue_free()
-		if player_instance:
-			player_instance.queue_free()
+		unload_level()
+		#if player_instance:
+			#player_instance.queue_free()
 			
 		if current_level_path != "":
 			#Dynamic load
 			var level_scene = load(path_to_level)
 			current_level_instance = level_scene.instantiate() 
 			current_level_instance.connect("quit_level", _on_quit_level_received)
+			current_level_instance.connect("restart_level", _on_restart_level_received)
+			current_level_instance.connect("load_next_level", _on_load_next_level_received)
 			scene_placeholder.add_child(current_level_instance)
 		is_level_manager_visible = false
 		level_manager.visible = is_level_manager_visible
-
 		
-func spawn_player():
-	player_instance = player_scene.instantiate() as PlayerFSM
-	var marker = current_level_instance.get_marker()
-	player_instance.position = marker.position
-	current_level_instance.add_child(player_instance)
-	player_instance.connect("player_died", _on_player_died)
-	player_instance.connect("player_finished", _on_player_finished)
-	
+func level_selected(path_to_level : String):
+	current_level_path = path_to_level
+	is_level_manager_visible = false
+	FadeScreen.fade_out()	
+
 func restart_level():
 	FadeScreen.fade_out()
 
 func unload_level():
 	if current_level_instance:
-		current_level_instance.queue_free()
-		
-		
-func _on_player_died():
-	restart_level()
+		current_level_instance.queue_free()		
 
 func  _on_player_finished():
 	unload_level()
@@ -70,3 +64,14 @@ func _on_fade_out_finished():
 func _on_quit_level_received():
 	is_level_manager_visible = true
 	FadeScreen.fade_out()
+	
+func _on_restart_level_received():
+	is_level_manager_visible = false
+	FadeScreen.fade_out()
+	
+func _on_load_next_level_received():
+	#For now load Main menu
+	#ToDo: Load next level immediatley
+	is_level_manager_visible = true
+	FadeScreen.fade_out()
+	

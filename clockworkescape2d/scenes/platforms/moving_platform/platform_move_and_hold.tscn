@@ -14,8 +14,10 @@ texture = ExtResource("2_y4mc7")
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
 
+[node name="PlatformTypeDetectionArea" parent="." index="2"]
+position = Vector2(-2, 3)
+
 [node name="CollisionShape2D" parent="PlatformTypeDetectionArea" index="0"]
-visible = false
 position = Vector2(-24.75, -2.25)
 shape = SubResource("RectangleShape2D_8ychq")
 

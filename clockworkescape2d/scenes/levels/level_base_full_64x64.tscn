@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dtoercglc7src"]
+[gd_scene load_steps=11 format=4 uid="uid://dtoercglc7src"]
 
 [ext_resource type="Script" uid="uid://fvk5nc1cy38g" path="res://scenes/levels/level_base_full_64x64.gd" id="1_5om0o"]
 [ext_resource type="Texture2D" uid="uid://kqbsidqidlsp" path="res://scenes/ui/assets/background.png" id="2_5om0o"]
 [ext_resource type="Texture2D" uid="uid://b7f1qktmpyvwf" path="res://assets/blocks/64x64/Swards_64x64.png" id="5_x03kx"]
+[ext_resource type="PackedScene" uid="uid://dm850oo47usa3" path="res://scenes/levels/exit.tscn" id="6_x03kx"]
 [ext_resource type="Texture2D" uid="uid://kr6uilhii0ag" path="res://assets/blocks/64x64/BaseBlocks_64x64.png" id="7_l38tm"]
 [ext_resource type="Texture2D" uid="uid://b2txd6dqklpp5" path="res://assets/blocks/64x64/Green_64x64_1.png" id="8_cmxuw"]
 
@@ -101,3 +102,5 @@ position = Vector2(169, 129)
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(0.65, 0.65)
+
+[node name="Exit" parent="." instance=ExtResource("6_x03kx")]

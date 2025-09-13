@@ -3,8 +3,9 @@ extends FsmNodeState
 func Enter(player_node):
 	super(player_node)
 	player.jump_count = player.max_jump_count
+	player.jump_button_released = true
 	player_node.wall_jump_count = player.wall_jump_count_max
-	Debug.print_value("WallJump", player.wall_jump_count)
+	player.coyote_jump = true
 
 func Physics_Update(_delta):
 	if player.is_movable:
@@ -23,7 +24,6 @@ func Physics_Update(_delta):
 			player.coil_jump_pressed = true
 		elif Input.is_action_just_pressed("jump") and player.jump_count > 0:
 			change_state("JumpState")	
-		elif Input.is_action_just_pressed("jump") and player.jump_buffer:
+		#elif Input.is_action_just_pressed("jump") and player.jump_buffer:
+		elif player.is_on_floor() and player.jump_buffer:
 			change_state("JumpState")
-		elif Input.is_action_just_pressed("dash"):
-			change_state("DashState")	

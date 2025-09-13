@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://n412bh0u7lbs"]
 
 [ext_resource type="Texture2D" uid="uid://djfg1ks4yuwyr" path="res://scenes/ui/assets/panel_grey_bolts_blue.png" id="1_0pgek"]
-[ext_resource type="Script" path="res://scenes/ui/level_button.gd" id="2_4h6sh"]
+[ext_resource type="Script" uid="uid://ci0ieghoo6sk8" path="res://scenes/ui/level_button.gd" id="2_4h6sh"]
 [ext_resource type="Theme" uid="uid://pd26ngl4i7qs" path="res://scenes/ui/themes/label.tres" id="2_7ldk7"]
 
 [node name="LevelButton" type="TextureButton"]

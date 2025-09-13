@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://4nbq3v20mld3"]
+[gd_scene load_steps=18 format=4 uid="uid://4nbq3v20mld3"]
 
 [ext_resource type="Script" uid="uid://fvk5nc1cy38g" path="res://scenes/levels/level_base_full_64x64.gd" id="1_dx3t1"]
-[ext_resource type="PackedScene" uid="uid://otgcwtwam062" path="res://scenes/ui/background_shader.tscn" id="2_3e48u"]
 [ext_resource type="Texture2D" uid="uid://kqbsidqidlsp" path="res://scenes/ui/assets/background.png" id="2_dx3t1"]
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="11_sdno0"]
 [ext_resource type="PackedScene" uid="uid://bd0enwr66l8nf" path="res://scenes/obstacles/lightning/lightning.tscn" id="12_m3ji7"]
-[ext_resource type="PackedScene" uid="uid://c6eq64g3e0jjy" path="res://scenes/platforms/moving_platform/platform_move_and_hold_64x64.tscn" id="12_u264g"]
+[ext_resource type="PackedScene" uid="uid://c6eq64g3e0jjy" path="res://scenes/platforms/moving_platform/platform_move_and_hold.tscn" id="12_u264g"]
 [ext_resource type="PackedScene" uid="uid://dl4v6kn8xyo5y" path="res://scenes/obstacles/swards/swards.tscn" id="13_jpf1o"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sncld"]
@@ -106,12 +105,22 @@ sources/9 = SubResource("TileSetAtlasSource_d6xrd")
 [node name="Level_test" type="Node2D"]
 script = ExtResource("1_dx3t1")
 
-[node name="BackgroundShader" parent="." instance=ExtResource("2_3e48u")]
+[node name="BackgroundShader" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 visible = false
 offset_left = -4.0
 offset_top = 5.0
 offset_right = 1276.0
 offset_bottom = 830.0
+script = null
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(661, 412)
@@ -121,11 +130,13 @@ texture = ExtResource("2_dx3t1")
 tile_map_data = PackedByteArray("AAATAAAABQAAAAAAAAASAAAABQAAAAAAAAARAAAABQAAAAAAAAAQAAAABQAAAAAAAAAPAAAABQAAAAAAAAAOAAAABQAAAAAAAAANAAAABQAAAAAAAAAMAAAABQAAAAAAAAALAAAABQAAAAAAAAAKAAAABQAAAAAAAAAJAAAABQAAAAAAAAAIAAAABQAAAAAAAAAHAAAABQAAAAAAAAAGAAAABQAAAAAAAAAFAAAABQAAAAAAAAAEAAAABQAAAAAAAAADAAAABQAAAAAAAAACAAAABQAAAAAAAAABAAAABQAAAAAAAAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAAMABQAAAAAAAAAAAAQABQAAAAAAAAAAAAUABwAEAAIAAAAAAAYABwAEAAIAAAAAAAcABwAEAAIAAAAAAAgABQAAAAIAAAAAAAkABQAAAAIAAAAAAAoABQAAAAIAAAAAAAsABQAAAAIAAAAAAAwABQAAAAIAAAAEAAwABQAAAAAAAAAEAAsABQAAAAAAAAAEAAoABQAAAAAAAAAEAAkABQAAAAAAAAAEAAgABQAAAAAAAAAFAAgABQAAAAAAAAAFAAkABwAEAAIAAAAFAAoABwAEAAIAAAAFAAsABwAEAAIAAAAFAAwABQAAAAAAAAAGAAgABQAAAAAAAAAHAAgABQAAAAAAAAAHAAcABQAAAAAAAAAGAAcABQAAAAAAAAAFAAcABQAAAAAAAAAEAAcABQAAAAAAAAABAAEABQAAAAAAAAABAAIABQAAAAAAAAACAAEABQAAAAAAAAACAAIABQAAAAAAAAADAAEABQAAAAAAAAADAAIABQAAAAAAAAAEAAEABQAAAAAAAAAEAAIABQAAAAAAAAAFAAEABQAAAAAAAAAFAAIABQAAAAAAAAAFAAMABQAAAAAAAAAFAAQABQAAAAAAAAAGAAEABQAAAAAAAAAGAAIABQAAAAAAAAAGAAMABQAAAAAAAAAGAAQABQAAAAAAAAAHAAEABQAAAAAAAAAHAAIABQAAAAAAAAAHAAMABQAAAAAAAAAHAAQABQAAAAAAAAAIAAEABQAAAAAAAAAIAAIABQAAAAAAAAAIAAMABQAAAAAAAAAIAAQABQAAAAAAAAAJAAEABQAAAAAAAAAJAAIABQAAAAAAAAAJAAMABQAAAAAAAAAJAAQABQAAAAAAAAATAAEABQAAAAAAAAATAAIABQAAAAAAAAATAAMABQAAAAAAAAAMAAwABQAAAAAAAAALAAwABQAAAAAAAAAKAAwABQAAAAAAAAAJAAwABQAAAAAAAAAIAAwABQAAAAAAAAAHAAwABQAAAAAAAAAGAAwABQAAAAAAAAADAAwABQAAAAAAAAACAAwABQAAAAAAAAABAAwABQAAAAAAAAAMAAsABwAEAAIAAAAMAAoABwAEAAIAAAAMAAkABwAEAAIAAAAMAAgABQAAAAAAAAAMAAcABQAAAAAAAAANAAwABQAAAAAAAAAOAAwABQAAAAAAAAAPAAwABQAAAAAAAAAQAAwABQAAAAAAAAARAAwABQAAAAAAAAASAAwABQAAAAAAAAATAAwABQAAAAAAAAATAAsABwAAAAIAAAATAAoABwAAAAIAAAATAAkABwAAAAIAAAATAAgABwAAAAIAAAATAAcABwAAAAIAAAATAAYABwAAAAIAAAATAAUABwAAAAIAAAATAAQABwAAAAIAAAA=")
 tile_set = SubResource("TileSet_51sic")
 
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Collectable" type="Marker2D" parent="Collectables"]
+position = Vector2(823, 141)
+
 [node name="SpawnMarker" type="Marker2D" parent="."]
 position = Vector2(1035, 726)
-
-[node name="Collectable" type="Marker2D" parent="."]
-position = Vector2(823, 141)
 
 [node name="Platforms" type="Node2D" parent="."]
 

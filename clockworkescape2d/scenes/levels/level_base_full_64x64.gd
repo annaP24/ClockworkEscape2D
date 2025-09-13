@@ -1,6 +1,8 @@
 extends Node2D
 class_name Level_64x64
 signal quit_level
+signal restart_level
+signal load_next_level
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
 #@onready var player_scene = preload("res://scenes/character/character_32x32.tscn")
 @onready var player_scene = preload("res://scenes/character/character_64x64.tscn")
@@ -10,7 +12,7 @@ var player
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
 	FadeScreen.fade_in()
-	#spawn_player()
+
 func _on_fade_in_finished():
 	spawn_collectable()
 	spawn_player()	
@@ -26,11 +28,14 @@ func spawn_player():
 	player.position = spawn_marker.position
 	add_child(player)
 	player.connect("player_died", _on_player_died)
+	player.connect("player_finished", _on_player_finished)
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("return"):
 		quit_level.emit()
 
 func _on_player_died():
-	#ToDo: reload level here do not emit
-	quit_level.emit()
+	restart_level.emit()
+
+func _on_player_finished():
+	load_next_level.emit()

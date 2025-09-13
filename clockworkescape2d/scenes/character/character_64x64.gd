@@ -5,35 +5,22 @@ signal player_finished
 
 @export var max_speed : float = 300.0
 @export var max_jump_count : int = 1 
-var jump_height : float = 192 # 3*64px
-@export var jump_gravity : float = 1800.0
-@export var fall_gravity : float = 4000.0
-@export var is_debug : bool = false
-#@export var jump_time_to_peak : float = 0.5
-#@export var jump_time_to_descent : float = 0.6 #0.4
+@export var jump_height : float = 192 # 3*64px
+@export var jump_gravity : float = 2000.0
+@export var fall_gravity : float = 3600.0
 @export var jump_buffer_timeout : float = 0.3
 @export var coyote_timeout : float = 0.1
-@export var gravity_coef : float = 1.0
+@export var gravity_coef : float = 0.75
 @export var number_of_jumps : int = 1
-@export var dash_duration : float = 0.1
-@export var dash_timeout : float = 0.5
-@export var dash_speed : float = 50.0
-@export var move_acc : float = 0.3
-@export var move_dec : float = 0.3
-var multiplicator_2d : float = 1000.0
+@export var move_acc : float = 50.0
+@export var move_dec : float = 100.0
 @onready var fsm: CompFsmNode = $FSM
-#@onready var jump_velocity : float = ((-2.0 * jump_height) / jump_time_to_peak) *  multiplicator_2d
-#@onready var jump_gravity : float = ((2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak))* multiplicator_2d
-#@onready var fall_gravity : float = ((2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * multiplicator_2d
 
 @onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
-#@onready var anima_player_spawn_die: AnimationPlayer = $gear_with_animation/AnimationPlayer
 
 @onready var jump_buffer_timer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var ray_cast_timer: Timer = $RayCastTimer
-@onready var dash_duration_timer: Timer = $DashDurationTimer
-@onready var dash_timeout_timer: Timer = $DashTimeoutTimer
 @onready var gear: Sprite2D = $CharacterSprite
 @onready var gear_with_animation: AnimatedSprite2D = $CharacterAnimated
 
@@ -45,8 +32,6 @@ var jump_button_released : bool = false
 var jump_count : int = 0
 var coyote_jump : bool = false
 var coyote_jump_timer_started : bool = false
-var can_dash : bool = true
-var is_dashing : bool = false
 var is_movable : bool = false
 var coil_push_active : bool = false
 var coil_jump_pressed : bool = false
@@ -59,33 +44,23 @@ func _ready() -> void:
 	jump_count = max_jump_count	
 	player_died_received= false
 	wall_jump_count = wall_jump_count_max
-	Debug.print_value("WallJump", wall_jump_count)
-	gravity = Vector2(0,fall_gravity)# * multiplicator_2d
+	gravity = Vector2(0, fall_gravity)
 	update_animation(animations.SPAWN)
 	
 func _process(delta: float) -> void:
-	jump_velocity = -(sqrt(2*jump_gravity*jump_height))
+	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
 	move_and_slide()
 	
-	Debug.print_value("JumpCounter", jump_count)	
-	
 func apply_gravity(delta):
+	Debug.print_value("Gravity", gravity)
 	velocity += gravity * delta
-	
-func get_player_gravity():
-	if velocity.y < 0.0:
-		gravity = Vector2(gravity.x, jump_gravity)
-	else:
-		gravity = Vector2(gravity.x, fall_gravity)
-		
-	return gravity	
-	
+
 func move_player_x(directionX : int, speed : float = max_speed):
 	if directionX != 0:
-		velocity.x = speed * directionX # move_toward(velocity.x, speed * directionX, move_acc) 
+		velocity.x = move_toward(velocity.x, speed * directionX, move_acc)  #speed * directionX 
 	else:
-		velocity.x = 0 #move_toward(velocity.x, 0, move_dec) 
+		velocity.x = move_toward(velocity.x, 0, move_dec) 
 		
 func move_player_y(directionY : int,  speed : float = max_speed):
 	velocity.y = speed * directionY
@@ -114,7 +89,10 @@ func update_animation(new_animation : animations):
 			is_movable = true
 			
 func finished():
-	player_finished.emit()
+	if get_tree().current_scene.name != "World":
+		get_tree().reload_current_scene()
+	else:
+		player_finished.emit()
 	
 #------------------------RayCast management -----------------------------
 func rc_left() -> bool:
@@ -166,27 +144,21 @@ func _on_ray_cast_timer_timeout() -> void:
 	switch_ray_casts_on()
 
 func _on_jump_buffer_timeout() -> void:
-	Debug.print_value("JumpBufferTimerStarted", false)
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
 	coyote_jump = false
-
-func _on_dash_duration_timer_timeout() -> void:
-	is_dashing = false
-
-func _on_dash_timeout_timer_timeout() -> void:
-	can_dash = true
 
 func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:
 	update_animation(animations.DIE)
 
 func _on_character_animated_animation_finished() -> void:
 	if player_died_received:
-		if is_debug:
+		#If root node's name is not "World" then we are in debug mode and need restarting
+		if get_tree().current_scene.name != "World":
 			get_tree().reload_current_scene()
-
-		player_died.emit()
+		else:
+			player_died.emit()
 
 func _on_hurt_detection_area_body_entered(_body: Node2D) -> void:
 	update_animation(animations.DIE)

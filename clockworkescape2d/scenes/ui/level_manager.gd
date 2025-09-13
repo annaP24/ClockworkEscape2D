@@ -16,14 +16,15 @@ var levels : Array
 var current_page : int = 0
 var buttons_per_page = 6
 var current_level_path : String
+var level_paths : Array = []
+var current_level : int = 0
 
 func _ready() -> void:
 	parent = get_parent()
-	print(parent)
 	levels =  read_folder()
 	set_lavel_paths(0)
 	update_arrows()
-	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
+	#FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
 	
 func update_arrows():
 	if current_page > 0:
@@ -47,6 +48,8 @@ func set_lavel_paths(delta):
 	for button in buttons_array:
 		if cnt <= levels.size()-1:
 			button.set_scene_path(path + levels[cnt])
+			#For later to store infoi about all levels and which one is next to load
+			level_paths.append(button.scene_path)
 			button.set_text(str(cnt+1))
 			cnt+=1
 		else:
@@ -54,12 +57,12 @@ func set_lavel_paths(delta):
 			button.set_text("-")
 					
 func _on_level_button_pressed() -> void:
-	FadeScreen.fade_out()
 	current_level_path = level_button_1.scene_path
-
+	parent.level_selected(current_level_path)
+	
 func _on_level_button_2_pressed() -> void:
 	parent.load_level(level_button_2.scene_path)
-
+	
 func _on_level_button_3_pressed() -> void:
 	parent.load_level(level_button_3.scene_path)
 
@@ -82,6 +85,3 @@ func _on_button_right_pressed() -> void:
 	set_lavel_paths(0)
 	update_arrows()
 	
-func _on_fade_out_finished():
-	parent.load_level(current_level_path)
-	current_level_path = ""

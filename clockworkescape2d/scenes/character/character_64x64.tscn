@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://6cex4dpk7o86"]
+[gd_scene load_steps=26 format=3 uid="uid://6cex4dpk7o86"]
 
 [ext_resource type="Script" uid="uid://bl4c1dogfmp3e" path="res://scenes/character/character_64x64.gd" id="1_auq6m"]
 [ext_resource type="Texture2D" uid="uid://ds0qsxyn5ps3n" path="res://scenes/character/assets/full/Gear_7.png" id="2_cpkjr"]
@@ -16,12 +16,8 @@
 [ext_resource type="Script" uid="uid://btjwmrt7k1pu5" path="res://scenes/character/fsm/state_wall_right.gd" id="14_e2boe"]
 [ext_resource type="Script" uid="uid://bbih1jrhlgk3p" path="res://scenes/character/fsm/state_wall_left.gd" id="15_0agda"]
 [ext_resource type="Script" uid="uid://b6aw225y2sm6k" path="res://scenes/character/fsm/state_ceeling.gd" id="16_ngvlp"]
-[ext_resource type="Script" uid="uid://hxjv1sto2wso" path="res://scenes/character/fsm/state_dash.gd" id="17_skvaq"]
 [ext_resource type="Script" uid="uid://cr0646x3wagbb" path="res://scenes/character/fsm/state_fall.gd" id="18_wchn2"]
 [ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="19_xfnpl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fgi2k"]
-radius = 28.0713
 
 [sub_resource type="Animation" id="Animation_6nn2t"]
 length = 0.001
@@ -110,21 +106,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgi2k"]
+radius = 31.0161
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_auq6m"]
-radius = 29.0
+radius = 32.0156
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 collision_mask = 5
 script = ExtResource("1_auq6m")
-is_debug = true
-jump_buffer_timeout = 0.2
 
 [node name="CharacterSprite" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("2_cpkjr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -136,6 +130,9 @@ sprite_frames = SubResource("SpriteFrames_q52vl")
 animation = &"full"
 autoplay = "full"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fgi2k")
+
 [node name="JumpBuffer" type="Timer" parent="."]
 one_shot = true
 
@@ -145,12 +142,6 @@ one_shot = true
 
 [node name="RayCastTimer" type="Timer" parent="."]
 wait_time = 0.2
-one_shot = true
-
-[node name="DashDurationTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="DashTimeoutTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="FSM" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
@@ -178,9 +169,6 @@ script = ExtResource("15_0agda")
 [node name="CeelingState" type="Node2D" parent="FSM"]
 script = ExtResource("16_ngvlp")
 
-[node name="DashState" type="Node2D" parent="FSM"]
-script = ExtResource("17_skvaq")
-
 [node name="FallState" type="Node2D" parent="FSM"]
 script = ExtResource("18_wchn2")
 
@@ -195,26 +183,31 @@ collision_mask = 2
 position = Vector2(30, 0)
 target_position = Vector2(0, -45)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastLeft" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 10)
 target_position = Vector2(-45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastLeft2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -30)
+position = Vector2(0, -10)
 target_position = Vector2(-45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastRight" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, 10)
 target_position = Vector2(45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastRight2" type="RayCast2D" parent="Raycasts"]
 position = Vector2(0, -10)
 target_position = Vector2(45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastDown" type="RayCast2D" parent="Raycasts"]
 position = Vector2(-30.76, 0)
@@ -247,8 +240,6 @@ shape = SubResource("CircleShape2D_auq6m")
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="RayCastTimer" to="." method="_on_ray_cast_timer_timeout"]
-[connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
-[connection signal="timeout" from="DashTimeoutTimer" to="." method="_on_dash_timeout_timer_timeout"]
 [connection signal="hurt" from="Comp2dHurtbox" to="." method="_on_comp_2d_hurtbox_hurt"]
 [connection signal="area_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_area_entered"]
 [connection signal="body_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_body_entered"]

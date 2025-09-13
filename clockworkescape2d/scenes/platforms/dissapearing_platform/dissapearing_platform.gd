@@ -2,6 +2,7 @@ extends StaticBody2D
 @export var is_disappearing : bool = false
 @export var dissapear_timeout : float = 0.5
 @export var appear_timeout : float = 3.0
+@export var is_easy_mode : bool = true
 @onready var dissapear_timer: Timer = $DissapearTimer
 @onready var appear_timer: Timer = $AppearTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -17,7 +18,6 @@ func _ready() -> void:
 func _on_dissapear_timer_timeout() -> void:
 	animation_player.play("dissapear")
 	is_platform_visible = false
-	#collision.disabled = true
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if !is_platform_visible:
@@ -28,8 +28,12 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if is_disappearing:
 		if body.is_in_group("player"):
-			dissapear_timer.start(dissapear_timeout)
-
+			if body.global_position.y < global_position.y and is_easy_mode:
+				# Character is above platform → enable collision
+				dissapear_timer.start(dissapear_timeout)
+			else:
+				dissapear_timer.start(dissapear_timeout)
+		
 func _on_appear_timer_timeout() -> void:
 	collision.disabled = false
 	detection_collision.disabled = false
