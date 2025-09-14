@@ -10,6 +10,7 @@ var moving_wall_speed : float = 0.0
 var wall_moving_direction : Vector2 = Vector2.ZERO
 var timer : Timer 
 var is_player_moving : bool = false
+
 func Enter(player_node):
 	super(player_node)
 	player.jump_count = player.max_jump_count

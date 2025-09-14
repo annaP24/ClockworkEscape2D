@@ -19,7 +19,7 @@ func Physics_Update(_delta):
 		player.jump_button_released = true
 		player.jump_buffer = false
 		player.coyote_jump = false
-		change_state("FallState")		
+		change_state("FallState")
 
 #---------- Wall Walk ----------------------------
 	if player.rc_up():

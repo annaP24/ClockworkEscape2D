@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://b5uqpaqvos0vw"]
 
 [ext_resource type="Script" uid="uid://mne6ugj5dhbn" path="res://scenes/character/character_32x32.gd" id="1_jmvt0"]
-[ext_resource type="Texture2D" uid="uid://ds0qsxyn5ps3n" path="res://scenes/character/assets/full/Gear_7.png" id="2_tlii4"]
+[ext_resource type="Texture2D" uid="uid://ds0qsxyn5ps3n" path="res://scenes/character/assets/full/Gear_18x128.png" id="2_tlii4"]
 [ext_resource type="Texture2D" uid="uid://cinwgbc67lmp4" path="res://scenes/character/assets/broke/Gear_Broken_1.png" id="3_pqku4"]
 [ext_resource type="Texture2D" uid="uid://cckh0oamy4gux" path="res://scenes/character/assets/broke/Gear_Broken_2.png" id="4_6jxfq"]
 [ext_resource type="Texture2D" uid="uid://b66qav5040n7j" path="res://scenes/character/assets/broke/Gear_Broken_3.png" id="5_618xi"]

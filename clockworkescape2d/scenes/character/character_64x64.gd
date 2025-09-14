@@ -14,22 +14,21 @@ signal player_finished
 @export var number_of_jumps : int = 1
 @export var move_acc : float = 50.0
 @export var move_dec : float = 100.0
+@export var wall_jump_count_max : int = 1
+
 @onready var fsm: CompFsmNode = $FSM
-
 @onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
-
 @onready var jump_buffer_timer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var ray_cast_timer: Timer = $RayCastTimer
-@onready var gear: Sprite2D = $CharacterSprite
 @onready var gear_with_animation: AnimatedSprite2D = $CharacterAnimated
 
 enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
 
-var gravity : Vector2 = Vector2.ZERO
+var gravity : Vector2 = Vector2.ZERO  		#TODO ist das nötig oder float?
 var jump_buffer : bool = false
 var jump_button_released : bool = false
-var jump_count : int = 0
+var jump_count : int = 0				#TODO unterschied zu number_of_jumps?
 var coyote_jump : bool = false
 var coyote_jump_timer_started : bool = false
 var is_movable : bool = false
@@ -37,7 +36,6 @@ var coil_push_active : bool = false
 var coil_jump_pressed : bool = false
 var jump_velocity : float = 0.0
 var player_died_received : bool = false
-@export var wall_jump_count_max : int = 1
 var wall_jump_count : int 
 
 func _ready() -> void: 
@@ -88,7 +86,7 @@ func update_animation(new_animation : animations):
 			#gear_with_animation.visible = false
 			is_movable = true
 			
-func finished():
+func finished():				#TODO: Name unklar, könnte teil des level sein. Finisch area gibt signal an level
 	if get_tree().current_scene.name != "World":
 		get_tree().reload_current_scene()
 	else:
@@ -122,7 +120,7 @@ func get_collider_up():
 	elif $Raycasts/RayCastUp2.is_colliding():
 		return $Raycasts/RayCastUp2.get_collider()
 		
-func switch_ray_casts_on():	
+func switch_ray_casts_on():
 	for rc in get_node("Raycasts").get_children():
 		rc.enabled = true
 
