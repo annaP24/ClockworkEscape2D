@@ -19,7 +19,7 @@ func Physics_Update(_delta):
 #Move player x-axis
 	player.velocity.x = 0
 	#Move player y-axis
-	player.gravity = Vector2(player.fall_gravity, 0)
+	player.gravity = Vector2(0, 0) #player.fall_gravity
 	var inputY =  Input.get_axis("up", "down")
 	
 	if player.rc_right():
@@ -30,39 +30,46 @@ func Physics_Update(_delta):
 		
 	#Change states	
 	if Input.is_action_just_pressed("jump"):
-		if player.is_on_wall() and Input.is_action_pressed("left"):
+		if player.rc_right(): 
 			player.switch_rc_right_off()
-			player.velocity.x = -1 * player.max_speed * GameManager.wall_jump_coaf
+			player.velocity.x = -1 * player.max_speed * wall_jump_coef
 			change_state("JumpState")	
-		else:
-			player.switch_rc_right_off()
-			player.move_player_x(-1)
-			change_state("FallFromWallState")
-	elif Input.is_action_just_pressed("left"):
+		elif player.rc_left():
+			player.switch_rc_left_off()
+			player.velocity.x = 1 * player.max_speed * wall_jump_coef
+			change_state("JumpState")			
+	elif Input.is_action_just_pressed("left") or  Input.is_action_just_pressed("right"):
 		if player.rc_up():
 			player.switch_rc_right_off()
+			player.switch_rc_left_off()
 			change_state("CeelingState")
-	elif player.rc_up():	
-		if player.rc_down() and Input.is_action_pressed("right"):
-			change_state("RunState")
-		elif player.rc_up() and Input.is_action_pressed("right"):
-			change_state("CeelingState")
-	elif !player.rc_right():
+	#elif player.rc_up():	
+		#if player.rc_down() and Input.is_action_pressed("right"):
+			#change_state("RunState")
+		#elif player.rc_up() and Input.is_action_pressed("right"):
+			#change_state("CeelingState")
+	elif !player.rc_right() and !player.rc_left():
 		player.switch_rc_right_off()
+		player.switch_rc_left_off()
 		if player.rc_down() and Input.is_action_pressed("right"):
 			change_state("RunState")
 		elif player.rc_up() and Input.is_action_pressed("right"):
 			change_state("CeelingState")
 		else:	
-			player.switch_rc_right_off()
-			player.move_player_x(-1)
-			change_state("FallFromWallState")
+			#player.move_player_x(-1)
+			change_state("FallState")
 			
 	#Animations
 	if player.velocity.y > 0:
-		player.update_animation(player.animations.RUN_LEFT)
+		if player.rc_right():
+			player.update_animation(player.animations.RUN_LEFT)
+		else:
+			player.update_animation(player.animations.RUN_RIGHT)
 	elif player.velocity.y < 0:
-		player.update_animation(player.animations.RUN_RIGHT)
+		if player.rc_right():
+			player.update_animation(player.animations.RUN_RIGHT)
+		else:
+			player.update_animation(player.animations.RUN_LEFT)		
 	else:
 		if is_moving_wall:
 			player.move_player_x(int(wall_moving_direction.x), moving_wall_speed)

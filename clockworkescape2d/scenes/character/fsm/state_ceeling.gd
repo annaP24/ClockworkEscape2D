@@ -24,18 +24,18 @@ func Physics_Update(_delta):
 		change_state("FallState")
 		
 	if  player.rc_right() and Input.is_action_pressed("right"):
-		change_state("WallRightState")
+		change_state("WallState")
 	elif  player.rc_left() and Input.is_action_pressed("left"):
-		change_state("WallLeftState")	
+		change_state("WallState")	
 	elif player.rc_left() and player.rc_up() and Input.is_action_pressed("up"):
-		change_state("WallLeftState")	
+		change_state("WallState")	
 	elif player.rc_right() and player.rc_up() and Input.is_action_pressed("up"):
-		change_state("WallRightState")
+		change_state("WallState")
 	elif player.rc_up() and Input.is_action_pressed("up"):
 		if player.rc_right():
-			change_state("WallRightState")
+			change_state("WallState")
 		elif player.rc_left():
-			change_state("WallLeftState")	
+			change_state("WallState")	
 			
 	player.move_player_x(inputX)
 			

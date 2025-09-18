@@ -22,17 +22,14 @@ func Physics_Update(_delta):
 			player.jump_buffer = true
 			player.jump_buffer_timer.start(player.jump_buffer_timeout)
 
-	# jump buffer jump									#TODO: Man könnte noch den übergang zu run state ergänzen
-	#if player.is_on_floor() and player.jump_buffer:			#TODO: Würde ich hier entfernen da dies schon beim idle und run implementiert ist
-		#change_state("JumpState")
-	if Input.is_action_just_pressed("jump") and !player.is_on_floor() and player.coyote_jump: #TODO: !player.is_on_floor() sollte nicht nötig sein
+	if Input.is_action_just_pressed("jump") and player.coyote_jump: 
 		change_state("JumpState")
 	elif player.is_on_floor():
 		change_state("Idle")
 	if player.rc_right():
-		change_state("WallRightState")
+		change_state("WallState")
 	elif player.rc_left():
-		change_state("WallLeftState")
+		change_state("WallState")
 	elif player.rc_up():							#TODO: Ist das beim fallen möglich?
 		change_state("CeelingState")
 #	---------- Wall Jumps -----------------------

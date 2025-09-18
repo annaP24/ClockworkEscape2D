@@ -1,23 +1,23 @@
-[gd_scene load_steps=26 format=3 uid="uid://6cex4dpk7o86"]
+[gd_scene load_steps=26 format=3 uid="uid://bd2fkngsxsedb"]
 
-[ext_resource type="Script" uid="uid://bl4c1dogfmp3e" path="res://scenes/character/character_64x64.gd" id="1_auq6m"]
-[ext_resource type="Texture2D" uid="uid://cinwgbc67lmp4" path="res://scenes/character/assets/broke/Gear_Broken_1.png" id="3_5xmcc"]
-[ext_resource type="Texture2D" uid="uid://cckh0oamy4gux" path="res://scenes/character/assets/broke/Gear_Broken_2.png" id="4_cjaq4"]
-[ext_resource type="Texture2D" uid="uid://b66qav5040n7j" path="res://scenes/character/assets/broke/Gear_Broken_3.png" id="5_0pqnr"]
-[ext_resource type="Texture2D" uid="uid://dkv57jet8ubbh" path="res://scenes/character/assets/broke/Gear_Broken_4.png" id="6_vs0it"]
-[ext_resource type="Texture2D" uid="uid://blxysuicpm31q" path="res://scenes/character/assets/broke/Gear_Broken_5.png" id="7_qox54"]
-[ext_resource type="Texture2D" uid="uid://ciin5evgl1k8y" path="res://scenes/character/assets/full/Gear_64x64.png" id="8_t5ssb"]
-[ext_resource type="Script" uid="uid://vuuvgo45rhgm" path="res://scenes/character/fsm/comp_fsm_node.gd" id="9_k0gic"]
-[ext_resource type="Script" uid="uid://xkvymacgbbuf" path="res://scenes/character/fsm/state_idle.gd" id="10_0uk0o"]
-[ext_resource type="Script" uid="uid://b4ih7258yaac0" path="res://scenes/character/fsm/state_move.gd" id="11_bctmr"]
-[ext_resource type="Script" uid="uid://uy576usvntn3" path="res://scenes/character/fsm/state_jump.gd" id="12_hwks6"]
-[ext_resource type="Script" uid="uid://1wikp8g6id7h" path="res://scenes/character/wall_state.gd" id="13_gu8ig"]
-[ext_resource type="Script" uid="uid://udkw842f856h" path="res://scenes/character/fsm/state_fall_from_wall.gd" id="13_w4x4v"]
-[ext_resource type="Script" uid="uid://btjwmrt7k1pu5" path="res://scenes/character/fsm/state_wall_right.gd" id="14_e2boe"]
-[ext_resource type="Script" uid="uid://bbih1jrhlgk3p" path="res://scenes/character/fsm/state_wall_left.gd" id="15_0agda"]
-[ext_resource type="Script" uid="uid://b6aw225y2sm6k" path="res://scenes/character/fsm/state_ceeling.gd" id="16_ngvlp"]
-[ext_resource type="Script" uid="uid://cr0646x3wagbb" path="res://scenes/character/fsm/state_fall.gd" id="18_wchn2"]
-[ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="19_xfnpl"]
+[ext_resource type="Script" uid="uid://bl4c1dogfmp3e" path="res://scenes/character/character_64x64.gd" id="1_gbvxn"]
+[ext_resource type="Texture2D" uid="uid://cinwgbc67lmp4" path="res://scenes/character/assets/broke/Gear_Broken_1.png" id="2_um8pd"]
+[ext_resource type="Texture2D" uid="uid://cckh0oamy4gux" path="res://scenes/character/assets/broke/Gear_Broken_2.png" id="3_vimwr"]
+[ext_resource type="Texture2D" uid="uid://b66qav5040n7j" path="res://scenes/character/assets/broke/Gear_Broken_3.png" id="4_4auc4"]
+[ext_resource type="Texture2D" uid="uid://dkv57jet8ubbh" path="res://scenes/character/assets/broke/Gear_Broken_4.png" id="5_msovr"]
+[ext_resource type="Texture2D" uid="uid://blxysuicpm31q" path="res://scenes/character/assets/broke/Gear_Broken_5.png" id="6_bj1a7"]
+[ext_resource type="Texture2D" uid="uid://ciin5evgl1k8y" path="res://scenes/character/assets/full/Gear_64x64.png" id="7_vdvvy"]
+[ext_resource type="Script" uid="uid://vuuvgo45rhgm" path="res://scenes/character/fsm/comp_fsm_node.gd" id="8_4ihg0"]
+[ext_resource type="Script" uid="uid://xkvymacgbbuf" path="res://scenes/character/fsm/state_idle.gd" id="9_ffht8"]
+[ext_resource type="Script" uid="uid://b4ih7258yaac0" path="res://scenes/character/fsm/state_move.gd" id="10_4rnjw"]
+[ext_resource type="Script" uid="uid://uy576usvntn3" path="res://scenes/character/fsm/state_jump.gd" id="11_m2yqs"]
+[ext_resource type="Script" uid="uid://udkw842f856h" path="res://scenes/character/fsm/state_fall_from_wall.gd" id="12_n1jip"]
+[ext_resource type="Script" uid="uid://btjwmrt7k1pu5" path="res://scenes/character/fsm/state_wall_right.gd" id="13_pxcu2"]
+[ext_resource type="Script" uid="uid://bbih1jrhlgk3p" path="res://scenes/character/fsm/state_wall_left.gd" id="14_60o7g"]
+[ext_resource type="Script" uid="uid://b6aw225y2sm6k" path="res://scenes/character/fsm/state_ceeling.gd" id="15_un06d"]
+[ext_resource type="Script" uid="uid://cr0646x3wagbb" path="res://scenes/character/fsm/state_fall.gd" id="16_7xt5y"]
+[ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="17_gw3ir"]
+[ext_resource type="Script" uid="uid://1wikp8g6id7h" path="res://scenes/character/wall_state.gd" id="17_um8pd"]
 
 [sub_resource type="Animation" id="Animation_6nn2t"]
 length = 0.001
@@ -79,19 +79,19 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5xmcc")
+"texture": ExtResource("2_um8pd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_cjaq4")
+"texture": ExtResource("3_vimwr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_0pqnr")
+"texture": ExtResource("4_4auc4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_vs0it")
+"texture": ExtResource("5_msovr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_qox54")
+"texture": ExtResource("6_bj1a7")
 }],
 "loop": false,
 "name": &"break",
@@ -99,7 +99,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_t5ssb")
+"texture": ExtResource("7_vdvvy")
 }],
 "loop": false,
 "name": &"full",
@@ -114,7 +114,7 @@ radius = 32.0156
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 collision_mask = 5
-script = ExtResource("1_auq6m")
+script = ExtResource("1_gbvxn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -141,35 +141,35 @@ wait_time = 0.2
 one_shot = true
 
 [node name="FSM" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("9_k0gic")
+script = ExtResource("8_4ihg0")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="FSM"]
-script = ExtResource("10_0uk0o")
+script = ExtResource("9_ffht8")
 
 [node name="RunState" type="Node2D" parent="FSM"]
-script = ExtResource("11_bctmr")
+script = ExtResource("10_4rnjw")
 
 [node name="JumpState" type="Node2D" parent="FSM"]
-script = ExtResource("12_hwks6")
+script = ExtResource("11_m2yqs")
 
 [node name="FallFromWallState" type="Node2D" parent="FSM"]
-script = ExtResource("13_w4x4v")
-
-[node name="WallState" type="Node2D" parent="FSM"]
-script = ExtResource("13_gu8ig")
+script = ExtResource("12_n1jip")
 
 [node name="WallRightState" type="Node2D" parent="FSM"]
-script = ExtResource("14_e2boe")
+script = ExtResource("13_pxcu2")
 
 [node name="WallLeftState" type="Node2D" parent="FSM"]
-script = ExtResource("15_0agda")
+script = ExtResource("14_60o7g")
 
 [node name="CeelingState" type="Node2D" parent="FSM"]
-script = ExtResource("16_ngvlp")
+script = ExtResource("15_un06d")
 
 [node name="FallState" type="Node2D" parent="FSM"]
-script = ExtResource("18_wchn2")
+script = ExtResource("16_7xt5y")
+
+[node name="WallState" type="Node2D" parent="FSM"]
+script = ExtResource("17_um8pd")
 
 [node name="Raycasts" type="Node2D" parent="."]
 
@@ -222,7 +222,7 @@ collide_with_areas = true
 
 [node name="Comp2dHurtbox" type="Area2D" parent="."]
 visible = false
-script = ExtResource("19_xfnpl")
+script = ExtResource("17_gw3ir")
 metadata/_custom_type_script = "uid://7u31tu5877wc"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHurtbox"]

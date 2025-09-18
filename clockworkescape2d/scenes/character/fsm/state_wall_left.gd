@@ -14,22 +14,10 @@ func Physics_Update(_delta):
 	#Move player x-axis
 	player.velocity.x = 0
 	#Move player y-axis
-	player.gravity = Vector2(-player.fall_gravity, 0)
+	player.gravity = Vector2(0, 0) #-player.fall_gravity
 	var inputY =  Input.get_axis("up", "down")
 	
 	if player.rc_left():
-		#if inputY == 0.0:
-			#if timer == null:
-				#timer = Timer.new()
-				#timer.connect("timeout", _on_player_move_timer_timeout)
-				#timer.one_shot = true
-				#add_child(timer)
-				#timer.start(0.5)
-				#is_player_moving = false
-		#else:
-			#is_player_moving = true
-			#if timer != null:
-				#timer.queue_free()
 		var wall = player.get_collider_left()
 		check_if_moving_wall(wall)
 
@@ -37,9 +25,10 @@ func Physics_Update(_delta):
 		
 	#Change states	
 	if Input.is_action_just_pressed("jump"):
-		if player.is_on_wall() and Input.is_action_pressed("right"):
+		Debug.print_value("IsOnWall", player.is_on_wall())
+		if player.rc_left():# and Input.is_action_pressed("right"):
 			player.switch_rc_left_off()
-			player.velocity.x = 1 * player.max_speed * GameManager.wall_jump_coaf
+			player.velocity.x = 1 * player.max_speed * GameManager.wall_jump_coaf * 100
 			change_state("JumpState")
 		else:
 			player.switch_rc_left_off()

@@ -29,11 +29,11 @@ func Physics_Update(_delta):
 	elif player.rc_right():
 		var wall = player.get_collider_right()
 		if !wall.is_in_group("basic"):
-			change_state("WallRightState")
+			change_state("WallState")
 	elif player.rc_left():
 		var wall = player.get_collider_left()
 		if !wall.is_in_group("basic"):
-			change_state("WallLeftState")
+			change_state("WallState")
 	elif player.is_on_wall():
 		if player.wall_jump_count > 0:
 			player.jump_count = player.max_jump_count

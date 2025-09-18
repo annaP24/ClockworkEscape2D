@@ -9,11 +9,10 @@ var current_state: FsmNodeState
 var state_change_timer : Timer
 var state_changed : bool = false
 
-func _ready():
+func start():
 	for child in get_children():
 		if child is FsmNodeState:
 			states_dict[child.name.to_lower()] = child
-			#child.Transitioned.connect(on_child_transition)
 			
 	if initial_state:
 		initial_state.Enter(platformer)
@@ -23,6 +22,23 @@ func _ready():
 	state_change_timer.one_shot = true		
 	state_change_timer.connect("timeout", _on_timer_state_changed_timeouted)
 	add_child(state_change_timer)
+	
+func _ready():
+	pass
+	#for child in get_children():
+		#if child is FsmNodeState:
+			#states_dict[child.name.to_lower()] = child
+			##child.Transitioned.connect(on_child_transition)
+			#
+	#if initial_state:
+		#initial_state.Enter(platformer)
+		#current_state = initial_state
+	#state_change_timer = Timer.new()
+	#state_change_timer.wait_time = 0.2
+	#state_change_timer.one_shot = true		
+	#state_change_timer.connect("timeout", _on_timer_state_changed_timeouted)
+	#add_child(state_change_timer)
+	#
 func _process(delta):
 	if current_state:
 		current_state.Update(delta)

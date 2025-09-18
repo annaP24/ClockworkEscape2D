@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name PlayerFSM
+
 signal player_died
-signal player_finished
 
 @export var max_speed : float = 300.0
 @export var max_jump_count : int = 1 
@@ -11,7 +11,6 @@ signal player_finished
 @export var jump_buffer_timeout : float = 0.3
 @export var coyote_timeout : float = 0.1
 @export var gravity_coef : float = 0.75
-@export var number_of_jumps : int = 1
 @export var move_acc : float = 50.0
 @export var move_dec : float = 100.0
 @export var wall_jump_count_max : int = 1
@@ -28,7 +27,7 @@ enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
 var gravity : Vector2 = Vector2.ZERO  		#TODO ist das nötig oder float?
 var jump_buffer : bool = false
 var jump_button_released : bool = false
-var jump_count : int = 0				#TODO unterschied zu number_of_jumps?
+var jump_count : int = 0
 var coyote_jump : bool = false
 var coyote_jump_timer_started : bool = false
 var is_movable : bool = false
@@ -44,7 +43,7 @@ func _ready() -> void:
 	wall_jump_count = wall_jump_count_max
 	gravity = Vector2(0, fall_gravity)
 	update_animation(animations.SPAWN)
-	
+	fsm.start()
 func _process(delta: float) -> void:
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
@@ -85,12 +84,7 @@ func update_animation(new_animation : animations):
 			#gear.visible = true
 			#gear_with_animation.visible = false
 			is_movable = true
-			
-func finished():				#TODO: Name unklar, könnte teil des level sein. Finisch area gibt signal an level
-	if get_tree().current_scene.name != "World":
-		get_tree().reload_current_scene()
-	else:
-		player_finished.emit()
+
 	
 #------------------------RayCast management -----------------------------
 func rc_left() -> bool:
@@ -120,7 +114,7 @@ func get_collider_up():
 	elif $Raycasts/RayCastUp2.is_colliding():
 		return $Raycasts/RayCastUp2.get_collider()
 		
-func switch_ray_casts_on():
+func switch_ray_casts_on():	
 	for rc in get_node("Raycasts").get_children():
 		rc.enabled = true
 
