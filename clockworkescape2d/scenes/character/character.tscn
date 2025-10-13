@@ -1,27 +1,23 @@
-[gd_scene load_steps=27 format=3 uid="uid://b5uqpaqvos0vw"]
+[gd_scene load_steps=26 format=3 uid="uid://bd81ahbnvtu2"]
 
-[ext_resource type="Script" uid="uid://mne6ugj5dhbn" path="res://scenes/character/character_32x32.gd" id="1_jmvt0"]
-[ext_resource type="Texture2D" uid="uid://ds0qsxyn5ps3n" path="res://scenes/character/assets/full/Gear_18x128.png" id="2_tlii4"]
-[ext_resource type="Texture2D" uid="uid://cinwgbc67lmp4" path="res://scenes/character/assets/broke/Gear_Broken_1.png" id="3_pqku4"]
-[ext_resource type="Texture2D" uid="uid://cckh0oamy4gux" path="res://scenes/character/assets/broke/Gear_Broken_2.png" id="4_6jxfq"]
-[ext_resource type="Texture2D" uid="uid://b66qav5040n7j" path="res://scenes/character/assets/broke/Gear_Broken_3.png" id="5_618xi"]
-[ext_resource type="Texture2D" uid="uid://dkv57jet8ubbh" path="res://scenes/character/assets/broke/Gear_Broken_4.png" id="6_shvx6"]
-[ext_resource type="Texture2D" uid="uid://blxysuicpm31q" path="res://scenes/character/assets/broke/Gear_Broken_5.png" id="7_62q7v"]
-[ext_resource type="Texture2D" uid="uid://lxwr5o3lel1s" path="res://scenes/character/assets/full/Gear_32x32.png" id="8_x81m1"]
-[ext_resource type="Script" uid="uid://vuuvgo45rhgm" path="res://scenes/character/fsm/comp_fsm_node.gd" id="9_1unnv"]
-[ext_resource type="Script" uid="uid://xkvymacgbbuf" path="res://scenes/character/fsm/state_idle.gd" id="10_7kra4"]
-[ext_resource type="Script" uid="uid://b4ih7258yaac0" path="res://scenes/character/fsm/state_move.gd" id="11_g8e3w"]
-[ext_resource type="Script" uid="uid://uy576usvntn3" path="res://scenes/character/fsm/state_jump.gd" id="12_cgvlr"]
-[ext_resource type="Script" uid="uid://udkw842f856h" path="res://scenes/character/fsm/state_fall_from_wall.gd" id="13_n8si0"]
-[ext_resource type="Script" uid="uid://btjwmrt7k1pu5" path="res://scenes/character/fsm/state_wall_right.gd" id="14_w4vqe"]
-[ext_resource type="Script" uid="uid://bbih1jrhlgk3p" path="res://scenes/character/fsm/state_wall_left.gd" id="15_q2o8c"]
-[ext_resource type="Script" uid="uid://b6aw225y2sm6k" path="res://scenes/character/fsm/state_ceeling.gd" id="16_4upyb"]
-[ext_resource type="Script" uid="uid://hxjv1sto2wso" path="res://scenes/character/fsm/state_dash.gd" id="17_g40c2"]
-[ext_resource type="Script" uid="uid://cr0646x3wagbb" path="res://scenes/character/fsm/state_fall.gd" id="18_30nj3"]
-[ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="19_2hm60"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fgi2k"]
-radius = 15.0333
+[ext_resource type="Script" uid="uid://bl4c1dogfmp3e" path="res://scenes/character/character.gd" id="1_btfbg"]
+[ext_resource type="Texture2D" uid="uid://cinwgbc67lmp4" path="res://scenes/character/assets/broke/Gear_Broken_1.png" id="2_maja8"]
+[ext_resource type="Texture2D" uid="uid://cckh0oamy4gux" path="res://scenes/character/assets/broke/Gear_Broken_2.png" id="3_btfbg"]
+[ext_resource type="Texture2D" uid="uid://b66qav5040n7j" path="res://scenes/character/assets/broke/Gear_Broken_3.png" id="4_jghgk"]
+[ext_resource type="Texture2D" uid="uid://dkv57jet8ubbh" path="res://scenes/character/assets/broke/Gear_Broken_4.png" id="5_4qkus"]
+[ext_resource type="Texture2D" uid="uid://blxysuicpm31q" path="res://scenes/character/assets/broke/Gear_Broken_5.png" id="6_f6x4b"]
+[ext_resource type="Texture2D" uid="uid://ciin5evgl1k8y" path="res://scenes/character/assets/full/Gear_64x64.png" id="7_dqlfo"]
+[ext_resource type="Script" uid="uid://vuuvgo45rhgm" path="res://scenes/character/fsm/comp_fsm_node.gd" id="8_btfbg"]
+[ext_resource type="Script" uid="uid://xkvymacgbbuf" path="res://scenes/character/fsm/state_idle.gd" id="9_wakg3"]
+[ext_resource type="Script" uid="uid://b4ih7258yaac0" path="res://scenes/character/fsm/state_move.gd" id="10_yyohv"]
+[ext_resource type="Script" uid="uid://uy576usvntn3" path="res://scenes/character/fsm/state_jump.gd" id="11_teuh6"]
+[ext_resource type="Script" uid="uid://1wikp8g6id7h" path="res://scenes/character/fsm/wall_state.gd" id="12_6p5km"]
+[ext_resource type="Script" uid="uid://udkw842f856h" path="res://scenes/character/fsm/state_fall_from_wall.gd" id="13_00mel"]
+[ext_resource type="Script" uid="uid://btjwmrt7k1pu5" path="res://scenes/character/fsm/state_wall_right.gd" id="13_jghgk"]
+[ext_resource type="Script" uid="uid://bbih1jrhlgk3p" path="res://scenes/character/fsm/state_wall_left.gd" id="14_4qkus"]
+[ext_resource type="Script" uid="uid://b6aw225y2sm6k" path="res://scenes/character/fsm/state_ceeling.gd" id="14_l3jx2"]
+[ext_resource type="Script" uid="uid://cr0646x3wagbb" path="res://scenes/character/fsm/state_fall.gd" id="15_g7fnn"]
+[ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="16_vrprh"]
 
 [sub_resource type="Animation" id="Animation_6nn2t"]
 length = 0.001
@@ -83,19 +79,19 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_pqku4")
+"texture": ExtResource("2_maja8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_6jxfq")
+"texture": ExtResource("3_btfbg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_618xi")
+"texture": ExtResource("4_jghgk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_shvx6")
+"texture": ExtResource("5_4qkus")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_62q7v")
+"texture": ExtResource("6_f6x4b")
 }],
 "loop": false,
 "name": &"break",
@@ -103,26 +99,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_x81m1")
+"texture": ExtResource("7_dqlfo")
 }],
 "loop": false,
 "name": &"full",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jmvt0"]
-radius = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgi2k"]
+radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_auq6m"]
+radius = 32.0156
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 collision_mask = 5
-script = ExtResource("1_jmvt0")
-
-[node name="CharacterSprite" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_tlii4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fgi2k")
+script = ExtResource("1_btfbg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -133,6 +125,9 @@ libraries = {
 sprite_frames = SubResource("SpriteFrames_q52vl")
 animation = &"full"
 autoplay = "full"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="JumpBuffer" type="Timer" parent="."]
 one_shot = true
@@ -145,90 +140,89 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="DashDurationTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="DashTimeoutTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="FSM" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("9_1unnv")
+script = ExtResource("8_btfbg")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="FSM"]
-script = ExtResource("10_7kra4")
+script = ExtResource("9_wakg3")
 
 [node name="RunState" type="Node2D" parent="FSM"]
-script = ExtResource("11_g8e3w")
+script = ExtResource("10_yyohv")
 
 [node name="JumpState" type="Node2D" parent="FSM"]
-script = ExtResource("12_cgvlr")
+script = ExtResource("11_teuh6")
 
 [node name="FallFromWallState" type="Node2D" parent="FSM"]
-script = ExtResource("13_n8si0")
+script = ExtResource("13_00mel")
 
 [node name="WallRightState" type="Node2D" parent="FSM"]
-script = ExtResource("14_w4vqe")
+script = ExtResource("13_jghgk")
 
 [node name="WallLeftState" type="Node2D" parent="FSM"]
-script = ExtResource("15_q2o8c")
+script = ExtResource("14_4qkus")
 
 [node name="CeelingState" type="Node2D" parent="FSM"]
-script = ExtResource("16_4upyb")
-
-[node name="DashState" type="Node2D" parent="FSM"]
-script = ExtResource("17_g40c2")
+script = ExtResource("14_l3jx2")
 
 [node name="FallState" type="Node2D" parent="FSM"]
-script = ExtResource("18_30nj3")
+script = ExtResource("15_g7fnn")
+
+[node name="WallState" type="Node2D" parent="FSM"]
+script = ExtResource("12_6p5km")
 
 [node name="Raycasts" type="Node2D" parent="."]
 
 [node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
-position = Vector2(-5, 0)
-target_position = Vector2(0, -22)
+position = Vector2(-30, 0)
+target_position = Vector2(0, -45)
 collision_mask = 2
 
 [node name="RayCastUp2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(5, 0)
-target_position = Vector2(0, -22)
+position = Vector2(30, 0)
+target_position = Vector2(0, -45)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastLeft" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 5)
-target_position = Vector2(-22, 0)
+position = Vector2(0, 10)
+target_position = Vector2(-45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastLeft2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -5)
-target_position = Vector2(-22, 0)
+position = Vector2(0, -10)
+target_position = Vector2(-45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastRight" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 5)
-target_position = Vector2(22, 0)
+position = Vector2(0, 10)
+target_position = Vector2(45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastRight2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -5)
-target_position = Vector2(22, 0)
+position = Vector2(0, -10)
+target_position = Vector2(45, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="RayCastDown" type="RayCast2D" parent="Raycasts"]
-position = Vector2(-16, 0)
-target_position = Vector2(0, 0)
+position = Vector2(-30.76, 0)
+target_position = Vector2(0, 45)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastDown2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(16, 0)
-target_position = Vector2(0, 0)
+position = Vector2(30, 0)
+target_position = Vector2(0, 45)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="Comp2dHurtbox" type="Area2D" parent="."]
 visible = false
-script = ExtResource("19_2hm60")
+script = ExtResource("16_vrprh")
 metadata/_custom_type_script = "uid://7u31tu5877wc"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHurtbox"]
@@ -240,14 +234,12 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtDetectionArea"]
-shape = SubResource("CircleShape2D_jmvt0")
+shape = SubResource("CircleShape2D_auq6m")
 
 [connection signal="animation_finished" from="CharacterAnimated" to="." method="_on_character_animated_animation_finished"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="RayCastTimer" to="." method="_on_ray_cast_timer_timeout"]
-[connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
-[connection signal="timeout" from="DashTimeoutTimer" to="." method="_on_dash_timeout_timer_timeout"]
 [connection signal="hurt" from="Comp2dHurtbox" to="." method="_on_comp_2d_hurtbox_hurt"]
 [connection signal="area_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_area_entered"]
 [connection signal="body_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_body_entered"]

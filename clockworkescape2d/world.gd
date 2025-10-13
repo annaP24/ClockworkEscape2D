@@ -1,10 +1,9 @@
 extends Node2D
 
 @onready var scene_placeholder: Node2D = $Scene
-@onready var player_scene : PackedScene = preload("res://scenes/character/character_64x64.tscn")
 @onready var level_manager: Control = $LevelManager
 
-var current_level_instance : Level_64x64 = null
+var current_level_instance : Level = null
 var current_level_index : int = 0
 var player_instance : PlayerFSM
 var current_level_path : String = ""
@@ -12,9 +11,7 @@ var is_level_manager_visible : bool = true
 
 func _ready() -> void:
 	level_manager.visible = is_level_manager_visible
-	#FadeScreen.connect("fade_in_finished", _on_fade_in_finished)
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
-	#FadeScreen.level_transition()
 	print(get_tree().current_scene.name)
 
 func load_level(path_to_level : String):

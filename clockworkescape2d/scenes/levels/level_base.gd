@@ -1,11 +1,10 @@
 extends Node2D
-class_name Level_64x64
+class_name Level
 signal quit_level
 signal restart_level
 signal load_next_level
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
-#@onready var player_scene = preload("res://scenes/character/character_32x32.tscn")
-@onready var player_scene = preload("res://scenes/character/character_64x64_single_wall.tscn")
+@onready var player_scene = preload("res://scenes/character/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
 
 var player

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0jynsb1u2r0j"]
 
 [ext_resource type="Script" uid="uid://dnd4q2iavlxqf" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_3du1g"]
-[ext_resource type="Texture2D" uid="uid://cffrlw82nt7ab" path="res://scenes/platforms/assets/Platform_64x64.png" id="2_3du1g"]
+[ext_resource type="Texture2D" uid="uid://6rhs5ajwrehf" path="res://scenes/platforms/assets/risse.png" id="2_57gib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4dh"]
 size = Vector2(128, 44)
@@ -50,10 +50,10 @@ collision_mask = 0
 script = ExtResource("1_3du1g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3du1g")
+scale = Vector2(1, 0.715)
+texture = ExtResource("2_57gib")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_tv4dh")
 
 [node name="DissapearTimer" type="Timer" parent="."]
