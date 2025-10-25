@@ -6,12 +6,14 @@ signal load_next_level
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
 @onready var player_scene = preload("res://scenes/character/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
-
+var engine_start := Time.get_ticks_msec()
 var player
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
 	FadeScreen.fade_in()
-
+	var delta = Time.get_ticks_msec() - engine_start
+	print("Autoload-Init:", engine_start)
+	print("Zeit bis erstes _ready():", delta, "ms")
 func _on_fade_in_finished():
 	spawn_collectable()
 	spawn_player()

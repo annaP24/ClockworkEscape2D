@@ -30,7 +30,9 @@ func Physics_Update(_delta):
 	
 	player.move_player_x(inputX)
 			
-	#if !player.rc_up():
+	if !player.rc_up():
+		change_state("FallState")	
+		
 		#if Input.is_action_pressed("up"):
 			#change_state("RunState")
 		#if player.rc_left() and Input.is_action_pressed("left"):

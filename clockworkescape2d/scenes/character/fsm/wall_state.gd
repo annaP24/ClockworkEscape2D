@@ -38,27 +38,32 @@ func Physics_Update(_delta):
 			player.switch_rc_left_off()
 			player.velocity.x = 1 * player.max_speed * wall_jump_coef
 			change_state("JumpState")
-	elif player.rc_left() and player.is_on_floor() and Input.is_action_just_pressed("right"):
-		player.switch_rc_left_off()
-		change_state("IdleState")
-	elif player.rc_right() and player.is_on_floor() and Input.is_action_just_pressed("left"):
-		player.switch_rc_right_off()
-		change_state("IdleState")
-	elif Input.is_action_just_pressed("left") or  Input.is_action_just_pressed("right"):
+	elif player.rc_left() and Input.is_action_just_pressed("right"):
 		if player.rc_up():
 			player.switch_rc_right_off()
 			player.switch_rc_left_off()
 			change_state("CeelingState")
-		
-	elif !player.rc_right() and !player.rc_left():
-		player.switch_rc_right_off()
-		player.switch_rc_left_off()
-		if player.rc_down() and Input.is_action_pressed("right"):
-			change_state("RunState")
-		elif player.rc_up() and Input.is_action_pressed("right"):
-			change_state("CeelingState")
-		else:	
+		elif player.is_on_floor(): 
+			player.switch_rc_left_off()
+			change_state("IdleState")
+		else:
+			player.switch_rc_left_off()
 			change_state("FallState")
+	elif player.rc_right() and Input.is_action_just_pressed("left"):
+		if player.rc_up():
+			player.switch_rc_right_off()
+			player.switch_rc_left_off()
+			change_state("CeelingState")		
+		elif player.is_on_floor():
+			player.switch_rc_right_off()
+			change_state("IdleState")
+		else:
+			player.switch_rc_right_off()
+			change_state("FallState")
+	elif !player.rc_right() and !player.rc_left():
+		player.switch_rc_left_off()
+		player.switch_rc_right_off()
+		change_state("FallState")
 			
 	#Animations
 	if player.velocity.y > 0:

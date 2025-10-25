@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bd81ahbnvtu2"]
+[gd_scene load_steps=24 format=3 uid="uid://bd81ahbnvtu2"]
 
 [ext_resource type="Script" uid="uid://bl4c1dogfmp3e" path="res://scenes/character/character.gd" id="1_btfbg"]
 [ext_resource type="Texture2D" uid="uid://cinwgbc67lmp4" path="res://scenes/character/assets/broke/Gear_Broken_1.png" id="2_maja8"]
@@ -13,8 +13,6 @@
 [ext_resource type="Script" uid="uid://uy576usvntn3" path="res://scenes/character/fsm/state_jump.gd" id="11_teuh6"]
 [ext_resource type="Script" uid="uid://1wikp8g6id7h" path="res://scenes/character/fsm/wall_state.gd" id="12_6p5km"]
 [ext_resource type="Script" uid="uid://udkw842f856h" path="res://scenes/character/fsm/state_fall_from_wall.gd" id="13_00mel"]
-[ext_resource type="Script" uid="uid://btjwmrt7k1pu5" path="res://scenes/character/fsm/state_wall_right.gd" id="13_jghgk"]
-[ext_resource type="Script" uid="uid://bbih1jrhlgk3p" path="res://scenes/character/fsm/state_wall_left.gd" id="14_4qkus"]
 [ext_resource type="Script" uid="uid://b6aw225y2sm6k" path="res://scenes/character/fsm/state_ceeling.gd" id="14_l3jx2"]
 [ext_resource type="Script" uid="uid://cr0646x3wagbb" path="res://scenes/character/fsm/state_fall.gd" id="15_g7fnn"]
 [ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="16_vrprh"]
@@ -153,23 +151,17 @@ script = ExtResource("10_yyohv")
 [node name="JumpState" type="Node2D" parent="FSM"]
 script = ExtResource("11_teuh6")
 
+[node name="WallState" type="Node2D" parent="FSM"]
+script = ExtResource("12_6p5km")
+
 [node name="FallFromWallState" type="Node2D" parent="FSM"]
 script = ExtResource("13_00mel")
-
-[node name="WallRightState" type="Node2D" parent="FSM"]
-script = ExtResource("13_jghgk")
-
-[node name="WallLeftState" type="Node2D" parent="FSM"]
-script = ExtResource("14_4qkus")
 
 [node name="CeelingState" type="Node2D" parent="FSM"]
 script = ExtResource("14_l3jx2")
 
 [node name="FallState" type="Node2D" parent="FSM"]
 script = ExtResource("15_g7fnn")
-
-[node name="WallState" type="Node2D" parent="FSM"]
-script = ExtResource("12_6p5km")
 
 [node name="Raycasts" type="Node2D" parent="."]
 

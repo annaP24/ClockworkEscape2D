@@ -34,10 +34,10 @@ func Physics_Update(_delta):
 			player.switch_rc_right_off()
 			player.velocity.x = -1 * player.max_speed * GameManager.wall_jump_coaf
 			change_state("JumpState")	
-		else:
-			player.switch_rc_right_off()
-			player.move_player_x(-1)
-			change_state("FallFromWallState")
+		#else:
+			#player.switch_rc_right_off()
+			#player.move_player_x(-1)
+			#change_state("FallFromWallState")
 	elif Input.is_action_just_pressed("left"):
 		if player.rc_up():
 			player.switch_rc_right_off()
