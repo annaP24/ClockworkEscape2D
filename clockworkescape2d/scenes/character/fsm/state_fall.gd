@@ -11,7 +11,8 @@ func Physics_Update(_delta):
 		player.gravity = Vector2(0, player.fall_gravity)
 	elif player.velocity.y < 0: # Rising
 		player.gravity = Vector2(0, player.fall_gravity * 1.15) #player.gravity_coef)
-
+	elif player.velocity.y == 0:
+		player.gravity = Vector2(0, player.fall_gravity)
 	#Double jump
 	if Input.is_action_just_pressed("jump"):
 		#If double jump available jump again
