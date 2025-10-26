@@ -120,11 +120,13 @@ libraries = {
 }
 
 [node name="CharacterAnimated" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.2496875, 0.43233845, 0.41169208, 1)
 sprite_frames = SubResource("SpriteFrames_q52vl")
 animation = &"full"
 autoplay = "full"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="JumpBuffer" type="Timer" parent="."]
@@ -177,25 +179,25 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastLeft" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 10)
+position = Vector2(0, 20)
 target_position = Vector2(-45, 0)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastLeft2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -10)
+position = Vector2(0, -20)
 target_position = Vector2(-45, 0)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastRight" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 10)
+position = Vector2(0, 20)
 target_position = Vector2(45, 0)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastRight2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -10)
+position = Vector2(0, -20)
 target_position = Vector2(45, 0)
 collision_mask = 2
 collide_with_areas = true
@@ -222,6 +224,7 @@ visible = false
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="HurtDetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 

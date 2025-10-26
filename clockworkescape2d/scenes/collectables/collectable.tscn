@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2d4snixdg62a"]
 
 [ext_resource type="Script" uid="uid://dt7f0qf4515w8" path="res://scenes/collectables/collectable.gd" id="1_vtu06"]
-[ext_resource type="Texture2D" uid="uid://cjdlgefu6tli4" path="res://scenes/collectables/assets/Collectable.png" id="2_vtu06"]
+[ext_resource type="Texture2D" uid="uid://ddiggvn1d2tln" path="res://scenes/collectables/assets/Collectable_32x32.png" id="2_vtu06"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtu06"]
-radius = 8.06226
+radius = 13.152946
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_88g45"]
-radius = 9.0
+radius = 15.033297
 
 [node name="Collectable" type="StaticBody2D"]
 collision_layer = 0

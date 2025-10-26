@@ -6,7 +6,7 @@ extends StaticBody2D
 
 var isRight : bool = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if isRight:
 		rotation_marker.rotation_degrees -= sway_speed
 		if abs(max_rotation + rotation_marker.rotation_degrees) <= 0.5:

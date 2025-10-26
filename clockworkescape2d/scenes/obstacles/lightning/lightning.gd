@@ -15,7 +15,7 @@ func _ready() -> void:
 	on_timer.start()
 	blitz_line.visible = true
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	blitz_line.points[1].y =  blitz_line.points[0].y  + line_height
 	lower_guard.position.y = blitz_line.points[1].y
 

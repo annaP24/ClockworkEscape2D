@@ -11,9 +11,6 @@ size = Vector2(62.75, 18.25)
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_0lsv4")
 
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-
 [node name="PlatformTypeDetectionArea" parent="." index="2"]
 collision_layer = 0
 

@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends AnimatableBody2D
 class_name PlatformBase
 @export var is_moving : bool = false
