@@ -23,7 +23,8 @@ position = Vector2(1865, 334)
 position = Vector2(635, 718)
 
 [node name="Pendent" parent="." index="7" instance=ExtResource("3_6ju06")]
-position = Vector2(630, 390)
+position = Vector2(632, 384)
 
 [node name="Dissapearing_platform" parent="." index="8" instance=ExtResource("4_e3suf")]
 position = Vector2(1533, 493)
+crack_timeout = 0.3

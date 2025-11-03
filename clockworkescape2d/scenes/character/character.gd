@@ -47,10 +47,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
-	move_and_slide()
+	if is_movable:
+		move_and_slide()
 	
 func apply_gravity(delta):
-	Debug.print_value("Gravity", gravity)
 	velocity += gravity * delta
 
 func move_player_x(directionX : int, speed : float = max_speed):

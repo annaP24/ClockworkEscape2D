@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2d4snixdg62a"]
+
+[ext_resource type="Script" uid="uid://dt7f0qf4515w8" path="res://scenes/collectables/collectable.gd" id="1_vtu06"]
+[ext_resource type="Texture2D" uid="uid://coxb780ufxsim" path="res://scenes/collectables/assets/collectable.png" id="2_vtu06"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtu06"]
+radius = 13.152946
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88g45"]
+radius = 15.033297
+
+[node name="Collectable" type="StaticBody2D"]
+collision_layer = 0
+script = ExtResource("1_vtu06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.05888e-06, 0.694234, 0.600092, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_vtu06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_vtu06")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_88g45")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://bd0enwr66l8nf"]
 
-[ext_resource type="Script" uid="uid://b3j3h0e3axh02" path="res://scenes/obstacles/lightning/lightning.gd" id="1_gjjtp"]
+[ext_resource type="Script" uid="uid://die5s0or5gnnp" path="res://scenes/obstacles/lightning/lightning_new.gd" id="1_gjjtp"]
 [ext_resource type="Texture2D" uid="uid://bk867eocc7gjx" path="res://scenes/obstacles/lightning/assets/blitz1t.png" id="1_lacsv"]
 [ext_resource type="Texture2D" uid="uid://dy2q8epbsajin" path="res://scenes/obstacles/lightning/assets/blitz2t.png" id="2_nwg2p"]
 [ext_resource type="Texture2D" uid="uid://c0ynakwr4c3bw" path="res://scenes/obstacles/lightning/assets/blitz3t.png" id="3_kf46m"]
 [ext_resource type="Texture2D" uid="uid://cvuk77pxpa3au" path="res://scenes/obstacles/lightning/assets/blitz4t.png" id="4_gjjtp"]
-[ext_resource type="Texture2D" uid="uid://bt3lvruwtpqxq" path="res://scenes/obstacles/lightning/assets/lightning_start.png" id="5_nwg2p"]
-[ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="7_y1sro"]
+[ext_resource type="Texture2D" uid="uid://ctkl26kan0cay" path="res://scenes/obstacles/lightning/assets/36_36_base.png" id="6_gjjtp"]
+[ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="7_gjjtp"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_y1sro"]
 frames = 4
@@ -20,19 +20,18 @@ frame_3/texture = ExtResource("4_gjjtp")
 frame_3/duration = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf46m"]
-size = Vector2(66, 472)
+size = Vector2(40, 472)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6054b"]
-size = Vector2(101, 472)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sro"]
+size = Vector2(52, 817)
 
-[node name="Blitz" type="StaticBody2D"]
+[node name="Lightning" type="StaticBody2D"]
+collision_layer = 0
 script = ExtResource("1_gjjtp")
-on_time = 2.0
-off_time = 5.0
 
 [node name="BlitzLine" type="Line2D" parent="."]
 texture_repeat = 2
-points = PackedVector2Array(0, 0, 0, 525)
+points = PackedVector2Array(0, 0, 4, 514)
 width = 160.0
 texture = SubResource("AnimatedTexture_y1sro")
 texture_mode = 1
@@ -40,27 +39,27 @@ texture_mode = 1
 [node name="LowerGuard" type="Sprite2D" parent="."]
 position = Vector2(0, 530)
 scale = Vector2(3, 3)
-texture = ExtResource("5_nwg2p")
+texture = ExtResource("6_gjjtp")
 
 [node name="UpperGuard" type="Sprite2D" parent="."]
 position = Vector2(0, 29)
 rotation = 3.14159
 scale = Vector2(3, 3)
-texture = ExtResource("5_nwg2p")
+texture = ExtResource("6_gjjtp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(2, 287)
 shape = SubResource("RectangleShape2D_kf46m")
 
-[node name="Comp2dHurtbox" type="Area2D" parent="."]
-script = ExtResource("7_y1sro")
-metadata/_custom_type_script = "uid://7u31tu5877wc"
+[node name="Comp2dHitbox" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("7_gjjtp")
+metadata/_custom_type_script = "uid://wujupbok4pj0"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHurtbox"]
-visible = false
-position = Vector2(2.5, 287)
-shape = SubResource("RectangleShape2D_6054b")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox"]
+position = Vector2(9.536743e-07, 279.5)
+shape = SubResource("RectangleShape2D_y1sro")
 
 [node name="OffTimer" type="Timer" parent="."]
 one_shot = true
@@ -68,6 +67,5 @@ one_shot = true
 [node name="OnTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="hurt" from="Comp2dHurtbox" to="." method="_on_comp_2d_hurtbox_hurt"]
 [connection signal="timeout" from="OffTimer" to="." method="_on_off_timer_timeout"]
 [connection signal="timeout" from="OnTimer" to="." method="_on_on_timer_timeout"]

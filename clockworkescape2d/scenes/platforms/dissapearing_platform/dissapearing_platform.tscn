@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0jynsb1u2r0j"]
 
 [ext_resource type="Script" uid="uid://dnd4q2iavlxqf" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_3du1g"]
-[ext_resource type="Texture2D" uid="uid://6rhs5ajwrehf" path="res://scenes/platforms/assets/risse.png" id="2_57gib"]
+[ext_resource type="Texture2D" uid="uid://0kchnv5v4et1" path="res://scenes/platforms/dissapearing_platform/assets/platform_dissapearing2.png" id="3_llxsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4dh"]
 size = Vector2(128, 44)
@@ -14,29 +14,30 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1el0k"]
 resource_name = "dissapear"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.126667, 0.266667, 0.456667, 0.633333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true, false]
+"times": PackedFloat32Array(0.0009999999, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tg1qi"]
@@ -49,16 +50,24 @@ _data = {
 collision_mask = 0
 script = ExtResource("1_3du1g")
 is_disappearing = true
+crack_timeout = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1, 0.715)
-texture = ExtResource("2_57gib")
+texture = ExtResource("3_llxsb")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_tv4dh")
 
+[node name="CrackTimer1" type="Timer" parent="."]
+one_shot = true
+
+[node name="CrackTimer2" type="Timer" parent="."]
+one_shot = true
+
 [node name="DissapearTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="AppearTimer" type="Timer" parent="."]
@@ -76,6 +85,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_tg1qi")
 }
 
+[connection signal="timeout" from="CrackTimer1" to="." method="_on_crack_timer_1_timeout"]
+[connection signal="timeout" from="CrackTimer2" to="." method="_on_crack_timer_2_timeout"]
 [connection signal="timeout" from="DissapearTimer" to="." method="_on_dissapear_timer_timeout"]
 [connection signal="timeout" from="AppearTimer" to="." method="_on_appear_timer_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

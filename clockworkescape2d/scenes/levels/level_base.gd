@@ -14,6 +14,7 @@ func _ready() -> void:
 	var delta = Time.get_ticks_msec() - engine_start
 	print("Autoload-Init:", engine_start)
 	print("Zeit bis erstes _ready():", delta, "ms")
+	
 func _on_fade_in_finished():
 	spawn_collectable()
 	spawn_player()

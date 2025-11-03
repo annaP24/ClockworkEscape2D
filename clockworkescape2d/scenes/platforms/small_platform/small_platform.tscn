@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjww3w1a45857"]
+[gd_scene load_steps=4 format=3 uid="uid://bjww3w1a45857"]
 
-[ext_resource type="Script" uid="uid://dnd4q2iavlxqf" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_ijtff"]
-[ext_resource type="Texture2D" uid="uid://dtdo0eky2lbmh" path="res://scenes/platforms/assets/Dissapearing.png" id="2_pwuxp"]
+[ext_resource type="Texture2D" uid="uid://cef2q88m75t3l" path="res://scenes/platforms/assets/platform.png" id="2_pwuxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4dh"]
 size = Vector2(128, 44)
@@ -9,45 +8,8 @@ size = Vector2(128, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de33r"]
 size = Vector2(128, 46)
 
-[sub_resource type="Animation" id="Animation_tg1qi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_1el0k"]
-resource_name = "dissapear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.126667, 0.266667, 0.456667, 0.633333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tg1qi"]
-_data = {
-&"RESET": SubResource("Animation_tg1qi"),
-&"dissapear": SubResource("Animation_1el0k")
-}
-
 [node name="Small_platform" type="StaticBody2D"]
 collision_mask = 0
-script = ExtResource("1_ijtff")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_pwuxp")
@@ -56,13 +18,6 @@ texture = ExtResource("2_pwuxp")
 visible = false
 shape = SubResource("RectangleShape2D_tv4dh")
 
-[node name="DissapearTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="AppearTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
 
@@ -70,12 +25,4 @@ collision_layer = 0
 visible = false
 shape = SubResource("RectangleShape2D_de33r")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tg1qi")
-}
-
-[connection signal="timeout" from="DissapearTimer" to="." method="_on_dissapear_timer_timeout"]
-[connection signal="timeout" from="AppearTimer" to="." method="_on_appear_timer_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

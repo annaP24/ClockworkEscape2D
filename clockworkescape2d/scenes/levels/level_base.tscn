@@ -1,30 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://dtoercglc7src"]
+[gd_scene load_steps=12 format=4 uid="uid://dtoercglc7src"]
 
 [ext_resource type="Script" uid="uid://fvk5nc1cy38g" path="res://scenes/levels/level_base.gd" id="1_dje0g"]
 [ext_resource type="Texture2D" uid="uid://kqbsidqidlsp" path="res://scenes/ui/assets/background.png" id="2_g7p6o"]
-[ext_resource type="Texture2D" uid="uid://b7f1qktmpyvwf" path="res://assets/blocks/64x64/Swards_64x64.png" id="3_40ga3"]
-[ext_resource type="Texture2D" uid="uid://dcrv5qcj2khya" path="res://scenes/ui/assets/bg1.png" id="3_g7p6o"]
-[ext_resource type="Texture2D" uid="uid://gsra01dhk1so" path="res://scenes/ui/assets/bg2.png" id="4_40ga3"]
-[ext_resource type="Texture2D" uid="uid://kr6uilhii0ag" path="res://assets/blocks/64x64/BaseBlocks_64x64.png" id="4_ynct0"]
-[ext_resource type="Texture2D" uid="uid://b2txd6dqklpp5" path="res://assets/blocks/64x64/Green_64x64_1.png" id="5_w06h8"]
+[ext_resource type="Texture2D" uid="uid://pxb5wrffjqbb" path="res://assets/blocks/tilemaps_dark/swards_alternative.png" id="5_40ga3"]
 [ext_resource type="PackedScene" uid="uid://dm850oo47usa3" path="res://scenes/levels/exit.tscn" id="6_dq8h5"]
+[ext_resource type="Texture2D" uid="uid://cd051lb5gn6g3" path="res://assets/blocks/tilemaps_dark/blocks_base.png" id="6_ynct0"]
+[ext_resource type="PackedScene" uid="uid://cpsw2uhsllv53" path="res://scenes/ui/background.tscn" id="7_g7p6o"]
+[ext_resource type="Texture2D" uid="uid://b2c7s5b7jjr36" path="res://assets/blocks/tilemaps_dark/blocks_white.png" id="7_w06h8"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ynct0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_g7p6o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_40ga3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 0.5
-}]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1j61s"]
-texture = ExtResource("3_40ga3")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_40ga3"]
+texture = ExtResource("5_40ga3")
 texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -39,8 +24,8 @@ texture_region_size = Vector2i(64, 64)
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:4/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3p8s0"]
-texture = ExtResource("4_ynct0")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynct0"]
+texture = ExtResource("6_ynct0")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -69,8 +54,8 @@ texture_region_size = Vector2i(64, 64)
 4:4/0 = 0
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmtii"]
-texture = ExtResource("5_w06h8")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w06h8"]
+texture = ExtResource("7_w06h8")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.90263, -9.03158, 32, -9.59606, 32, 32, -9.59605, 32)
@@ -112,9 +97,9 @@ physics_layer_1/collision_layer = 3
 physics_layer_1/collision_mask = 3
 physics_layer_2/collision_layer = 4
 physics_layer_2/collision_mask = 4
-sources/2 = SubResource("TileSetAtlasSource_1j61s")
-sources/5 = SubResource("TileSetAtlasSource_3p8s0")
-sources/6 = SubResource("TileSetAtlasSource_cmtii")
+sources/2 = SubResource("TileSetAtlasSource_40ga3")
+sources/5 = SubResource("TileSetAtlasSource_ynct0")
+sources/6 = SubResource("TileSetAtlasSource_w06h8")
 
 [node name="Level_base" type="Node2D"]
 script = ExtResource("1_dje0g")
@@ -125,15 +110,9 @@ position = Vector2(1281, 820)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_g7p6o")
 
-[node name="Background2" type="AnimatedSprite2D" parent="."]
-position = Vector2(1011, 645)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_ynct0")
-autoplay = "default"
-frame_progress = 0.016304608
+[node name="Background2" parent="." instance=ExtResource("7_g7p6o")]
 
 [node name="TileMapLayer_2" type="TileMapLayer" parent="."]
-modulate = Color(0.3665946, 0.3665946, 0.36659458, 1)
 tile_map_data = PackedByteArray("AAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAAMABQAAAAAAAAAAAAQABQAAAAAAAAAAAAUABQAAAAAAAAAAAAYABQAAAAAAAAAAAAcABQAAAAAAAAAAAAgABQAAAAAAAAAAAAkABQAAAAAAAAAAAAoABQAAAAAAAAAAAAsABQAAAAAAAAAAAAwABQAAAAAAAAAAAA0ABQAAAAAAAAAAAA4ABQAAAAAAAAAAAA8ABQAAAAAAAAAAABAABQAAAAAAAAAAABEABQAAAAAAAAAAABIABQAAAAAAAAAAABMABQAAAAAAAAAAABQABQAAAAAAAAAAABUABQAAAAAAAAAAABYABQAAAAAAAAAAABcABQAAAAAAAAAAABgABQAAAAAAAAAAABkABQAAAAAAAAABABkABQAAAAAAAAACABkABQAAAAAAAAADABkABQAAAAAAAAAEABkABQAAAAAAAAAFABkABQAAAAAAAAAGABkABQAAAAAAAAAHABkABQAAAAAAAAAIABkABQAAAAAAAAAJABkABQAAAAAAAAAKABkABQAAAAAAAAALABkABQAAAAAAAAAMABkABQAAAAAAAAANABkABQAAAAAAAAAOABkABQAAAAAAAAAPABkABQAAAAAAAAAQABkABQAAAAAAAAARABkABQAAAAAAAAASABkABQAAAAAAAAATABkABQAAAAAAAAAUABkABQAAAAAAAAAVABkABQAAAAAAAAAWABkABQAAAAAAAAAXABkABQAAAAAAAAAYABkABQAAAAAAAAAZABkABQAAAAAAAAAaABkABQAAAAAAAAAbABkABQAAAAAAAAAcABkABQAAAAAAAAAdABkABQAAAAAAAAAeABkABQAAAAAAAAAfABkABQAAAAAAAAAgABkABQAAAAAAAAAhABkABQAAAAAAAAAiABkABQAAAAAAAAAjABkABQAAAAAAAAAkABkABQAAAAAAAAAlABkABQAAAAAAAAAmABkABQAAAAAAAAAnABkABQAAAAAAAAAnABgABQAAAAAAAAAnABcABQAAAAAAAAAnABYABQAAAAAAAAAnABUABQAAAAAAAAAnABQABQAAAAAAAAAnABMABQAAAAAAAAAnABIABQAAAAAAAAAnABEABQAAAAAAAAAnABAABQAAAAAAAAAnAA8ABQAAAAAAAAAnAA4ABQAAAAAAAAAnAA0ABQAAAAAAAAAnAAwABQAAAAAAAAAnAAsABQAAAAAAAAAnAAoABQAAAAAAAAAnAAkABQAAAAAAAAAnAAgABQAAAAAAAAAnAAcABQAAAAAAAAAnAAYABQAAAAAAAAAnAAUABQAAAAAAAAAnAAQABQAAAAAAAAAnAAMABQAAAAAAAAAnAAIABQAAAAAAAAAnAAEABQAAAAAAAAAnAAAABQAAAAAAAAABAAAABQAAAAAAAAACAAAABQAAAAAAAAADAAAABQAAAAAAAAAEAAAABQAAAAAAAAAFAAAABQAAAAAAAAAGAAAABQAAAAAAAAAHAAAABQAAAAAAAAAIAAAABQAAAAAAAAAJAAAABQAAAAAAAAAKAAAABQAAAAAAAAALAAAABQAAAAAAAAAMAAAABQAAAAAAAAANAAAABQAAAAAAAAAOAAAABQAAAAAAAAAPAAAABQAAAAAAAAAQAAAABQAAAAAAAAARAAAABQAAAAAAAAASAAAABQAAAAAAAAATAAAABQAAAAAAAAAUAAAABQAAAAAAAAAVAAAABQAAAAAAAAAWAAAABQAAAAAAAAAXAAAABQAAAAAAAAAYAAAABQAAAAAAAAAZAAAABQAAAAAAAAAaAAAABQAAAAAAAAAbAAAABQAAAAAAAAAcAAAABQAAAAAAAAAdAAAABQAAAAAAAAAeAAAABQAAAAAAAAAfAAAABQAAAAAAAAAgAAAABQAAAAAAAAAhAAAABQAAAAAAAAAiAAAABQAAAAAAAAAjAAAABQAAAAAAAAAkAAAABQAAAAAAAAAlAAAABQAAAAAAAAAmAAAABQAAAAAAAAABABMABQAAAAAAAAACABMABQAAAAAAAAADABMABQAAAAAAAAAEABMABQAAAAAAAAAFABMABQAAAAAAAAAGABMABQAAAAAAAAAHABMABQAAAAAAAAAIABMABQAAAAAAAAAJABMABQAAAAAAAAAKABMABQAAAAAAAAALABMABQAAAAAAAAAMABMABQAAAAAAAAANABMABQAAAAAAAAAOABMABQAAAAAAAAAPABMABQAAAAAAAAAQABMABQAAAAAAAAARABMABQAAAAAAAAASABMABQAAAAAAAAATABMABQAAAAAAAAAUABMABQAAAAAAAAAVABMABQAAAAAAAAAWABMABQAAAAAAAAAXABMABQAAAAAAAAAYABMABQAAAAAAAAAZABMABQAAAAAAAAAaABMABQAAAAAAAAAbABMABQAAAAAAAAAcABMABQAAAAAAAAAdABMABQAAAAAAAAAeABMABQAAAAAAAAAeABIABQAAAAAAAAAeABEABQAAAAAAAAAeABAABQAAAAAAAAAeAA8ABQAAAAAAAAAeAA4ABQAAAAAAAAAeAA0ABQAAAAAAAAAeAAwABQAAAAAAAAAeAAsABQAAAAAAAAAeAAoABQAAAAAAAAAeAAkABQAAAAAAAAAeAAgABQAAAAAAAAAeAAcABQAAAAAAAAAeAAYABQAAAAAAAAAeAAUABQAAAAAAAAAeAAQABQAAAAAAAAAeAAMABQAAAAAAAAAeAAIABQAAAAAAAAAeAAEABQAAAAAAAAA=")
 tile_set = SubResource("TileSet_pwolw")
 
