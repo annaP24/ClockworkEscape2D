@@ -1,7 +1,7 @@
 extends Node
 class_name FsmNodeState
 
-var player : PlayerFSM 
+var player : PlayerFSM
 
 func Enter(player_node : PlayerFSM):
 	player = player_node

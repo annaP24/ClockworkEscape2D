@@ -44,6 +44,7 @@ func _ready() -> void:
 	gravity = Vector2(0, fall_gravity)
 	update_animation(animations.SPAWN)
 	fsm.start()
+	
 func _process(delta: float) -> void:
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
@@ -88,48 +89,47 @@ func update_animation(new_animation : animations):
 	
 #------------------------RayCast management -----------------------------
 func rc_left() -> bool:
-	return $Raycasts/RayCastLeft.is_colliding() or $Raycasts/RayCastLeft2.is_colliding()
+	return $Raycasts/RayCastLeft.is_colliding()
 func rc_right() -> bool:
-	return $Raycasts/RayCastRight.is_colliding() or $Raycasts/RayCastRight2.is_colliding()
+	return $Raycasts/RayCastRight.is_colliding()
 func rc_up() -> bool:
-	return $Raycasts/RayCastUp.is_colliding() or $Raycasts/RayCastUp2.is_colliding()
+	return $Raycasts/RayCastUp.is_colliding()
 func rc_down() -> bool:
-	return $Raycasts/RayCastDown.is_colliding() or $Raycasts/RayCastDown2.is_colliding()
+	return $Raycasts/RayCastDown.is_colliding()
+func rc_dl() -> bool:
+	return $Raycasts/RayCastDL.is_colliding()
+func rc_ddl() -> bool:
+	return $Raycasts/RayCastDDL.is_colliding()
+func rc_ddr() -> bool:
+	return $Raycasts/RayCastDDR.is_colliding()
+func rc_dr() -> bool:
+	return $Raycasts/RayCastDR.is_colliding()
 		
 func get_collider_left():
 	if  $Raycasts/RayCastLeft.is_colliding():
 		return  $Raycasts/RayCastLeft.get_collider()
-	elif $Raycasts/RayCastLeft2.is_colliding():
-		return $Raycasts/RayCastLeft2.get_collider()
 		
 func get_collider_right():
 	if  $Raycasts/RayCastRight.is_colliding():
 		return  $Raycasts/RayCastRight.get_collider()
-	elif $Raycasts/RayCastRight2.is_colliding():
-		return $Raycasts/RayCastRight2.get_collider()
 		
 func get_collider_up():
 	if  $Raycasts/RayCastUp.is_colliding():
 		return  $Raycasts/RayCastUp.get_collider()
-	elif $Raycasts/RayCastUp2.is_colliding():
-		return $Raycasts/RayCastUp2.get_collider()
-		
+
 func switch_ray_casts_on():	
 	for rc in get_node("Raycasts").get_children():
 		rc.enabled = true
 
 func switch_rc_up_off():	
 	$Raycasts/RayCastUp.enabled = false
-	$Raycasts/RayCastUp2.enabled = false
 	ray_cast_timer.start()
 func switch_rc_left_off():	
 	$Raycasts/RayCastLeft.enabled = false
-	$Raycasts/RayCastLeft2.enabled = false
 	ray_cast_timer.start()
 	
 func switch_rc_right_off():
 	$Raycasts/RayCastRight.enabled = false
-	$Raycasts/RayCastRight2.enabled = false
 	ray_cast_timer.start()
 
 func _on_ray_cast_timer_timeout() -> void:

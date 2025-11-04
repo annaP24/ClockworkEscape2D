@@ -11,6 +11,8 @@ func Enter(player_node):
 
 func Physics_Update(_delta):
 	if player.is_movable:
+		Debug.print_value("DL colliding: ", player.rc_dl())
+
 		#Move player x-axis
 		player.move_player_x(0)
 		#Move player y-axis

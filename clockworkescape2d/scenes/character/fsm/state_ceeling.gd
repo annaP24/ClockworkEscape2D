@@ -3,6 +3,7 @@ var direction : int = 0
 var is_moving_wall : bool = false
 var moving_wall_speed : float = 0.0
 var wall_moving_direction : Vector2 = Vector2.ZERO
+
 func Enter(player_node):
 	super(player_node)
 	if player.rc_up():
@@ -25,22 +26,18 @@ func Physics_Update(_delta):
 		
 	if  player.rc_right() and Input.is_action_pressed("right"):
 		change_state("WallState")
-	elif  player.rc_left() and Input.is_action_pressed("left"):
-		change_state("WallState")	
+	elif  player.rc_dl() and player.rc_left():# and Input.is_action_pressed("left"):
+		change_state("WallState")
 	
-	player.move_player_x(inputX)
-
 	if !player.rc_up():
-		change_state("FallState")	
-		
-		#if Input.is_action_pressed("up"):
-			#change_state("RunState")
-		#if player.rc_left() and Input.is_action_pressed("left"):
-			#change_state("WallLeftState")
-		#elif player.rc_right() and Input.is_action_pressed("right"):
-			#change_state("WallRightState")
-		#else:	
-			#change_state("FallState")	
+		if player.rc_dl() or player.rc_dr():
+			var inputY = Input.get_axis("up", "down")
+			player.move_player_y(inputY)
+		else:	
+			change_state("FallState")
+			
+	player.move_player_x(inputX)
+	
 	#Update animations
 	if player.velocity.x > 0:
 		player.update_animation(player.animations.RUN_LEFT)

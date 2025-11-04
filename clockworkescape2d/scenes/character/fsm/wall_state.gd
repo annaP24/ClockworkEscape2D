@@ -27,7 +27,7 @@ func Physics_Update(_delta):
 		check_if_moving_wall(wall)
 
 	player.move_player_y(inputY)
-		
+	Debug.print_value("DL colliding: ", player.rc_dl())
 	#Change states	
 	if Input.is_action_just_pressed("jump"):
 		if player.rc_right(): 
@@ -46,9 +46,9 @@ func Physics_Update(_delta):
 		elif player.is_on_floor(): 
 			player.switch_rc_left_off()
 			change_state("IdleState")
-		else:
-			player.switch_rc_left_off()
-			change_state("FallState")
+		#if	!player.rc_dl():
+			#player.switch_rc_left_off()
+			#change_state("FallState")
 	elif player.rc_right() and Input.is_action_just_pressed("left"):
 		if player.rc_up():
 			player.switch_rc_right_off()
@@ -57,14 +57,20 @@ func Physics_Update(_delta):
 		elif player.is_on_floor():
 			player.switch_rc_right_off()
 			change_state("IdleState")
-		else:
+		#if !player.rc_dr():
+			#player.switch_rc_right_off()
+			#change_state("FallState")
+	elif !player.rc_left() and !player.rc_right():
+		if player.rc_dl() or player.rc_dr(): 
+			#change_state("CeelingState")
+			change_state("EdgeState")
+		elif player.rc_ddl() or player.rc_ddr():
+			change_state("EdgeState")
+		else:	
+			player.switch_rc_left_off()
 			player.switch_rc_right_off()
 			change_state("FallState")
-	elif !player.rc_right() and !player.rc_left():
-		player.switch_rc_left_off()
-		player.switch_rc_right_off()
-		change_state("FallState")
-			
+
 	#Animations
 	if player.velocity.y > 0:
 		if player.rc_right():

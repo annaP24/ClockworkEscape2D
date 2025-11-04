@@ -5,7 +5,6 @@ extends Node2D
 
 var current_level_instance : Level = null
 var current_level_index : int = 0
-var player_instance : PlayerFSM
 var current_level_path : String = ""
 var is_level_manager_visible : bool = true
 
@@ -19,8 +18,7 @@ func load_level(path_to_level : String):
 		current_level_path = path_to_level
 		#Cleanup previous level
 		unload_level()
-		#if player_instance:
-			#player_instance.queue_free()
+
 			
 		if current_level_path != "":
 			#Dynamic load
