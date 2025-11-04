@@ -1,21 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddt76rnhhboub"]
+[gd_scene load_steps=5 format=3 uid="uid://ddt76rnhhboub"]
 
 [ext_resource type="PackedScene" uid="uid://rxjk0aftvp6t" path="res://scenes/platforms/platform_base.tscn" id="1_0lsv4"]
-[ext_resource type="Texture2D" uid="uid://c4evy48pgx5j" path="res://scenes/platforms/assets/Block_64x64.png" id="2_0lsv4"]
+[ext_resource type="Texture2D" uid="uid://bte80u8oubl0" path="res://scenes/platforms/moving_platform_side_hang/assets/platform.png" id="2_pv6c5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ychq"]
-size = Vector2(62.75, 18.25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxyy"]
+size = Vector2(126, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv6c5"]
+size = Vector2(123.25, 18.25)
 
 [node name="PlatformMove" instance=ExtResource("1_0lsv4")]
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_0lsv4")
+texture = ExtResource("2_pv6c5")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_hkxyy")
 
 [node name="PlatformTypeDetectionArea" parent="." index="2"]
 collision_layer = 0
 
 [node name="CollisionShape2D" parent="PlatformTypeDetectionArea" index="0"]
 position = Vector2(-0.375, -21.125)
-shape = SubResource("RectangleShape2D_8ychq")
+shape = SubResource("RectangleShape2D_pv6c5")
 
 [editable path="PlatformTypeDetectionArea"]

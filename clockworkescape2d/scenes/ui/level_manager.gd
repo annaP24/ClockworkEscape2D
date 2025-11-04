@@ -16,6 +16,7 @@ var levels : Array
 var current_page : int = 0
 var buttons_per_page = 6
 var current_level_path : String
+var next_level_path : String
 var level_paths : Array = []
 var current_level : int = 0
 
@@ -24,7 +25,6 @@ func _ready() -> void:
 	levels =  read_folder()
 	set_lavel_paths(0)
 	update_arrows()
-	#FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
 	
 func update_arrows():
 	if current_page > 0:
@@ -55,24 +55,30 @@ func set_lavel_paths(delta):
 		else:
 			button.set_scene_path("")
 			button.set_text("-")
-					
-func _on_level_button_pressed() -> void:
-	current_level_path = level_button_1.scene_path
-	parent.level_selected(current_level_path)
 	
+func _on_level_button_1_pressed() -> void:
+	current_level_path = level_button_1.scene_path
+	GameManager.current_level = 1
+	parent.level_selected(current_level_path)
+		
 func _on_level_button_2_pressed() -> void:
+	GameManager.current_level = 2
 	parent.load_level(level_button_2.scene_path)
 	
 func _on_level_button_3_pressed() -> void:
+	GameManager.current_level = 3
 	parent.load_level(level_button_3.scene_path)
 
 func _on_level_button_4_pressed() -> void:
+	GameManager.current_level = 4
 	parent.load_level(level_button_4.scene_path)
 
 func _on_level_button_5_pressed() -> void:
+	GameManager.current_level = 5
 	parent.load_level(level_button_5.scene_path)
 
 func _on_level_button_6_pressed() -> void:
+	GameManager.current_level = 6
 	parent.load_level(level_button_6.scene_path)
 
 func _on_button_left_pressed() -> void:

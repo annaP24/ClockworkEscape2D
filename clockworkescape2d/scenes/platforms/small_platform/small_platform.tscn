@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjww3w1a45857"]
 
-[ext_resource type="Texture2D" uid="uid://cef2q88m75t3l" path="res://scenes/platforms/assets/platform.png" id="2_pwuxp"]
+[ext_resource type="Texture2D" uid="uid://cef2q88m75t3l" path="res://scenes/platforms/small_platform/assets/platform.png" id="2_pwuxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4dh"]
 size = Vector2(128, 44)
@@ -15,14 +15,12 @@ collision_mask = 0
 texture = ExtResource("2_pwuxp")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_tv4dh")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
-visible = false
 shape = SubResource("RectangleShape2D_de33r")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

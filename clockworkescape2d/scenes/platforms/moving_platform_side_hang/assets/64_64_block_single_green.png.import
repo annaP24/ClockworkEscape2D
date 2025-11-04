@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cef2q88m75t3l"
-path="res://.godot/imported/platform.png-b001f4b44faadd192255afddfbbb61a0.ctex"
+uid="uid://0xnganderc60"
+path="res://.godot/imported/64_64_block_single_green.png-e5abf972f2e9b4eaebf146da633682d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/platforms/assets/platform.png"
-dest_files=["res://.godot/imported/platform.png-b001f4b44faadd192255afddfbbb61a0.ctex"]
+source_file="res://scenes/platforms/moving_platform_side_hang/assets/64_64_block_single_green.png"
+dest_files=["res://.godot/imported/64_64_block_single_green.png-e5abf972f2e9b4eaebf146da633682d9.ctex"]
 
 [params]
 

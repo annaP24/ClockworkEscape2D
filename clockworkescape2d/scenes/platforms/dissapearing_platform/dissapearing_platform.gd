@@ -25,7 +25,7 @@ func _ready() -> void:
 	if is_disappearing:
 		sprite_2d.texture = texture1
 	else:
-		sprite_2d.texture = load("res://scenes/platforms/assets/platform.png")
+		sprite_2d.texture = load("res://scenes/platforms/small_platform/assets/platform.png")
 		
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if is_disappearing:

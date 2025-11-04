@@ -12,7 +12,7 @@ func Enter(player_node):
 			wall.start_timer()
 			
 func Physics_Update(_delta):
-	player.velocity.y = 0
+	player.velocity.y = -500
 	player.gravity = Vector2(0, 0)
 	
 	var inputX = Input.get_axis("left", "right")
@@ -26,7 +26,7 @@ func Physics_Update(_delta):
 		
 	if  player.rc_right() and Input.is_action_pressed("right"):
 		change_state("WallState")
-	elif  player.rc_dl() and player.rc_left():# and Input.is_action_pressed("left"):
+	elif  player.rc_dl() and player.rc_left():
 		change_state("WallState")
 	
 	if !player.rc_up():

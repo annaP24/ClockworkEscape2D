@@ -97,7 +97,7 @@ layout_mode = 2
 text = ">"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Arrow_Left/ButtonLeft" to="." method="_on_button_left_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton1" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton1" to="." method="_on_level_button_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton2" to="." method="_on_level_button_2_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton3" to="." method="_on_level_button_3_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CenterContainer/GridContainer/LevelButton4" to="." method="_on_level_button_4_pressed"]

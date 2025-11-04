@@ -17,7 +17,7 @@ var delta_movement : float = 0.0
 var move_half_range : float = 0.0 
 
 func _ready() -> void:
-	check_configuration()	
+	check_configuration()
 	move_up = is_start_up
 	move_right = is_start_right
 	move_half_range = move_range / 2

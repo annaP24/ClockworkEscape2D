@@ -27,7 +27,7 @@ func load_level(path_to_level : String):
 			current_level_instance.connect("quit_level", _on_quit_level_received)
 			current_level_instance.connect("restart_level", _on_restart_level_received)
 			current_level_instance.connect("load_next_level", _on_load_next_level_received)
-			scene_placeholder.add_child(current_level_instance)
+			scene_placeholder.call_deferred("add_child", current_level_instance) # scene_placeholder.add_child(current_level_instance)
 		is_level_manager_visible = false
 		level_manager.visible = is_level_manager_visible
 		
@@ -65,8 +65,10 @@ func _on_restart_level_received():
 	FadeScreen.fade_out()
 	
 func _on_load_next_level_received():
-	#For now load Main menu
-	#ToDo: Load next level immediatley
+	#In case there is no other level, main manu will be shown
 	is_level_manager_visible = true
+	#In case there is another leve, it will be loaded and level manager visibility disabled
+	#ToDo: Switch to End Game screen if there are no other levels, from there to MainMenu
+	load_level(GameManager.get_next_level_path())
 	FadeScreen.fade_out()
 	

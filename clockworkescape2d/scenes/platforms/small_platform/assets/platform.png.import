@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwrsak0n3nt7f"
-path="res://.godot/imported/platform_dissapearing.png-70efcd4d533d6a58174d7db5f512750e.ctex"
+uid="uid://cef2q88m75t3l"
+path="res://.godot/imported/platform.png-ed974dc10f6dce7b9fe5e4feee2a1c8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/platforms/assets/platform_dissapearing.png"
-dest_files=["res://.godot/imported/platform_dissapearing.png-70efcd4d533d6a58174d7db5f512750e.ctex"]
+source_file="res://scenes/platforms/small_platform/assets/platform.png"
+dest_files=["res://.godot/imported/platform.png-ed974dc10f6dce7b9fe5e4feee2a1c8a.ctex"]
 
 [params]
 

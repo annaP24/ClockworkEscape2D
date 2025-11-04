@@ -245,12 +245,10 @@ script = ExtResource("14_l3jx2")
 script = ExtResource("15_g7fnn")
 
 [node name="Raycasts" type="Node2D" parent="."]
-visible = false
 
 [node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, -45)
 collision_mask = 2
-collide_with_areas = true
 
 [node name="RayCastLeft" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(-45, 0)
@@ -293,10 +291,10 @@ script = ExtResource("16_vrprh")
 metadata/_custom_type_script = "uid://7u31tu5877wc"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHurtbox"]
+visible = false
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="HurtDetectionArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 

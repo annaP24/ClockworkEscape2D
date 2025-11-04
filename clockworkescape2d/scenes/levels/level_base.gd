@@ -38,6 +38,5 @@ func _process(_delta: float) -> void:
 func _on_player_died():
 	restart_level.emit()
 
-
 func _on_exit_level_finished() -> void:
 	load_next_level.emit()

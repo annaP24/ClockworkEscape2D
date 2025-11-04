@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt8nvvx1ybqy4"
-path="res://.godot/imported/Move_hold_64x64.png-aa897cdd586d9bf906b43afba9f95cc1.ctex"
+uid="uid://bjaa5i3laqtv0"
+path="res://.godot/imported/64_64_block_single_white.png-be8602202544a2b0b53e079cc7a79492.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/platforms/assets/Move_hold_64x64.png"
-dest_files=["res://.godot/imported/Move_hold_64x64.png-aa897cdd586d9bf906b43afba9f95cc1.ctex"]
+source_file="res://scenes/platforms/moving_platform_side_hang/assets/64_64_block_single_white.png"
+dest_files=["res://.godot/imported/64_64_block_single_white.png-be8602202544a2b0b53e079cc7a79492.ctex"]
 
 [params]
 
