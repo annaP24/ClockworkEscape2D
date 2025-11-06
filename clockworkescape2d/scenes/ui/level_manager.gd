@@ -23,7 +23,7 @@ var current_level : int = 0
 func _ready() -> void:
 	parent = get_parent()
 	levels =  read_folder()
-	set_lavel_paths(0)
+	set_lavel_paths()
 	update_arrows()
 	
 func update_arrows():
@@ -43,8 +43,8 @@ func read_folder() -> Array:
 	else:
 		return []
 		
-func set_lavel_paths(delta):
-	var cnt = current_page * buttons_per_page + delta
+func set_lavel_paths():
+	var cnt = current_page * buttons_per_page
 	for button in buttons_array:
 		if cnt <= levels.size()-1:
 			button.set_scene_path(path + levels[cnt])
@@ -58,36 +58,38 @@ func set_lavel_paths(delta):
 	
 func _on_level_button_1_pressed() -> void:
 	current_level_path = level_button_1.scene_path
-	GameManager.current_level = 1
+	GameManager.current_level = current_page * buttons_per_page 
 	parent.level_selected(current_level_path)
 		
 func _on_level_button_2_pressed() -> void:
-	GameManager.current_level = 2
+	GameManager.current_level = current_page * buttons_per_page + 1
 	parent.load_level(level_button_2.scene_path)
 	
 func _on_level_button_3_pressed() -> void:
-	GameManager.current_level = 3
+	GameManager.current_level =  current_page * buttons_per_page + 2
 	parent.load_level(level_button_3.scene_path)
 
 func _on_level_button_4_pressed() -> void:
-	GameManager.current_level = 4
+	GameManager.current_level = current_page * buttons_per_page + 3
 	parent.load_level(level_button_4.scene_path)
 
 func _on_level_button_5_pressed() -> void:
-	GameManager.current_level = 5
+	GameManager.current_level = current_page * buttons_per_page + 4
 	parent.load_level(level_button_5.scene_path)
 
 func _on_level_button_6_pressed() -> void:
-	GameManager.current_level = 6
+	GameManager.current_level = current_page * buttons_per_page + 5
 	parent.load_level(level_button_6.scene_path)
 
 func _on_button_left_pressed() -> void:
 	current_page -= 1
-	set_lavel_paths(0)
+	GameManager.current_page = current_page
+	set_lavel_paths()
 	update_arrows()
 
 func _on_button_right_pressed() -> void:
 	current_page += 1
-	set_lavel_paths(0)
+	GameManager.current_page = current_page
+	set_lavel_paths()
 	update_arrows()
 	

@@ -16,7 +16,7 @@ func _ready() -> void:
 	print("Zeit bis erstes _ready():", delta, "ms")
 	
 func _on_fade_in_finished():
-	spawn_collectable()
+	#spawn_collectable()
 	spawn_player()
 	
 func spawn_collectable():
@@ -39,4 +39,9 @@ func _on_player_died():
 	restart_level.emit()
 
 func _on_exit_level_finished() -> void:
-	load_next_level.emit()
+	#If root node's name is not "World" then we are in debug mode and need restarting
+	if get_tree().current_scene.name != "World":
+		get_tree().call_deferred("reload_current_scene")
+	else:
+		load_next_level.emit()
+		

@@ -7,8 +7,12 @@ func Enter(player_node : PlayerFSM):
 func Physics_Update(_delta):
 	if player.rc_dr() and Input.is_action_just_pressed("right"):
 		change_state("CeelingState")	
+	elif player.rc_dr() and Input.is_action_just_pressed("up"):
+		change_state("WallState")
 	elif player.rc_dl() and Input.is_action_just_pressed("left"):
 		change_state("CeelingState")	
+	elif player.rc_dl() and Input.is_action_just_pressed("up"):
+		change_state("WallState")
 	elif player.rc_ddl() and Input.is_action_just_pressed("left"):
 		print("IdleState from EdgeState")
 		change_state("IdleState")	

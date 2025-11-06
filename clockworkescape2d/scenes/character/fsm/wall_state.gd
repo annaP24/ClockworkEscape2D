@@ -16,8 +16,12 @@ func Enter(player_node):
 	player.jump_count = player.max_jump_count
 
 func Physics_Update(_delta):
-#Move player x-axis
-	player.velocity.x = 0
+	if player.rc_left():
+		#Move player x-axis
+		player.velocity.x = -500
+	elif player.rc_right():
+		player.velocity.x = 500
+		
 	#Move player y-axis
 	player.gravity = Vector2(0, 0) 
 	var inputY =  Input.get_axis("up", "down")
@@ -46,9 +50,9 @@ func Physics_Update(_delta):
 		elif player.is_on_floor(): 
 			player.switch_rc_left_off()
 			change_state("IdleState")
-		#if	!player.rc_dl():
-			#player.switch_rc_left_off()
-			#change_state("FallState")
+		else:
+			player.switch_rc_left_off()	
+			change_state("FallState")
 	elif player.rc_right() and Input.is_action_just_pressed("left"):
 		if player.rc_up():
 			player.switch_rc_right_off()
@@ -57,9 +61,10 @@ func Physics_Update(_delta):
 		elif player.is_on_floor():
 			player.switch_rc_right_off()
 			change_state("IdleState")
-		#if !player.rc_dr():
-			#player.switch_rc_right_off()
-			#change_state("FallState")
+		else:
+			player.switch_rc_right_off()
+			change_state("FallState")
+			
 	elif !player.rc_left() and !player.rc_right():
 		if player.rc_dl() or player.rc_dr(): 
 			#change_state("CeelingState")

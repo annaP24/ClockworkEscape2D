@@ -1,0 +1,314 @@
+[gd_scene load_steps=44 format=3 uid="uid://bd81ahbnvtu2"]
+
+[ext_resource type="Script" uid="uid://bl4c1dogfmp3e" path="res://scenes/character/character.gd" id="1_ulpqd"]
+[ext_resource type="Texture2D" uid="uid://bkkrq3c8hb4h6" path="res://scenes/character/assets/broken_dark/gear_dead001.png0001.png" id="2_0fyol"]
+[ext_resource type="Texture2D" uid="uid://bhwqympvygcvj" path="res://scenes/character/assets/broken_dark/gear_dead001.png0002.png" id="3_ulpqd"]
+[ext_resource type="Texture2D" uid="uid://cvb14et4e5vhr" path="res://scenes/character/assets/broken_dark/gear_dead001.png0003.png" id="4_7p6qn"]
+[ext_resource type="Texture2D" uid="uid://bxedoc8t8ye12" path="res://scenes/character/assets/broken_dark/gear_dead001.png0004.png" id="5_2f6da"]
+[ext_resource type="Texture2D" uid="uid://ctfvu6rlfhuu3" path="res://scenes/character/assets/broken_dark/gear_dead001.png0005.png" id="6_o2v0s"]
+[ext_resource type="Texture2D" uid="uid://icqdbbkndqcj" path="res://scenes/character/assets/broken_dark/gear_dead001.png0006.png" id="7_8i0k4"]
+[ext_resource type="Texture2D" uid="uid://c81niih33nl6d" path="res://scenes/character/assets/dark/gear.png" id="7_h1xxs"]
+[ext_resource type="Texture2D" uid="uid://cd4uwgcqitf3l" path="res://scenes/character/assets/broken_dark/gear_dead001.png0007.png" id="8_2ge1u"]
+[ext_resource type="Texture2D" uid="uid://pp15c3ag6mq5" path="res://scenes/character/assets/broken_dark/gear_dead001.png0008.png" id="9_ent74"]
+[ext_resource type="Script" uid="uid://xkvymacgbbuf" path="res://scenes/character/fsm/state_idle.gd" id="9_wakg3"]
+[ext_resource type="Texture2D" uid="uid://38fy5cm802r3" path="res://scenes/character/assets/broken_dark/gear_dead001.png0009.png" id="10_lr1hd"]
+[ext_resource type="Script" uid="uid://b4ih7258yaac0" path="res://scenes/character/fsm/state_move.gd" id="10_yyohv"]
+[ext_resource type="Texture2D" uid="uid://cp0d5uuetk612" path="res://scenes/character/assets/broken_dark/gear_dead001.png0010.png" id="11_pbkjx"]
+[ext_resource type="Script" uid="uid://uy576usvntn3" path="res://scenes/character/fsm/state_jump.gd" id="11_teuh6"]
+[ext_resource type="Script" uid="uid://1wikp8g6id7h" path="res://scenes/character/fsm/wall_state.gd" id="12_6p5km"]
+[ext_resource type="Texture2D" uid="uid://bv0ote2vr5jsy" path="res://scenes/character/assets/broken_dark/gear_dead001.png0011.png" id="12_jor6o"]
+[ext_resource type="Script" uid="uid://udkw842f856h" path="res://scenes/character/fsm/state_fall_from_wall.gd" id="13_00mel"]
+[ext_resource type="Texture2D" uid="uid://btxt4c5eo46h3" path="res://scenes/character/assets/broken_dark/gear_dead001.png0012.png" id="13_d8yjg"]
+[ext_resource type="Texture2D" uid="uid://t63fpo1cpo6" path="res://scenes/character/assets/broken_dark/gear_dead001.png0013.png" id="14_7qksp"]
+[ext_resource type="Script" uid="uid://b6aw225y2sm6k" path="res://scenes/character/fsm/state_ceeling.gd" id="14_l3jx2"]
+[ext_resource type="Script" uid="uid://cr0646x3wagbb" path="res://scenes/character/fsm/state_fall.gd" id="15_g7fnn"]
+[ext_resource type="Texture2D" uid="uid://doxo8mu2wpqdc" path="res://scenes/character/assets/broken_dark/gear_dead001.png0014.png" id="15_lu8rq"]
+[ext_resource type="Texture2D" uid="uid://dcmepv24m6jf1" path="res://scenes/character/assets/broken_dark/gear_dead001.png0015.png" id="16_8quom"]
+[ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="16_vrprh"]
+[ext_resource type="Texture2D" uid="uid://cep8hmhti38fn" path="res://scenes/character/assets/broken_dark/gear_dead001.png0016.png" id="17_d1ip4"]
+[ext_resource type="Texture2D" uid="uid://4qof1nb5n2ur" path="res://scenes/character/assets/broken_dark/gear_dead001.png0017.png" id="18_q1gjr"]
+[ext_resource type="Texture2D" uid="uid://db38dptf058tw" path="res://scenes/character/assets/broken_dark/gear_dead001.png0018.png" id="19_p612h"]
+[ext_resource type="Texture2D" uid="uid://b00yuohv0w5eh" path="res://scenes/character/assets/broken_dark/gear_dead001.png0019.png" id="20_jbx1n"]
+[ext_resource type="Texture2D" uid="uid://d1400c8wbroa5" path="res://scenes/character/assets/broken_dark/gear_dead001.png0020.png" id="21_v0h86"]
+[ext_resource type="Texture2D" uid="uid://p8l4ntt4q174" path="res://scenes/character/assets/broken_dark/gear_dead001.png0021.png" id="22_meq7i"]
+[ext_resource type="Texture2D" uid="uid://bd3vemcbtubya" path="res://scenes/character/assets/broken_dark/gear_dead001.png0022.png" id="23_jle1a"]
+[ext_resource type="Texture2D" uid="uid://detavlegj85q0" path="res://scenes/character/assets/broken_dark/gear_dead001.png0023.png" id="24_higrp"]
+[ext_resource type="Texture2D" uid="uid://cnuvneieu556t" path="res://scenes/character/assets/broken_dark/gear_dead001.png0024.png" id="25_f0y8k"]
+[ext_resource type="Script" uid="uid://nb6kn2wuuwu4" path="res://scenes/character/edge_state.gd" id="32_ulpqd"]
+
+[sub_resource type="Animation" id="Animation_6nn2t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterAnimated:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mutn8"]
+resource_name = "rotate_left"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterAnimated:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_cuyo6"]
+resource_name = "rotate_right"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterAnimated:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mutn8"]
+_data = {
+&"RESET": SubResource("Animation_6nn2t"),
+&"rotate_left": SubResource("Animation_mutn8"),
+&"rotate_right": SubResource("Animation_cuyo6")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q52vl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0fyol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ulpqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7p6qn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2f6da")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o2v0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8i0k4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2ge1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ent74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lr1hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pbkjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jor6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d8yjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7qksp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lu8rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8quom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d1ip4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_q1gjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_p612h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_jbx1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_v0h86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_meq7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jle1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_higrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_f0y8k")
+}],
+"loop": false,
+"name": &"break",
+"speed": 50.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_h1xxs")
+}],
+"loop": false,
+"name": &"full",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgi2k"]
+radius = 31.0161
+
+[sub_resource type="GDScript" id="GDScript_0fyol"]
+script/source = "extends CompFsmNode
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fyol"]
+radius = 32.0
+
+[node name="Character" type="CharacterBody2D" groups=["player"]]
+collision_mask = 5
+script = ExtResource("1_ulpqd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mutn8")
+}
+
+[node name="CharacterAnimated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q52vl")
+animation = &"full"
+autoplay = "full"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_fgi2k")
+
+[node name="JumpBuffer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="RayCastTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="FSM" type="Node2D" parent="."]
+script = SubResource("GDScript_0fyol")
+
+[node name="Idle" type="Node2D" parent="FSM"]
+script = ExtResource("9_wakg3")
+
+[node name="RunState" type="Node2D" parent="FSM"]
+script = ExtResource("10_yyohv")
+
+[node name="JumpState" type="Node2D" parent="FSM"]
+script = ExtResource("11_teuh6")
+
+[node name="WallState" type="Node2D" parent="FSM"]
+script = ExtResource("12_6p5km")
+
+[node name="EdgeState" type="Node2D" parent="FSM"]
+script = ExtResource("32_ulpqd")
+
+[node name="FallFromWallState" type="Node2D" parent="FSM"]
+script = ExtResource("13_00mel")
+
+[node name="CeelingState" type="Node2D" parent="FSM"]
+script = ExtResource("14_l3jx2")
+
+[node name="FallState" type="Node2D" parent="FSM"]
+script = ExtResource("15_g7fnn")
+
+[node name="Raycasts" type="Node2D" parent="."]
+visible = false
+
+[node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, -45)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-45, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastRight" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(45, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastDown" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, 45)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastDL" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-45, -45)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastDDL" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-45, 45)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastDR" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(45, -45)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastDDR" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(45, 45)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="Comp2dHurtbox" type="Area2D" parent="."]
+visible = false
+script = ExtResource("16_vrprh")
+metadata/_custom_type_script = "uid://7u31tu5877wc"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHurtbox"]
+shape = SubResource("CircleShape2D_fgi2k")
+
+[node name="HurtDetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtDetectionArea"]
+shape = SubResource("CircleShape2D_0fyol")
+
+[connection signal="animation_finished" from="CharacterAnimated" to="." method="_on_character_animated_animation_finished"]
+[connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="RayCastTimer" to="." method="_on_ray_cast_timer_timeout"]
+[connection signal="hurt" from="Comp2dHurtbox" to="." method="_on_comp_2d_hurtbox_hurt"]
+[connection signal="area_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_area_entered"]
+[connection signal="body_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_body_entered"]

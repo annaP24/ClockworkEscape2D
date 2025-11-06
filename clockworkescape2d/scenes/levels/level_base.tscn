@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://dtoercglc7src"]
+[gd_scene load_steps=12 format=4 uid="uid://dtoercglc7src"]
 
 [ext_resource type="Script" uid="uid://fvk5nc1cy38g" path="res://scenes/levels/level_base.gd" id="1_dje0g"]
 [ext_resource type="Texture2D" uid="uid://pxb5wrffjqbb" path="res://assets/blocks/tilemaps_dark/swards_alternative.png" id="5_40ga3"]
 [ext_resource type="PackedScene" uid="uid://dm850oo47usa3" path="res://scenes/levels/exit.tscn" id="6_dq8h5"]
+[ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="6_g7p6o"]
 [ext_resource type="Texture2D" uid="uid://cd051lb5gn6g3" path="res://assets/blocks/tilemaps_dark/blocks_base.png" id="6_ynct0"]
 [ext_resource type="PackedScene" uid="uid://cpsw2uhsllv53" path="res://scenes/ui/background.tscn" id="7_g7p6o"]
 [ext_resource type="Texture2D" uid="uid://b2c7s5b7jjr36" path="res://assets/blocks/tilemaps_dark/blocks_white.png" id="7_w06h8"]
@@ -52,6 +53,7 @@ texture_region_size = Vector2i(64, 64)
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 4:4/0 = 0
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w06h8"]
 texture = ExtResource("7_w06h8")
@@ -117,9 +119,13 @@ collision_visibility_mode = 2
 [node name="SpawnMarker" type="Marker2D" parent="."]
 position = Vector2(169, 129)
 
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
 [node name="Collectables" type="Node2D" parent="."]
 
-[node name="Collectable" type="Marker2D" parent="Collectables"]
+[node name="Collectable" parent="Collectables" instance=ExtResource("6_g7p6o")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
