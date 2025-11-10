@@ -11,7 +11,7 @@ func Physics_Update(_delta):
 	if player.velocity.y > 0: #Falling
 		player.gravity = Vector2(0, player.fall_gravity)
 	elif player.velocity.y < 0: # Rising
-		player.gravity = Vector2(0, player.fall_gravity * 1.15) #player.gravity_coef)
+		player.gravity = Vector2(0, player.fall_gravity * 1.15) 
 	elif player.velocity.y == 0:
 		player.gravity = Vector2(0, player.fall_gravity)
 	#Double jump
@@ -28,7 +28,7 @@ func Physics_Update(_delta):
 		change_state("JumpState")
 	elif player.is_on_floor():
 		change_state("IdleState")
-	elif player.rc_any_colliding(): #player.rc_right() or player.rc_left() or player.rc_up():
+	elif player.rc_right() or player.rc_left() or player.rc_up():
 		if player.is_on_floor():
 			change_state("StateIdle")
 		else:

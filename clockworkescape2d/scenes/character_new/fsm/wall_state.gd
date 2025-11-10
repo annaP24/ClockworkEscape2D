@@ -13,6 +13,7 @@ var is_player_moving : bool = false
 var dir : float = 0.0
 var movement_timer : Timer
 var tangent_coef : int = 1
+var wall_grab_timeout : float = 0.1
 
 func Enter(player_node):
 	super(player_node)
@@ -20,17 +21,20 @@ func Enter(player_node):
 	player.velocity = Vector2.ZERO
 	player.gravity = Vector2.ZERO
 	is_player_moving = false
-	player.update_animation(player.animations.IDLE)
 	dir = 0.0
+	player.update_animation(player.animations.IDLE)
 
 	check_direction()
-	#if !is_player_moving:
-		#movement_timer = Timer.new()
-		#movement_timer.wait_time = 0.3
-		#movement_timer.one_shot = true
-		#movement_timer.timeout.connect(_on_player_move_timer_timeout)
-		#add_child(movement_timer)
-		#movement_timer.start()
+	if !is_player_moving:
+		start_timer()
+		
+func start_timer():
+	movement_timer = Timer.new()
+	movement_timer.wait_time = wall_grab_timeout
+	movement_timer.one_shot = true
+	movement_timer.timeout.connect(_on_player_move_timer_timeout)
+	add_child(movement_timer)
+	movement_timer.start()
 		
 func Physics_Update(_delta):
 	#If player can't grab the walll return
@@ -67,7 +71,10 @@ func Physics_Update(_delta):
 				not Input.is_action_pressed("down"):
 			player.set_can_grab(false)
 			change_state("FallState")
-			
+		elif player.rc_not_colliding() and !player.shape_cast_2d.is_colliding():
+			player.set_can_grab(false)
+			change_state("FallState")
+				
 		#Update animation
 		if dir != 0:
 			if dir > 0:
@@ -79,10 +86,11 @@ func Physics_Update(_delta):
 
 func _on_player_move_timer_timeout():
 	if !is_player_moving:
-		if player.rc_left():
-			player.move_player_x(1)
-		elif player.rc_right():
-			player.move_player_x(-1)
+		#if player.rc_left():
+			##player.move_player_x(1)
+		#elif player.rc_right():
+			##player.move_player_x(-1)
+		player.set_can_grab(false)	
 		change_state("FallState")
 		movement_timer.queue_free()
 		

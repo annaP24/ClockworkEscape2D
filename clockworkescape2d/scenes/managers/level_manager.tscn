@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bykwbo0tsl4pp"]
 
 [ext_resource type="PackedScene" uid="uid://n412bh0u7lbs" path="res://scenes/ui/level_button.tscn" id="1_301ru"]
-[ext_resource type="Script" uid="uid://vyn6gyu6dipp" path="res://scenes/ui/level_manager.gd" id="1_txgmf"]
+[ext_resource type="Script" uid="uid://vyn6gyu6dipp" path="res://scenes/managers/level_manager.gd" id="1_txgmf"]
 
 [node name="LevelManager" type="Control"]
 top_level = true
