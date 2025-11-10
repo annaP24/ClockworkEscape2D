@@ -29,18 +29,14 @@ func Physics_Update(_delta):
 
 	#Change states	
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
-		Debug.print_value("FallFromMove", false)
 		change_state("JumpState")
 	elif !player.is_on_floor():
-		Debug.print_value("FallFromMove", true)
 		player.jump_count -= 1
 		change_state("FallState")
 	elif inputX == 0:
 		change_state("IdleState")
 #	----------Wall Walk ----------------------------
-	if player.rc_right():
-		change_state("WallState")
-	elif player.rc_left():
-		change_state("WallState")
-	elif player.rc_up():					#TODO: Kann das aus dem lauf passieren? 
-		change_state("CeelingState")
+	elif player.rc_left() and Input.is_action_pressed("left"):
+		change_state("IdleState")
+	elif player.rc_right() and Input.is_action_pressed("right"): 
+		change_state("IdleState")

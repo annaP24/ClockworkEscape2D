@@ -24,12 +24,15 @@ height = 14.427366
 script = ExtResource("1_nw4xq")
 sway_speed = 2.0
 max_rotation = 45.0
+startRight = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ciggu")
 
 [node name="RotationMarker" type="Marker2D" parent="."]
+rotation = 0.5494369
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationMarker"]
 position = Vector2(-1, 125)
@@ -38,6 +41,7 @@ texture = ExtResource("1_p6yeh")
 [node name="DetectionMarker" type="Marker2D" parent="RotationMarker/Sprite2D"]
 
 [node name="Comp2dHitbox" type="Area2D" parent="RotationMarker"]
+visible = false
 position = Vector2(-1, 64)
 script = ExtResource("2_nw4xq")
 metadata/_custom_type_script = "uid://wujupbok4pj0"

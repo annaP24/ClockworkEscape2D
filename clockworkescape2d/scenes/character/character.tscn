@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://icqdbbkndqcj" path="res://scenes/character/assets/broken_dark/gear_dead001.png0006.png" id="7_8i0k4"]
 [ext_resource type="Texture2D" uid="uid://c81niih33nl6d" path="res://scenes/character/assets/dark/gear.png" id="7_h1xxs"]
 [ext_resource type="Texture2D" uid="uid://cd4uwgcqitf3l" path="res://scenes/character/assets/broken_dark/gear_dead001.png0007.png" id="8_2ge1u"]
-[ext_resource type="Script" uid="uid://vuuvgo45rhgm" path="res://scenes/character/fsm/comp_fsm_node.gd" id="8_btfbg"]
+[ext_resource type="Script" uid="uid://vuuvgo45rhgm" path="res://core/general/comp_fsm_node.gd" id="8_btfbg"]
 [ext_resource type="Texture2D" uid="uid://pp15c3ag6mq5" path="res://scenes/character/assets/broken_dark/gear_dead001.png0008.png" id="9_ent74"]
 [ext_resource type="Script" uid="uid://xkvymacgbbuf" path="res://scenes/character/fsm/state_idle.gd" id="9_wakg3"]
 [ext_resource type="Texture2D" uid="uid://38fy5cm802r3" path="res://scenes/character/assets/broken_dark/gear_dead001.png0009.png" id="10_lr1hd"]
@@ -245,7 +245,6 @@ script = ExtResource("14_l3jx2")
 script = ExtResource("15_g7fnn")
 
 [node name="Raycasts" type="Node2D" parent="."]
-visible = false
 
 [node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, -45)

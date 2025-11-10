@@ -3,6 +3,7 @@ extends StaticBody2D
 
 @export var sway_speed : float = 1.5
 @export var max_rotation : float = 15.0
+@export var startRight : bool = false
 @onready var rotation_marker: Marker2D = $RotationMarker
 
 func _ready() -> void:

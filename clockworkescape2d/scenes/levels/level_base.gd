@@ -4,7 +4,7 @@ signal quit_level
 signal restart_level
 signal load_next_level
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
-@onready var player_scene = preload("res://scenes/character/character.tscn")
+@onready var player_scene = preload("res://scenes/character_new/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
 var engine_start := Time.get_ticks_msec()
 var player

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name PlayerFSM_bkp
+class_name PlayerFSM
 
 signal player_died
 
@@ -19,12 +19,13 @@ signal player_died
 @onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
 @onready var jump_buffer_timer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
-@onready var ray_cast_timer: Timer = $RayCastTimer
 @onready var gear_with_animation: AnimatedSprite2D = $CharacterAnimated
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+@onready var line_2d: Line2D = $Line2D
 
 enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
 
-var gravity : Vector2 = Vector2.ZERO  		#TODO ist das nötig oder float?
+var gravity : Vector2 = Vector2.ZERO  
 var jump_buffer : bool = false
 var jump_button_released : bool = false
 var jump_count : int = 0
@@ -36,12 +37,14 @@ var coil_jump_pressed : bool = false
 var jump_velocity : float = 0.0
 var player_died_received : bool = false
 var wall_jump_count : int 
+var can_grab : bool = true
 
 func _ready() -> void: 
 	jump_count = max_jump_count	
 	player_died_received= false
 	wall_jump_count = wall_jump_count_max
 	gravity = Vector2(0, fall_gravity)
+	#switch_ray_casts_off()
 	update_animation(animations.SPAWN)
 	fsm.start()
 	
@@ -50,7 +53,7 @@ func _process(delta: float) -> void:
 	apply_gravity(delta)
 	if is_movable:
 		move_and_slide()
-	
+	Debug.print_value("CanGrab: ", can_grab)
 func apply_gravity(delta):
 	velocity += gravity * delta
 
@@ -96,17 +99,12 @@ func rc_up() -> bool:
 	return $Raycasts/RayCastUp.is_colliding()
 func rc_down() -> bool:
 	return $Raycasts/RayCastDown.is_colliding()
-func rc_dl() -> bool:
-	return $Raycasts/RayCastDL.is_colliding()
-func rc_ddl() -> bool:
-	return $Raycasts/RayCastDDL.is_colliding()
-func rc_ddr() -> bool:
-	return $Raycasts/RayCastDDR.is_colliding()
-func rc_dr() -> bool:
-	return $Raycasts/RayCastDR.is_colliding()
-		
+
+func rc_not_colliding():
+	return !rc_right() and !rc_left() and !rc_up() and !rc_down()
+	
 func get_collider_left():
-	if  $Raycasts/RayCastLeft.is_colliding():
+	if $Raycasts/RayCastLeft.is_colliding():
 		return  $Raycasts/RayCastLeft.get_collider()
 		
 func get_collider_right():
@@ -116,25 +114,28 @@ func get_collider_right():
 func get_collider_up():
 	if  $Raycasts/RayCastUp.is_colliding():
 		return  $Raycasts/RayCastUp.get_collider()
+		
+func get_collider_down():
+	if  $Raycasts/RayCastDown.is_colliding():
+		return  $Raycasts/RayCastDown.get_collider()
 
 func switch_ray_casts_on():	
 	for rc in get_node("Raycasts").get_children():
 		rc.enabled = true
+		
+func switch_ray_casts_off():	
+	for rc in get_node("Raycasts").get_children():
+		rc.enabled = false
 
 func switch_rc_up_off():	
 	$Raycasts/RayCastUp.enabled = false
-	ray_cast_timer.start()
+
 func switch_rc_left_off():	
 	$Raycasts/RayCastLeft.enabled = false
-	ray_cast_timer.start()
-	
+
 func switch_rc_right_off():
 	$Raycasts/RayCastRight.enabled = false
-	ray_cast_timer.start()
-
-func _on_ray_cast_timer_timeout() -> void:
-	switch_ray_casts_on()
-
+	
 func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false
 

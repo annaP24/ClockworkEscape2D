@@ -2,6 +2,7 @@ extends FsmNodeState
 var wall_direction : int = 0
 
 func Physics_Update(_delta):	
+	
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
 	player.move_player_x(inputX, player.max_speed)
@@ -23,18 +24,18 @@ func Physics_Update(_delta):
 			player.jump_buffer = true
 			player.jump_buffer_timer.start(player.jump_buffer_timeout)
 
-	if Input.is_action_just_pressed("jump") and player.coyote_jump: 
+	elif Input.is_action_just_pressed("jump") and player.coyote_jump: 
 		change_state("JumpState")
 	elif player.is_on_floor():
 		change_state("IdleState")
-	if player.rc_right():
-		change_state("WallState")
-	elif player.rc_left():
-		change_state("WallState")
-	elif player.rc_up():							#TODO: Ist das beim fallen möglich?
-		change_state("CeelingState")
+	elif player.rc_right() or player.rc_left() or player.rc_up():
+		if player.is_on_floor():
+			change_state("StateIdle")
+		else:
+			change_state("WallState")
+
 #	---------- Wall Jumps -----------------------
-	if player.is_on_wall():
+	elif player.is_on_wall():
 		if Input.is_action_just_pressed("jump"):
 			#player.velocity.x = -500 #TODO: man könnte eine kraft entgegen der wand einfügen
 			if player.wall_jump_count > 0:
