@@ -44,7 +44,6 @@ func _ready() -> void:
 	player_died_received= false
 	wall_jump_count = wall_jump_count_max
 	gravity = Vector2(0, fall_gravity)
-	#switch_ray_casts_off()
 	update_animation(animations.SPAWN)
 	fsm.start()
 	
@@ -53,7 +52,10 @@ func _process(delta: float) -> void:
 	apply_gravity(delta)
 	if is_movable:
 		move_and_slide()
+	if rc_not_colliding():
+		set_can_grab(true)
 	Debug.print_value("CanGrab: ", can_grab)
+		
 func apply_gravity(delta):
 	velocity += gravity * delta
 
@@ -102,7 +104,9 @@ func rc_down() -> bool:
 
 func rc_not_colliding():
 	return !rc_right() and !rc_left() and !rc_up() and !rc_down()
-	
+func rc_any_colliding():
+	return rc_right() or !rc_left() or rc_up() or !rc_down()
+		
 func get_collider_left():
 	if $Raycasts/RayCastLeft.is_colliding():
 		return  $Raycasts/RayCastLeft.get_collider()
@@ -127,6 +131,12 @@ func switch_ray_casts_off():
 	for rc in get_node("Raycasts").get_children():
 		rc.enabled = false
 
+func set_can_grab(grab : bool):
+	can_grab = grab
+	
+func get_can_grab() -> bool:
+	return can_grab	
+	
 func switch_rc_up_off():	
 	$Raycasts/RayCastUp.enabled = false
 

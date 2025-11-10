@@ -33,13 +33,16 @@ func Enter(player_node):
 		#movement_timer.start()
 		
 func Physics_Update(_delta):
+	#If player can't grab the walll return
+	if !player.get_can_grab():
+		return
 	var col_dir : Vector2 = Vector2.ZERO
 	var tang : Vector2 = Vector2.ZERO
 		
 	Debug.print_value("Player on floor:", player.is_on_floor())	
 	Debug.print_value("Player rc DOWN:", player.rc_down())	
 	Debug.print_value("Is_Player_moving:", is_player_moving)
-	#if movement_timer != null and movement_timer.time_left > 0:
+	
 	if !is_player_moving:
 		check_direction()
 	else:
@@ -54,26 +57,17 @@ func Physics_Update(_delta):
 			player.velocity =  tang * dir * player.max_speed + col_dir * 20
 			draw_debug_line(tang * dir * player.max_speed + col_dir * 20)
 
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_pressed("jump"):	
 			is_player_moving = false
+			player.set_can_grab(false)
 			change_state("JumpState")
-		
 		elif not Input.is_action_pressed("left") and \
 				not Input.is_action_pressed("right") and \
 				not Input.is_action_pressed("up") and \
 				not Input.is_action_pressed("down"):
-			player.can_grab = false
-			player.switch_ray_casts_off()
+			player.set_can_grab(false)
 			change_state("FallState")
-		
-		#if player.velocity.y > player.max_speed / 2:
-		#	print("idle from wall")
-		#	change_state("IdleState")
 			
-		#if player.rc_not_colliding():
-			#print("Switch to idle")
-			#change_state("IdleState")
-		Debug.print_value("Current dir: ", dir)
 		#Update animation
 		if dir != 0:
 			if dir > 0:
@@ -89,17 +83,13 @@ func _on_player_move_timer_timeout():
 			player.move_player_x(1)
 		elif player.rc_right():
 			player.move_player_x(-1)
-			
-		player.switch_ray_casts_off()
 		change_state("FallState")
 		movement_timer.queue_free()
 		
 func check_direction():
 	if player.rc_left() or player.rc_right():
-		#if !is_player_moving:
 		dir = Input.get_axis("up", "down")
 	elif player.rc_up() or player.rc_down():
-		#if !is_player_moving:
 		dir = Input.get_axis("left", "right")
 	if player.rc_right() or player.rc_up():
 		tangent_coef = -1
@@ -124,11 +114,6 @@ func check_if_moving_wall(wall):
 				wall_moving_direction = Vector2(-1,0)
 	else:
 		is_moving_wall = false
-		
-func Exit():
-	is_player_moving = false
-	Debug.print_value("Is_Player_moving:", is_player_moving)
-
 
 func draw_debug_line(target: Vector2):
 	player.line_2d.clear_points()

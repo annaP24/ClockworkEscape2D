@@ -8,7 +8,6 @@ var levels_path : String = "res://scenes/levels/scenes/"
 var current_page : int = 0
 func _ready() -> void:
 	set_level_paths()
-	print("Levels ",  all_level_paths)
 
 func read_folder() -> Array:
 	var dir = DirAccess.open(levels_path)
@@ -24,7 +23,6 @@ func set_level_paths():
 func get_next_level_path() -> String:	
 	current_level += 1
 	if current_level <= all_level_paths.size()-1:
-		print("Next level path: ", all_level_paths[current_level])
 		return all_level_paths[current_level]
 	else:
 		#ToDo The end screen, return to menu

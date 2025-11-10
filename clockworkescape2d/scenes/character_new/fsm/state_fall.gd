@@ -28,18 +28,19 @@ func Physics_Update(_delta):
 		change_state("JumpState")
 	elif player.is_on_floor():
 		change_state("IdleState")
-	elif player.rc_right() or player.rc_left() or player.rc_up():
+	elif player.rc_any_colliding(): #player.rc_right() or player.rc_left() or player.rc_up():
 		if player.is_on_floor():
 			change_state("StateIdle")
 		else:
-			change_state("WallState")
+			if player.get_can_grab():
+				change_state("WallState")
 
 #	---------- Wall Jumps -----------------------
 	elif player.is_on_wall():
 		if Input.is_action_just_pressed("jump"):
 			#player.velocity.x = -500 #TODO: man könnte eine kraft entgegen der wand einfügen
 			if player.wall_jump_count > 0:
-				player.jump_count = player.max_jump_count
+				player.jump_count = player.max_jump_count #ToDo: Chek what are these 2 lines doing
 				player.wall_jump_count = 0
 				change_state("JumpState")
 		

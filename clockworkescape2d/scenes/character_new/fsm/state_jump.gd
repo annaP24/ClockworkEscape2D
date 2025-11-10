@@ -7,6 +7,7 @@ func Enter(player_node):
 	jump()
 	player.jump_count -= 1
 	player_node.switch_ray_casts_on()
+	
 func jump():
 	player.velocity.y = player.jump_velocity
 	
@@ -22,11 +23,11 @@ func Physics_Update(_delta):
 		change_state("FallState")
 
 #---------- Wall Walk ----------------------------
-	if player.rc_up():
-		change_state("CeelingState")
-	elif player.rc_right():
+	if player.rc_up() and player.get_can_grab():
 		change_state("WallState")
-	elif player.rc_left():
+	elif player.rc_right() and player.get_can_grab():
+		change_state("WallState")
+	elif player.rc_left() and player.get_can_grab():
 		change_state("WallState")
 	elif player.is_on_wall():
 		if player.wall_jump_count > 0:
