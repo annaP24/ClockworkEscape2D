@@ -59,7 +59,7 @@ func Physics_Update(_delta):
 		if dir:
 			tang = Vector2(col_dir.y, -col_dir.x) * tangent_coef
 			player.velocity =  tang * dir * player.max_speed + col_dir * 20
-			draw_debug_line(tang * dir * player.max_speed + col_dir * 20)
+			#draw_debug_line(tang * dir * player.max_speed + col_dir * 20)
 
 		if Input.is_action_pressed("jump"):	
 			is_player_moving = false

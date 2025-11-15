@@ -15,9 +15,11 @@ size = Vector2(123.25, 18.25)
 texture = ExtResource("2_pv6c5")
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("RectangleShape2D_hkxyy")
 
 [node name="PlatformTypeDetectionArea" parent="." index="2"]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" parent="PlatformTypeDetectionArea" index="0"]

@@ -23,21 +23,22 @@ frame_3/duration = 1.0
 size = Vector2(40, 472)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sro"]
-size = Vector2(52, 817)
+size = Vector2(52, 100)
 
 [node name="Lightning" type="StaticBody2D"]
 collision_layer = 0
 script = ExtResource("1_gjjtp")
 
 [node name="BlitzLine" type="Line2D" parent="."]
+visible = false
 texture_repeat = 2
-points = PackedVector2Array(0, 0, 4, 514)
+points = PackedVector2Array(0, 29, 0, 129)
 width = 160.0
 texture = SubResource("AnimatedTexture_y1sro")
 texture_mode = 1
 
 [node name="LowerGuard" type="Sprite2D" parent="."]
-position = Vector2(0, 530)
+position = Vector2(0, 129)
 scale = Vector2(3, 3)
 texture = ExtResource("6_gjjtp")
 
@@ -53,12 +54,14 @@ position = Vector2(2, 287)
 shape = SubResource("RectangleShape2D_kf46m")
 
 [node name="Comp2dHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 script = ExtResource("7_gjjtp")
+is_enable = false
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox"]
-position = Vector2(9.536743e-07, 279.5)
+position = Vector2(0, 79)
 shape = SubResource("RectangleShape2D_y1sro")
 
 [node name="OffTimer" type="Timer" parent="."]
