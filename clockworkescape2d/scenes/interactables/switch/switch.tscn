@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlw5hya6y6fxl"]
+
+[ext_resource type="Texture2D" uid="uid://di2i7at4q047d" path="res://scenes/interactables/switch/assets/gear.png" id="1_2o0j4"]
+[ext_resource type="Script" uid="uid://b34ecwj7sgp6j" path="res://scenes/interactables/switch/switch.gd" id="1_j1cy3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2o0j4"]
+radius = 27.018513
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1cy3"]
+radius = 32.06244
+
+[node name="Switch" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_j1cy3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2o0j4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_2o0j4")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_j1cy3")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
