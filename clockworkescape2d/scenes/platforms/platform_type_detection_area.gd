@@ -4,6 +4,6 @@ extends Area2D
 
 func get_type():
 	return parent.wall_type
-	
+
 func get_is_moving():
 	return parent.get_is_moving()

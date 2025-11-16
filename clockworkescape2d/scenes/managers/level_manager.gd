@@ -25,24 +25,24 @@ func _ready() -> void:
 	levels =  read_folder()
 	set_lavel_paths()
 	update_arrows()
-	
+
 func update_arrows():
 	if current_page > 0:
 		button_left.disabled = false
 	else:
 		button_left.disabled = true
-		
+
 	if levels.size() > buttons_per_page * (current_page+1):
 		button_right.disabled = false
 	else:
-		button_right.disabled = true	
+		button_right.disabled = true
 func read_folder() -> Array:
 	var dir = DirAccess.open(path)
 	if dir:
 		return dir.get_files()
 	else:
 		return []
-		
+
 func set_lavel_paths():
 	var cnt = current_page * buttons_per_page
 	for button in buttons_array:
@@ -55,16 +55,16 @@ func set_lavel_paths():
 		else:
 			button.set_scene_path("")
 			button.set_text("-")
-	
+
 func _on_level_button_1_pressed() -> void:
 	current_level_path = level_button_1.scene_path
-	GameManager.current_level = current_page * buttons_per_page 
+	GameManager.current_level = current_page * buttons_per_page
 	parent.level_selected(current_level_path)
-		
+
 func _on_level_button_2_pressed() -> void:
 	GameManager.current_level = current_page * buttons_per_page + 1
 	parent.load_level(level_button_2.scene_path)
-	
+
 func _on_level_button_3_pressed() -> void:
 	GameManager.current_level =  current_page * buttons_per_page + 2
 	parent.load_level(level_button_3.scene_path)
@@ -92,4 +92,3 @@ func _on_button_right_pressed() -> void:
 	GameManager.current_page = current_page
 	set_lavel_paths()
 	update_arrows()
-	

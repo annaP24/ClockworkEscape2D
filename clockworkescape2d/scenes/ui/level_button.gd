@@ -9,6 +9,6 @@ func _ready() -> void:
 
 func set_text(content : String):
 	label.text = content
-	
+
 func set_scene_path(level_path : String):
 	scene_path = level_path

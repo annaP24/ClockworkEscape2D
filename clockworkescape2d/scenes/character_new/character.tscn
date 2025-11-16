@@ -212,6 +212,10 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 
+[node name="GrabTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_wh2hg")
@@ -282,6 +286,7 @@ top_level = true
 [connection signal="animation_finished" from="CharacterAnimated" to="." method="_on_character_animated_animation_finished"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="GrabTimer" to="." method="_on_grab_timer_timeout"]
 [connection signal="hurt" from="Comp2dHurtbox" to="." method="_on_comp_2d_hurtbox_hurt"]
 [connection signal="area_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_area_entered"]
 [connection signal="body_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_body_entered"]

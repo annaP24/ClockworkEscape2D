@@ -14,21 +14,21 @@ var half_range : float = 0.0
 var move_up : bool = false
 var move_right : bool = false
 var delta_movement : float = 0.0
-var move_half_range : float = 0.0 
+var move_half_range : float = 0.0
 
 func _ready() -> void:
 	check_configuration()
 	move_up = is_start_up
 	move_right = is_start_right
 	move_half_range = move_range / 2
-	
+
 func _physics_process(delta: float) -> void:
 	if is_moving:
 		if is_move_vertical:
 			move_vertical(delta)
 		else:
 			move_horizontal(delta)
-			
+
 func check_configuration():
 	if (is_move_vertical and is_start_right) or (!is_move_vertical and is_start_up):
 		print("Cannot move vertical and horisontal at the same time, abort")
@@ -43,7 +43,7 @@ func move_horizontal(delta):
 		delta_movement += move_speed * delta
 		if delta_movement >= move_range:
 			move_right = false
-			delta_movement = 0.0 
+			delta_movement = 0.0
 	else:
 		position.x -= move_speed  * delta
 		delta_movement += move_speed * delta
@@ -57,13 +57,13 @@ func move_vertical(delta):
 		delta_movement += move_speed * delta
 		if delta_movement >= move_range:
 			move_up = false
-			delta_movement = 0.0 
+			delta_movement = 0.0
 	else:
 		position.y += move_speed  * delta
 		delta_movement += move_speed * delta
 		if delta_movement >= move_range:
 			move_up = true
-			delta_movement = 0.0 
-	
+			delta_movement = 0.0
+
 func get_is_moving():
 	return is_moving

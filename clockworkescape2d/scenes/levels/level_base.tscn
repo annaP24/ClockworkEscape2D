@@ -12,16 +12,16 @@
 texture = ExtResource("5_40ga3")
 texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-27.659222, -32, 27.659222, -32, 22.578953, 27.094742, -21.450008, 23.707901)
 2:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.853954, -24.272377, 32, -27.65922, 32, 26.530273, -32, 20.885529, -23.143429, 0.5644722, -26.530273, -12.4184265)
 4:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -27.659218, 27.094746, -22.01448, 22.578953, 27.094742, -32, 27.094742)
 0:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:4/0 = 0
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.8223724, -23.143429, 12.982899, -27.094746, 24.272373, -12.4184265, 27.094746, 32, -28.223694, 32, -20.885536, -27.094746)
 2:4/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynct0"]
@@ -121,6 +121,8 @@ position = Vector2(169, 129)
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Interactables" type="Node2D" parent="."]
 
 [node name="Collectables" type="Node2D" parent="."]
 

@@ -17,6 +17,13 @@ func Physics_Update(_delta):
 	player.gravity = Vector2(0, player.fall_gravity)
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
+	#Update animation
+	if inputX != 0:
+		if inputX > 0:
+			player.update_animation(player.animations.RUN_RIGHT)
+		elif inputX < 0:
+			player.update_animation(player.animations.RUN_LEFT)
+
 	player.move_player_x(inputX)
 
 	# cojote timer start
@@ -27,7 +34,7 @@ func Physics_Update(_delta):
 		player.coyote_jump_timer_started = false
 		player.coyote_timer.start(player.coyote_timeout)
 
-	#Change states	
+	#Change states
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		change_state("JumpState")
 	elif !player.is_on_floor():
@@ -38,5 +45,5 @@ func Physics_Update(_delta):
 #	----------Wall Walk ----------------------------
 	elif player.rc_left() and Input.is_action_pressed("left"):
 		change_state("IdleState")
-	elif player.rc_right() and Input.is_action_pressed("right"): 
+	elif player.rc_right() and Input.is_action_pressed("right"):
 		change_state("IdleState")

@@ -8,7 +8,7 @@ var is_inverse_wall : bool = false
 var is_moving_wall : bool = false
 var moving_wall_speed : float = 0.0
 var wall_moving_direction : Vector2 = Vector2.ZERO
-var timer : Timer 
+var timer : Timer
 var is_player_moving : bool = false
 var dir : float = 0.0
 var movement_timer : Timer
@@ -27,7 +27,7 @@ func Enter(player_node):
 	check_direction()
 	if !is_player_moving:
 		start_timer()
-		
+
 func start_timer():
 	movement_timer = Timer.new()
 	movement_timer.wait_time = wall_grab_timeout
@@ -35,18 +35,18 @@ func start_timer():
 	movement_timer.timeout.connect(_on_player_move_timer_timeout)
 	add_child(movement_timer)
 	movement_timer.start()
-		
+
 func Physics_Update(_delta):
 	#If player can't grab the walll return
 	if !player.get_can_grab():
 		return
 	var col_dir : Vector2 = Vector2.ZERO
 	var tang : Vector2 = Vector2.ZERO
-		
-	Debug.print_value("Player on floor:", player.is_on_floor())	
-	Debug.print_value("Player rc DOWN:", player.rc_down())	
+
+	Debug.print_value("Player on floor:", player.is_on_floor())
+	Debug.print_value("Player rc DOWN:", player.rc_down())
 	Debug.print_value("Is_Player_moving:", is_player_moving)
-	
+
 	if !is_player_moving:
 		check_direction()
 	else:
@@ -55,13 +55,13 @@ func Physics_Update(_delta):
 			col_dir = (player.shape_cast_2d.get_collision_point(0) - player.global_position).normalized()
 		else:
 			col_dir = Vector2.ZERO
-		# move 
+		# move
 		if dir:
 			tang = Vector2(col_dir.y, -col_dir.x) * tangent_coef
 			player.velocity =  tang * dir * player.max_speed + col_dir * 20
 			#draw_debug_line(tang * dir * player.max_speed + col_dir * 20)
 
-		if Input.is_action_pressed("jump"):	
+		if Input.is_action_just_pressed("jump"):
 			is_player_moving = false
 			player.set_can_grab(false)
 			change_state("JumpState")
@@ -74,7 +74,7 @@ func Physics_Update(_delta):
 		elif player.rc_not_colliding() and !player.shape_cast_2d.is_colliding():
 			player.set_can_grab(false)
 			change_state("FallState")
-				
+
 		#Update animation
 		if dir != 0:
 			if dir > 0:
@@ -90,10 +90,10 @@ func _on_player_move_timer_timeout():
 			##player.move_player_x(1)
 		#elif player.rc_right():
 			##player.move_player_x(-1)
-		player.set_can_grab(false)	
+		player.set_can_grab(false)
 		change_state("FallState")
 		movement_timer.queue_free()
-		
+
 func check_direction():
 	if player.rc_left() or player.rc_right():
 		dir = Input.get_axis("up", "down")
@@ -105,7 +105,7 @@ func check_direction():
 		tangent_coef = 1
 	if dir != 0.0:
 		is_player_moving = true
-		
+
 func check_if_moving_wall(wall):
 	if wall.has_method("get_is_moving") and wall.get_is_moving():
 		is_moving_wall = true

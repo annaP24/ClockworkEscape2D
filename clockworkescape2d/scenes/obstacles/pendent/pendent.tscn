@@ -22,9 +22,8 @@ height = 14.427366
 
 [node name="Pendent" type="StaticBody2D"]
 script = ExtResource("1_nw4xq")
-sway_speed = 2.0
-max_rotation = 45.0
-startRight = null
+sway_speed = 1.5
+max_rotation = 70.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -32,7 +31,7 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ciggu")
 
 [node name="RotationMarker" type="Marker2D" parent="."]
-rotation = 0.5494369
+rotation = -0.6043783
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationMarker"]
 position = Vector2(-1, 125)
