@@ -1,0 +1,13 @@
+16.11.2025
+
+- Character movement fixes:
+  - Wall jump: added new raycasts to detect wall (adds margin for error)
+  - Wall walk: fall when there is no more walkable wall
+  - 
+- Elektro field: 
+  - Collision shape better working, detects character when it is inside it while collision starts
+- Swards:
+  - Reduced collision shape for a fair play
+- Created:
+  - Switch - when rotated it send signal it is aktiv, objects connected to it move as defined
+  - Door to react on switch rotation

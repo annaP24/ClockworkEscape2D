@@ -37,7 +37,7 @@ func Physics_Update(_delta):
 				change_state("WallState")
 
 #	---------- Wall Jumps -----------------------
-	elif player.is_on_wall():
+	elif player.get_wall_collision():
 		if Input.is_action_just_pressed("jump"):
 			#player.velocity.x = -500 #TODO: man könnte eine kraft entgegen der wand einfügen
 			if player.wall_jump_count > 0:

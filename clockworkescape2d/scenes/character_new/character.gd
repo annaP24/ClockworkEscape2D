@@ -148,6 +148,8 @@ func switch_rc_left_off():
 
 func switch_rc_right_off():
 	$Raycasts/RayCastRight.enabled = false
+func get_wall_collision():
+	return $Raycasts/RayCastWallLeft.is_colliding() or $Raycasts/RayCastWallRight.is_colliding()
 
 func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false

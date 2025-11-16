@@ -242,7 +242,6 @@ script = ExtResource("35_0uhqk")
 script = ExtResource("31_jnntb")
 
 [node name="Raycasts" type="Node2D" parent="."]
-visible = false
 
 [node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, -34)
@@ -262,6 +261,14 @@ collide_with_areas = true
 [node name="RayCastDown" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, 34)
 collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCastWallRight" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(43, 0)
+collide_with_areas = true
+
+[node name="RayCastWallLeft" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-43, 0)
 collide_with_areas = true
 
 [node name="Comp2dHurtbox" type="Area2D" parent="."]
