@@ -43,10 +43,6 @@ func Physics_Update(_delta):
 	var col_dir : Vector2 = Vector2.ZERO
 	var tang : Vector2 = Vector2.ZERO
 
-	Debug.print_value("Player on floor:", player.is_on_floor())
-	Debug.print_value("Player rc DOWN:", player.rc_down())
-	Debug.print_value("Is_Player_moving:", is_player_moving)
-
 	if !is_player_moving:
 		check_direction()
 	else:

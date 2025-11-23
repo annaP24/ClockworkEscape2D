@@ -56,8 +56,6 @@ func _process(delta: float) -> void:
 		move_and_slide()
 	if rc_not_colliding() and !shape_cast_2d.is_colliding():
 		grab_timer.start()
-		#set_can_grab(true)
-	Debug.print_value("CanGrab: ", can_grab)
 
 func apply_gravity(delta):
 	velocity += gravity * delta

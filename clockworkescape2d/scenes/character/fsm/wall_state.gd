@@ -8,7 +8,7 @@ var is_inverse_wall : bool = false
 var is_moving_wall : bool = false
 var moving_wall_speed : float = 0.0
 var wall_moving_direction : Vector2 = Vector2.ZERO
-var timer : Timer 
+var timer : Timer
 var is_player_moving : bool = false
 
 func Enter(player_node):
@@ -21,23 +21,22 @@ func Physics_Update(_delta):
 		player.velocity.x = -500
 	elif player.rc_right():
 		player.velocity.x = 500
-		
+
 	#Move player y-axis
-	player.gravity = Vector2(0, 0) 
+	player.gravity = Vector2(0, 0)
 	var inputY =  Input.get_axis("up", "down")
-	
+
 	if player.rc_right():
 		var wall = player.get_collider_right()
 		check_if_moving_wall(wall)
 
 	player.move_player_y(inputY)
-	Debug.print_value("DL colliding: ", player.rc_dl())
-	#Change states	
+	#Change states
 	if Input.is_action_just_pressed("jump"):
-		if player.rc_right(): 
+		if player.rc_right():
 			player.switch_rc_right_off()
 			player.velocity.x = -1 * player.max_speed * wall_jump_coef
-			change_state("JumpState")	
+			change_state("JumpState")
 		elif player.rc_left():
 			player.switch_rc_left_off()
 			player.velocity.x = 1 * player.max_speed * wall_jump_coef
@@ -47,31 +46,31 @@ func Physics_Update(_delta):
 			player.switch_rc_right_off()
 			player.switch_rc_left_off()
 			change_state("CeelingState")
-		elif player.is_on_floor(): 
+		elif player.is_on_floor():
 			player.switch_rc_left_off()
 			change_state("IdleState")
 		else:
-			player.switch_rc_left_off()	
+			player.switch_rc_left_off()
 			change_state("FallState")
 	elif player.rc_right() and Input.is_action_just_pressed("left"):
 		if player.rc_up():
 			player.switch_rc_right_off()
 			player.switch_rc_left_off()
-			change_state("CeelingState")		
+			change_state("CeelingState")
 		elif player.is_on_floor():
 			player.switch_rc_right_off()
 			change_state("IdleState")
 		else:
 			player.switch_rc_right_off()
 			change_state("FallState")
-			
+
 	elif !player.rc_left() and !player.rc_right():
-		if player.rc_dl() or player.rc_dr(): 
+		if player.rc_dl() or player.rc_dr():
 			#change_state("CeelingState")
 			change_state("EdgeState")
 		elif player.rc_ddl() or player.rc_ddr():
 			change_state("EdgeState")
-		else:	
+		else:
 			player.switch_rc_left_off()
 			player.switch_rc_right_off()
 			change_state("FallState")
@@ -92,13 +91,13 @@ func Physics_Update(_delta):
 			player.move_player_x(int(wall_moving_direction.x), moving_wall_speed)
 			player.move_player_y(int(wall_moving_direction.y), moving_wall_speed)
 		player.update_animation(player.animations.IDLE)
-		
+
 func _on_player_move_timer_timeout():
 	player.switch_rc_right_off()
 	player.move_player_x(-1)
 	change_state("FallFromWallState")
 	timer.queue_free()
-			
+
 func check_if_moving_wall(wall):
 	if wall.has_method("get_is_moving") and wall.get_is_moving():
 		is_moving_wall = true

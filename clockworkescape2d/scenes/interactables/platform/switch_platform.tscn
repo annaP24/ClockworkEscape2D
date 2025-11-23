@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cylflqif6vvyq"]
+
+[ext_resource type="Script" uid="uid://cwxjuahwodo3m" path="res://scenes/interactables/platform/switch_platform.gd" id="1_jaq0g"]
+[ext_resource type="Texture2D" uid="uid://dvphpcw20ruvw" path="res://scenes/interactables/platform/assets/platform.png" id="2_xjh0n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aai0l"]
+size = Vector2(128, 44)
+
+[node name="SwitchPlatform" type="StaticBody2D"]
+script = ExtResource("1_jaq0g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(64, 22)
+texture = ExtResource("2_xjh0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64, 22)
+shape = SubResource("RectangleShape2D_aai0l")

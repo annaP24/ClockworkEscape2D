@@ -242,6 +242,7 @@ script = ExtResource("35_0uhqk")
 script = ExtResource("31_jnntb")
 
 [node name="Raycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, -34)

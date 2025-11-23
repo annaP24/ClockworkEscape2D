@@ -14,8 +14,6 @@ func Enter(player_node):
 func Physics_Update(_delta):
 	if player.is_movable:
 		player.update_animation(player.animations.IDLE)
-		Debug.print_value("Player rc DOWN:", player.rc_down())	
-		Debug.print_value("Player on floor:", player.is_on_floor())	
 		#Move player x-axis
 		player.move_player_x(0)
 
@@ -24,9 +22,9 @@ func Physics_Update(_delta):
 		if player.coil_push_active:
 			player.jump_count = 0
 		#Input reactions
-		if Input.is_action_pressed("right") and !player.rc_right() and !player.rc_down(): 
+		if Input.is_action_pressed("right") and !player.rc_right() and !player.rc_down():
 			change_state("RunState")
-		elif Input.is_action_pressed("left") and !player.rc_left()and !player.rc_down(): 
+		elif Input.is_action_pressed("left") and !player.rc_left()and !player.rc_down():
 			change_state("RunState")
 		elif player.rc_left()  and  Input.is_action_pressed("up"):
 			change_state("WallState")
@@ -34,7 +32,7 @@ func Physics_Update(_delta):
 			change_state("WallState")
 		elif Input.is_action_just_pressed("jump") and player.jump_count > 0:
 			change_state("JumpState")
-		elif Input.is_action_pressed("jump") and player.jump_buffer:  
+		elif Input.is_action_pressed("jump") and player.jump_buffer:
 			change_state("JumpState")
 		elif player.rc_down():
 			change_state("WallState")
