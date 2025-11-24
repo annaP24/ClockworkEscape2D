@@ -213,7 +213,7 @@ wait_time = 0.05
 one_shot = true
 
 [node name="GrabTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
@@ -242,7 +242,6 @@ script = ExtResource("35_0uhqk")
 script = ExtResource("31_jnntb")
 
 [node name="Raycasts" type="Node2D" parent="."]
-visible = false
 
 [node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, -34)
@@ -250,12 +249,12 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastLeft" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(-34, 0)
+target_position = Vector2(-36, 0)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastRight" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(34, 0)
+target_position = Vector2(36, 0)
 collision_mask = 2
 collide_with_areas = true
 

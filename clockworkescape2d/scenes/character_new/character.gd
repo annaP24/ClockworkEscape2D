@@ -105,8 +105,6 @@ func rc_down() -> bool:
 
 func rc_not_colliding():
 	return !rc_right() and !rc_left() and !rc_up() and !rc_down()
-func rc_any_colliding():
-	return rc_right() or !rc_left() or rc_up() or !rc_down()
 
 func get_collider_left():
 	if $Raycasts/RayCastLeft.is_colliding():

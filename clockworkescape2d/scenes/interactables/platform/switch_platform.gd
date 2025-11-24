@@ -4,7 +4,9 @@ extends StaticBody2D
 @export var is_move_vertical : bool = true
 @export var is_move_up : bool = false
 @export var is_move_right : bool = false
+@onready var move_delay_timer: Timer = $MoveDelayTimer
 
+var wait_timeout : float = 0.3
 var max_move_offset : float = 200.0
 var move_delta : float = 2.0
 var init_position : Vector2 = Vector2.ZERO
@@ -13,6 +15,7 @@ var is_switch_not_active : bool = false
 var is_destination_reached : bool = false
 
 func _ready() -> void:
+	move_delay_timer.wait_time = wait_timeout
 	init_position = global_position
 	switch_1.is_active.connect(_on_switch_is_active)
 	switch_1.is_not_active.connect(_on_switch_is_not_active)
@@ -21,13 +24,9 @@ func _ready() -> void:
 		switch_2.is_not_active.connect(_on_switch_is_not_active)
 
 func _process(_delta: float) -> void:
-	if is_switch_active:# and !is_destination_reached:
-		Debug.print_value("Move entered", true)
-		Debug.print_value("Revert Move entered", false)
+	if is_switch_active:
 		move()
-	elif is_switch_not_active:# and !is_destination_reached:
-		Debug.print_value("Move entered", false)
-		Debug.print_value("Revert Move entered", true)
+	elif is_switch_not_active:
 		revert_movement()
 
 func move():
@@ -92,12 +91,13 @@ func move_right():
 	global_position.x = global_position.x + move_delta
 
 func _on_switch_is_active():
-	Debug.print_value("Switch active", true)
 	is_switch_active = true
 	is_switch_not_active = false
 	is_destination_reached = false
 
 func _on_switch_is_not_active():
-	Debug.print_value("Switch active", false)
+	move_delay_timer.start()
+
+func _on_move_delay_timer_timeout() -> void:
 	is_switch_active = false
 	is_switch_not_active = true

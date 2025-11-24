@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://o7ga5atf5uvp"]
+[gd_scene load_steps=11 format=3 uid="uid://o7ga5atf5uvp"]
 
 [ext_resource type="Texture2D" uid="uid://d1kucng3s307i" path="res://scenes/interactables/door/assets/platform.png" id="1_6jnl5"]
 [ext_resource type="Script" uid="uid://ci3yddbely8hq" path="res://scenes/interactables/door/door.gd" id="1_57sya"]
 [ext_resource type="Texture2D" uid="uid://w588utq476y0" path="res://scenes/interactables/door/assets/steamEffect.png" id="3_70ylm"]
+[ext_resource type="Texture2D" uid="uid://dbt5cdcfjrmxh" path="res://scenes/interactables/assets_deco/switch marker.png" id="3_vg5pl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70ylm"]
 size = Vector2(44, 192)
@@ -52,12 +53,18 @@ rotation = 1.5707964
 scale = Vector2(1.5027347, 1)
 texture = ExtResource("1_6jnl5")
 
+[node name="SwitchMarker" type="Sprite2D" parent="Sprites/Sprites"]
+position = Vector2(20.75, 96.5)
+scale = Vector2(1.1666666, 1.4921875)
+texture = ExtResource("3_vg5pl")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites"]
 visible = false
 position = Vector2(22, 96)
 shape = SubResource("RectangleShape2D_70ylm")
 
 [node name="GPUSteamParticles" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(20, 0)
 amount = 5
 texture = ExtResource("3_70ylm")

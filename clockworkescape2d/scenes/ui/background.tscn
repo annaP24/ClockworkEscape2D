@@ -118,6 +118,7 @@ _data = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+enabled = false
 zoom = Vector2(0.65, 0.65)
 
 [node name="Bg_E4" type="Sprite2D" parent="."]

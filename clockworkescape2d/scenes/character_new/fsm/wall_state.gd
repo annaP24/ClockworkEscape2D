@@ -1,14 +1,8 @@
 extends FsmNodeState
-var wall_jump_coef : int = 2
 var direction : int = 0
-var is_auto_wall : bool = false
-var auto_wall_direction : int = 0
-var auto_wall_speed : float = 0.0
-var is_inverse_wall : bool = false
 var is_moving_wall : bool = false
 var moving_wall_speed : float = 0.0
 var wall_moving_direction : Vector2 = Vector2.ZERO
-var timer : Timer
 var is_player_moving : bool = false
 var dir : float = 0.0
 var movement_timer : Timer
