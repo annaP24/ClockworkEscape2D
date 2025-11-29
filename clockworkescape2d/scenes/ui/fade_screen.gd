@@ -9,14 +9,14 @@ signal transition_finished
 func fade_in():
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
-	
+
 func fade_out():
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 func level_transition():
 	animation_player.play("fade")
 	await animation_player.animation_finished
-		
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_in":
 		fade_in_finished.emit()

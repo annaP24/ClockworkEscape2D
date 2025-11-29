@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx885i6g6gwnh"]
+
+[ext_resource type="Script" uid="uid://bb0ibp365qg4t" path="res://scenes/world_new.gd" id="1_whjqg"]
+[ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="3_gty47"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_whjqg")
+
+[node name="WorldMap" parent="." instance=ExtResource("3_gty47")]
+
+[node name="Scene" type="Node2D" parent="."]

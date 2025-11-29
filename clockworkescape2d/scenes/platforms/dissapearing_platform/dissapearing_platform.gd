@@ -26,7 +26,7 @@ func _ready() -> void:
 		sprite_2d.texture = texture1
 	else:
 		sprite_2d.texture = load("res://scenes/platforms/small_platform/assets/platform.png")
-		
+
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if is_disappearing:
 		if body.is_in_group("player"):
@@ -39,7 +39,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 
 func _on_crack_timer_1_timeout() -> void:
 	sprite_2d.texture = texture2
-	crack_timer2.start(crack_timeout)	
+	crack_timer2.start(crack_timeout)
 
 
 func _on_crack_timer_2_timeout() -> void:
@@ -55,7 +55,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		collision.disabled = true
 		detection_collision.disabled = true
 		appear_timer.start(appear_timeout)
-	
+
 func _on_appear_timer_timeout() -> void:
 	collision.disabled = false
 	detection_collision.disabled = false

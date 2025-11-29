@@ -20,6 +20,8 @@ func Physics_Update(_delta):
 		#If double jump available jump again
 		if player.jump_count > 0:
 			change_state("JumpState")
+		elif player.get_wall_collision():
+			change_state("JumpState")
 		# jump buffer start
 		if !player.is_on_floor():
 			player.jump_buffer = true
@@ -35,6 +37,7 @@ func Physics_Update(_delta):
 		else:
 			if player.get_can_grab():
 				change_state("WallState")
+
 
 #	---------- Wall Jumps -----------------------
 	elif player.get_wall_collision():

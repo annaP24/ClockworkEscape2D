@@ -3,8 +3,8 @@ class_name DebugScreen
 
 # Dieses script ermöglicht es debug informationen in der oberen linken Ecke anzeigen zu lassen
 # Um es zu nutzen muss dieses skript in den settings als singleton eingestellt werden.
-# Dann kann man mittels print_value ein oder mehrere debug informationen ausgeben. 
-# Beispiel: 
+# Dann kann man mittels print_value ein oder mehrere debug informationen ausgeben.
+# Beispiel:
 # Debug.print_value("FPS", Engine.get_frames_per_second() )
 
 var debug_data := {}

@@ -8,6 +8,7 @@ signal load_next_level
 @onready var spawn_marker: Marker2D = $SpawnMarker
 var engine_start := Time.get_ticks_msec()
 var player
+
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
 	FadeScreen.fade_in()

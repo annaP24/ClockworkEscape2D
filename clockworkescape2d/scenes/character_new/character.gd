@@ -40,7 +40,7 @@ var jump_velocity : float = 0.0
 var player_died_received : bool = false
 var wall_jump_count : int
 var can_grab : bool = true
-
+var fall_velocity : float = 1200.0
 func _ready() -> void:
 	jump_count = max_jump_count
 	player_died_received= false
@@ -50,6 +50,7 @@ func _ready() -> void:
 	fsm.start()
 
 func _process(delta: float) -> void:
+
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
 	if is_movable:
@@ -59,6 +60,8 @@ func _process(delta: float) -> void:
 
 func apply_gravity(delta):
 	velocity += gravity * delta
+	if velocity.y > 0:
+		velocity.y = min(velocity.y, fall_velocity)
 
 func move_player_x(directionX : int, speed : float = max_speed):
 	if directionX != 0:

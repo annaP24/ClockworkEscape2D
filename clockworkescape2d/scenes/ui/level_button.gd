@@ -1,5 +1,6 @@
 extends TextureButton
 class_name LevelButton
+
 @onready var label: Label = $Label
 @export var level : int = 0
 var scene_path : String
