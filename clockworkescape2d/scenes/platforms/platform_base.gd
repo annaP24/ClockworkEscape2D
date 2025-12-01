@@ -5,7 +5,7 @@ class_name PlatformBase
 @export var is_move_vertical : bool = false
 @export var is_start_right : bool = false
 @export var is_start_up : bool = false
-@export var move_range : float = 0.0
+@export var move_range : float = 200.0
 @export var move_speed : float = 70
 @export var wall_type : wall_type_enum = wall_type_enum.NORMAL
 
