@@ -58,12 +58,6 @@ func generate_curve():
 	line_2d.width = 20
 	line_2d.texture = preload("res://scenes/ui/assets/light_box.png")
 
-
-
-
-
-
-
 func draw_line_between_levels():
 	var tmpArray = []
 	for level in levels_container.get_children():

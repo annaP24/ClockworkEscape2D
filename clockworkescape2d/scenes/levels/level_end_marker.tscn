@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0donee1jr6t"]
+
+[ext_resource type="Script" uid="uid://b1sxhny56tc4i" path="res://scenes/levels/level_end_marker.gd" id="1_nwfqy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkodm"]
+albedo_color = Color(1, 0.215686, 0.219608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwfqy"]
+material = SubResource("StandardMaterial3D_lkodm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkyih"]
+size = Vector2(20, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8eq5a"]
+size = Vector2(24, 20)
+
+[node name="LevelEnd" type="StaticBody2D"]
+collision_layer = 0
+script = ExtResource("1_nwfqy")
+
+[node name="LevelEnd" type="MeshInstance2D" parent="."]
+scale = Vector2(21.5, 19.5)
+mesh = SubResource("BoxMesh_nwfqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_rkyih")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("RectangleShape2D_8eq5a")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

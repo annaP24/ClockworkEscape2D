@@ -2,7 +2,8 @@ extends Node2D
 class_name Level
 signal quit_level
 signal restart_level
-signal load_next_level
+signal load_next_level(level_id)
+@export var level_id : int
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
 @onready var player_scene = preload("res://scenes/character_new/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
@@ -44,4 +45,4 @@ func _on_exit_level_finished() -> void:
 	if get_tree().current_scene.name != "World":
 		get_tree().call_deferred("reload_current_scene")
 	else:
-		load_next_level.emit()
+		load_next_level.emit(level_id)

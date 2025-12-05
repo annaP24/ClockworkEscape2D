@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name LevelNode
 @export var level_id: int
 @export var is_unlocked: bool = false
 @onready var sprite_2d: Sprite2D = $Sprite2D
