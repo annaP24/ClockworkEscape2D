@@ -1,16 +1,16 @@
-extends Node2D
+extends StaticBody2D
 @export var switch_1: Switch
 @export var switch_2: Switch
-@onready var sprites: Area2D = $Sprites
 @onready var gpu_steam_particles: GPUParticles2D = $GPUSteamParticles
+@onready var sprites: Node2D = $Sprites
 
-var offset : float = 192.0
+var offset : float = 128.0
 var init_position : Vector2 = Vector2.ZERO
 var is_door_opening : bool = false
 var is_door_closing : bool = false
 var is_door_inactive : bool = true
-var move_up_delta : float = 5.0
-var move_down_delta : float = 1.0
+var move_up_delta : float = 1.0
+var move_down_delta : float = 0.5
 
 func _ready() -> void:
 	init_position = sprites.global_position
@@ -31,18 +31,19 @@ func _process(_delta: float) -> void:
 		gpu_steam_particles.visible = true
 
 func move_up():
-	if sprites.global_position.y < init_position.y - offset:
+	if global_position.y < init_position.y - offset:
 		gpu_steam_particles.visible = false
 		is_door_inactive = true
 		return
-	sprites.global_position.y = sprites.global_position.y - move_up_delta
+	global_position.y = global_position.y - move_up_delta
+	print("Position: ", sprites.global_position.y)
 
 func move_down():
-	if sprites.global_position.y > init_position.y:
+	if global_position.y > init_position.y:
 		gpu_steam_particles.visible = false
 		is_door_inactive = true
 		return
-	sprites.global_position.y = sprites.global_position.y + move_down_delta
+	global_position.y = global_position.y + move_down_delta
 
 
 func _on_switch_is_active():

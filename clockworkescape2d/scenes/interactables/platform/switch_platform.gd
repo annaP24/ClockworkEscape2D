@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends AnimatableBody2D
 @export var switch_1: Switch
 @export var switch_2: Switch
 @export var is_move_vertical : bool = true

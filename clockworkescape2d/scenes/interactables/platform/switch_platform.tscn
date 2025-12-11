@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aai0l"]
 size = Vector2(128, 44)
 
-[node name="PlatformWithSwitch" type="StaticBody2D"]
+[node name="PlatformWithSwitch" type="AnimatableBody2D"]
 script = ExtResource("1_jaq0g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
