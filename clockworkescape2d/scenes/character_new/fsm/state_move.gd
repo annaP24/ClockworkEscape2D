@@ -4,6 +4,7 @@ func Enter(player_node):
 	super(player_node)
 	player.jump_count = player.max_jump_count
 	player.jump_button_released = true
+	player.coyote_jump = true
 	var inputX = Input.get_axis("left", "right")
 	#Update animation
 	if inputX != 0:
@@ -27,15 +28,12 @@ func Physics_Update(_delta):
 	player.move_player_x(inputX)
 
 	# cojote timer start
-	if player.is_on_floor():
-		player.coyote_jump = true
+	if not player.is_on_floor() and player.coyote_jump == true and player.coyote_jump_timer_started == false:
 		player.coyote_jump_timer_started = true
-	if not player.is_on_floor() and player.coyote_jump == true and player.coyote_jump_timer_started == true:
-		player.coyote_jump_timer_started = false
 		player.coyote_timer.start(player.coyote_timeout)
 
 	#Change states
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+	if Input.is_action_just_pressed("jump"):
 		change_state("JumpState")
 	elif !player.is_on_floor():
 		player.jump_count -= 1

@@ -1,8 +1,6 @@
 extends FsmNodeState
-var wall_direction : int = 0
 
 func Physics_Update(_delta):
-
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
 	player.move_player_x(inputX, player.max_speed)
@@ -20,14 +18,16 @@ func Physics_Update(_delta):
 		#If double jump available jump again
 		if player.jump_count > 0:
 			change_state("JumpState")
-		elif player.get_wall_collision() and player.jump_count > 0:
+		#Wall jump
+		elif player.get_wall_collision() and player.wall_jump_count > 0:
+			player.wall_jump_count = 0
 			change_state("JumpState")
 		# jump buffer start
-		if !player.is_on_floor():
-			player.jump_buffer = true
-			player.jump_buffer_timer.start(player.jump_buffer_timeout)
+		player.jump_buffer = true
+		player.jump_buffer_timer.start(player.jump_buffer_timeout)
 
 	elif Input.is_action_just_pressed("jump") and player.coyote_jump:
+		print("jump cojote")
 		change_state("JumpState")
 	elif player.is_on_floor():
 		change_state("IdleState")
@@ -37,22 +37,3 @@ func Physics_Update(_delta):
 		else:
 			if player.get_can_grab():
 				change_state("WallState")
-
-
-#	---------- Wall Jumps -----------------------
-	elif player.get_wall_collision():
-		if Input.is_action_just_pressed("jump"):
-			#player.velocity.x = -500 #TODO: man könnte eine kraft entgegen der wand einfügen
-			if player.wall_jump_count > 0:
-				player.jump_count = player.max_jump_count #ToDo: Chek what are these 2 lines doing
-				player.wall_jump_count = 0
-				change_state("JumpState")
-
-func check_wall() -> bool:
-		if player.rc_left():
-			wall_direction = 1
-		elif player.rc_right():
-			wall_direction = -1
-		else:
-			return false
-		return true

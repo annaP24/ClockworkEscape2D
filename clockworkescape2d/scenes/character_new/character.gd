@@ -41,6 +41,8 @@ var player_died_received : bool = false
 var wall_jump_count : int
 var can_grab : bool = true
 var fall_velocity : float = 1200.0
+var curr_nr_collectables : int = 0
+
 func _ready() -> void:
 	jump_count = max_jump_count
 	player_died_received= false
@@ -50,7 +52,8 @@ func _ready() -> void:
 	fsm.start()
 
 func _process(delta: float) -> void:
-
+	Debug.print_value("State:", fsm.current_state)
+	Debug.print_value("JumpCount:", jump_count)
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
 	if is_movable:
@@ -84,18 +87,22 @@ func update_animation(new_animation : animations):
 			is_movable = false
 			animation_player_rotate.stop()
 			player_died_received = true
+			reset_collectables()
 			gear_with_animation.play("break")
 		animations.SPAWN:
-			#anima_player_spawn_die.speed_scale = 1
-			#anima_player_spawn_die.play("appear")
-			#await anima_player_spawn_die.animation_finished
-			#anima_player_spawn_die.play("spawn")
-			#await anima_player_spawn_die.animation_finished
-			#gear.visible = true
-			#gear_with_animation.visible = false
 			is_movable = true
 
+func update_collectables_number():
+	curr_nr_collectables += 1
+	GameManager.collected_objects += 1
 
+func reset_collectables():
+	#Reset number of collected objects to the number before this level
+	GameManager.collected_objects = GameManager.collected_objects - curr_nr_collectables
+	curr_nr_collectables = 0
+
+func get_nr_of_collected_items()->int:
+	return curr_nr_collectables
 #------------------------RayCast management -----------------------------
 func rc_left() -> bool:
 	return $Raycasts/RayCastLeft.is_colliding()
@@ -154,6 +161,8 @@ func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
+	Debug.print_value("CoyoteTImer: ", false)
+	coyote_jump_timer_started = false
 	coyote_jump = false
 
 func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:

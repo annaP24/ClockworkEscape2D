@@ -49,7 +49,6 @@ func Physics_Update(_delta):
 		if dir:
 			tang = Vector2(col_dir.y, -col_dir.x) * tangent_coef
 			player.velocity =  tang * dir * player.max_speed + col_dir * 20
-			#draw_debug_line(tang * dir * player.max_speed + col_dir * 20)
 
 		if Input.is_action_just_pressed("jump"):
 			is_player_moving = false
@@ -76,10 +75,6 @@ func Physics_Update(_delta):
 
 func _on_player_move_timer_timeout():
 	if !is_player_moving:
-		#if player.rc_left():
-			##player.move_player_x(1)
-		#elif player.rc_right():
-			##player.move_player_x(-1)
 		player.set_can_grab(false)
 		change_state("FallState")
 		movement_timer.queue_free()

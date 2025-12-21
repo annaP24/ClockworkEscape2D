@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://iglwn8ym85pe"]
+
+[ext_resource type="Script" uid="uid://1is3gv0qqt02" path="res://scenes/obstacles/arrows/arrow.gd" id="1_3ao5h"]
+[ext_resource type="Texture2D" uid="uid://dxwsvx53ixy3k" path="res://scenes/obstacles/arrows/assets/arrow.png" id="2_3ao5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mml86"]
+size = Vector2(112, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ao5h"]
+size = Vector2(117, 12)
+
+[node name="Arrow" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_3ao5h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(0.905, 1)
+texture = ExtResource("2_3ao5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_mml86")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea"]
+visible = false
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_3ao5h")
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

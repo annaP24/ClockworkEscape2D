@@ -8,7 +8,7 @@ signal load_next_level(level_id)
 @onready var player_scene = preload("res://scenes/character_new/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
 var engine_start := Time.get_ticks_msec()
-var player
+var player : PlayerFSM
 
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
@@ -45,4 +45,8 @@ func _on_exit_level_finished() -> void:
 	if get_tree().current_scene.name != "World":
 		get_tree().call_deferred("reload_current_scene")
 	else:
+		#Save current collected count to progress.cfg
+		var is_update_max : bool = GameManager.save_collectables_count_for_level(level_id, player.get_nr_of_collected_items())
+		if is_update_max:
+			GameManager.update_max_collected()
 		load_next_level.emit(level_id)

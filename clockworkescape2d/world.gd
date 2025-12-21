@@ -36,9 +36,6 @@ func level_selected(path_to_level : String):
 	is_level_manager_visible = false
 	FadeScreen.fade_out()
 
-func restart_level():
-	FadeScreen.fade_out()
-
 func unload_level():
 	if current_level_instance:
 		current_level_instance.queue_free()

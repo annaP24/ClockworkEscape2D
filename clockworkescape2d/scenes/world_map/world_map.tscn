@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7dwjdlcy16v6"]
+[gd_scene load_steps=7 format=3 uid="uid://b7dwjdlcy16v6"]
 
 [ext_resource type="Script" uid="uid://biq68t6qnim26" path="res://scenes/world_map/world_map.gd" id="1_i1wog"]
 [ext_resource type="Texture2D" uid="uid://c118n2w02pnhg" path="res://scenes/world_map/assets/levelauswahl_bg.png" id="2_ixh7n"]
 [ext_resource type="PackedScene" uid="uid://ciupdc666uu87" path="res://scenes/world_map/level_node.tscn" id="3_kvdqv"]
 [ext_resource type="Script" uid="uid://dabr27233jmsg" path="res://scenes/world_map/camera_scroll.gd" id="4_ixh7n"]
+[ext_resource type="PackedScene" uid="uid://be14mabgg4v0v" path="res://scenes/ui/score_ui.tscn" id="5_llt4e"]
 
 [sub_resource type="Curve2D" id="Curve2D_ixh7n"]
 _data = {
@@ -15,12 +16,19 @@ point_count = 20
 script = ExtResource("1_i1wog")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(667, 1628)
+position = Vector2(643, 1636)
 texture = ExtResource("2_ixh7n")
 
 [node name="PathContainer" type="Node2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="PathContainer"]
+texture_repeat = 2
+points = PackedVector2Array(360, 2945)
+width = 220.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 1
 
 [node name="Path2D" type="Path2D" parent="PathContainer"]
 visible = false
@@ -28,95 +36,166 @@ curve = SubResource("Curve2D_ixh7n")
 
 [node name="LevelsContainer" type="Node2D" parent="."]
 
-[node name="LevelNode" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(426, 2882)
+[node name="LevelNode1" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
+position = Vector2(459, 2907)
 level_id = 1
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode1" index="0"]
+rotation = 0.2443461
+
 [node name="LevelNode2" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(663, 2821)
+position = Vector2(678, 2881)
 level_id = 2
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode2" index="0"]
+rotation = 0.1308997
+
 [node name="LevelNode3" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(836, 2615)
+position = Vector2(852, 2769)
 level_id = 3
 
 [node name="LevelNode4" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(551, 2556)
+position = Vector2(852, 2577)
 level_id = 4
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode4" index="0"]
+rotation = 0.2268928
+
 [node name="LevelNode5" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(347, 2470)
+position = Vector2(653, 2476)
 level_id = 5
 
 [node name="LevelNode6" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(600, 2279)
+position = Vector2(463, 2367)
 level_id = 6
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode6" index="0"]
+rotation = 0.13962634
+
 [node name="LevelNode7" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(790, 2066)
+position = Vector2(469, 2165)
 level_id = 7
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode7" index="0"]
+rotation = 0.13962634
+
 [node name="LevelNode8" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(619, 1912)
+position = Vector2(646, 2034)
 level_id = 8
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode8" index="0"]
+rotation = 0.41015238
+
 [node name="LevelNode9" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(453, 1714)
+position = Vector2(824, 1915)
 level_id = 9
 
 [node name="LevelNode10" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(700, 1639)
+position = Vector2(827, 1742)
 level_id = 10
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode10" index="0"]
+rotation = 0.10471976
+
 [node name="LevelNode11" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(904, 1384)
+position = Vector2(681, 1617)
 level_id = 11
 
+[node name="Sprite2D" parent="LevelsContainer/LevelNode11" index="0"]
+rotation = 0.3228859
+
 [node name="LevelNode12" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(671, 1268)
+position = Vector2(466, 1492)
 level_id = 12
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode12" index="0"]
+rotation = -0.8290314
 
 [node name="LevelNode13" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(388, 1133)
-level_id = 12
+position = Vector2(374, 1289)
+level_id = 13
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode13" index="0"]
+rotation = -0.42760566
 
 [node name="LevelNode14" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(623, 992)
-level_id = 12
+position = Vector2(544, 1093)
+level_id = 14
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode14" index="0"]
+rotation = 0.061086524
 
 [node name="LevelNode15" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(874, 862)
-level_id = 12
+position = Vector2(799, 973)
+level_id = 15
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode15" index="0"]
+rotation = -1.4660766
 
 [node name="LevelNode16" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(618, 688)
-level_id = 12
+position = Vector2(890, 750)
+level_id = 16
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode16" index="0"]
+rotation = 0.21816616
 
 [node name="LevelNode17" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(370, 584)
-level_id = 12
+position = Vector2(611, 728)
+level_id = 17
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode17" index="0"]
+rotation = -0.20943952
 
 [node name="LevelNode18" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(633, 502)
-level_id = 12
+position = Vector2(415, 594)
+level_id = 18
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode18" index="0"]
+rotation = -0.34906584
 
 [node name="LevelNode19" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(775, 337)
-level_id = 12
+position = Vector2(457, 390)
+level_id = 19
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode19" index="0"]
+rotation = 0.017453292
 
 [node name="LevelNode20" parent="LevelsContainer" instance=ExtResource("3_kvdqv")]
-position = Vector2(645, 331)
-level_id = 12
+position = Vector2(642, 331)
+level_id = 20
+
+[node name="Sprite2D" parent="LevelsContainer/LevelNode20" index="0"]
+rotation = 0.05235988
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 2380.31)
 anchor_mode = 0
 limit_left = 0
 limit_top = 0
-limit_right = 1310
+limit_right = 1285
 limit_bottom = 3265
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("4_ixh7n")
 
+[node name="Score_ui" parent="Camera2D" instance=ExtResource("5_llt4e")]
+
 [node name="ScenePlaceholder" type="Node2D" parent="."]
+
+[editable path="LevelsContainer/LevelNode1"]
+[editable path="LevelsContainer/LevelNode2"]
+[editable path="LevelsContainer/LevelNode4"]
+[editable path="LevelsContainer/LevelNode6"]
+[editable path="LevelsContainer/LevelNode7"]
+[editable path="LevelsContainer/LevelNode8"]
+[editable path="LevelsContainer/LevelNode10"]
+[editable path="LevelsContainer/LevelNode11"]
+[editable path="LevelsContainer/LevelNode12"]
+[editable path="LevelsContainer/LevelNode13"]
+[editable path="LevelsContainer/LevelNode14"]
+[editable path="LevelsContainer/LevelNode15"]
+[editable path="LevelsContainer/LevelNode16"]
+[editable path="LevelsContainer/LevelNode17"]
+[editable path="LevelsContainer/LevelNode18"]
+[editable path="LevelsContainer/LevelNode19"]
+[editable path="LevelsContainer/LevelNode20"]

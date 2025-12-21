@@ -29,11 +29,12 @@ func Physics_Update(_delta):
 		change_state("WallState")
 	elif player.rc_left() and player.get_can_grab():
 		change_state("WallState")
-	elif player.get_wall_collision():
-		if player.wall_jump_count > 0:
-			player.jump_count = player.max_jump_count
-			player.wall_jump_count = 0
-			if Input.is_action_just_pressed("jump"):
-				change_state("JumpState")
+	#elif player.get_wall_collision():
+		#if player.wall_jump_count > 0:
+			#print("Wall double jump, wall_jump_count: ", player.wall_jump_count)
+			#player.jump_count = player.max_jump_count
+			#player.wall_jump_count = 0
+			#if Input.is_action_just_pressed("jump"):
+				#change_state("JumpState")
 	elif player.velocity.y >= 0:
 		change_state("FallState")

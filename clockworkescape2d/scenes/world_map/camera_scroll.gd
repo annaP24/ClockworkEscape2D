@@ -5,10 +5,10 @@ var drag_start_pos := Vector2.ZERO
 var camera_start_pos := Vector2.ZERO
 
 @export var drag_sensitivity: float = 1.0
-@export var min_x := -5000
-@export var max_x :=  5000
-@export var min_y := -5000
-@export var max_y :=  5000
+@export var min_x := 0
+@export var max_x := 0
+@export var min_y := 0
+@export var max_y := 2400
 
 
 func _input(event):

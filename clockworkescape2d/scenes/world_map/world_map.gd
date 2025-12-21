@@ -7,7 +7,7 @@ extends Node2D
 @onready var parent = get_parent()
 @onready var camera_2d: Camera2D = $Camera2D
 
-const COEF = 0.4
+const COEF = 0.3
 var current_level_instance : Level = null
 var current_level_index : int = 0
 var current_level_path : String = ""
@@ -15,11 +15,10 @@ var curve : Curve2D = Curve2D.new()
 var is_level_manager_visible : bool = true
 
 func _ready():
+	#Get Worl node
 	parent = get_parent()
-	#draw_line_between_levels()
 	generate_curve()
 	unlock_levels()
-
 func unlock_levels():
 	for node in levels_container.get_children():
 		if node.level_id <= parent.max_level_reached:
@@ -30,14 +29,17 @@ func unlock_levels():
 		if !node.is_connected("level_selected", _on_level_selected):
 			node.level_selected.connect(_on_level_selected)
 
+# -------------------- Visuals ---------------------------------------------------#
 func calc_tangent_in(point_before : Vector2, point_after : Vector2, current_point : Vector2):
 	var tangent = (point_before - point_after).normalized()
-	var distance = abs(current_point - point_after)
+	#var distance = abs(current_point - point_after)
+	var distance = current_point.distance_to(point_before)
 	return tangent * (distance * COEF)
 
 func calc_tangent_out(point_before : Vector2, point_after : Vector2, current_point : Vector2):
 	var tangent = (point_before - point_after).normalized()
-	var distance = abs(current_point - point_before)
+	#var distance = abs(current_point - point_before)
+	var distance = current_point.distance_to(point_after)
 	return -tangent * (distance * COEF)
 
 func generate_curve():
@@ -52,24 +54,16 @@ func generate_curve():
 		if i == 0 or i == points.size():
 			pass
 		else:
+			#pass
 			curve.set_point_in(i, calc_tangent_in(points[i-1], points[i+1], points[i]))
 			curve.set_point_out(i, calc_tangent_out(points[i-1], points[i+1], points[i]))
+	curve.set_bake_interval(20)
 	line_2d.points = curve.get_baked_points()
-	line_2d.width = 20
-	line_2d.texture = preload("res://scenes/ui/assets/light_box.png")
-
-func draw_line_between_levels():
-	var tmpArray = []
-	for level in levels_container.get_children():
-		tmpArray.append(level.global_position)
-	line_2d.points = tmpArray
-	line_2d.width = 20
-	line_2d.texture = preload("res://scenes/ui/assets/light_box.png")
+	line_2d.width = 240
+	line_2d.texture = preload("res://scenes/world_map/assets/road.png")
 
 
 func _on_level_selected(level_id):
-	print("Go to level:", level_id)
 	# Start level scene:
 	GameManager.current_level = level_id - 1
-	#load_level.emit("res://scenes/levels/scenes/level_%s.tscn" % level_id)
 	parent.load_level("res://scenes/levels/scenes/level_%s.tscn" % level_id)

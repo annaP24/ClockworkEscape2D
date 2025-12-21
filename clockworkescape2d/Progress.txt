@@ -10,4 +10,14 @@
   - Reduced collision shape for a fair play
 - Created:
   - Switch - when rotated it send signal it is aktiv, objects connected to it move as defined
-  - Door to react on switch rotation
+  - Door to react on switch rotation.
+
+21.12.2025
+
+- Visuals: 
+  - Added better road for the world map. 
+  - for arrows (coils as alternative). 
+- Fixed bugs: 
+  - player doesn't jump somethimes when it reaches ground,
+  - player can double jump if near wall but jumping from wall. Visuals 
+- Removed unnecessary pngs.
