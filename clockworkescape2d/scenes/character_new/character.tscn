@@ -200,6 +200,7 @@ libraries = {
 }
 
 [node name="Sparks" parent="." instance=ExtResource("34_nmfop")]
+emitting = false
 
 [node name="SquashMarker" type="Marker2D" parent="."]
 position = Vector2(0, 29)
@@ -273,13 +274,11 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastWallRight" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(43, 0)
-collision_mask = 8
+target_position = Vector2(36, 0)
 collide_with_areas = true
 
 [node name="RayCastWallLeft" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(-43, 0)
-collision_mask = 8
+target_position = Vector2(-36, 0)
 collide_with_areas = true
 
 [node name="Comp2dHurtbox" type="Area2D" parent="."]

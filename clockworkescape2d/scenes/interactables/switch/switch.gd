@@ -16,6 +16,7 @@ var player : PlayerFSM
 
 func _process(_delta: float) -> void:
 	if player:
+		print(player.velocity.x)
 		if player.velocity.x > 0 and !is_left_wind:
 			if !is_active_emitted:
 				is_active.emit()

@@ -7,3 +7,6 @@ func get_type():
 
 func get_is_moving():
 	return parent.get_is_moving()
+
+func is_platform_detection_area():
+	return true

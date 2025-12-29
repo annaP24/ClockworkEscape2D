@@ -45,3 +45,6 @@ func Physics_Update(_delta):
 		change_state("IdleState")
 	elif player.rc_right() and Input.is_action_pressed("right"):
 		change_state("IdleState")
+
+	if player.is_movable:
+		player.move_and_slide()

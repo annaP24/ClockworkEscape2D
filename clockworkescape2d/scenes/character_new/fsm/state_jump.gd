@@ -29,8 +29,10 @@ func Physics_Update(_delta):
 		change_state("WallState")
 	elif player.rc_left() and player.get_can_grab():
 		change_state("WallState")
-	elif player.get_wall_collision():
-		change_state("WallState")
+	#elif player.get_wall_collision():
+		#change_state("WallState")
 
 	elif player.velocity.y >= 0:
 		change_state("FallState")
+	if player.is_movable:
+		player.move_and_slide()

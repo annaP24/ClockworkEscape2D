@@ -34,3 +34,5 @@ func Physics_Update(_delta):
 			change_state("WallState")
 		elif player.rc_down():
 			change_state("WallState")
+
+		player.move_and_slide()

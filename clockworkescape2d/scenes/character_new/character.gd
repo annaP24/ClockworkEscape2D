@@ -58,8 +58,8 @@ func _process(delta: float) -> void:
 	Debug.print_value("JumpCount:", jump_count)
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
-	if is_movable:
-		move_and_slide()
+	#if is_movable:
+		#move_and_slide()
 	if rc_not_colliding() and !shape_cast_2d.is_colliding():
 		grab_timer.start()
 
@@ -117,6 +117,14 @@ func rc_up() -> bool:
 	return $Raycasts/RayCastUp.is_colliding()
 func rc_down() -> bool:
 	return $Raycasts/RayCastDown.is_colliding()
+
+func get_wall_grab_collider():
+	if rc_left():
+		return get_collider_left()
+	elif rc_up():
+		return get_collider_up()
+	elif rc_right():
+		return get_collider_right()
 
 func rc_not_colliding():
 	return !rc_right() and !rc_left() and !rc_up() and !rc_down()

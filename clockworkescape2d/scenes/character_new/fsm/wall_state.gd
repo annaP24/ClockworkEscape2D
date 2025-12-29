@@ -8,7 +8,8 @@ var dir : float = 0.0
 var movement_timer : Timer
 var tangent_coef : int = 1
 var wall_grab_timeout : float = 0.1
-var wall_instance : PlatformDetectionArea = null
+var wall_instance  = null
+var player_last_position : Vector2 = Vector2.ZERO
 
 func Enter(player_node):
 	super(player_node)
@@ -19,8 +20,9 @@ func Enter(player_node):
 	dir = 0.0
 	player.update_animation(player.animations.IDLE)
 
-	wall_instance = player.get_wall_collider()
-	check_if_moving_wall(wall_instance)
+	wall_instance = player.get_wall_grab_collider()
+	if wall_instance.has_method("is_platform_detection_area"):
+		check_if_moving_wall(wall_instance)
 	if !is_moving_wall:
 		check_direction()
 		if !is_player_moving:
@@ -73,7 +75,13 @@ func Physics_Update(delta):
 			elif player.rc_not_colliding() and !player.shape_cast_2d.is_colliding():
 				player.set_can_grab(false)
 				change_state("FallState")
-
+			#elif player_last_position != player.position:
+				#player_last_position = player.position
+				#is_player_moving = true
+			#elif player_last_position == player.position:
+				#if !player.is_on_floor():
+					#print("Set player not moving to trigger direction")
+					#is_player_moving = false
 			#Update animation
 			if dir != 0:
 				if dir > 0:
@@ -96,6 +104,9 @@ func Physics_Update(delta):
 			player.set_can_grab(false)
 			change_state("FallState")
 
+	if player.is_movable:
+		player.move_and_slide()
+
 func _on_player_move_timer_timeout():
 	if !is_player_moving:
 		if player.rc_down():
@@ -106,20 +117,24 @@ func _on_player_move_timer_timeout():
 			movement_timer.queue_free()
 
 func check_direction():
+	if Input.is_action_just_pressed("jump"):
+		print("Jump from check direction")
+		change_state("JumpState")
+
+
 	if player.rc_left() or player.rc_right():
 		dir = Input.get_axis("up", "down")
 	elif player.rc_up() or player.rc_down():
 		dir = Input.get_axis("left", "right")
+
 	if player.rc_right() or player.rc_up():
 		tangent_coef = -1
 	elif player.rc_left() or player.rc_down():
 		tangent_coef = 1
 	if dir != 0.0:
 		is_player_moving = true
-	if Input.is_action_just_pressed("jump"):
-		change_state("JumpState")
 
-func check_if_moving_wall(wall : PlatformDetectionArea):
+func check_if_moving_wall(wall ):
 	if wall != null:
 		if wall.has_method("get_is_moving") and wall.get_is_moving():
 			is_moving_wall = true
@@ -128,7 +143,7 @@ func check_if_moving_wall(wall : PlatformDetectionArea):
 	else:
 		is_moving_wall = false
 
-func get_wall_direction(wall : PlatformDetectionArea):
+func get_wall_direction(wall):
 	moving_wall_speed = wall.get_parent().move_speed
 	if wall.get_parent().is_move_vertical:
 		if wall.get_parent().move_up:
