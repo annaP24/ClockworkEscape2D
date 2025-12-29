@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bhsn1ix3s4xed"]
+[gd_scene load_steps=43 format=3 uid="uid://bhsn1ix3s4xed"]
 
 [ext_resource type="Script" uid="uid://le4xg188hpdf" path="res://scenes/character_new/character.gd" id="1_wh2hg"]
 [ext_resource type="Texture2D" uid="uid://dqbx1b3ajovup" path="res://scenes/character_new/assets/broken_dark/gear_dead001.png0001.png" id="2_whewh"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://df6dmtbq1njh1" path="res://scenes/character_new/fsm/state_move.gd" id="29_xatq5"]
 [ext_resource type="Script" uid="uid://dw1j1jubo2d3q" path="res://scenes/character_new/fsm/state_jump.gd" id="30_5clxa"]
 [ext_resource type="Script" uid="uid://bliejdt7m3be0" path="res://scenes/character_new/fsm/wall_state.gd" id="31_jnntb"]
+[ext_resource type="PackedScene" uid="uid://b8ek10tvrxskn" path="res://scenes/character_new/sparks.tscn" id="34_nmfop"]
 [ext_resource type="Script" uid="uid://dubk86h3tn67p" path="res://scenes/character_new/fsm/state_fall.gd" id="35_0uhqk"]
 [ext_resource type="Script" uid="uid://7u31tu5877wc" path="res://core/comp_2d_hurtbox.gd" id="36_w3bi6"]
 
@@ -39,7 +40,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterAnimated:rotation")
+tracks/0/path = NodePath("SquashMarker/CharacterAnimated:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +57,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterAnimated:rotation")
+tracks/0/path = NodePath("SquashMarker/CharacterAnimated:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +74,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterAnimated:rotation")
+tracks/0/path = NodePath("SquashMarker/CharacterAnimated:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -190,14 +191,21 @@ radius = 32.0
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 collision_mask = 5
 script = ExtResource("1_wh2hg")
-max_speed = 250.0
+move_acc = 35.0
+move_dec = 50.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mutn8")
 }
 
-[node name="CharacterAnimated" type="AnimatedSprite2D" parent="."]
+[node name="Sparks" parent="." instance=ExtResource("34_nmfop")]
+
+[node name="SquashMarker" type="Marker2D" parent="."]
+position = Vector2(0, 29)
+
+[node name="CharacterAnimated" type="AnimatedSprite2D" parent="SquashMarker"]
+position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_q52vl")
 animation = &"full"
 autoplay = "full"
@@ -260,16 +268,18 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastDown" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(0, 34)
+target_position = Vector2(0, 36)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="RayCastWallRight" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(43, 0)
+collision_mask = 8
 collide_with_areas = true
 
 [node name="RayCastWallLeft" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(-43, 0)
+collision_mask = 8
 collide_with_areas = true
 
 [node name="Comp2dHurtbox" type="Area2D" parent="."]
@@ -291,7 +301,7 @@ shape = SubResource("CircleShape2D_0fyol")
 [node name="Line2D" type="Line2D" parent="."]
 top_level = true
 
-[connection signal="animation_finished" from="CharacterAnimated" to="." method="_on_character_animated_animation_finished"]
+[connection signal="animation_finished" from="SquashMarker/CharacterAnimated" to="." method="_on_character_animated_animation_finished"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="GrabTimer" to="." method="_on_grab_timer_timeout"]

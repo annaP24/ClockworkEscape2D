@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://c66fij7bfuap"]
+[gd_scene load_steps=5 format=4 uid="uid://c66fij7bfuap"]
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_whlnt"]
 [ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="2_3mgey"]
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="3_x2n3b"]
+[ext_resource type="PackedScene" uid="uid://c6eq64g3e0jjy" path="res://scenes/platforms/moving_platform_side_hang/platform_move_and_hold_side.tscn" id="4_x2n3b"]
 
 [node name="Testing" instance=ExtResource("1_whlnt")]
 
@@ -20,3 +21,8 @@ is_left_wind = false
 position = Vector2(1152, 704)
 switch_1 = NodePath("../Switch")
 is_move_up = true
+
+[node name="PlatformMoveAndHold" parent="." index="11" instance=ExtResource("4_x2n3b")]
+position = Vector2(1441.5386, 409.2308)
+is_moving = true
+is_move_vertical = true

@@ -1,6 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0donee1jr6t"]
+[gd_scene load_steps=6 format=3 uid="uid://iqugc023ga4x"]
 
-[ext_resource type="Script" uid="uid://b1sxhny56tc4i" path="res://scenes/levels/level_end_marker.gd" id="1_nwfqy"]
+[sub_resource type="GDScript" id="GDScript_lkodm"]
+script/source = "extends StaticBody2D
+signal level_finished
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"player\"):
+		level_finished.emit()
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkodm"]
 albedo_color = Color(1, 0.215686, 0.219608, 1)
@@ -16,7 +23,7 @@ size = Vector2(24, 20)
 
 [node name="LevelEnd" type="StaticBody2D"]
 collision_layer = 0
-script = ExtResource("1_nwfqy")
+script = SubResource("GDScript_lkodm")
 
 [node name="LevelEnd" type="MeshInstance2D" parent="."]
 scale = Vector2(21.5, 19.5)

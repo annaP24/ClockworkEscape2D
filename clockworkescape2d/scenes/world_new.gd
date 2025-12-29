@@ -20,7 +20,7 @@ func load_level(path_to_level : String):
 	if path_to_level != "":
 		current_level_path = path_to_level
 		#Cleanup previous level
-		unload_level()
+		_unload_level()
 
 		if current_level_path != "":
 			#Dynamic load
@@ -35,23 +35,18 @@ func load_level(path_to_level : String):
 		world_map.visible = is_level_manager_visible
 		world_map.camera_2d.enabled = false
 
-func level_selected(path_to_level : String):
-	current_level_path = path_to_level
-	is_level_manager_visible = false
-	FadeScreen.fade_out()
-
-func unload_level():
+func _unload_level():
 	if current_level_instance:
 		current_level_instance.queue_free()
 
 func  _on_player_finished():
-	unload_level()
+	_unload_level()
 	is_level_manager_visible = true
 	FadeScreen.fade_out()
 
 func _on_fade_out_finished():
 	if is_level_manager_visible:
-		unload_level()
+		_unload_level()
 		world_map.visible = is_level_manager_visible
 		world_map.camera_2d.enabled = is_level_manager_visible
 		FadeScreen.fade_in()

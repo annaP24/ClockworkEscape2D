@@ -21,11 +21,11 @@ func set_damage(new_damage: float):
 	damage = new_damage
 
 func get_damage():
-	return damage 
-	
+	return damage
+
 func set_enable(state: bool):
 	is_enable = state
-	
+
 func get_enable():
 	return is_enable
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dbt5cdcfjrmxh" path="res://scenes/interactables/assets_deco/switch marker.png" id="3_vg5pl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70ylm"]
-size = Vector2(44, 192)
+size = Vector2(45, 192)
 
 [sub_resource type="Gradient" id="Gradient_70ylm"]
 offsets = PackedFloat32Array(0, 0.4253112, 1)
@@ -42,22 +42,24 @@ color_ramp = SubResource("GradientTexture1D_vg5pl")
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_57sya")
+metadata/_edit_horizontal_guides_ = [192.0]
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]
-position = Vector2(21.999998, 96.17502)
+position = Vector2(23, 97.00001)
 rotation = 1.5707964
-scale = Vector2(1.5027347, 1)
+scale = Vector2(1.5, 1)
 texture = ExtResource("1_6jnl5")
 
 [node name="SwitchMarker" type="Sprite2D" parent="Sprites"]
 position = Vector2(20.75, 96.5)
-scale = Vector2(1.1666666, 1.4921875)
+scale = Vector2(1.32, 1.32)
 texture = ExtResource("3_vg5pl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(22, 96)
+visible = false
+position = Vector2(22.5, 96)
 shape = SubResource("RectangleShape2D_70ylm")
 
 [node name="GPUSteamParticles" type="GPUParticles2D" parent="."]
@@ -69,5 +71,3 @@ lifetime = 0.79
 explosiveness = 0.21
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_57sya")
-
-[node name="Door" type="Node2D" parent="."]

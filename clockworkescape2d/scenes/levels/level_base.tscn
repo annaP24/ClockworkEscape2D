@@ -126,8 +126,8 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_pwolw"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 3
-physics_layer_1/collision_mask = 3
+physics_layer_1/collision_layer = 2
+physics_layer_1/collision_mask = 2
 physics_layer_2/collision_layer = 4
 physics_layer_2/collision_mask = 4
 custom_data_layer_0/name = "CollidingTile"

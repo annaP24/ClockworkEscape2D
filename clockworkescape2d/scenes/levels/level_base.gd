@@ -18,16 +18,9 @@ func _ready() -> void:
 	print("Zeit bis erstes _ready():", delta, "ms")
 
 func _on_fade_in_finished():
-	#spawn_collectable()
-	spawn_player()
+	_spawn_player()
 
-func spawn_collectable():
-	var collectable_node = get_node("Collectables")
-	for collectable in collectable_node.get_children():
-		var coll = collectable_scene.instantiate() as StaticBody2D
-		collectable.add_child(coll)
-
-func spawn_player():
+func _spawn_player():
 	player = player_scene.instantiate() as PlayerFSM
 	player.position = spawn_marker.position
 	add_child(player)
@@ -46,7 +39,5 @@ func _on_exit_level_finished() -> void:
 		get_tree().call_deferred("reload_current_scene")
 	else:
 		#Save current collected count to progress.cfg
-		var is_update_max : bool = GameManager.save_collectables_count_for_level(level_id, player.get_nr_of_collected_items())
-		if is_update_max:
-			GameManager.update_max_collected()
+		GameManager.save_collectables_count_for_level(level_id, player.get_nr_of_collected_items())
 		load_next_level.emit(level_id)

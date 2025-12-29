@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb3sk5bwptvai"]
+
+[ext_resource type="Texture2D" uid="uid://pdqxlhw8nfj3" path="res://icon.svg" id="1_4mfox"]
+[ext_resource type="Script" uid="uid://b84mscunqmeri" path="res://scenes/obstacles/spider/spider.gd" id="1_bgjvm"]
+[ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="3_cej61"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgjvm"]
+size = Vector2(30, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y416d"]
+size = Vector2(36, 36)
+
+[node name="Spider" type="CharacterBody2D"]
+script = ExtResource("1_bgjvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_4mfox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bgjvm")
+
+[node name="Comp2dHitbox" type="Area2D" parent="."]
+script = ExtResource("3_cej61")
+metadata/_custom_type_script = "uid://wujupbok4pj0"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHitbox"]
+shape = SubResource("RectangleShape2D_y416d")

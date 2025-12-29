@@ -1,6 +1,6 @@
-#@tool
 extends AnimatableBody2D
 class_name PlatformBase
+
 @export var is_moving : bool = false
 @export var is_move_vertical : bool = false
 @export var is_start_right : bool = false
@@ -39,13 +39,13 @@ func check_configuration():
 
 func move_horizontal(delta):
 	if move_right:
-		position.x += move_speed  * delta
+		global_position.x += move_speed  * delta
 		delta_movement += move_speed * delta
 		if delta_movement >= move_range:
 			move_right = false
 			delta_movement = 0.0
 	else:
-		position.x -= move_speed  * delta
+		global_position.x -= move_speed  * delta
 		delta_movement += move_speed * delta
 		if delta_movement >= move_range:
 			move_right = true
@@ -53,13 +53,13 @@ func move_horizontal(delta):
 
 func move_vertical(delta):
 	if move_up:
-		position.y -= move_speed  * delta
+		global_position.y -= move_speed  * delta
 		delta_movement += move_speed * delta
 		if delta_movement >= move_range:
 			move_up = false
 			delta_movement = 0.0
 	else:
-		position.y += move_speed  * delta
+		global_position.y += move_speed  * delta
 		delta_movement += move_speed * delta
 		if delta_movement >= move_range:
 			move_up = true

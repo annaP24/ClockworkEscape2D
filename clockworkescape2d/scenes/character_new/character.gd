@@ -20,10 +20,12 @@ signal player_died
 @onready var jump_buffer_timer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var grab_timer: Timer = $GrabTimer
+@onready var squash_marker: Marker2D = $SquashMarker
 
-@onready var gear_with_animation: AnimatedSprite2D = $CharacterAnimated
+@onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 @onready var line_2d: Line2D = $Line2D
+@onready var sparks: GPUParticles2D = $Sparks
 
 enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
 
@@ -74,6 +76,9 @@ func move_player_x(directionX : int, speed : float = max_speed):
 
 func move_player_y(directionY : int,  speed : float = max_speed):
 	velocity.y = speed * directionY
+
+func move_player_position(move_delta):
+	global_position += move_delta
 
 func update_animation(new_animation : animations):
 	match new_animation:
@@ -154,18 +159,35 @@ func switch_rc_left_off():
 
 func switch_rc_right_off():
 	$Raycasts/RayCastRight.enabled = false
+
 func get_wall_collision():
 	return $Raycasts/RayCastWallLeft.is_colliding() or $Raycasts/RayCastWallRight.is_colliding()
+
+func get_wall_collider():
+	if $Raycasts/RayCastWallLeft.is_colliding():
+		return $Raycasts/RayCastWallLeft.get_collider()
+	elif $Raycasts/RayCastWallRight.is_colliding():
+		return $Raycasts/RayCastWallRight.get_collider()
+
+func get_rc_collider():
+	if $Raycasts/RayCastLeft.is_colliding():
+		return  $Raycasts/RayCastLeft.get_collider()
+	elif $Raycasts/RayCastRight.is_colliding():
+		return  $Raycasts/RayCastRight.get_collider()
+	elif $Raycasts/RayCastUp.is_colliding():
+		return  $Raycasts/RayCastUp.get_collider()
 
 func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
-	Debug.print_value("CoyoteTImer: ", false)
 	coyote_jump_timer_started = false
 	coyote_jump = false
 
 func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:
+	update_animation(animations.DIE)
+
+func _on_hurt_detection_area_body_entered(_body: Node2D) -> void:
 	update_animation(animations.DIE)
 
 func _on_character_animated_animation_finished() -> void:
@@ -175,9 +197,6 @@ func _on_character_animated_animation_finished() -> void:
 			get_tree().reload_current_scene()
 		else:
 			player_died.emit()
-
-func _on_hurt_detection_area_body_entered(_body: Node2D) -> void:
-	update_animation(animations.DIE)
 
 func _on_grab_timer_timeout() -> void:
 	set_can_grab(true)

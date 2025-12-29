@@ -61,7 +61,7 @@ func create_default_progress():
 	max_level_reached = 1
 	print("Created new progress file at:", PROGRESS_PATH)
 
-func save_collectables_count_for_level(level_id : int, count : int) -> bool:
+func save_collectables_count_for_level(level_id : int, count : int):
 	var cf = ConfigFile.new()
 	#Check if dile exists
 	if FileAccess.file_exists(PROGRESS_PATH):
@@ -74,11 +74,11 @@ func save_collectables_count_for_level(level_id : int, count : int) -> bool:
 		cf.set_value(COLLECTED_IN_LEVEL_TAG, str(level_id), count)
 		#Write to disk
 		cf.save(PROGRESS_PATH)
-		return true
-	else:
-		return false
+		#If max count of collected per level increased
+		_update_total_collected()
 
-func update_max_collected():
+
+func _update_total_collected():
 	var cf = ConfigFile.new()
 	#Check if dile exists
 	if FileAccess.file_exists(PROGRESS_PATH):

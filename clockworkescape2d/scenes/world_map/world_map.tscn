@@ -180,8 +180,6 @@ script = ExtResource("4_ixh7n")
 
 [node name="Score_ui" parent="Camera2D" instance=ExtResource("5_llt4e")]
 
-[node name="ScenePlaceholder" type="Node2D" parent="."]
-
 [editable path="LevelsContainer/LevelNode1"]
 [editable path="LevelsContainer/LevelNode2"]
 [editable path="LevelsContainer/LevelNode4"]

@@ -42,7 +42,6 @@ func _ready():
 func _process(delta):
 	if current_state:
 		current_state.Update(delta)
-	#Debug.print_value("State", current_state)
 
 func _physics_process(delta: float) -> void:
 	if current_state:

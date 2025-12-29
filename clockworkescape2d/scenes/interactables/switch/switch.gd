@@ -1,5 +1,7 @@
+@tool
 extends StaticBody2D
 class_name Switch
+
 signal is_active
 signal is_not_active
 

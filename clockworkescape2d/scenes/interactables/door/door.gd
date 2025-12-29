@@ -4,7 +4,7 @@ extends StaticBody2D
 @onready var gpu_steam_particles: GPUParticles2D = $GPUSteamParticles
 @onready var sprites: Node2D = $Sprites
 
-var offset : float = 128.0
+var offset : float = 124.0
 var init_position : Vector2 = Vector2.ZERO
 var is_door_opening : bool = false
 var is_door_closing : bool = false
@@ -36,7 +36,6 @@ func move_up():
 		is_door_inactive = true
 		return
 	global_position.y = global_position.y - move_up_delta
-	print("Position: ", sprites.global_position.y)
 
 func move_down():
 	if global_position.y > init_position.y:
@@ -53,7 +52,8 @@ func _on_switch_is_active():
 	is_door_inactive = false
 
 func _on_switch_is_not_active():
-	is_door_closing = true
-	is_door_opening = false
-	gpu_steam_particles.visible = false
-	is_door_inactive = false
+	if switch_2 != null:
+		is_door_closing = true
+		is_door_opening = false
+		gpu_steam_particles.visible = false
+		is_door_inactive = false
