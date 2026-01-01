@@ -18,7 +18,7 @@
   - Added better road for the world map. 
   - for arrows (coils as alternative). 
 - Fixed bugs: 
-  - player doesn't jump somethimes when it reaches ground,
+  - player doesn't jump sometimes when it reaches ground,
   - player can double jump if near wall but jumping from wall. Visuals 
 - Removed unnecessary pngs.
 
@@ -34,3 +34,16 @@
  - Particle effects on walk
  - Squish and stretch on landing
 - Wall jump fixed
+
+1.1.2026
+
+- Switch refactoring - now working each time 
+- World map movable with joystick
+- Level node in world map highlight oh hover
+- Added joystick controls
+- Player jump more accurate - more heights are reachable depending on how long the jump button is pressed
+- Switch platform centered to middle
+- arrows fixed
+- Levels played and fixed some inconsistencies
+
+
