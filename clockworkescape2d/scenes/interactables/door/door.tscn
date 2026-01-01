@@ -47,13 +47,13 @@ metadata/_edit_horizontal_guides_ = [192.0]
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]
-position = Vector2(23, 97.00001)
+position = Vector2(0, 96.5)
 rotation = 1.5707964
-scale = Vector2(1.5, 1)
+scale = Vector2(1.51, 0.95)
 texture = ExtResource("1_6jnl5")
 
 [node name="SwitchMarker" type="Sprite2D" parent="Sprites"]
-position = Vector2(20.75, 96.5)
+position = Vector2(0, 96.5)
 scale = Vector2(1.32, 1.32)
 texture = ExtResource("3_vg5pl")
 

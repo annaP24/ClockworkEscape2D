@@ -6,6 +6,8 @@ func Enter(player_node):
 	player.jump_button_released = true
 	player.wall_jump_count = player.wall_jump_count_max
 	player.coyote_jump = true
+	player.is_player_moving = false
+
 	player.set_can_grab(true)
 	player.switch_ray_casts_on()
 	player.update_animation(player.animations.IDLE)

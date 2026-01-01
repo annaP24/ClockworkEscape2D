@@ -10,7 +10,7 @@ signal player_died
 @export var fall_gravity : float = 3600.0
 @export var jump_buffer_timeout : float = 0.3
 @export var coyote_timeout : float = 0.1
-@export var gravity_coef : float = 0.75
+@export var gravity_coef : float = 5.0
 @export var move_acc : float = 50.0
 @export var move_dec : float = 100.0
 @export var wall_jump_count_max : int = 1
@@ -44,7 +44,7 @@ var wall_jump_count : int
 var can_grab : bool = true
 var fall_velocity : float = 1200.0
 var curr_nr_collectables : int = 0
-
+var is_player_moving : bool = false
 func _ready() -> void:
 	jump_count = max_jump_count
 	player_died_received= false
@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 		#move_and_slide()
 	if rc_not_colliding() and !shape_cast_2d.is_colliding():
 		grab_timer.start()
+	print(velocity)
 
 func apply_gravity(delta):
 	velocity += gravity * delta
@@ -108,6 +109,16 @@ func reset_collectables():
 
 func get_nr_of_collected_items()->int:
 	return curr_nr_collectables
+
+func normalize_movement(direction : float) -> int:
+	var dir : int = 0
+	if direction < 0:
+		dir = -1
+	elif direction > 0:
+		dir = 1
+	else:
+		dir = 0
+	return dir
 #------------------------RayCast management -----------------------------
 func rc_left() -> bool:
 	return $Raycasts/RayCastLeft.is_colliding()
@@ -125,6 +136,8 @@ func get_wall_grab_collider():
 		return get_collider_up()
 	elif rc_right():
 		return get_collider_right()
+	elif rc_down():
+		return get_collider_down()
 
 func rc_not_colliding():
 	return !rc_right() and !rc_left() and !rc_up() and !rc_down()

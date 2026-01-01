@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="3_gty47"]
 
 [node name="World" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_whjqg")
 
 [node name="WorldMap" parent="." instance=ExtResource("3_gty47")]

@@ -8,6 +8,7 @@ func Enter(player_node):
 	var inputX = Input.get_axis("left", "right")
 	#Update animation
 	if inputX != 0:
+		player.is_player_moving = true
 		if inputX > 0:
 			player.update_animation(player.animations.RUN_RIGHT)
 		elif inputX < 0:
@@ -18,6 +19,8 @@ func Physics_Update(_delta):
 	player.gravity = Vector2(0, player.fall_gravity)
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
+	inputX = player.normalize_movement(inputX)
+
 	#Update animation
 	if inputX != 0:
 		if inputX > 0:

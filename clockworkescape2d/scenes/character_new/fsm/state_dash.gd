@@ -9,12 +9,10 @@ func Enter(player_node):
 		player.velocity.x = player.dash_speed * inputX
 		player.dash_duration_timer.start(player.dash_duration)
 		player.dash_timeout_timer.start(player.dash_timeout)
-		
-		
+
+
 func Physics_Update(_delta):
 	if !player.is_dashing:
 		change_state("IdleState")
-	else:		
+	else:
 		player.velocity.x = player.dash_speed * inputX
-
-		

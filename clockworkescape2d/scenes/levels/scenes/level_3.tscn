@@ -16,30 +16,37 @@ position = Vector2(146, 767)
 position = Vector2(576, 744)
 crack_timeout = 0.3
 
-[node name="Dissapearing_platform3" parent="Platforms" index="1" instance=ExtResource("2_fykws")]
+[node name="Dissapearing_platform7" parent="Platforms" index="1" instance=ExtResource("2_fykws")]
+position = Vector2(1741.5386, 1066.1539)
+crack_timeout = 0.3
+
+[node name="Dissapearing_platform3" parent="Platforms" index="2" instance=ExtResource("2_fykws")]
 position = Vector2(1315, 937)
 crack_timeout = 0.3
 
-[node name="Dissapearing_platform4" parent="Platforms" index="2" instance=ExtResource("2_fykws")]
+[node name="Dissapearing_platform4" parent="Platforms" index="3" instance=ExtResource("2_fykws")]
 position = Vector2(1571, 865)
 crack_timeout = 0.3
 
-[node name="Dissapearing_platform5" parent="Platforms" index="3" instance=ExtResource("2_fykws")]
+[node name="Dissapearing_platform5" parent="Platforms" index="4" instance=ExtResource("2_fykws")]
 position = Vector2(1771, 745)
 crack_timeout = 0.3
 
-[node name="Dissapearing_platform6" parent="Platforms" index="4" instance=ExtResource("2_fykws")]
+[node name="Dissapearing_platform6" parent="Platforms" index="5" instance=ExtResource("2_fykws")]
 position = Vector2(1555, 577)
 crack_timeout = 0.3
 
-[node name="Dissapearing_platform2" parent="Platforms" index="5" instance=ExtResource("2_fykws")]
+[node name="Dissapearing_platform2" parent="Platforms" index="6" instance=ExtResource("2_fykws")]
 position = Vector2(832, 680)
 crack_timeout = 0.3
 
 [node name="Collectable" parent="Collectables" index="0"]
 position = Vector2(808, 360)
 
-[node name="Collectable2" parent="Collectables" index="1" instance=ExtResource("3_2k5jm")]
+[node name="Collectable3" parent="Collectables" index="1" instance=ExtResource("3_2k5jm")]
+position = Vector2(1740, 998.46155)
+
+[node name="Collectable2" parent="Collectables" index="2" instance=ExtResource("3_2k5jm")]
 position = Vector2(1448, 406)
 
 [node name="Exit" parent="." index="8"]

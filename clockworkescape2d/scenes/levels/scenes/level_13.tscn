@@ -14,16 +14,18 @@ tile_map_data = PackedByteArray("AAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAA
 position = Vector2(144.61539, 709.23083)
 
 [node name="Small_platform" parent="Platforms" index="0" instance=ExtResource("2_31fh1")]
-position = Vector2(1532.3079, 536.92316)
+position = Vector2(1590.7693, 569.2308)
 
 [node name="Small_platform2" parent="Platforms" index="1" instance=ExtResource("2_31fh1")]
-position = Vector2(772.3077, 467.69232)
+position = Vector2(824.6154, 500)
 
 [node name="ArrowShooter" parent="Obstacles" index="0" instance=ExtResource("2_wqpph")]
 position = Vector2(70.769226, 1169.2308)
+arrow_speed = 5.0
 
 [node name="ArrowShooter2" parent="Obstacles" index="1" instance=ExtResource("2_wqpph")]
 position = Vector2(1941.5386, 450.76923)
+arrow_speed = 3.2
 flow_direction = 0
 
 [node name="Collectable" parent="Collectables" index="0"]

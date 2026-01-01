@@ -4,6 +4,7 @@ class_name Projectile
 var speed : float = 2.0
 var current_direction : Vector2 = Vector2.ZERO
 var is_ignore_once : bool = true
+
 func _process(_delta: float) -> void:
 	global_position += Vector2(1,1) * speed * current_direction
 

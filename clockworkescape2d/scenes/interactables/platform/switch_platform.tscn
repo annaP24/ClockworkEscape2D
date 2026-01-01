@@ -11,16 +11,14 @@ size = Vector2(128, 44)
 script = ExtResource("1_xjh0n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(64, 22)
 texture = ExtResource("2_xjh0n")
 
 [node name="SwitchBlueDeco" type="Sprite2D" parent="."]
-position = Vector2(63, 21)
+position = Vector2(-1, 0)
 texture = ExtResource("3_xjh0n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(64, 22)
 shape = SubResource("RectangleShape2D_aai0l")
 
 [node name="MoveDelayTimer" type="Timer" parent="."]

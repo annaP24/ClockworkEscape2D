@@ -13,7 +13,9 @@ _data = {
 point_count = 20
 
 [node name="WorldMap" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_i1wog")
+metadata/_edit_horizontal_guides_ = [2904.0, 2385.0]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(643, 1636)

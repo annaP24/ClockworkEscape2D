@@ -16,25 +16,23 @@ var player : PlayerFSM
 
 func _process(_delta: float) -> void:
 	if player:
-		print(player.velocity.x)
-		if player.velocity.x > 0 and !is_left_wind:
+		#print(player.velocity.x)
+		if player.is_player_moving:
 			if !is_active_emitted:
 				is_active.emit()
 				is_active_emitted = true
 				is_not_active_emitted = false
-			switch_sprite.rotate(25.0)
-			switch_sprite_small.rotate(-25.0)
-		elif player.velocity.x < 0 and is_left_wind:
-			if !is_active_emitted:
-				is_active.emit()
-				is_active_emitted = true
-				is_not_active_emitted = false
-			switch_sprite.rotate(-25.0)
-			switch_sprite_small.rotate(25.0)
-		elif player.velocity.x == 0 and !is_not_active_emitted:
+		elif !player.is_player_moving and !is_not_active_emitted:
 			is_not_active_emitted = true
 			is_active_emitted = false
 			is_not_active.emit()
+		# Switch rotation depending on wall
+		if is_left_wind:
+			switch_sprite.rotate(-25.0)
+			switch_sprite_small.rotate(25.0)
+		else:
+			switch_sprite.rotate(25.0)
+			switch_sprite_small.rotate(-25.0)
 	else:
 		if !is_not_active_emitted:
 			is_not_active_emitted = true

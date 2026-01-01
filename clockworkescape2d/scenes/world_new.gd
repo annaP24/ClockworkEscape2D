@@ -11,10 +11,10 @@ var max_level_reached : int = 1
 
 func _ready() -> void:
 	world_map.visible = is_level_manager_visible
+	#world_map.get_tree().paused = !is_level_manager_visible
 	max_level_reached = GameManager.load_progress()
 	world_map.unlock_levels()
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
-	#print(get_tree().current_scene.name)
 
 func load_level(path_to_level : String):
 	if path_to_level != "":
@@ -33,6 +33,7 @@ func load_level(path_to_level : String):
 			scene_placeholder.call_deferred("add_child", current_level_instance)
 		is_level_manager_visible = false
 		world_map.visible = is_level_manager_visible
+		#world_map.get_tree().paused = !is_level_manager_visible
 		world_map.camera_2d.enabled = false
 
 func _unload_level():
@@ -48,6 +49,7 @@ func _on_fade_out_finished():
 	if is_level_manager_visible:
 		_unload_level()
 		world_map.visible = is_level_manager_visible
+		#world_map.get_tree().paused = !is_level_manager_visible
 		world_map.camera_2d.enabled = is_level_manager_visible
 		FadeScreen.fade_in()
 	else:

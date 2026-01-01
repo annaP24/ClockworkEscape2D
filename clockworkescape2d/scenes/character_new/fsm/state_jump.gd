@@ -14,6 +14,8 @@ func jump():
 func Physics_Update(_delta):
 	#Move player
 	var inputX = Input.get_axis("left", "right")
+	inputX = player.normalize_movement(inputX)
+
 	player.move_player_x(inputX)
 
 	if !Input.is_action_pressed("jump") :

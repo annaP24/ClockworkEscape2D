@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb3sk5bwptvai"]
+[gd_scene load_steps=8 format=3 uid="uid://cb3sk5bwptvai"]
 
-[ext_resource type="Texture2D" uid="uid://pdqxlhw8nfj3" path="res://icon.svg" id="1_4mfox"]
 [ext_resource type="Script" uid="uid://b84mscunqmeri" path="res://scenes/obstacles/spider/spider.gd" id="1_bgjvm"]
+[ext_resource type="Texture2D" uid="uid://dwpq8a6hfrw" path="res://scenes/obstacles/spider/assets/spider.png" id="2_cej61"]
 [ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="3_cej61"]
+[ext_resource type="Texture2D" uid="uid://dpvgk0bbmr271" path="res://scenes/obstacles/spider/assets/spider_a1.png" id="4_y416d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgjvm"]
 size = Vector2(30, 32)
@@ -10,12 +11,26 @@ size = Vector2(30, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y416d"]
 size = Vector2(36, 36)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_cej61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cej61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y416d")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_bgjvm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_4mfox")
+visible = false
+texture = ExtResource("2_cej61")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -28,3 +43,10 @@ metadata/_custom_type_script = "uid://wujupbok4pj0"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHitbox"]
 shape = SubResource("RectangleShape2D_y416d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cej61")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 1
+frame_progress = 0.348425

@@ -3,13 +3,14 @@ extends FsmNodeState
 func Physics_Update(_delta):
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
+	inputX = player.normalize_movement(inputX)
 	player.move_player_x(inputX, player.max_speed)
 
 	#Apply gravity
 	if player.velocity.y > 0: #Falling
 		player.gravity = Vector2(0, player.fall_gravity)
 	elif player.velocity.y < 0: # Rising
-		player.gravity = Vector2(0, player.fall_gravity * 1.15)
+		player.gravity = Vector2(0, player.fall_gravity * player.gravity_coef)
 	elif player.velocity.y == 0:
 		player.gravity = Vector2(0, player.fall_gravity)
 
@@ -39,7 +40,8 @@ func Physics_Update(_delta):
 			if player.get_can_grab():
 				change_state("WallState")
 
-	player.move_and_slide()
+	if player.is_movable:
+		player.move_and_slide()
 
 func squash_on_land():
 	var tween = get_parent().create_tween()

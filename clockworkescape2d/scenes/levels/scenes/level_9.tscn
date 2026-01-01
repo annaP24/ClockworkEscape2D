@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bgd3xsgb7rndd"]
+[gd_scene load_steps=4 format=4 uid="uid://bgd3xsgb7rndd"]
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_iv650"]
 [ext_resource type="PackedScene" uid="uid://b0jynsb1u2r0j" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_0ipip"]
+[ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="3_grcoe"]
 
 [node name="Level_9" instance=ExtResource("1_iv650")]
 
@@ -18,6 +19,15 @@ crack_timeout = 0.3
 [node name="Dissapearing_platform2" parent="Platforms" index="1" instance=ExtResource("2_0ipip")]
 position = Vector2(901.5385, 853.8462)
 crack_timeout = 0.3
+
+[node name="Collectable" parent="Collectables" index="0"]
+position = Vector2(229.23079, 740.00006)
+
+[node name="Collectable2" parent="Collectables" index="1" instance=ExtResource("3_grcoe")]
+position = Vector2(895.3847, 813.84625)
+
+[node name="Collectable3" parent="Collectables" index="2" instance=ExtResource("3_grcoe")]
+position = Vector2(1490.7693, 1093.8462)
 
 [node name="Exit" parent="." index="8"]
 position = Vector2(1946.154, 1238.4617)

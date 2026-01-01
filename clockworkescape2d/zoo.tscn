@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://cuikgl8rqp8ks"]
+
+[ext_resource type="PackedScene" uid="uid://bhsn1ix3s4xed" path="res://scenes/character_new/character.tscn" id="1_h86pu"]
+[ext_resource type="PackedScene" uid="uid://iglwn8ym85pe" path="res://scenes/obstacles/arrows/arrow.tscn" id="2_j32il"]
+[ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/arrows/arrow_shooter.tscn" id="3_fyn2c"]
+[ext_resource type="PackedScene" uid="uid://bd0enwr66l8nf" path="res://scenes/obstacles/lightning/lightning.tscn" id="4_lw2b8"]
+[ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="5_oywgv"]
+[ext_resource type="PackedScene" uid="uid://cb3sk5bwptvai" path="res://scenes/obstacles/spider/spider.tscn" id="6_yt30y"]
+[ext_resource type="PackedScene" uid="uid://b0jynsb1u2r0j" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="7_v78e0"]
+[ext_resource type="PackedScene" uid="uid://c6eq64g3e0jjy" path="res://scenes/platforms/moving_platform_side_hang/platform_move_and_hold_side.tscn" id="8_oywgv"]
+[ext_resource type="PackedScene" uid="uid://bjww3w1a45857" path="res://scenes/platforms/small_platform/small_platform.tscn" id="9_yt30y"]
+[ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="10_i7v0e"]
+[ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="11_v1cav"]
+[ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="12_54nck"]
+[ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="13_kku85"]
+
+[node name="zoo" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("1_h86pu")]
+position = Vector2(129, 32)
+
+[node name="LabelInteractables" type="Label" parent="."]
+offset_left = 1000.0
+offset_top = 1.0
+offset_right = 1159.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 25
+text = "Interactables"
+
+[node name="Obstacles" type="Node2D" parent="."]
+position = Vector2(525, 0)
+
+[node name="LabelObstacles" type="Label" parent="Obstacles"]
+offset_right = 118.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "Obstacles"
+
+[node name="Arrow" parent="Obstacles" instance=ExtResource("2_j32il")]
+position = Vector2(5, 131)
+
+[node name="ArrowShooter" parent="Obstacles" instance=ExtResource("3_fyn2c")]
+position = Vector2(231, 131)
+
+[node name="Lightning" parent="Obstacles" instance=ExtResource("4_lw2b8")]
+position = Vector2(7, 214)
+
+[node name="Pendent" parent="Obstacles" instance=ExtResource("5_oywgv")]
+position = Vector2(7, 421)
+
+[node name="Spider" parent="Obstacles" instance=ExtResource("6_yt30y")]
+position = Vector2(231, 214)
+
+[node name="Dissapearing_platform" parent="Obstacles" instance=ExtResource("7_v78e0")]
+position = Vector2(231, 358)
+crack_timeout = 0.3
+
+[node name="PlatformMoveAndHold" parent="Obstacles" instance=ExtResource("8_oywgv")]
+position = Vector2(231, 480)
+
+[node name="Small_platform" parent="Obstacles" instance=ExtResource("9_yt30y")]
+position = Vector2(231, 636)
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="Door" parent="Interactables" instance=ExtResource("10_i7v0e")]
+position = Vector2(1021, 115)
+
+[node name="PlatformWithSwitch" parent="Interactables" instance=ExtResource("11_v1cav")]
+position = Vector2(1159, 131)
+
+[node name="Switch" parent="Interactables" instance=ExtResource("12_54nck")]
+position = Vector2(1174, 289)
+
+[node name="Collectable" parent="." instance=ExtResource("13_kku85")]
+position = Vector2(129, 131)

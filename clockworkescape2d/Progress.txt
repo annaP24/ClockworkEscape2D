@@ -21,3 +21,16 @@
   - player doesn't jump somethimes when it reaches ground,
   - player can double jump if near wall but jumping from wall. Visuals 
 - Removed unnecessary pngs.
+
+29.12.2025
+
+- Spider
+ - Added mechanics and smooth left <-> right movement. 
+ - Choose if start is left or right
+ - Same range always
+- Switch platform 
+ - Refactored movement code -> no jitter
+- Visuals
+ - Particle effects on walk
+ - Squish and stretch on landing
+- Wall jump fixed

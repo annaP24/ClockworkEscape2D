@@ -75,13 +75,6 @@ func Physics_Update(delta):
 			elif player.rc_not_colliding() and !player.shape_cast_2d.is_colliding():
 				player.set_can_grab(false)
 				change_state("FallState")
-			#elif player_last_position != player.position:
-				#player_last_position = player.position
-				#is_player_moving = true
-			#elif player_last_position == player.position:
-				#if !player.is_on_floor():
-					#print("Set player not moving to trigger direction")
-					#is_player_moving = false
 			#Update animation
 			if dir != 0:
 				if dir > 0:
@@ -118,14 +111,15 @@ func _on_player_move_timer_timeout():
 
 func check_direction():
 	if Input.is_action_just_pressed("jump"):
-		print("Jump from check direction")
 		change_state("JumpState")
-
 
 	if player.rc_left() or player.rc_right():
 		dir = Input.get_axis("up", "down")
+		dir = player.normalize_movement(dir)
+
 	elif player.rc_up() or player.rc_down():
 		dir = Input.get_axis("left", "right")
+		dir = player.normalize_movement(dir)
 
 	if player.rc_right() or player.rc_up():
 		tangent_coef = -1

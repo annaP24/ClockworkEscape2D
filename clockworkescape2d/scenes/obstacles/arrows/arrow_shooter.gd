@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var shoot_cooldown : float = 0.5
+@export var shoot_cooldown : float = 1.8
+@export var arrow_speed : float = 2.0
 @export var flow_direction : direction
 @onready var spawn_marker: Marker2D = $SpawnMarker
 @onready var cooldown: Timer = $Cooldown
@@ -31,6 +32,7 @@ func shoot_bullet():
 	var projectile_scene = projectile.instantiate() as Projectile
 	projectile_scene.position = spawn_marker.position
 	projectile_scene.current_direction = current_shoot_dir
+	projectile_scene.speed = arrow_speed
 	if flow_direction == direction.LEFT:
 		projectile_scene.rotation = deg_to_rad(180)
 	elif flow_direction == direction.UP:

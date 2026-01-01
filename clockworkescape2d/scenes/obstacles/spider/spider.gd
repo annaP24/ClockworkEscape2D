@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 enum Direction {LEFT, RIGHT}
 @export var speed : float = 50.0
@@ -39,4 +40,4 @@ func _process(delta: float) -> void:
 	if (direction == 1 and offset >= max(0, limit)) or (direction == -1 and offset <= min(0, limit)):
 		direction *= -1
 
-	sprite_2d.flip_h = (direction < 0)
+	animated_sprite_2d.flip_h = (direction > 0)
