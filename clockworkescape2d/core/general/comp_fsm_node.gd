@@ -2,7 +2,7 @@ extends Node
 class_name CompFsmNode
 
 @export var initial_state: FsmNodeState
-@onready var platformer: PlayerFSM = $".."
+@onready var platformer = $".."
 
 var states_dict: Dictionary = {}
 var current_state: FsmNodeState
