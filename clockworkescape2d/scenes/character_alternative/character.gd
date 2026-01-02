@@ -23,7 +23,6 @@ signal player_died
 @onready var squash_marker: Marker2D = $SquashMarker
 @onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
-@onready var line_2d: Line2D = $Line2D
 @onready var sparks: GPUParticles2D = $Sparks
 
 enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
@@ -51,7 +50,7 @@ var is_player_moving : bool = false
 
 func _ready() -> void:
 	is_movable = true
-	jump_count = max_jump_count     
+	jump_count = max_jump_count
 	player_died_received = false
 	wall_jump_count = wall_jump_count_max
 	update_animation(animations.SPAWN)		#TODO Ins den spawn state schieben
@@ -61,7 +60,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	Debug.print_value("State Alternative:", fsm.current_state)
 	Debug.print_value("JumpCount Alternative:", jump_count)
-	
+
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and rc_not_colliding():
 		set_can_grab(true)
@@ -231,7 +230,7 @@ func is_movable_wall() -> bool:
 		if wall_instance is PlatformDetectionArea:
 			return true
 	return false
-	
+
 func is_normal_wall() -> bool:
 	var wall_instance = get_wall_grab_collider() #TODO: könnte eindeutiger sein
 	if wall_instance:

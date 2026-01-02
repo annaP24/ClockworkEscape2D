@@ -45,12 +45,13 @@ var can_grab : bool = true
 var fall_velocity : float = 1200.0
 var curr_nr_collectables : int = 0
 var is_player_moving : bool = false
+
 func _ready() -> void:
-	jump_count = max_jump_count
-	player_died_received= false
-	wall_jump_count = wall_jump_count_max
-	gravity = Vector2(0, fall_gravity)
-	update_animation(animations.SPAWN)
+	#jump_count = max_jump_count
+	#player_died_received= false
+	#wall_jump_count = wall_jump_count_max
+	#gravity = Vector2(0, fall_gravity)
+	#update_animation(animations.SPAWN)
 	fsm.start()
 
 func _process(delta: float) -> void:
@@ -58,22 +59,20 @@ func _process(delta: float) -> void:
 	Debug.print_value("JumpCount:", jump_count)
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	apply_gravity(delta)
-	#if is_movable:
-		#move_and_slide()
+
 	if rc_not_colliding() and !shape_cast_2d.is_colliding():
 		grab_timer.start()
-	print(velocity)
 
 func apply_gravity(delta):
 	velocity += gravity * delta
 	if velocity.y > 0:
 		velocity.y = min(velocity.y, fall_velocity)
 
-func move_player_x(directionX : int, speed : float = max_speed):
-	if directionX != 0:
+func move_player_x(directionX : float, speed : float = max_speed):
+	if directionX != 0.0:
 		velocity.x = move_toward(velocity.x, speed * directionX, move_acc)  #speed * directionX
 	else:
-		velocity.x = move_toward(velocity.x, 0, move_dec)
+		velocity.x = move_toward(velocity.x, 0.0, move_dec)
 
 func move_player_y(directionY : int,  speed : float = max_speed):
 	velocity.y = speed * directionY
@@ -110,15 +109,13 @@ func reset_collectables():
 func get_nr_of_collected_items()->int:
 	return curr_nr_collectables
 
-func normalize_movement(direction : float) -> int:
-	var dir : int = 0
+func normalize_movement(direction : float) -> float:
 	if direction < 0:
-		dir = -1
+		return -1
 	elif direction > 0:
-		dir = 1
+		return 1
 	else:
-		dir = 0
-	return dir
+		return 0
 #------------------------RayCast management -----------------------------
 func rc_left() -> bool:
 	return $Raycasts/RayCastLeft.is_colliding()
@@ -131,40 +128,21 @@ func rc_down() -> bool:
 
 func get_wall_grab_collider():
 	if rc_left():
-		return get_collider_left()
+		return  $Raycasts/RayCastLeft.get_collider()
 	elif rc_up():
-		return get_collider_up()
+		return  $Raycasts/RayCastUp.get_collider()
 	elif rc_right():
-		return get_collider_right()
+		return  $Raycasts/RayCastRight.get_collider()
 	elif rc_down():
-		return get_collider_down()
+		return  $Raycasts/RayCastDown.get_collider()
+
 
 func rc_not_colliding():
 	return !rc_right() and !rc_left() and !rc_up() and !rc_down()
 
-func get_collider_left():
-	if $Raycasts/RayCastLeft.is_colliding():
-		return  $Raycasts/RayCastLeft.get_collider()
-
-func get_collider_right():
-	if  $Raycasts/RayCastRight.is_colliding():
-		return  $Raycasts/RayCastRight.get_collider()
-
-func get_collider_up():
-	if  $Raycasts/RayCastUp.is_colliding():
-		return  $Raycasts/RayCastUp.get_collider()
-
-func get_collider_down():
-	if  $Raycasts/RayCastDown.is_colliding():
-		return  $Raycasts/RayCastDown.get_collider()
-
 func switch_ray_casts_on():
 	for rc in get_node("Raycasts").get_children():
 		rc.enabled = true
-
-func switch_ray_casts_off():
-	for rc in get_node("Raycasts").get_children():
-		rc.enabled = false
 
 func set_can_grab(grab : bool):
 	can_grab = grab

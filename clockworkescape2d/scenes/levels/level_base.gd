@@ -5,10 +5,11 @@ signal restart_level
 signal load_next_level(level_id)
 @export var level_id : int
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
-@onready var player_scene = preload("res://scenes/character_new/character.tscn")
+#@onready var player_scene = preload("res://scenes/character_new/character.tscn")
+@onready var player_scene = preload("res://scenes/character_alternative/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
 var engine_start := Time.get_ticks_msec()
-var player : PlayerFSM
+var player : PlayerFsmAlternative
 
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
@@ -21,7 +22,7 @@ func _on_fade_in_finished():
 	_spawn_player( )
 
 func _spawn_player():
-	player = player_scene.instantiate() as PlayerFSM
+	player = player_scene.instantiate() as PlayerFsmAlternative
 	player.position = spawn_marker.position
 	add_child(player)
 	player.connect("player_died", _on_player_died)
