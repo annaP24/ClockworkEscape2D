@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var scene_placeholder: Node2D = $Scene
 @onready var world_map: Node2D = $WorldMap
+@onready var start_menu: Control = $StartMenu
 
 var current_level_instance : Level = null
 var current_level_index : int = 0
@@ -10,11 +11,25 @@ var is_level_manager_visible : bool = true
 var max_level_reached : int = 1
 
 func _ready() -> void:
+	start_menu.visible = true
 	world_map.visible = is_level_manager_visible
+	_pause_world_map(true)
+	get_tree().paused = true
 	#world_map.get_tree().paused = !is_level_manager_visible
 	max_level_reached = GameManager.load_progress()
 	world_map.unlock_levels()
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("return"):
+		_set_start_menu_visible(true)
+		get_tree().paused = true
+
+func _set_start_menu_visible(sm_is_visible : bool):
+	start_menu.visible = sm_is_visible
+
+func _pause_world_map(is_paused : bool):
+	get_tree().paused = is_paused
 
 func load_level(path_to_level : String):
 	if path_to_level != "":
@@ -75,3 +90,14 @@ func _on_load_next_level_received(level_id : int):
 	#ToDo: Switch to End Game screen if there are no other levels, from there to MainMenu
 	load_level(GameManager.get_next_level_path())
 	FadeScreen.fade_out()
+
+
+func _on_start_menu_start_game() -> void:
+	_set_start_menu_visible(false)
+	get_tree().paused = false
+
+func _on_start_menu_settings() -> void:
+	pass # Replace with function body.
+
+func _on_start_menu_quit_game() -> void:
+	get_tree().quit()

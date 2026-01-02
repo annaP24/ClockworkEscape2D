@@ -21,7 +21,6 @@ func Physics_Update(_delta):
 			change_state("JumpState")
 		# Wall jump
 		elif player.get_wall_collision() and player.wall_jump_count > 0:
-			print("Wall jump from fall")
 			player.wall_jump_count = 0
 			change_state("JumpState")
 		# jump buffer start

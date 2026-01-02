@@ -22,11 +22,11 @@ func Physics_Update(_delta):
 	inputX = player.normalize_movement(inputX)
 
 	#Update animation
-	if inputX != 0:
-		if inputX > 0:
-			player.update_animation(player.animations.RUN_RIGHT)
-		elif inputX < 0:
-			player.update_animation(player.animations.RUN_LEFT)
+	#if inputX != 0.0:
+		#if inputX > 0.0:
+			#player.update_animation(player.animations.RUN_RIGHT)
+		#elif inputX < 0.0:
+			#player.update_animation(player.animations.RUN_LEFT)
 
 	player.move_player_x(inputX)
 

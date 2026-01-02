@@ -16,7 +16,6 @@ var player : PlayerFSM
 
 func _process(_delta: float) -> void:
 	if player:
-		#print(player.velocity.x)
 		if player.is_player_moving:
 			if !is_active_emitted:
 				is_active.emit()

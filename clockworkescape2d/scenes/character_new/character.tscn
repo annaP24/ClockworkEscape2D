@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bhsn1ix3s4xed"]
+[gd_scene load_steps=44 format=3 uid="uid://bhsn1ix3s4xed"]
 
 [ext_resource type="Script" uid="uid://le4xg188hpdf" path="res://scenes/character_new/character.gd" id="1_wh2hg"]
 [ext_resource type="Texture2D" uid="uid://dqbx1b3ajovup" path="res://scenes/character_new/assets/broken_dark/gear_dead001.png0001.png" id="2_whewh"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://8u6a775bqgf6" path="res://scenes/character_new/assets/dark/gear.png" id="26_vtgek"]
 [ext_resource type="Script" uid="uid://vuuvgo45rhgm" path="res://core/general/comp_fsm_node.gd" id="27_2dgwf"]
 [ext_resource type="Script" uid="uid://ioekha8fvddt" path="res://scenes/character_new/fsm/state_idle.gd" id="28_ctt0s"]
+[ext_resource type="Script" uid="uid://cbilwo8774bf1" path="res://scenes/character_new/fsm/spawn_state.gd" id="29_jwcmm"]
 [ext_resource type="Script" uid="uid://df6dmtbq1njh1" path="res://scenes/character_new/fsm/state_move.gd" id="29_xatq5"]
 [ext_resource type="Script" uid="uid://dw1j1jubo2d3q" path="res://scenes/character_new/fsm/state_jump.gd" id="30_5clxa"]
 [ext_resource type="Script" uid="uid://bliejdt7m3be0" path="res://scenes/character_new/fsm/wall_state.gd" id="31_jnntb"]
@@ -191,9 +192,6 @@ radius = 32.0
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 collision_mask = 5
 script = ExtResource("1_wh2hg")
-gravity_coef = 3.0
-move_acc = 35.0
-move_dec = 50.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -234,7 +232,10 @@ collision_mask = 2
 
 [node name="FSM" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("27_2dgwf")
-initial_state = NodePath("IdleState")
+initial_state = NodePath("SpawnState")
+
+[node name="SpawnState" type="Node2D" parent="FSM"]
+script = ExtResource("29_jwcmm")
 
 [node name="IdleState" type="Node2D" parent="FSM"]
 script = ExtResource("28_ctt0s")

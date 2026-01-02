@@ -1,12 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx885i6g6gwnh"]
+[gd_scene load_steps=4 format=3 uid="uid://cx885i6g6gwnh"]
 
 [ext_resource type="Script" uid="uid://bb0ibp365qg4t" path="res://scenes/world_new.gd" id="1_whjqg"]
+[ext_resource type="PackedScene" uid="uid://dl6s4pemla15g" path="res://scenes/ui/start_screen/start_menu.tscn" id="2_i63yd"]
 [ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="3_gty47"]
 
 [node name="World" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_whjqg")
 
+[node name="StartMenu" parent="." instance=ExtResource("2_i63yd")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = 35.0
+offset_top = 1984.0
+offset_right = 35.0
+offset_bottom = 1984.0
+grow_vertical = 0
+
 [node name="WorldMap" parent="." instance=ExtResource("3_gty47")]
 
 [node name="Scene" type="Node2D" parent="."]
+
+[connection signal="quit_game" from="StartMenu" to="." method="_on_start_menu_quit_game"]
+[connection signal="settings" from="StartMenu" to="." method="_on_start_menu_settings"]
+[connection signal="start_game" from="StartMenu" to="." method="_on_start_menu_start_game"]
