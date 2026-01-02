@@ -1,9 +1,9 @@
 extends Node
 class_name FsmNodeState
 
-var player : PlayerFSM
+var player
 
-func Enter(player_node : PlayerFSM):
+func Enter(player_node):
 	player = player_node
 	
 	

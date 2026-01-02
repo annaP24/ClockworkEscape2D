@@ -18,7 +18,7 @@ func _ready() -> void:
 	print("Zeit bis erstes _ready():", delta, "ms")
 
 func _on_fade_in_finished():
-	_spawn_player()
+	_spawn_player( )
 
 func _spawn_player():
 	player = player_scene.instantiate() as PlayerFSM
