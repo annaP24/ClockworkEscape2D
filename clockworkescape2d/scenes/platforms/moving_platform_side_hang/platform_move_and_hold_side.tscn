@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0xnganderc60" path="res://scenes/platforms/moving_platform_side_hang/assets/64_64_block_single_green.png" id="2_uk757"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk757"]
-size = Vector2(64, 85)
+size = Vector2(59, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h02gk"]
 size = Vector2(16.75, 84)
@@ -23,7 +23,7 @@ texture = ExtResource("2_uk757")
 
 [node name="CollisionShape2D" parent="." index="2"]
 visible = false
-position = Vector2(0, 4.5)
+position = Vector2(2.5, 5)
 shape = SubResource("RectangleShape2D_uk757")
 
 [node name="PlatformTypeDetectionArea" parent="." index="3"]

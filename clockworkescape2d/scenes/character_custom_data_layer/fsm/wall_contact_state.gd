@@ -39,24 +39,15 @@ func Physics_Update(_delta):
 	elif Input.is_action_pressed("jump") and player.jump_buffer:
 		player.set_can_grab(false)
 		change_state("JumpState")
-	elif player.get_walkable_wall_side() != player.WallSide.NONE and inputY != 0: # and player.is_normal_wall():
+	elif player.get_walkable_wall_side() != player.WallSide.NONE and inputY != 0:
 		change_state("WallState")
-	elif player.get_walkable_wall_side() != player.WallSide.NONE and inputX != 0: # and player.is_normal_wall():
+	elif player.get_walkable_wall_side() != player.WallSide.NONE and inputX != 0:
 		change_state("WallState")
-
-	#elif player.rc_right() and inputY != 0 and player.is_normal_wall():
-		#change_state("WallState")
-	#elif player.rc_left() and inputY != 0 and player.is_normal_wall():
-		#change_state("WallState")
-	#elif player.rc_up() and inputX != 0 and player.is_normal_wall():
-		#change_state("WallState")
-	#elif player.rc_down() and inputX != 0 and player.is_normal_wall():
-		#change_state("WallState")
-	elif player.rc_right()  and player.is_movable_wall():
+	elif player.rc_right() and player.is_movable_wall():
 		change_state("WallMovableState")
-	elif player.rc_left()  and player.is_movable_wall():
+	elif player.rc_left() and player.is_movable_wall():
 		change_state("WallMovableState")
-	elif player.rc_up()  and player.is_movable_wall():
+	elif player.rc_up() and player.is_movable_wall():
 		change_state("WallMovableState")
-	elif player.rc_down()  and player.is_movable_wall():
+	elif player.rc_down() and player.is_movable_wall():
 		change_state("WallMovableState")

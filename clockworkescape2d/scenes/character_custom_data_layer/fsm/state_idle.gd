@@ -11,7 +11,6 @@ func Enter(player_node):
 	player.can_coyote_jump = true
 	player.is_player_moving = false
 	player.set_can_grab(true)
-	player.switch_ray_casts_on()
 	player.update_animation(player.animations.IDLE)
 
 func Physics_Update(_delta):

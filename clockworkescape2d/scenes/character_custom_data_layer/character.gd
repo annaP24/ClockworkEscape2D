@@ -45,7 +45,7 @@ class_name PlayerFsmCustomDataLayer
 #var curr_nr_collectables : int = 0
 #var is_player_moving : bool = false
 
-enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
+#enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
 
 # TODO Spawn State und Die State hinzufügen
 
@@ -62,11 +62,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	Debug.print_value("State Alternative:", fsm.current_state)
 	Debug.print_value("JumpCount Alternative:", jump_count)
-	print(fsm.current_state)
-	#print(rc_not_colliding())
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and not get_is_shape_cast_colliding():
-		#grab_timer.start()
 		set_can_grab(true)
 
 func apply_gravity(new_gravity : float, delta : float):
@@ -115,12 +112,12 @@ func get_nr_of_collected_items()->int:
 	return curr_nr_collectables
 
 func normalize_movement(direction : float) -> float:
-	if direction < 0:
-		return -1
-	elif direction > 0:
-		return 1
+	if direction < 0.0:
+		return -1.0
+	elif direction > 0.0:
+		return 1.0
 	else:
-		return 0
+		return 0.0
 
 func get_colliding_tile_type() -> Array:
 	var current_tiles = []
@@ -143,15 +140,7 @@ func get_colliding_tile_type() -> Array:
 				var tile_type = tile_data.get_custom_data("tile_id")
 				if tile_type != "" and !current_tiles.has(tile_type):
 					current_tiles.append(tile_type)
-			#return handle_tile_collision(tile_type)
 	return current_tiles
-
-func is_colliding_with_walkable_wall() -> bool :
-	var collider = get_colliding_tile_type()
-	if (collider.has("walkable") or collider.has("basic")) and get_is_shape_cast_colliding():
-		return true
-	else:
-		return false
 
 func get_walkable_wall_side() -> WallSide:
 	# Check Slide Collisions (Active movement)
@@ -218,12 +207,8 @@ func rc_down() -> bool:
 func get_wall_grab_collider():
 	if rc_left():
 		return get_collider_left()
-	elif rc_up():
-		return get_collider_up()
 	elif rc_right():
 		return get_collider_right()
-	elif rc_down():
-		return get_collider_down()
 
 func rc_not_colliding():
 	return !rc_right() and !rc_left() and !rc_up() and !rc_down()
@@ -235,14 +220,6 @@ func get_collider_left():
 func get_collider_right():
 	if  $Raycasts/RayCastRight.is_colliding():
 		return  $Raycasts/RayCastRight.get_collider()
-
-func get_collider_up():
-	if  $Raycasts/RayCastUp.is_colliding():
-		return  $Raycasts/RayCastUp.get_collider()
-
-func get_collider_down():
-	if  $Raycasts/RayCastDown.is_colliding():
-		return  $Raycasts/RayCastDown.get_collider()
 
 func set_can_grab(grab : bool):
 	# rücksetzen des states nach einer gewissen zeit
@@ -261,45 +238,10 @@ func get_collision_points() -> Array:
 func get_can_grab() -> bool:
 	return can_grab
 
-func switch_ray_casts_on():
-	for rc in get_node("Raycasts").get_children():
-		rc.enabled = true
-
-func switch_ray_casts_off():
-	for rc in get_node("Raycasts").get_children():
-		rc.enabled = false
-
-func switch_rc_up_off():
-	$Raycasts/RayCastUp.enabled = false
-
-func switch_rc_left_off():
-	$Raycasts/RayCastLeft.enabled = false
-
-func switch_rc_right_off():
-	$Raycasts/RayCastRight.enabled = false
-
-func get_wall_collision():
-	return $Raycasts/RayCastWallLeft.is_colliding() or $Raycasts/RayCastWallRight.is_colliding()
-
-func get_wall_collider():
-	if $Raycasts/RayCastWallLeft.is_colliding():
-		return $Raycasts/RayCastWallLeft.get_collider()
-	elif $Raycasts/RayCastWallRight.is_colliding():
-		return $Raycasts/RayCastWallRight.get_collider()
-
-func get_rc_collider():
-	if $Raycasts/RayCastLeft.is_colliding():
-		return  $Raycasts/RayCastLeft.get_collider()
-	elif $Raycasts/RayCastRight.is_colliding():
-		return  $Raycasts/RayCastRight.get_collider()
-	elif $Raycasts/RayCastUp.is_colliding():
-		return  $Raycasts/RayCastUp.get_collider()
-
 func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
-	#coyote_jump_timer_started = false
 	can_coyote_jump = false
 
 func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:
@@ -319,16 +261,30 @@ func _on_character_animated_animation_finished() -> void:
 func _on_grab_timer_timeout() -> void:
 	set_can_grab(true)
 
-func is_movable_wall() -> bool:
-	var wall_instance = get_wall_grab_collider()
-	if wall_instance:
-		if wall_instance is PlatformDetectionArea:
-			return true
-	return false
+#func is_movable_wall() -> bool:
+	#var wall_instance = get_wall_grab_collider()
+	#if wall_instance:
+		#if wall_instance is PlatformDetectionArea:
+			#return true
+	#return false
+func is_movable_wall() -> WallSide:
+	for collision_point in shape_cast_2d.get_collision_count():
+		var collider = shape_cast_2d.get_collider(collision_point)
+		if collider is PlatformDetectionArea:
+			return get_wall_side_from_shape_cast(collision_point)
+	return WallSide.NONE
 
-func is_normal_wall() -> bool:
-	var wall_instance = get_wall_grab_collider() #TODO: könnte eindeutiger sein
-	if wall_instance:
-		if not wall_instance is PlatformDetectionArea:
-			return true
-	return false
+func get_wall_side_from_shape_cast(collision_point) -> WallSide:
+	var normal = shape_cast_2d.get_collision_normal(collision_point)
+	# Ensure it is vertical wall
+	if abs(normal.x) > 0.1:
+		if normal.x > 0.1:
+			return WallSide.LEFT
+		elif normal.x < -0.1:
+			return WallSide.RIGHT
+	elif abs(normal.y) > 0.1:
+		if normal.y > 0.1:
+			return WallSide.UP
+		elif normal.y < -0.1:
+			return WallSide.DOWN
+	return WallSide.NONE

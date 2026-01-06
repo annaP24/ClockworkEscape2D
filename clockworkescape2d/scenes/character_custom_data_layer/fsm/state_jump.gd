@@ -2,11 +2,8 @@ extends FsmNodeState
 
 func Enter(player_node):
 	super(player_node)
-	#player.jump_button_released = false
-	#player.gravity = Vector2(0, player.jump_gravity)
 	jump()
 	player.jump_count -= 1
-	player_node.switch_ray_casts_on()
 	player.jump_buffer = false
 	player.can_coyote_jump = false
 

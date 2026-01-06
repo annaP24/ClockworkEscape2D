@@ -241,15 +241,17 @@ animation = &"full"
 autoplay = "full"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_wh2hg")
 target_position = Vector2(0, 0)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="Raycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, -34)
@@ -269,16 +271,6 @@ collide_with_areas = true
 [node name="RayCastDown" type="RayCast2D" parent="Raycasts"]
 target_position = Vector2(0, 36)
 collision_mask = 2
-collide_with_areas = true
-
-[node name="RayCastWallRight" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(36, 0)
-collision_mask = 8
-collide_with_areas = true
-
-[node name="RayCastWallLeft" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(-36, 0)
-collision_mask = 8
 collide_with_areas = true
 
 [node name="Comp2dHurtbox" type="Area2D" parent="."]

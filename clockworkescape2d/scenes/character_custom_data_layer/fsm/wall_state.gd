@@ -59,24 +59,24 @@ func get_roll_direction() -> RollDirection:
 	var y_axis = Input.get_axis("up", "down")
 	var x_axis = Input.get_axis("left", "right")
 
-	if player.rc_right() and y_axis > 0:
+	if player.get_walkable_wall_side() == player.WallSide.RIGHT and y_axis > 0:
 		return RollDirection.CW
-	if player.rc_right() and y_axis < 0:
+	if player.get_walkable_wall_side() == player.WallSide.RIGHT and y_axis < 0:
 		return RollDirection.CCW
 
-	if player.rc_left() and y_axis > 0:
+	if player.get_walkable_wall_side() == player.WallSide.LEFT and y_axis > 0:
 		return RollDirection.CCW
-	if player.rc_left() and y_axis < 0:
+	if player.get_walkable_wall_side() == player.WallSide.LEFT and y_axis < 0:
 		return RollDirection.CW
 
-	if player.rc_up() and x_axis > 0:
+	if player.get_walkable_wall_side() == player.WallSide.UP and x_axis > 0:
 		return RollDirection.CW
-	if player.rc_up() and x_axis < 0:
+	if player.get_walkable_wall_side() == player.WallSide.UP and x_axis < 0:
 		return RollDirection.CCW
 
-	if player.rc_down() and x_axis > 0:
+	if player.get_walkable_wall_side() == player.WallSide.DOWN and x_axis > 0:
 		return RollDirection.CCW
-	if player.rc_down() and x_axis < 0:
+	if player.get_walkable_wall_side() == player.WallSide.DOWN and x_axis < 0:
 		return RollDirection.CW
 
 	return RollDirection.CW

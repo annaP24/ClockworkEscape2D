@@ -50,6 +50,9 @@ func Physics_Update(delta):
 	elif player.get_walkable_wall_side() != player.WallSide.NONE:
 		if player.get_can_grab():
 			change_state("WallContactState")
+	elif player.is_movable_wall() != player.WallSide.NONE:
+		if player.get_can_grab():
+			change_state("WallContactState")
 
 func squash_on_land():
 	var tween = get_parent().create_tween()

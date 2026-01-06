@@ -14,11 +14,11 @@ var wall_instance  = null
 
 func Enter(player_node):
 	super(player_node)
-	
+
 	wall_instance = player.get_wall_grab_collider()
 	if wall_instance.has_method("is_platform_detection_area"):
 		check_if_moving_wall(wall_instance)
-	
+
 func Physics_Update(delta):
 	if not player.is_movable:
 		return

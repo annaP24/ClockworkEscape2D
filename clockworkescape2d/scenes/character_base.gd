@@ -43,6 +43,8 @@ var fall_velocity : float = 1200.0
 var curr_nr_collectables : int = 0
 var is_player_moving : bool = false
 
+enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
+
 
 # TODO Spawn State und Die State hinzufügen
 
@@ -284,12 +286,8 @@ func _on_character_animated_animation_finished() -> void:
 func _on_grab_timer_timeout() -> void:
 	set_can_grab(true)
 
-func is_movable_wall() -> bool:
-	var wall_instance = get_wall_grab_collider()
-	if wall_instance:
-		if wall_instance is PlatformDetectionArea:
-			return true
-	return false
+func is_movable_wall() -> WallSide:
+	return WallSide.NONE
 
 func is_normal_wall() -> bool:
 	var wall_instance = get_wall_grab_collider() #TODO: könnte eindeutiger sein
