@@ -1,6 +1,6 @@
 extends GPUParticles2D
 
-@onready var player : PlayerFSM
+@onready var player : Character
 
 func _ready() -> void:
 	player = get_parent()

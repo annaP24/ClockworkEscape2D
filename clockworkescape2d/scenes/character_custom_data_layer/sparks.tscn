@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://c35feoy2jbarb"]
+
+[ext_resource type="Texture2D" uid="uid://dak0s83mdq473" path="res://scenes/character_custom_data_layer/assets/sparks/flake_4_4.png" id="1_3qew0"]
+[ext_resource type="Script" uid="uid://dfyd562wv7ljb" path="res://scenes/character_custom_data_layer/sparks.gd" id="2_sgfrl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gffsi"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_folvt"]
+colors = PackedColorArray(0.9564174, 0.5847093, 0, 1, 1, 0.74509805, 0.13725491, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1b3d4"]
+gradient = SubResource("Gradient_folvt")
+
+[sub_resource type="Curve" id="Curve_yeqj5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9943181, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x686s"]
+curve = SubResource("Curve_yeqj5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhkn8"]
+particle_flag_disable_z = true
+direction = Vector3(-0.5, 1, 0)
+spread = 70.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 300, 0)
+damping_max = 20.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_x686s")
+color_ramp = SubResource("GradientTexture1D_1b3d4")
+
+[node name="Sparks" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_gffsi")
+amount = 25
+texture = ExtResource("1_3qew0")
+lifetime = 0.55
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yhkn8")
+script = ExtResource("2_sgfrl")

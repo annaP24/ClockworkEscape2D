@@ -12,7 +12,7 @@ signal is_not_active
 var is_active_emitted : bool = false
 var is_not_active_emitted : bool = true
 
-var player : PlayerFSM
+var player : Character
 
 func _process(_delta: float) -> void:
 	if player:

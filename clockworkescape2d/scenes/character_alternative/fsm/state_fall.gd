@@ -6,7 +6,7 @@ func Enter(player_node):
 func Physics_Update(delta):
 	if not player.is_movable:
 		return
-		
+
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
 	inputX = player.normalize_movement(inputX)
@@ -21,13 +21,13 @@ func Physics_Update(delta):
 		player.apply_gravity(player.fall_gravity, delta)
 
 	player.move_and_slide()
-	
+
 	# jump buffer start
 	if Input.is_action_just_pressed("jump"):
 		player.jump_buffer = true
 		player.jump_buffer_timer.start(player.jump_buffer_timeout)
-	
-	
+
+
 	# Double jump
 	if Input.is_action_just_pressed("jump") and player.jump_count > 0:
 		change_state("JumpState")

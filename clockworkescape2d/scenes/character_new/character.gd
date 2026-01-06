@@ -1,5 +1,5 @@
-extends CharacterBody2D
-class_name PlayerFSM
+extends Character
+#class_name Character
 
 signal player_died
 

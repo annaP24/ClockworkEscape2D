@@ -9,26 +9,26 @@ func Enter(player_node):
 	# Stoppe den Player
 	player.velocity = Vector2.ZERO
 	falldown_timer.start(falldown_time)
-	
+
 	player.update_animation(player.animations.IDLE)
 
-func Physics_Update(delta):
+func Physics_Update(_delta):
 	if not player.is_movable:
 		return
-		
+
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
 	inputX = player.normalize_movement(inputX)
-	
+
 	# Move player y-axis
 	var inputY = Input.get_axis("up", "down")
 	inputY = player.normalize_movement(inputY)
 
 	#Apply gravity
-	
+
 	#player.move_and_slide()
-	print(player.is_movable_wall())
-	
+	#print(player.is_movable_wall())
+
 	if falldown_timer.is_stopped():
 		player.set_can_grab(false)
 		change_state("FallState")

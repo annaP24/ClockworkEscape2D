@@ -1,6 +1,6 @@
 extends FsmNodeState
 
-func Enter(player_node : PlayerFSM):
+func Enter(player_node : Character):
 	player = player_node
 	player.gravity = Vector2(0, 0)
 

@@ -14,19 +14,19 @@ func Enter(player_node):
 	player.switch_ray_casts_on()
 	player.update_animation(player.animations.IDLE)
 
-func Physics_Update(delta):
+func Physics_Update(_delta):
 	if not player.is_movable:
 		return
-		
+
 	# Move player x-axis
 	player.move_player_x(0.0)
 
 	# Move player y-axis
-	
+
 	# Apply gravity
-	
+
 	player.move_and_slide()
-	
+
 	#Input reactions
 	if !player.is_on_floor():
 		change_state("FallState")
@@ -40,7 +40,7 @@ func Physics_Update(delta):
 		change_state("RunState")
 	elif Input.is_action_pressed("left") and !player.rc_left():
 		change_state("RunState")
-	elif player.rc_left()  and  Input.is_action_pressed("up"):
+	elif player.rc_left() and Input.is_action_pressed("up"):
 		change_state("WallContactState")
 	elif player.rc_right() and Input.is_action_pressed("up"):
 		change_state("WallContactState")

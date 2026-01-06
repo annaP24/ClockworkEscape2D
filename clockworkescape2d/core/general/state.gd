@@ -1,20 +1,20 @@
 extends Node
 class_name FsmNodeState
 
-var player
+var player : PlayerFsmCustomDataLayer
 
 func Enter(player_node):
 	player = player_node
-	
-	
+
+
 func Update(_delta):
 	pass
-	
-	
+
+
 func Physics_Update(_delta):
 	pass
-	
-	
+
+
 func Exit():
 	pass
 

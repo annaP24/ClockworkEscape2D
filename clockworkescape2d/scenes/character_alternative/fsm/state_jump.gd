@@ -16,14 +16,14 @@ func jump():
 func Physics_Update(delta):
 	if not player.is_movable:
 		return
-		
+
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
 	inputX = player.normalize_movement(inputX)
 	player.move_player_x(inputX)
-	
+
 	# Move player y-axis
-	
+
 	#Apply gravity
 	player.apply_gravity(player.jump_gravity, delta)
 
