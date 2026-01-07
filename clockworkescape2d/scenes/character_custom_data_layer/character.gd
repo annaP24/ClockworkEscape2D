@@ -1,51 +1,49 @@
-extends Character
+extends CharacterBody2D
 
 class_name PlayerFsmCustomDataLayer
 
-#signal player_died
-#
-#@export var max_speed : float = 300.0
-#@export var max_jump_count : int = 1
-#@export var jump_height : float = 192 # 3*64px
-#@export var jump_gravity : float = 2000.0
-#@export var fall_gravity : float = 3600.0
-#@export var jump_buffer_timeout : float = 0.3
-#@export var coyote_timeout : float = 0.1
-#@export var gravity_coef : float = 5.0
-#@export var move_acc : float = 50.0
-#@export var move_dec : float = 100.0
-#@export var wall_jump_count_max : int = 1
-#
-#@onready var fsm: CompFsmNode = $FSM
-#@onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
-#@onready var jump_buffer_timer: Timer = $JumpBuffer
-#@onready var coyote_timer: Timer = $CoyoteTimer
-#@onready var grab_timer: Timer = $GrabTimer
-#@onready var squash_marker: Marker2D = $SquashMarker
-#@onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
-#@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
-#@onready var sparks: GPUParticles2D = $Sparks
-#
-#enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
-#
-#var gravity : float = 0.0
-#var jump_buffer : bool = false
-##var jump_button_released : bool = false
-#var jump_count : int = 0
-#var can_coyote_jump : bool = false
-##var coyote_jump_timer_started : bool = false
-#var is_movable : bool = false
-#var coil_push_active : bool = false
-#var coil_jump_pressed : bool = false
-#var jump_velocity : float = 0.0
-#var player_died_received : bool = false
-#var wall_jump_count : int
-#var can_grab : bool = true
-#var fall_velocity : float = 1200.0
-#var curr_nr_collectables : int = 0
-#var is_player_moving : bool = false
+signal player_died
 
-#enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
+@export var max_speed : float = 300.0
+@export var max_jump_count : int = 1
+@export var jump_height : float = 192 # 3*64px
+@export var jump_gravity : float = 2000.0
+@export var fall_gravity : float = 3600.0
+@export var jump_buffer_timeout : float = 0.3
+@export var coyote_timeout : float = 0.1
+@export var gravity_coef : float = 5.0
+@export var move_acc : float = 50.0
+@export var move_dec : float = 100.0
+@export var wall_jump_count_max : int = 1
+
+@onready var fsm: CompFsmNode = $FSM
+@onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
+@onready var jump_buffer_timer: Timer = $JumpBuffer
+@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var grab_timer: Timer = $GrabTimer
+@onready var squash_marker: Marker2D = $SquashMarker
+@onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+@onready var sparks: GPUParticles2D = $Sparks
+
+enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
+
+var gravity : float = 0.0
+var jump_buffer : bool = false
+var jump_count : int = 0
+var can_coyote_jump : bool = false
+var is_movable : bool = false
+var coil_push_active : bool = false
+var coil_jump_pressed : bool = false
+var jump_velocity : float = 0.0
+var player_died_received : bool = false
+var wall_jump_count : int
+var can_grab : bool = true
+var fall_velocity : float = 1200.0
+var curr_nr_collectables : int = 0
+var is_player_moving : bool = false
+
+enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
 
 # TODO Spawn State und Die State hinzufügen
 
@@ -63,7 +61,7 @@ func _process(_delta: float) -> void:
 	Debug.print_value("State Alternative:", fsm.current_state)
 	Debug.print_value("JumpCount Alternative:", jump_count)
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
-	if not get_can_grab() and not get_is_shape_cast_colliding():
+	if not get_can_grab() and get_collision_points().size() == 0:
 		set_can_grab(true)
 
 func apply_gravity(new_gravity : float, delta : float):
@@ -119,6 +117,7 @@ func normalize_movement(direction : float) -> float:
 	else:
 		return 0.0
 
+#------------------------RayCast management -----------------------------
 func get_colliding_tile_type() -> Array:
 	var current_tiles = []
 	for i in get_slide_collision_count():
@@ -155,78 +154,26 @@ func get_walkable_wall_side() -> WallSide:
 			var tile_data = collider.get_cell_tile_data(map_pos)
 
 			if tile_data and tile_data.get_custom_data("tile_id") == "walkable":
-				# If normal.x is positive, wall is on the left
-				# If normal.x is negative, wall is on the right
+
 				var normal = collision_info.get_normal()
-				if normal.x > 0.1:
-					return WallSide.LEFT
-				elif normal.x < -0.1:
-					return WallSide.RIGHT
-				elif normal.y > 0.1:
-					return WallSide.UP
-				elif normal.y < -0.1:
-					return WallSide.DOWN
+				return get_wall_side_from_normal(normal)
 	# Check ShapeCast if no "walkable" tile was detected (Idle case)
 	if shape_cast_2d.is_colliding():
 		for collision_point in shape_cast_2d.get_collision_count():
 			var collider = shape_cast_2d.get_collider(collision_point)
 			if collider is TileMapLayer:
-				# Use collision normal from ShapeCast
+				# Get collision normal from ShapeCast
 				var normal = shape_cast_2d.get_collision_normal(collision_point)
-
-				## Get collision point to verify tile data
-				#var point = shape_cast_2d.get_collision_point(collision_point) - normal * 4
-				#var map_pos = collider.local_to_map(collider.to_local(point))
-				#var tile_data = collider.get_cell_tile_data(map_pos)
-				#var cust_data =  tile_data.get_custom_data("tile_id")
-				#if tile_data: # and tile_data.get_custom_data("tile_id") == "walkable":
-					# Ensure it is vertical wall
-				if abs(normal.x) > 0.1:
-					if normal.x > 0.1:
-						return WallSide.LEFT
-					elif normal.x < -0.1:
-						return WallSide.RIGHT
-				elif abs(normal.y) > 0.1:
-					if normal.y > 0.1:
-						return WallSide.UP
-					elif normal.y < -0.1:
-						return WallSide.DOWN
+				return get_wall_side_from_normal(normal)
 
 	return WallSide.NONE
-
-#------------------------RayCast management -----------------------------
-func rc_left() -> bool:
-	return $Raycasts/RayCastLeft.is_colliding()
-func rc_right() -> bool:
-	return $Raycasts/RayCastRight.is_colliding()
-func rc_up() -> bool:
-	return $Raycasts/RayCastUp.is_colliding()
-func rc_down() -> bool:
-	return $Raycasts/RayCastDown.is_colliding()
-
-func get_wall_grab_collider():
-	if rc_left():
-		return get_collider_left()
-	elif rc_right():
-		return get_collider_right()
-
-func rc_not_colliding():
-	return !rc_right() and !rc_left() and !rc_up() and !rc_down()
-
-func get_collider_left():
-	if $Raycasts/RayCastLeft.is_colliding():
-		return  $Raycasts/RayCastLeft.get_collider()
-
-func get_collider_right():
-	if  $Raycasts/RayCastRight.is_colliding():
-		return  $Raycasts/RayCastRight.get_collider()
 
 func set_can_grab(grab : bool):
 	# rücksetzen des states nach einer gewissen zeit
 	can_grab = grab
 
-func get_is_shape_cast_colliding() -> bool:
-	return shape_cast_2d.is_colliding()
+func get_can_grab() -> bool:
+	return can_grab
 
 func get_collision_points() -> Array:
 	var collision_points : Array = []
@@ -235,15 +182,45 @@ func get_collision_points() -> Array:
 		collision_points.append(point)
 	return collision_points
 
-func get_can_grab() -> bool:
-	return can_grab
+func get_movable_wall_side() -> WallSide:
+	for collision_point in shape_cast_2d.get_collision_count():
+		var collider = shape_cast_2d.get_collider(collision_point)
+		if collider is PlatformDetectionArea:
+			# Get collision normal from ShapeCast
+			var normal = shape_cast_2d.get_collision_normal(collision_point)
+			return get_wall_side_from_normal(normal)
+	return WallSide.NONE
 
+func get_movable_wall_collider():
+	for collision_point in shape_cast_2d.get_collision_count():
+		var collider = shape_cast_2d.get_collider(collision_point)
+		if collider is PlatformDetectionArea:
+			return collider
+
+func get_wall_side_from_normal(normal) -> WallSide:
+	# If normal.x is positive, wall is on the left
+	# If normal.x is negative, wall is on the right
+	# If normal.y is positive, wall is on the up
+	# If normal.y is negative, wall is on the down
+	if abs(normal.x) > 0.1:
+		if normal.x > 0.1:
+			return WallSide.LEFT
+		elif normal.x < -0.1:
+			return WallSide.RIGHT
+	elif abs(normal.y) > 0.1:
+		if normal.y > 0.1:
+			return WallSide.UP
+		elif normal.y < -0.1:
+			return WallSide.DOWN
+	return WallSide.NONE
+# -------------------- Timers -------------------------------------------------
 func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
 	can_coyote_jump = false
 
+# -------------------- On Signal Received -------------------------------------
 func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:
 	update_animation(animations.DIE)
 
@@ -257,34 +234,3 @@ func _on_character_animated_animation_finished() -> void:
 			get_tree().reload_current_scene()
 		else:
 			player_died.emit()
-
-func _on_grab_timer_timeout() -> void:
-	set_can_grab(true)
-
-#func is_movable_wall() -> bool:
-	#var wall_instance = get_wall_grab_collider()
-	#if wall_instance:
-		#if wall_instance is PlatformDetectionArea:
-			#return true
-	#return false
-func is_movable_wall() -> WallSide:
-	for collision_point in shape_cast_2d.get_collision_count():
-		var collider = shape_cast_2d.get_collider(collision_point)
-		if collider is PlatformDetectionArea:
-			return get_wall_side_from_shape_cast(collision_point)
-	return WallSide.NONE
-
-func get_wall_side_from_shape_cast(collision_point) -> WallSide:
-	var normal = shape_cast_2d.get_collision_normal(collision_point)
-	# Ensure it is vertical wall
-	if abs(normal.x) > 0.1:
-		if normal.x > 0.1:
-			return WallSide.LEFT
-		elif normal.x < -0.1:
-			return WallSide.RIGHT
-	elif abs(normal.y) > 0.1:
-		if normal.y > 0.1:
-			return WallSide.UP
-		elif normal.y < -0.1:
-			return WallSide.DOWN
-	return WallSide.NONE

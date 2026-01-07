@@ -1,22 +1,15 @@
 extends FsmNodeState
 
-#var direction : int = 0
 var is_moving_wall : bool = false
 var moving_wall_speed : float = 0.0
 var wall_moving_direction : Vector2 = Vector2.ZERO
-#var is_player_moving : bool = false
-#var dir : float = 0.0
-#var movement_timer : Timer
-#var tangent_coef : int = 1
-#var wall_grab_timeout : float = 0.1
-var wall_instance  = null
-#var player_last_position : Vector2 = Vector2.ZERO
+var wall_instance = null
 
 func Enter(player_node):
 	super(player_node)
 
-	wall_instance = player.get_wall_grab_collider()
-	if wall_instance.has_method("is_platform_detection_area"):
+	wall_instance = player.get_movable_wall_collider()
+	if wall_instance != null:
 		check_if_moving_wall(wall_instance)
 
 func Physics_Update(delta):

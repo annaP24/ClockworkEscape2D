@@ -28,7 +28,6 @@ func Physics_Update(_delta):
 	# Apply gravity
 
 	player.move_and_slide()
-	var colliders = player.get_colliding_tile_type()
 
 	#Input reactions
 	if !player.is_on_floor():

@@ -27,8 +27,6 @@ func Physics_Update(_delta):
 	#Apply gravity
 
 	player.move_and_slide()
-	#print(player.is_movable_wall())
-	#var colliders = player.get_colliding_tile_type()
 
 	if falldown_timer.is_stopped():
 		player.set_can_grab(false)
@@ -43,11 +41,13 @@ func Physics_Update(_delta):
 		change_state("WallState")
 	elif player.get_walkable_wall_side() != player.WallSide.NONE and inputX != 0:
 		change_state("WallState")
-	elif player.rc_right() and player.is_movable_wall():
+	elif player.get_movable_wall_side() != player.WallSide.NONE:
 		change_state("WallMovableState")
-	elif player.rc_left() and player.is_movable_wall():
-		change_state("WallMovableState")
-	elif player.rc_up() and player.is_movable_wall():
-		change_state("WallMovableState")
-	elif player.rc_down() and player.is_movable_wall():
-		change_state("WallMovableState")
+	#elif player.rc_right() and player.get_movable_wall_side():
+		#change_state("WallMovableState")
+	#elif player.rc_left() and player.get_movable_wall_side():
+		#change_state("WallMovableState")
+	#elif player.rc_up() and player.get_movable_wall_side():
+		#change_state("WallMovableState")
+	#elif player.rc_down() and player.get_movable_wall_side():
+		#change_state("WallMovableState")

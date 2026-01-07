@@ -33,7 +33,6 @@ func Physics_Update(delta):
 		player.jump_buffer = true
 		player.jump_buffer_timer.start(player.jump_buffer_timeout)
 
-
 	# Double jump
 	if Input.is_action_just_pressed("jump") and player.jump_count > 0:
 		change_state("JumpState")
@@ -50,7 +49,7 @@ func Physics_Update(delta):
 	elif player.get_walkable_wall_side() != player.WallSide.NONE:
 		if player.get_can_grab():
 			change_state("WallContactState")
-	elif player.is_movable_wall() != player.WallSide.NONE:
+	elif player.get_movable_wall_side() != player.WallSide.NONE:
 		if player.get_can_grab():
 			change_state("WallContactState")
 

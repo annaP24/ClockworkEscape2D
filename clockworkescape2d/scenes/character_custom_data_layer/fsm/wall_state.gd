@@ -25,7 +25,7 @@ func Physics_Update(_delta):
 
 	# Normale zur Wand ermitteln
 	var col_dir
-	if player.get_is_shape_cast_colliding():
+	if player.get_collision_points().size() > 0:
 		col_dir = (player.get_collision_points()[0] - player.global_position).normalized()
 	else:
 		col_dir = Vector2.ZERO
@@ -46,9 +46,6 @@ func Physics_Update(_delta):
 			not Input.is_action_pressed("down"):
 		player.set_can_grab(false)
 		change_state("FallState")
-	#elif player.rc_not_colliding() and !player.get_is_shape_cast_colliding():
-		#player.set_can_grab(false)
-		#change_state("FallState")
 	elif player.get_walkable_wall_side() == player.WallSide.NONE:
 		player.set_can_grab(false)
 		change_state("FallState")
