@@ -14,28 +14,28 @@ tile_map_data = PackedByteArray("AAAAAAAABQAAAAAAAAAAAAEABQACAAIAAAAAAAIABQACAAI
 position = Vector2(903, 136)
 
 [node name="Small_platform" parent="Platforms" index="0" instance=ExtResource("2_1fkex")]
-position = Vector2(624.6153, 447.69238)
+position = Vector2(684.6154, 447.69232)
 
 [node name="Small_platform3" parent="Platforms" index="1" instance=ExtResource("2_1fkex")]
-position = Vector2(444.61536, 852.30774)
+position = Vector2(509.2308, 884.6154)
 
 [node name="Small_platform4" parent="Platforms" index="2" instance=ExtResource("2_1fkex")]
-position = Vector2(772.30774, 730.7693)
+position = Vector2(821.5385, 752.30774)
 
 [node name="Small_platform2" parent="Platforms" index="3" instance=ExtResource("2_1fkex")]
-position = Vector2(320, 532.3077)
+position = Vector2(369.23077, 532.30774)
 
 [node name="Small_platform5" parent="Platforms" index="4" instance=ExtResource("2_1fkex")]
-position = Vector2(1100, 716.9231)
+position = Vector2(1160, 752.30774)
 
 [node name="Small_platform6" parent="Platforms" index="5" instance=ExtResource("2_1fkex")]
-position = Vector2(1344.6155, 856.9231)
+position = Vector2(1473.8462, 884.6154)
 
 [node name="Small_platform8" parent="Platforms" index="6" instance=ExtResource("2_1fkex")]
-position = Vector2(1260.0001, 449.23077)
+position = Vector2(1315.3846, 449.23077)
 
 [node name="Small_platform9" parent="Platforms" index="7" instance=ExtResource("2_1fkex")]
-position = Vector2(1570.7693, 547.6923)
+position = Vector2(1618.4615, 547.6923)
 
 [node name="Pendent" parent="Obstacles" index="0" instance=ExtResource("3_7h6n5")]
 position = Vector2(370, 555)

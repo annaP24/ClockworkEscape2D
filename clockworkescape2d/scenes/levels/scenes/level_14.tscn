@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="5_3rxbh"]
 
 [node name="Level_14" instance=ExtResource("1_3e21h")]
+level_id = 14
 metadata/_edit_horizontal_guides_ = [569.0, 357.0]
 
 [node name="TileMapLayer_2" parent="." index="1"]

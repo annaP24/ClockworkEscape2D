@@ -11,11 +11,9 @@ var is_level_manager_visible : bool = true
 var max_level_reached : int = 1
 
 func _ready() -> void:
-	start_menu.visible = true
-	world_map.visible = is_level_manager_visible
+	_set_start_menu_visible(true)
+	_set_world_map_visible(is_level_manager_visible)
 	_pause_world_map(true)
-	get_tree().paused = true
-	#world_map.get_tree().paused = !is_level_manager_visible
 	max_level_reached = GameManager.load_progress()
 	world_map.unlock_levels()
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
@@ -23,13 +21,19 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("return"):
 		_set_start_menu_visible(true)
-		get_tree().paused = true
+		_pause_world_map(true)
 
 func _set_start_menu_visible(sm_is_visible : bool):
 	start_menu.visible = sm_is_visible
 
+func _set_world_map_visible(is_world_map_visible : bool):
+	world_map.visible = is_world_map_visible
+
 func _pause_world_map(is_paused : bool):
 	get_tree().paused = is_paused
+
+func _set_camera_enabled(is_camera_enabled : bool):
+	world_map.camera_2d.enabled = is_camera_enabled
 
 func load_level(path_to_level : String):
 	if path_to_level != "":
@@ -47,9 +51,8 @@ func load_level(path_to_level : String):
 			current_level_instance.connect("load_next_level", _on_load_next_level_received)
 			scene_placeholder.call_deferred("add_child", current_level_instance)
 		is_level_manager_visible = false
-		world_map.visible = is_level_manager_visible
-		#world_map.get_tree().paused = !is_level_manager_visible
-		world_map.camera_2d.enabled = false
+		_set_world_map_visible(is_level_manager_visible)
+		_set_camera_enabled(false)
 
 func _unload_level():
 	if current_level_instance:
@@ -63,9 +66,12 @@ func  _on_player_finished():
 func _on_fade_out_finished():
 	if is_level_manager_visible:
 		_unload_level()
-		world_map.visible = is_level_manager_visible
-		#world_map.get_tree().paused = !is_level_manager_visible
-		world_map.camera_2d.enabled = is_level_manager_visible
+		# Enable world map visibility and enable camera
+		# Disable visibility of start menu
+		_set_world_map_visible(is_level_manager_visible)
+		_pause_world_map(false)
+		_set_camera_enabled(is_level_manager_visible)
+		_set_start_menu_visible(false)
 		FadeScreen.fade_in()
 	else:
 		load_level(current_level_path)
@@ -75,6 +81,7 @@ func _on_quit_level_received():
 	FadeScreen.fade_out()
 
 func _on_restart_level_received():
+	_pause_world_map(false)
 	is_level_manager_visible = false
 	FadeScreen.fade_out()
 
@@ -91,10 +98,9 @@ func _on_load_next_level_received(level_id : int):
 	load_level(GameManager.get_next_level_path())
 	FadeScreen.fade_out()
 
-
 func _on_start_menu_start_game() -> void:
 	_set_start_menu_visible(false)
-	get_tree().paused = false
+	_pause_world_map(false)
 
 func _on_start_menu_settings() -> void:
 	pass # Replace with function body.

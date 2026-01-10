@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	global_position = global_position.move_toward(current_target, move_speed * delta)
 
 func _on_switch_is_active():
-	move_delay_timer.stop() # Cancel any pending return
+	move_delay_timer.stop() # Cancel timers
 	current_target = target_position
 
 func _on_switch_is_not_active():

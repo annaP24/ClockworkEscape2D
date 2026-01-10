@@ -1,6 +1,5 @@
 [gd_scene load_steps=14 format=3 uid="uid://cuikgl8rqp8ks"]
 
-[ext_resource type="PackedScene" uid="uid://bhsn1ix3s4xed" path="res://scenes/character_new/character.tscn" id="1_h86pu"]
 [ext_resource type="PackedScene" uid="uid://iglwn8ym85pe" path="res://scenes/obstacles/arrows/arrow.tscn" id="2_j32il"]
 [ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/arrows/arrow_shooter.tscn" id="3_fyn2c"]
 [ext_resource type="PackedScene" uid="uid://bd0enwr66l8nf" path="res://scenes/obstacles/lightning/lightning.tscn" id="4_lw2b8"]
@@ -12,12 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="10_i7v0e"]
 [ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="11_v1cav"]
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="12_54nck"]
+[ext_resource type="PackedScene" uid="uid://cilixg1nlqqri" path="res://scenes/character_custom_data_layer/character.tscn" id="13_i7v0e"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="13_kku85"]
 
 [node name="zoo" type="Node2D"]
-
-[node name="Character" parent="." instance=ExtResource("1_h86pu")]
-position = Vector2(129, 32)
 
 [node name="LabelInteractables" type="Label" parent="."]
 offset_left = 1000.0
@@ -74,3 +71,6 @@ position = Vector2(1174, 289)
 
 [node name="Collectable" parent="." instance=ExtResource("13_kku85")]
 position = Vector2(129, 131)
+
+[node name="Character" parent="." instance=ExtResource("13_i7v0e")]
+position = Vector2(129, 36)

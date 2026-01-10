@@ -30,7 +30,7 @@ crack_timeout = 0.3
 position = Vector2(507.69235, 63.076927)
 
 [node name="Door" parent="Interactables" index="0" node_paths=PackedStringArray("switch_1") instance=ExtResource("3_otuv6")]
-position = Vector2(1604.6155, 1024.6155)
+position = Vector2(1623.077, 1024.6155)
 switch_1 = NodePath("../Switch")
 
 [node name="Switch" parent="Interactables" index="1" instance=ExtResource("4_frpct")]

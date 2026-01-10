@@ -3,57 +3,49 @@ extends StaticBody2D
 @export var switch_2: Switch
 @onready var gpu_steam_particles: GPUParticles2D = $GPUSteamParticles
 @onready var sprites: Node2D = $Sprites
+@onready var move_delay_timer: Timer = $MoveDelayTimer
 
-var offset : float = 124.0
+var is_move_up : bool = true
+var wait_timeout : float = 0.3
+var max_move_offset : float = 124.0
 var init_position : Vector2 = Vector2.ZERO
-var is_door_opening : bool = false
-var is_door_closing : bool = false
-var is_door_inactive : bool = true
-var move_up_delta : float = 1.0
-var move_down_delta : float = 0.5
+var target_position : Vector2 = Vector2.ZERO
+var current_target : Vector2 = Vector2.ZERO
+var move_up_speed : float = 200.0
+var move_down_speed : float = 100.0
+var move_speed : float = 0.0
 
 func _ready() -> void:
-	init_position = sprites.global_position
+	move_delay_timer.wait_time = wait_timeout
+	init_position = global_position
+	move_speed = move_up_speed
+	var offset : Vector2 = Vector2.ZERO
+
+	if is_move_up:
+		move_speed = move_up_speed
+		offset = Vector2(0, max_move_offset * -1)
+	elif !is_move_up:
+		move_speed = move_down_speed
+		offset = Vector2(0, max_move_offset * 1)
+	target_position = init_position + offset
+	current_target = init_position
+
 	switch_1.is_active.connect(_on_switch_is_active)
 	switch_1.is_not_active.connect(_on_switch_is_not_active)
 	if switch_2:
 		switch_2.is_active.connect(_on_switch_is_active)
 		switch_2.is_not_active.connect(_on_switch_is_not_active)
 
-func _process(_delta: float) -> void:
-	if is_door_opening:
-		move_up()
-	elif is_door_closing:
-		move_down()
-	if is_door_inactive:
-		gpu_steam_particles.visible = false
-	elif !is_door_inactive:
-		gpu_steam_particles.visible = true
-
-func move_up():
-	if global_position.y < init_position.y - offset:
-		gpu_steam_particles.visible = false
-		is_door_inactive = true
-		return
-	global_position.y = global_position.y - move_up_delta
-
-func move_down():
-	if global_position.y > init_position.y:
-		gpu_steam_particles.visible = false
-		is_door_inactive = true
-		return
-	global_position.y = global_position.y + move_down_delta
-
+func _physics_process(delta: float) -> void:
+	global_position = global_position.move_toward(current_target, move_speed * delta)
 
 func _on_switch_is_active():
-	is_door_opening = true
-	is_door_closing = false
+	move_delay_timer.stop() # Cancel timers
+	current_target = target_position
 	gpu_steam_particles.visible = true
-	is_door_inactive = false
 
 func _on_switch_is_not_active():
-	if switch_2 != null:
-		is_door_closing = true
-		is_door_opening = false
-		gpu_steam_particles.visible = false
-		is_door_inactive = false
+	move_delay_timer.start()
+	gpu_steam_particles.visible = false
+func _on_move_delay_timer_timeout() -> void:
+	current_target = init_position

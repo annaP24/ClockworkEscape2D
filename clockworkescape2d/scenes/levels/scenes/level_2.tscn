@@ -20,7 +20,7 @@ position = Vector2(132, 1133)
 position = Vector2(592, 834)
 
 [node name="Small_platform2" parent="Platforms" index="1" instance=ExtResource("2_taw0y")]
-position = Vector2(897, 735)
+position = Vector2(896.9231, 767.6924)
 
 [node name="Dissapearing_platform" parent="Platforms" index="2" instance=ExtResource("3_vsrlq")]
 position = Vector2(678, 349)

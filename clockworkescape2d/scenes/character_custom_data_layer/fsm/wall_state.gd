@@ -3,8 +3,7 @@ extends FsmNodeState
 enum RollDirection {CW = 1, CCW = -1}
 
 var roll_direction : RollDirection = RollDirection.CW
-var tangent_coef : int = 1
-
+var tangent_coef : int = 30
 
 func Enter(player_node):
 	super(player_node)
@@ -30,9 +29,9 @@ func Physics_Update(_delta):
 	else:
 		col_dir = Vector2.ZERO
 	# Tangente berechnen
-	var tang = Vector2(col_dir.y, -col_dir.x) * tangent_coef
-	# player bewegen
-	player.velocity =  tang * -roll_direction * player.max_speed + col_dir * 20 # TODO evtl. delta hinzufügen
+	var tang = Vector2(col_dir.y, -col_dir.x)
+	# move player
+	player.velocity =  tang * -roll_direction * player.max_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
 
 	player.move_and_slide()
 	var colliders = player.get_colliding_tile_type()

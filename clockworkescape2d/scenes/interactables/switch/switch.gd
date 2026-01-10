@@ -12,7 +12,7 @@ signal is_not_active
 var is_active_emitted : bool = false
 var is_not_active_emitted : bool = true
 
-var player : Character
+var player : PlayerFsmCustomDataLayer
 
 func _process(_delta: float) -> void:
 	if player:
@@ -26,12 +26,13 @@ func _process(_delta: float) -> void:
 			is_active_emitted = false
 			is_not_active.emit()
 		# Switch rotation depending on wall
-		if is_left_wind:
-			switch_sprite.rotate(-25.0)
-			switch_sprite_small.rotate(25.0)
-		else:
-			switch_sprite.rotate(25.0)
-			switch_sprite_small.rotate(-25.0)
+		if player.is_player_moving:
+			if is_left_wind:
+				switch_sprite.rotate(-25.0)
+				switch_sprite_small.rotate(25.0)
+			else:
+				switch_sprite.rotate(25.0)
+				switch_sprite_small.rotate(-25.0)
 	else:
 		if !is_not_active_emitted:
 			is_not_active_emitted = true

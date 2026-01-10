@@ -71,3 +71,6 @@ lifetime = 0.79
 explosiveness = 0.21
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_57sya")
+
+[node name="MoveDelayTimer" type="Timer" parent="."]
+one_shot = true
