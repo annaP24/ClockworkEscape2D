@@ -221,7 +221,7 @@ script = ExtResource("8_320r6")
 metadata/_custom_type_script = "uid://jh8i4uv87bqn"
 
 [node name="falldown_timer" type="Timer" parent="FSM/WallContactState"]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="WallMovableState" type="Node" parent="FSM"]

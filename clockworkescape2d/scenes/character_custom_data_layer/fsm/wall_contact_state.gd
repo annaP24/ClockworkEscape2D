@@ -43,11 +43,3 @@ func Physics_Update(_delta):
 		change_state("WallState")
 	elif player.get_movable_wall_side() != player.WallSide.NONE:
 		change_state("WallMovableState")
-	#elif player.rc_right() and player.get_movable_wall_side():
-		#change_state("WallMovableState")
-	#elif player.rc_left() and player.get_movable_wall_side():
-		#change_state("WallMovableState")
-	#elif player.rc_up() and player.get_movable_wall_side():
-		#change_state("WallMovableState")
-	#elif player.rc_down() and player.get_movable_wall_side():
-		#change_state("WallMovableState")
