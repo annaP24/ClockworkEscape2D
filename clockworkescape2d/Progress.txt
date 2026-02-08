@@ -46,4 +46,16 @@
 - arrows fixed
 - Levels played and fixed some inconsistencies
 
+09.1.2026
+
+- New character w/o raycasts
+- Door movement code is better
+- Added level 16
+
+08.02.2026
+
+- Fixed character movement on walkable wall (overlay with normal wall)
+- Fixed door and platform movement
+- Revised levels 1-16
+- Fixed camera movement on main menu depending on input
 
