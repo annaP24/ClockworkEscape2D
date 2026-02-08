@@ -17,7 +17,8 @@ func _ready() -> void:
 
 func _input(event):
 	# Start dragging
-	if event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_MIDDLE or event.button_index == MOUSE_BUTTON_LEFT):
+	if event is InputEventMouseButton and \
+	(event.button_index == MOUSE_BUTTON_MIDDLE or event.button_index == MOUSE_BUTTON_LEFT):
 		if event.pressed:
 			dragging = true
 			drag_start_pos = event.position
@@ -26,7 +27,7 @@ func _input(event):
 			dragging = false
 
 	# Move camera while dragging
-	if event is InputEventMouseMotion and dragging:
+	if dragging:
 		var delta = (drag_start_pos - event.position) * drag_sensitivity
 		position = (camera_start_pos + delta).clamp(
 			Vector2(min_x, min_y),
@@ -34,15 +35,18 @@ func _input(event):
 		)
 
 func move_camera_with_selection(new_node : LevelNode):
+	# Zielposition berechnen (und innerhalb der Grenzen halten)
+	var target_y = clamp(new_node.position.y - 250, min_y, max_y)
+
+	# Distanz zwischen aktueller Position und Ziel berechnen
+	var distance = abs(self.position.y - target_y)
+
+	# Zeit basierend auf Distanz (z.B. 500 Pixel pro Sekunde)
+	var speed = 600.0
+	var duration = distance / speed
+
+	# Dauer begrenzen, damit es bei Minibewegungen nicht zu langsam ist
+	duration = clamp(duration, 0.2, 0.7)
+
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	if new_node.position.y < init_position.y:
-		# Scroll the camera to the new node
-		#var new_pos = new_node.global_position.clamp(Vector2(min_x, min_y), Vector2(max_x, max_y))
-		#print(new_node.global_position)
-		#print(new_pos)
-		tween.tween_property(self, "position:y", new_node.position.y - 250, 0.5)
-	else:
-		var new_pos = new_node.position.clamp(Vector2(min_x, min_y),
-			Vector2(max_x, max_y)
-		)
-		tween.tween_property(self, "position:y",new_pos.y, 0.5)
+	tween.tween_property(self, "position:y", target_y, duration)

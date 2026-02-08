@@ -38,7 +38,6 @@ func Physics_Update(delta):
 		change_state("JumpState")
 	# Normal Wall jump
 	elif Input.is_action_just_pressed("jump") and colliders.has("basic") and player.wall_jump_count > 0:
-		print("Jump from fall-wall state")
 		player.wall_jump_count = 0
 		change_state("JumpState")
 	elif Input.is_action_just_pressed("jump") and player.can_coyote_jump:

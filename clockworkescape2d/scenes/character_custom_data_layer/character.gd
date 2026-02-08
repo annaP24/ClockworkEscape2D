@@ -58,8 +58,8 @@ func _ready() -> void:
 	fsm.start()
 
 func _process(_delta: float) -> void:
-	Debug.print_value("State Alternative:", fsm.current_state)
-	Debug.print_value("JumpCount Alternative:", jump_count)
+	#Debug.print_value("State: ", fsm.current_state)
+	#Debug.print_value("JumpCount Alternative:", jump_count)
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and get_collision_points().size() == 0:
 		set_can_grab(true)
@@ -202,16 +202,18 @@ func get_wall_side_from_normal(normal) -> WallSide:
 	# If normal.x is negative, wall is on the right
 	# If normal.y is positive, wall is on the up
 	# If normal.y is negative, wall is on the down
-	if abs(normal.x) > 0.1:
-		if normal.x > 0.1:
-			return WallSide.LEFT
-		elif normal.x < -0.1:
-			return WallSide.RIGHT
-	elif abs(normal.y) > 0.1:
-		if normal.y > 0.1:
-			return WallSide.UP
-		elif normal.y < -0.1:
-			return WallSide.DOWN
+	if abs(normal.x) > abs(normal.y):
+		if abs(normal.x) > 0.1:
+			if normal.x > 0.1:
+				return WallSide.LEFT
+			elif normal.x < -0.1:
+				return WallSide.RIGHT
+	else:
+		if abs(normal.y) > 0.1:
+			if normal.y > 0.1:
+				return WallSide.UP
+			elif normal.y < -0.1:
+				return WallSide.DOWN
 	return WallSide.NONE
 # -------------------- Timers -------------------------------------------------
 func _on_jump_buffer_timeout() -> void:

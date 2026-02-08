@@ -9,6 +9,7 @@ var current_level_index : int = 0
 var current_level_path : String = ""
 var is_level_manager_visible : bool = true
 var max_level_reached : int = 1
+var joypad_connected : bool = false
 
 func _ready() -> void:
 	_set_start_menu_visible(true)
@@ -17,6 +18,7 @@ func _ready() -> void:
 	max_level_reached = GameManager.load_progress()
 	world_map.unlock_levels()
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
+	_check_input_controller()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("return"):
@@ -58,6 +60,18 @@ func _unload_level():
 	if current_level_instance:
 		current_level_instance.queue_free()
 
+func _check_input_controller():
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() > 0:
+		joypad_connected = true
+	else:
+		joypad_connected = false
+	world_map.set_joypad_connected(joypad_connected)
+
+	# Subscribe to joypad connection
+	Input.joy_connection_changed.connect(_on_joypad_connection_changed)
+
+# --------------- Signals -----------------------
 func  _on_player_finished():
 	_unload_level()
 	is_level_manager_visible = true
@@ -107,3 +121,10 @@ func _on_start_menu_settings() -> void:
 
 func _on_start_menu_quit_game() -> void:
 	get_tree().quit()
+
+func _on_joypad_connection_changed(_device: int, connected: bool):
+	if connected:
+		joypad_connected = true
+	else:
+		joypad_connected = false
+	world_map.set_joypad_connected(joypad_connected)

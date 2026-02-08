@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl6s4pemla15g"]
+[gd_scene format=3 uid="uid://dl6s4pemla15g"]
 
 [ext_resource type="Script" uid="uid://2qmntrsfjp47" path="res://scenes/ui/start_screen/start_menu.gd" id="1_m2m72"]
 
-[node name="StartMenu" type="Control"]
+[sub_resource type="Theme" id="Theme_m2m72"]
+
+[node name="StartMenu" type="Control" unique_id=339159820]
 process_mode = 2
 top_level = true
 z_index = 1
@@ -14,29 +16,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m2m72")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=756712721]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m2m72")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1085104694]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -125.0
-offset_right = 125.0
-offset_bottom = 125.0
+offset_left = -4.0
+offset_top = -90.0
+offset_right = 4.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 11
-
-[node name="StartButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=9011564]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/StartButton"]
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/StartButton" unique_id=224274608]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -51,11 +60,11 @@ text = "START
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=1644680500]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/SettingsButton"]
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/SettingsButton" unique_id=291244083]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -65,11 +74,11 @@ text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=1984954416]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/QuitButton"]
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/QuitButton" unique_id=2026944422]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -80,6 +89,6 @@ text = "QUIT
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cylflqif6vvyq"]
+[gd_scene format=3 uid="uid://cylflqif6vvyq"]
 
 [ext_resource type="Script" uid="uid://qqd6ga1ig17t" path="res://scenes/interactables/platform/switch_platform.gd" id="1_xjh0n"]
 [ext_resource type="Texture2D" uid="uid://dvphpcw20ruvw" path="res://scenes/interactables/platform/assets/platform.png" id="2_xjh0n"]
@@ -7,21 +7,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aai0l"]
 size = Vector2(128, 44)
 
-[node name="PlatformWithSwitch" type="AnimatableBody2D"]
+[node name="PlatformWithSwitch" type="AnimatableBody2D" unique_id=189197418]
 script = ExtResource("1_xjh0n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=565094803]
 texture = ExtResource("2_xjh0n")
 
-[node name="SwitchBlueDeco" type="Sprite2D" parent="."]
+[node name="SwitchBlueDeco" type="Sprite2D" parent="." unique_id=1862948662]
 position = Vector2(-1, 0)
 texture = ExtResource("3_xjh0n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1135689564]
 visible = false
 shape = SubResource("RectangleShape2D_aai0l")
 
-[node name="MoveDelayTimer" type="Timer" parent="."]
+[node name="MoveDelayTimer" type="Timer" parent="." unique_id=1763756281]
 one_shot = true
 
 [connection signal="timeout" from="MoveDelayTimer" to="." method="_on_move_delay_timer_timeout"]

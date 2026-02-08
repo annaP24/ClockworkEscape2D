@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://o7ga5atf5uvp"]
+[gd_scene format=3 uid="uid://o7ga5atf5uvp"]
 
 [ext_resource type="Texture2D" uid="uid://d1kucng3s307i" path="res://scenes/interactables/door/assets/platform.png" id="1_6jnl5"]
 [ext_resource type="Script" uid="uid://ci3yddbely8hq" path="res://scenes/interactables/door/door.gd" id="1_57sya"]
@@ -40,29 +40,29 @@ scale_max = 0.25
 scale_curve = SubResource("CurveTexture_vg5pl")
 color_ramp = SubResource("GradientTexture1D_vg5pl")
 
-[node name="Door" type="StaticBody2D"]
+[node name="Door" type="StaticBody2D" unique_id=688594012]
 script = ExtResource("1_57sya")
 metadata/_edit_horizontal_guides_ = [192.0]
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="." unique_id=923778133]
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=969249298]
 position = Vector2(0, 96.5)
 rotation = 1.5707964
 scale = Vector2(1.51, 0.95)
 texture = ExtResource("1_6jnl5")
 
-[node name="SwitchMarker" type="Sprite2D" parent="Sprites"]
+[node name="SwitchMarker" type="Sprite2D" parent="Sprites" unique_id=861260533]
 position = Vector2(0, 96.5)
 scale = Vector2(1.32, 1.32)
 texture = ExtResource("3_vg5pl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113756828]
 visible = false
 position = Vector2(22.5, 96)
 shape = SubResource("RectangleShape2D_70ylm")
 
-[node name="GPUSteamParticles" type="GPUParticles2D" parent="."]
+[node name="GPUSteamParticles" type="GPUParticles2D" parent="." unique_id=559133041]
 visible = false
 position = Vector2(20, 0)
 amount = 5
@@ -72,5 +72,7 @@ explosiveness = 0.21
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_57sya")
 
-[node name="MoveDelayTimer" type="Timer" parent="."]
+[node name="MoveDelayTimer" type="Timer" parent="." unique_id=425169384]
 one_shot = true
+
+[connection signal="timeout" from="MoveDelayTimer" to="." method="_on_move_delay_timer_timeout"]

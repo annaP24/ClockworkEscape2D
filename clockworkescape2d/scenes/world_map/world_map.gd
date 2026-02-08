@@ -12,7 +12,7 @@ var current_level_index : int = 0
 var current_level_path : String = ""
 var curve : Curve2D = Curve2D.new()
 var current_focused_level : LevelNode
-
+var is_joypad_connected : bool = false
 func _ready():
 	# Get Worl node
 	parent = get_parent()
@@ -31,13 +31,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 		var next_node : LevelNode = null
-		# Handle joystic movement (level selection)
+		## Handle joystic movement (level selection)
 		if event.is_action_pressed("level_up"):
 			next_node = current_focused_level.neighbour_up
 		elif event.is_action_pressed("level_down"):
 			next_node = current_focused_level.neighbour_down
 		if next_node:
-			_change_focus(next_node)
+			_change_focus(next_node, true)
 			get_viewport().set_input_as_handled()
 
 func unlock_levels():
@@ -63,6 +63,9 @@ func unlock_levels():
 		if !node.is_connected("level_selected", _on_level_selected):
 			node.level_selected.connect(_on_level_selected)
 		node_cnt += 1
+
+func set_joypad_connected(joypad_connected : bool):
+	is_joypad_connected = joypad_connected
 # -------------------- Visuals ---------------------------------------------------#
 func _calc_tangent_in(point_before : Vector2, point_after : Vector2, current_point : Vector2):
 	var tangent = (point_before - point_after).normalized()
@@ -93,13 +96,14 @@ func _generate_curve():
 	line_2d.width = 240
 	line_2d.texture = preload("res://scenes/world_map/assets/road.png")
 
-func _change_focus(level : LevelNode):
+func _change_focus(level : LevelNode, is_joypad_selection : bool):
 	if current_focused_level:
 		current_focused_level.set_highlight(false)
 	if level.is_unlocked:
 		current_focused_level = level
 		current_focused_level.set_highlight(true)
-	camera_2d.move_camera_with_selection(current_focused_level)
+	if is_joypad_connected and is_joypad_selection:
+		camera_2d.move_camera_with_selection(current_focused_level)
 # ---------------------- Signals -----------------------------------------------
 func _on_level_selected(level_id):
 	# Start level scene:

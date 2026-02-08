@@ -1,18 +1,18 @@
 extends StaticBody2D
 @export var switch_1: Switch
 @export var switch_2: Switch
+@export var wait_timeout : float = 0.3
+@export var move_up_speed : float = 200.0
+@export var move_down_speed : float = 100.0
 @onready var gpu_steam_particles: GPUParticles2D = $GPUSteamParticles
 @onready var sprites: Node2D = $Sprites
 @onready var move_delay_timer: Timer = $MoveDelayTimer
 
 var is_move_up : bool = true
-var wait_timeout : float = 0.3
-var max_move_offset : float = 124.0
+var max_move_offset : float = 3 * 64.0
 var init_position : Vector2 = Vector2.ZERO
 var target_position : Vector2 = Vector2.ZERO
 var current_target : Vector2 = Vector2.ZERO
-var move_up_speed : float = 200.0
-var move_down_speed : float = 100.0
 var move_speed : float = 0.0
 
 func _ready() -> void:
@@ -22,11 +22,10 @@ func _ready() -> void:
 	var offset : Vector2 = Vector2.ZERO
 
 	if is_move_up:
-		move_speed = move_up_speed
 		offset = Vector2(0, max_move_offset * -1)
-	elif !is_move_up:
-		move_speed = move_down_speed
+	else:
 		offset = Vector2(0, max_move_offset * 1)
+
 	target_position = init_position + offset
 	current_target = init_position
 
@@ -47,5 +46,8 @@ func _on_switch_is_active():
 func _on_switch_is_not_active():
 	move_delay_timer.start()
 	gpu_steam_particles.visible = false
+
 func _on_move_delay_timer_timeout() -> void:
-	current_target = init_position
+	if switch_2:
+		move_speed = move_down_speed
+		current_target = init_position

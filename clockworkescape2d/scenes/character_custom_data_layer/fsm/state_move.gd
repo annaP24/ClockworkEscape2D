@@ -36,7 +36,6 @@ func Physics_Update(delta):
 	player.apply_gravity(player.fall_gravity, delta)
 
 	player.move_and_slide()
-
 	#Update animation
 	if inputX > 0:
 		player.update_animation(player.animations.RUN_RIGHT)
@@ -44,8 +43,7 @@ func Physics_Update(delta):
 		player.update_animation(player.animations.RUN_LEFT)
 
 	# cojote timer start
-	if not player.is_on_floor(): # and player.can_coyote_jump == true and player.coyote_jump_timer_started == false:
-		#player.coyote_jump_timer_started = true
+	if not player.is_on_floor():
 		player.coyote_timer.start(player.coyote_timeout)
 
 	#Change states
@@ -59,9 +57,9 @@ func Physics_Update(delta):
 		change_state("FallState")
 	elif inputX == 0:
 		change_state("IdleState")
-	elif player.get_walkable_wall_side() == player.WallSide.DOWN and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
-		change_state("WallState")
-	elif player.get_walkable_wall_side() == player.WallSide.UP and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
+	elif player.get_walkable_wall_side() == player.WallSide.DOWN: # and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
+		change_state("WallContactState")
+	elif player.get_walkable_wall_side() == player.WallSide.UP: # and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 		change_state("WallContactState")
 	elif player.get_walkable_wall_side() == player.WallSide.LEFT and Input.is_action_pressed("left"):
 		change_state("IdleState")

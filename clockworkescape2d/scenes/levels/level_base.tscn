@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dtoercglc7src"]
+[gd_scene format=4 uid="uid://dtoercglc7src"]
 
 [ext_resource type="Script" uid="uid://fvk5nc1cy38g" path="res://scenes/levels/level_base.gd" id="1_dje0g"]
 [ext_resource type="Texture2D" uid="uid://c5q5w5oms4ndy" path="res://assets/blocks/tilemaps_dark/BaseBlocks_3.png" id="4_g7p6o"]
@@ -132,33 +132,33 @@ sources/2 = SubResource("TileSetAtlasSource_40ga3")
 sources/5 = SubResource("TileSetAtlasSource_ynct0")
 sources/6 = SubResource("TileSetAtlasSource_w06h8")
 
-[node name="Level_base" type="Node2D"]
+[node name="Level_base" type="Node2D" unique_id=575594771]
 process_mode = 3
 script = ExtResource("1_dje0g")
 
-[node name="Background" parent="." instance=ExtResource("7_g7p6o")]
+[node name="Background" parent="." unique_id=750593274 instance=ExtResource("7_g7p6o")]
 
-[node name="TileMapLayer_2" type="TileMapLayer" parent="."]
+[node name="TileMapLayer_2" type="TileMapLayer" parent="." unique_id=1834929103]
 tile_map_data = PackedByteArray("AAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAAMABQAAAAAAAAAAAAQABQAAAAAAAAAAAAUABQAAAAAAAAAAAAYABQAAAAAAAAAAAAcABQAAAAAAAAAAAAgABQAAAAAAAAAAAAkABQAAAAAAAAAAAAoABQAAAAAAAAAAAAsABQAAAAAAAAAAAAwABQAAAAAAAAAAAA0ABQAAAAAAAAAAAA4ABQAAAAAAAAAAAA8ABQAAAAAAAAAAABAABQAAAAAAAAAAABEABQAAAAAAAAAAABIABQAAAAAAAAAAABMABQAAAAAAAAABAAAABQAAAAAAAAACAAAABQAAAAAAAAADAAAABQAAAAAAAAAEAAAABQAAAAAAAAAFAAAABQAAAAAAAAAGAAAABQAAAAAAAAAHAAAABQAAAAAAAAAIAAAABQAAAAAAAAAJAAAABQAAAAAAAAAKAAAABQAAAAAAAAALAAAABQAAAAAAAAAMAAAABQAAAAAAAAANAAAABQAAAAAAAAAOAAAABQAAAAAAAAAPAAAABQAAAAAAAAAQAAAABQAAAAAAAAARAAAABQAAAAAAAAASAAAABQAAAAAAAAATAAAABQAAAAAAAAAUAAAABQAAAAAAAAAVAAAABQAAAAAAAAAWAAAABQAAAAAAAAAXAAAABQAAAAAAAAAYAAAABQAAAAAAAAAZAAAABQAAAAAAAAAaAAAABQAAAAAAAAAbAAAABQAAAAAAAAAcAAAABQAAAAAAAAAdAAAABQAAAAAAAAAeAAAABQAAAAAAAAABABMABQAAAAAAAAACABMABQAAAAAAAAADABMABQAAAAAAAAAEABMABQAAAAAAAAAFABMABQAAAAAAAAAGABMABQAAAAAAAAAHABMABQAAAAAAAAAIABMABQAAAAAAAAAJABMABQAAAAAAAAAKABMABQAAAAAAAAALABMABQAAAAAAAAAMABMABQAAAAAAAAANABMABQAAAAAAAAAOABMABQAAAAAAAAAPABMABQAAAAAAAAAQABMABQAAAAAAAAARABMABQAAAAAAAAASABMABQAAAAAAAAATABMABQAAAAAAAAAUABMABQAAAAAAAAAVABMABQAAAAAAAAAWABMABQAAAAAAAAAXABMABQAAAAAAAAAYABMABQAAAAAAAAAZABMABQAAAAAAAAAaABMABQAAAAAAAAAbABMABQAAAAAAAAAcABMABQAAAAAAAAAdABMABQAAAAAAAAAeABMABQAAAAAAAAAeABIABQAAAAAAAAAeABEABQAAAAAAAAAeABAABQAAAAAAAAAeAA8ABQAAAAAAAAAeAA4ABQAAAAAAAAAeAA0ABQAAAAAAAAAeAAwABQAAAAAAAAAeAAsABQAAAAAAAAAeAAoABQAAAAAAAAAeAAkABQAAAAAAAAAeAAgABQAAAAAAAAAeAAcABQAAAAAAAAAeAAYABQAAAAAAAAAeAAUABQAAAAAAAAAeAAQABQAAAAAAAAAeAAMABQAAAAAAAAAeAAIABQAAAAAAAAAeAAEABQAAAAAAAAA=")
 tile_set = SubResource("TileSet_pwolw")
 
-[node name="Platforms" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="." unique_id=1986093315]
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="Node2D" parent="." unique_id=819539281]
 
-[node name="Interactables" type="Node2D" parent="."]
+[node name="Interactables" type="Node2D" parent="." unique_id=1109194341]
 
-[node name="Collectables" type="Node2D" parent="."]
+[node name="Collectables" type="Node2D" parent="." unique_id=1785709842]
 
-[node name="Collectable" parent="Collectables" instance=ExtResource("6_g7p6o")]
+[node name="Collectable" parent="Collectables" unique_id=2006787885 instance=ExtResource("6_g7p6o")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1004786378]
 anchor_mode = 0
-zoom = Vector2(0.65, 0.65)
+zoom = Vector2(0.645, 0.645)
 
-[node name="SpawnMarker" type="Marker2D" parent="."]
+[node name="SpawnMarker" type="Marker2D" parent="." unique_id=630440161]
 position = Vector2(169.00002, 129.00002)
 
-[node name="Exit" parent="." instance=ExtResource("6_dq8h5")]
+[node name="Exit" parent="." unique_id=533716483 instance=ExtResource("6_dq8h5")]
 
 [connection signal="level_finished" from="Exit" to="." method="_on_exit_level_finished"]

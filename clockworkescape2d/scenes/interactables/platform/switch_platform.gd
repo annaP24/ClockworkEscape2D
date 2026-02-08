@@ -4,9 +4,10 @@ extends AnimatableBody2D
 @export var is_move_vertical : bool = true
 @export var is_move_up : bool = false
 @export var is_move_right : bool = false
+
 @onready var move_delay_timer: Timer = $MoveDelayTimer
 
-var wait_timeout : float = 0.3
+@export var wait_timeout : float = 0.3
 var max_move_offset : float = 200.0
 var init_position : Vector2 = Vector2.ZERO
 var target_position : Vector2 = Vector2.ZERO

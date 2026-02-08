@@ -38,23 +38,18 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 
 
 func _on_crack_timer_1_timeout() -> void:
-	print("timer1_timeout")
 	sprite_2d.texture = texture2
 	crack_timer2.start(crack_timeout)
 
 func _on_crack_timer_2_timeout() -> void:
-	print("timer2_timeout")
 	sprite_2d.texture = texture3
 	dissapear_timer.start(dissapear_timeout)
 
 func _on_dissapear_timer_timeout() -> void:
-	print("dissapear timer_timeout")
 	animation_player.play("dissapear")
 	is_platform_visible = false
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	print("animation finished")
-
 	if !is_platform_visible:
 		collision.disabled = true
 		detection_collision.disabled = true
@@ -65,8 +60,5 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		sprite_2d.texture = texture1
 		#is_platform_visible = true
 func _on_appear_timer_timeout() -> void:
-	#collision.disabled = false
-	#detection_collision.disabled = false
 	is_platform_visible = true
-	#sprite_2d.texture = texture1
 	animation_player.play("appear")

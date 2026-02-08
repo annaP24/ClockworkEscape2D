@@ -59,8 +59,8 @@ func _ready() -> void:
 	fsm.start()
 
 func _process(_delta: float) -> void:
-	Debug.print_value("State Alternative:", fsm.current_state)
-	Debug.print_value("JumpCount Alternative:", jump_count)
+	#Debug.print_value("State Alternative:", fsm.current_state)
+	#Debug.print_value("JumpCount Alternative:", jump_count)
 	#print(rc_not_colliding())
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and rc_not_colliding():

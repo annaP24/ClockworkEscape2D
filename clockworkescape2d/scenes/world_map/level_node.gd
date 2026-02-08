@@ -48,7 +48,8 @@ func set_highlight(active : bool):
 
 func _on_mouse_entered() -> void:
 	is_selected = true
-	parent._change_focus(self)
+	set_highlight(true)
+	parent._change_focus(self, false)
 
 func _on_mouse_exited() -> void:
 	set_highlight(false)

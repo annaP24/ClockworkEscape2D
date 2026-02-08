@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c4x4prf1dmtn7"]
+[gd_scene format=4 uid="uid://c4x4prf1dmtn7"]
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_nc1an"]
 [ext_resource type="PackedScene" uid="uid://b0jynsb1u2r0j" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_8hcfr"]
@@ -9,55 +9,55 @@
 [ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="7_gprhi"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="8_i7s8t"]
 
-[node name="Level_20" instance=ExtResource("1_nc1an")]
+[node name="Level_20" unique_id=1480095566 instance=ExtResource("1_nc1an")]
 
 [node name="TileMapLayer_2" parent="." index="1"]
 tile_map_data = PackedByteArray("AAAAAAAABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAAMABQAAAAAAAAAAAAQABQAAAAAAAAAAAAUABQAAAAAAAAAAAAYABQAAAAAAAAAAAAcABQAAAAAAAAAAAAgABQAAAAAAAAAAAAkABgAEAAIAAAAAAAoABgAEAAIAAAAAAAsABgAEAAIAAAAAAAwABgAEAAIAAAAAAA0ABgAEAAIAAAAAAA4ABgAEAAIAAAAAAA8ABgAEAAIAAAAAABAABgAEAAIAAAAAABEABQAAAAAAAAAAABIABQAAAAAAAAAAABMABQAAAAAAAAABAAAABQAAAAAAAAACAAAABQAAAAAAAAADAAAABQAAAAAAAAAEAAAABQAAAAAAAAAFAAAABQAAAAAAAAAGAAAABQAAAAAAAAAHAAAABQAAAAAAAAAIAAAABQAAAAAAAAAJAAAABQAAAAAAAAAKAAAABQAAAAAAAAALAAAABQAAAAAAAAAMAAAABQAAAAAAAAANAAAABQAAAAAAAAAOAAAABQAAAAAAAAAPAAAABQAAAAAAAAAQAAAABQAAAAAAAAARAAAABQAAAAAAAAASAAAABQAAAAAAAAATAAAABQAAAAAAAAAUAAAABQAAAAAAAAAVAAAABQAAAAAAAAAWAAAABQAAAAAAAAAXAAAABQAAAAAAAAAYAAAABQAAAAAAAAAZAAAABQAAAAAAAAAaAAAABQAAAAAAAAAbAAAABQAAAAAAAAAcAAAABQAAAAAAAAAdAAAABQAAAAAAAAAeAAAABQAAAAAAAAABABMABQAAAAAAAAACABMABQAAAAAAAAADABMABQAAAAAAAAAEABMABQAAAAAAAAAFABMABQAAAAAAAAAGABMABQAAAAAAAAAHABMABQAAAAAAAAAIABMABQAAAAAAAAAJABMABQAAAAAAAAAKABMABQAAAAAAAAALABMABQAAAAAAAAAMABMABQAAAAAAAAANABMABQAAAAAAAAAOABMABQAAAAAAAAAPABMABQAAAAAAAAAQABMABQAAAAAAAAARABMABQAAAAAAAAASABMABQAAAAAAAAATABMABQAAAAAAAAAUABMABQAAAAAAAAAVABMABQAAAAAAAAAWABMABQAAAAAAAAAXABMABQAAAAAAAAAYABMABQAAAAAAAAAZABMABQAAAAAAAAAaABMABQAAAAAAAAAbABMABQAAAAAAAAAcABMABQAAAAAAAAAdABMABQAAAAAAAAAeABMABQAAAAAAAAAeABIABQAAAAAAAAAeABEABQAAAAAAAAAeABAABQAAAAAAAAAeAA8ABQAAAAAAAAAeAA4ABQAAAAAAAAAeAA0ABQAAAAAAAAAeAAwABQAAAAAAAAAeAAsABQAAAAAAAAAeAAoABQAAAAAAAAAeAAkABQAAAAAAAAAeAAgABQAAAAAAAAAeAAcABQAAAAAAAAAeAAYABQAAAAAAAAAeAAUABQAAAAAAAAAeAAQABQAAAAAAAAAeAAMABQAAAAAAAAAeAAIABQAAAAAAAAAeAAEABQAAAAAAAAAdAA8ABQACAAIAAAAcAA8ABQACAAIAAAAbAA8ABQACAAIAAAAbAA4ABQACAAIAAAAaAA4ABQACAAIAAAAcAA4ABQACAAIAAAAdAA4ABQACAAIAAAAaAA8ABQACAAIAAAATABIABQACAAIAAAATABEABQACAAIAAAATABAABQACAAIAAAASABAABQACAAIAAAASABEABQACAAIAAAASABIABQACAAIAAAAaAA0ABQACAAIAAAAbAA0ABQACAAIAAAAcAA0ABQACAAIAAAAdAA0ABQACAAIAAAAEAAsABQACAAIAAAAFAAsABQACAAIAAAAFAAoABQACAAIAAAAEAAoABQACAAIAAAAMAAEABQACAAIAAAANAAEABQACAAIAAAAOAAEABQACAAIAAAAPAAEABQACAAIAAAAQAAEABQACAAIAAAARAAEABQACAAIAAAASAAEABQACAAIAAAATAAIABgAEAAIAAAATAAMABgAEAAIAAAASAAMABQACAAIAAAARAAMABQACAAIAAAAQAAMABQACAAIAAAAPAAMABQACAAIAAAAOAAMABQACAAIAAAANAAMABQACAAIAAAANAAIABQACAAIAAAAMAAIABQACAAIAAAALAAIABgAAAAIAAAALAAEABgAAAAIAAAALAAMABgAAAAIAAAAMAAMABQACAAIAAAAQAAIABQACAAIAAAARAAIABQACAAIAAAASAAIABQACAAIAAAAPAAIABQACAAIAAAAOAAIABQACAAIAAAATAAEABgAEAAIAAAAMAAQABgACAAQAAAANAAQABgACAAQAAAAOAAQABgACAAQAAAAPAAQABgACAAQAAAAQAAQABgACAAQAAAARAAQABgACAAQAAAASAAQABgACAAQAAAATAAQABgAEAAQAAAALAAQABgAAAAQAAAA=")
 
-[node name="Dissapearing_platform" parent="Platforms" index="0" instance=ExtResource("2_8hcfr")]
+[node name="Dissapearing_platform" parent="Platforms" index="0" unique_id=1414422469 instance=ExtResource("2_8hcfr")]
 position = Vector2(512, 512)
 
-[node name="Dissapearing_platform3" parent="Platforms" index="1" instance=ExtResource("2_8hcfr")]
+[node name="Dissapearing_platform3" parent="Platforms" index="1" unique_id=1154276062 instance=ExtResource("2_8hcfr")]
 position = Vector2(1632, 576)
 
-[node name="Dissapearing_platform2" parent="Platforms" index="2" instance=ExtResource("2_8hcfr")]
+[node name="Dissapearing_platform2" parent="Platforms" index="2" unique_id=892797463 instance=ExtResource("2_8hcfr")]
 position = Vector2(320, 352)
 
-[node name="Spider" parent="Obstacles" index="0" instance=ExtResource("2_tyhfa")]
+[node name="Spider" parent="Obstacles" index="0" unique_id=2085975055 instance=ExtResource("2_tyhfa")]
 position = Vector2(1696, 800)
 movement_range = 175.0
 
-[node name="Spider2" parent="Obstacles" index="1" instance=ExtResource("2_tyhfa")]
+[node name="Spider2" parent="Obstacles" index="1" unique_id=1717967423 instance=ExtResource("2_tyhfa")]
 position = Vector2(1568, 1184)
 movement_range = 175.0
 init_direction = 0
 
-[node name="Pendent" parent="Obstacles" index="2" instance=ExtResource("4_afdjd")]
+[node name="Pendent" parent="Obstacles" index="2" unique_id=382974809 instance=ExtResource("4_afdjd")]
 position = Vector2(320, 736)
 
-[node name="Switch" parent="Interactables" index="0" instance=ExtResource("2_ftdud")]
+[node name="Switch" parent="Interactables" index="0" unique_id=891890240 instance=ExtResource("2_ftdud")]
 position = Vector2(1280, 1216)
 rotation = 3.1415927
 
-[node name="Switch2" parent="Interactables" index="1" instance=ExtResource("2_ftdud")]
+[node name="Switch2" parent="Interactables" index="1" unique_id=918059518 instance=ExtResource("2_ftdud")]
 position = Vector2(1920, 1216)
 is_left_wind = false
 
-[node name="Door" parent="Interactables" index="2" node_paths=PackedStringArray("switch_1") instance=ExtResource("3_tyhfa")]
+[node name="Door" parent="Interactables" index="2" unique_id=176756775 node_paths=PackedStringArray("switch_1") instance=ExtResource("3_tyhfa")]
 position = Vector2(1696, 1024)
 switch_1 = NodePath("../Switch")
 
-[node name="PlatformWithSwitch" parent="Interactables" index="3" node_paths=PackedStringArray("switch_1") instance=ExtResource("7_gprhi")]
+[node name="PlatformWithSwitch" parent="Interactables" index="3" unique_id=1476696358 node_paths=PackedStringArray("switch_1") instance=ExtResource("7_gprhi")]
 position = Vector2(1376, 800)
 switch_1 = NodePath("../Switch2")
 
 [node name="Collectable" parent="Collectables" index="0"]
 position = Vector2(1824, 1120)
 
-[node name="Collectable2" parent="Collectables" index="1" instance=ExtResource("8_i7s8t")]
+[node name="Collectable2" parent="Collectables" index="1" unique_id=1977420297 instance=ExtResource("8_i7s8t")]
 position = Vector2(160, 160)
 
-[node name="Collectable3" parent="Collectables" index="2" instance=ExtResource("8_i7s8t")]
+[node name="Collectable3" parent="Collectables" index="2" unique_id=37852670 instance=ExtResource("8_i7s8t")]
 position = Vector2(1856, 704)
 
 [node name="SpawnMarker" parent="." index="7"]

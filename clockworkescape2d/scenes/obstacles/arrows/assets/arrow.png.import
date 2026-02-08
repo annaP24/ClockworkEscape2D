@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0vfu4j8btxuc"
-path="res://.godot/imported/gear_dead001.png0011.png-9aeb0f5bfb57c277dc64c8e1c01d1d49.ctex"
+uid="uid://dxwsvx53ixy3k"
+path="res://.godot/imported/arrow.png-9ec5f93f27a9f28976cbfc65a6e5f9a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/character_new/assets/broken_dark/gear_dead001.png0011.png"
-dest_files=["res://.godot/imported/gear_dead001.png0011.png-9aeb0f5bfb57c277dc64c8e1c01d1d49.ctex"]
+source_file="res://scenes/obstacles/arrows/assets/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-9ec5f93f27a9f28976cbfc65a6e5f9a6.ctex"]
 
 [params]
 
