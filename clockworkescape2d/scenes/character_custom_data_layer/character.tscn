@@ -193,6 +193,7 @@ _data = {
 [node name="Character" type="CharacterBody2D" unique_id=443292463 groups=["player"]]
 collision_mask = 5
 script = ExtResource("1_w8owe")
+wall_coyote_timeout = 0.5
 gravity_coef = 3.0
 move_acc = 35.0
 move_dec = 50.0
@@ -218,10 +219,10 @@ script = ExtResource("7_o7d7g")
 
 [node name="WallContactState" type="Node" parent="FSM" unique_id=1713168846]
 script = ExtResource("8_320r6")
+falldown_time = 0.1
 metadata/_custom_type_script = "uid://jh8i4uv87bqn"
 
 [node name="falldown_timer" type="Timer" parent="FSM/WallContactState" unique_id=61036461]
-wait_time = 0.2
 one_shot = true
 
 [node name="WallMovableState" type="Node" parent="FSM" unique_id=1798845195]
@@ -277,6 +278,10 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 
+[node name="WallJumpCoyoteTimer" type="Timer" parent="." unique_id=180893888]
+wait_time = 0.05
+one_shot = true
+
 [node name="GrabTimer" type="Timer" parent="." unique_id=634432528]
 wait_time = 0.2
 one_shot = true
@@ -287,4 +292,5 @@ one_shot = true
 [connection signal="body_entered" from="HurtDetectionArea" to="." method="_on_hurt_detection_area_body_entered"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="WallJumpCoyoteTimer" to="." method="_on_wall_jump_coyote_timer_timeout"]
 [connection signal="timeout" from="GrabTimer" to="." method="_on_grab_timer_timeout"]

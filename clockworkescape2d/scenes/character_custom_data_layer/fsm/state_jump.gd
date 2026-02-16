@@ -6,6 +6,7 @@ func Enter(player_node):
 	player.jump_count -= 1
 	player.jump_buffer = false
 	player.can_coyote_jump = false
+	player.can_wall_coyote_jump = false
 
 func jump():
 	player.velocity.y = player.jump_velocity
@@ -30,7 +31,7 @@ func Physics_Update(delta):
 	if !Input.is_action_pressed("jump"):
 		#player.jump_button_released = true
 		change_state("FallState")
-	elif Input.is_action_just_pressed("jump") and colliders.has("basic") and player.wall_jump_count > 0:
+	elif Input.is_action_just_pressed("jump") and (colliders.has("basic") or player.is_on_wall()) and player.wall_jump_count > 0:
 		player.wall_jump_count = 0
 		change_state("JumpState")
 	elif player.velocity.y >= 0:

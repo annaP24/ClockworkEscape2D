@@ -1,6 +1,6 @@
 extends FsmNodeState
 
-var current_direction 
+var current_direction
 
 func Enter(player_node):
 	super(player_node)
@@ -11,32 +11,32 @@ func Enter(player_node):
 	player.wall_jump_count = player.wall_jump_count_max
 	# Cojotejump zuruecksetzen
 	player.can_coyote_jump = true
-	
+	player.can_wall_coyote_jump = true
 	#Update animation
 	var inputX = Input.get_axis("left", "right")
 	if inputX > 0:
 		player.update_animation(player.animations.RUN_RIGHT)
 	elif inputX < 0:
 		player.update_animation(player.animations.RUN_LEFT)
-			
+
 	player.is_player_moving = true
 
 func Physics_Update(delta):
 	if not player.is_movable:
 		return
-		
+
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
 	inputX = player.normalize_movement(inputX)
 	player.move_player_x(inputX)
-	
+
 	# Move player y-axis
-	
+
 	#Apply gravity
 	player.apply_gravity(player.fall_gravity, delta)
-	
+
 	player.move_and_slide()
-	
+
 	#Update animation
 	if inputX > 0:
 		player.update_animation(player.animations.RUN_RIGHT)

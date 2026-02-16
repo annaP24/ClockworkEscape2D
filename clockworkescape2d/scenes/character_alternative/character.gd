@@ -1,49 +1,49 @@
-extends Character
+extends CharacterBody2D
 
 class_name PlayerFsmAlternative
 #
-#signal player_died
-#
-#@export var max_speed : float = 300.0
-#@export var max_jump_count : int = 1
-#@export var jump_height : float = 192 # 3*64px
-#@export var jump_gravity : float = 2000.0
-#@export var fall_gravity : float = 3600.0
-#@export var jump_buffer_timeout : float = 0.3
-#@export var coyote_timeout : float = 0.1
-#@export var gravity_coef : float = 5.0
-#@export var move_acc : float = 50.0
-#@export var move_dec : float = 100.0
-#@export var wall_jump_count_max : int = 1
-#
-#@onready var fsm: CompFsmNode = $FSM
-#@onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
-#@onready var jump_buffer_timer: Timer = $JumpBuffer
-#@onready var coyote_timer: Timer = $CoyoteTimer
-#@onready var grab_timer: Timer = $GrabTimer
-#@onready var squash_marker: Marker2D = $SquashMarker
-#@onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
-#@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
-#@onready var sparks: GPUParticles2D = $Sparks
-#
-#enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
-#
-#var gravity : float = 0.0
-#var jump_buffer : bool = false
-##var jump_button_released : bool = false
-#var jump_count : int = 0
-#var can_coyote_jump : bool = false
-##var coyote_jump_timer_started : bool = false
-#var is_movable : bool = false
-#var coil_push_active : bool = false
-#var coil_jump_pressed : bool = false
-#var jump_velocity : float = 0.0
-#var player_died_received : bool = false
-#var wall_jump_count : int
-#var can_grab : bool = true
-#var fall_velocity : float = 1200.0
-#var curr_nr_collectables : int = 0
-#var is_player_moving : bool = false
+signal player_died
+
+@export var max_speed : float = 300.0
+@export var max_jump_count : int = 1
+@export var jump_height : float = 192 # 3*64px
+@export var jump_gravity : float = 2000.0
+@export var fall_gravity : float = 3600.0
+@export var jump_buffer_timeout : float = 0.3
+@export var coyote_timeout : float = 0.1
+@export var gravity_coef : float = 5.0
+@export var move_acc : float = 50.0
+@export var move_dec : float = 100.0
+@export var wall_jump_count_max : int = 1
+
+@onready var fsm: CompFsmNode = $FSM
+@onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
+@onready var jump_buffer_timer: Timer = $JumpBuffer
+@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var grab_timer: Timer = $GrabTimer
+@onready var squash_marker: Marker2D = $SquashMarker
+@onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+@onready var sparks: GPUParticles2D = $Sparks
+
+enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
+
+var gravity : float = 0.0
+var jump_buffer : bool = false
+#var jump_button_released : bool = false
+var jump_count : int = 0
+var can_coyote_jump : bool = false
+#var coyote_jump_timer_started : bool = false
+var is_movable : bool = false
+var coil_push_active : bool = false
+var coil_jump_pressed : bool = false
+var jump_velocity : float = 0.0
+var player_died_received : bool = false
+var wall_jump_count : int
+var can_grab : bool = true
+var fall_velocity : float = 1200.0
+var curr_nr_collectables : int = 0
+var is_player_moving : bool = false
 
 
 # TODO Spawn State und Die State hinzufügen

@@ -9,7 +9,7 @@ func Enter(player_node):
 	player_node.switch_ray_casts_on()
 	player.jump_buffer = false
 	player.can_coyote_jump = false
-
+	player.can_wall_coyote_jump = false
 func jump():
 	player.velocity.y = player.jump_velocity
 

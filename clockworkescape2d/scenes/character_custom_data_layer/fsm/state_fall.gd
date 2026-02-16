@@ -37,11 +37,14 @@ func Physics_Update(delta):
 	if Input.is_action_just_pressed("jump") and player.jump_count > 0:
 		change_state("JumpState")
 	# Normal Wall jump
-	elif Input.is_action_just_pressed("jump") and colliders.has("basic") and player.wall_jump_count > 0:
+	elif Input.is_action_just_pressed("jump") and (colliders.has("basic") or player.is_on_wall()) and player.wall_jump_count > 0:
 		player.wall_jump_count = 0
-		change_state("JumpState")
+		#change_state("JumpState")
+		change_state("WallState")
 	elif Input.is_action_just_pressed("jump") and player.can_coyote_jump:
 		change_state("JumpState")
+	#elif Input.is_action_just_pressed("jump") and player.can_wall_coyote_jump:
+		#change_state("JumpState")
 	elif player.is_on_floor():
 		squash_on_land()
 		change_state("IdleState")

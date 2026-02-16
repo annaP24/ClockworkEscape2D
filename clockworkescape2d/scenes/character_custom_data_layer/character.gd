@@ -11,6 +11,7 @@ signal player_died
 @export var fall_gravity : float = 3600.0
 @export var jump_buffer_timeout : float = 0.3
 @export var coyote_timeout : float = 0.1
+@export var wall_coyote_timeout : float = 0.1
 @export var gravity_coef : float = 5.0
 @export var move_acc : float = 50.0
 @export var move_dec : float = 100.0
@@ -20,6 +21,7 @@ signal player_died
 @onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
 @onready var jump_buffer_timer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var wall_jump_coyote_timer: Timer = $WallJumpCoyoteTimer
 @onready var grab_timer: Timer = $GrabTimer
 @onready var squash_marker: Marker2D = $SquashMarker
 @onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
@@ -32,6 +34,7 @@ var gravity : float = 0.0
 var jump_buffer : bool = false
 var jump_count : int = 0
 var can_coyote_jump : bool = false
+var can_wall_coyote_jump : bool = false
 var is_movable : bool = false
 var coil_push_active : bool = false
 var coil_jump_pressed : bool = false
@@ -58,8 +61,9 @@ func _ready() -> void:
 	fsm.start()
 
 func _process(_delta: float) -> void:
-	#Debug.print_value("State: ", fsm.current_state)
-	#Debug.print_value("JumpCount Alternative:", jump_count)
+	Debug.print_value("State: ", fsm.current_state)
+	Debug.print_value("Velocity:", velocity)
+	print(fsm.current_state)
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and get_collision_points().size() == 0:
 		set_can_grab(true)
@@ -221,6 +225,9 @@ func _on_jump_buffer_timeout() -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	can_coyote_jump = false
+
+func _on_wall_jump_coyote_timer_timeout() -> void:
+	can_wall_coyote_jump = false
 
 # -------------------- On Signal Received -------------------------------------
 func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:

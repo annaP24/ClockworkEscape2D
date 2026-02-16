@@ -16,6 +16,7 @@ func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
 	FadeScreen.fade_in()
 	var delta = Time.get_ticks_msec() - engine_start
+	#level_id = int(get_node(".").name.split("_")[1])
 	print("Autoload-Init:", engine_start)
 	print("Zeit bis erstes _ready():", delta, "ms")
 

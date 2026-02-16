@@ -1,6 +1,6 @@
 extends FsmNodeState
 
-var falldown_time = 2
+@export var falldown_time = 0.2
 
 @onready var falldown_timer = $falldown_timer
 

@@ -11,6 +11,7 @@ func Enter(player_node):
 	player.wall_jump_count = player.wall_jump_count_max
 	# Cojotejump zuruecksetzen
 	player.can_coyote_jump = true
+	player.can_wall_coyote_jump = true
 
 	#Update animation
 	var inputX = Input.get_axis("left", "right")
