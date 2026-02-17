@@ -31,7 +31,12 @@ func Physics_Update(_delta):
 	player.move_and_slide()
 
 	#Input reactions
+	#Case where dissapearing platform dissappears undeneath player while in idle
 	if !player.is_on_floor():
+		print("Idle to fall")
+		player.jump_count = 0
+		# Start koyote timeot so the player has a short window of time to still jump after platform dissapears
+		player.coyote_timer.start(player.idle_fall_coyote_timeout)
 		change_state("FallState")
 	elif Input.is_action_pressed("jump") and player.jump_buffer:
 		change_state("JumpState")

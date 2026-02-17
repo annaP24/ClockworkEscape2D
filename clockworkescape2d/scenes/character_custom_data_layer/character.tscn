@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dnad4vbt44v1e" path="res://scenes/character_custom_data_layer/fsm/wall_contact_state.gd" id="8_320r6"]
 [ext_resource type="Script" uid="uid://bgweh73s66ash" path="res://scenes/character_custom_data_layer/fsm/wall_movable_state.gd" id="9_c2rhr"]
 [ext_resource type="PackedScene" uid="uid://c35feoy2jbarb" path="res://scenes/character_custom_data_layer/sparks.tscn" id="10_3iojc"]
+[ext_resource type="Script" uid="uid://csgxd816r0b5i" path="res://scenes/character_custom_data_layer/wall_jump_state.gd" id="10_cq04i"]
 [ext_resource type="Texture2D" uid="uid://bsvmv4f271p5n" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0001.png" id="11_8ynvr"]
 [ext_resource type="Texture2D" uid="uid://hdy0gj2y2eic" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0002.png" id="12_x1518"]
 [ext_resource type="Texture2D" uid="uid://duggs6v20kic7" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0003.png" id="13_qy84f"]
@@ -193,6 +194,7 @@ _data = {
 [node name="Character" type="CharacterBody2D" unique_id=443292463 groups=["player"]]
 collision_mask = 5
 script = ExtResource("1_w8owe")
+idle_fall_coyote_timeout = 0.4
 wall_coyote_timeout = 0.5
 gravity_coef = 3.0
 move_acc = 35.0
@@ -228,6 +230,9 @@ one_shot = true
 [node name="WallMovableState" type="Node" parent="FSM" unique_id=1798845195]
 script = ExtResource("9_c2rhr")
 metadata/_custom_type_script = "uid://jh8i4uv87bqn"
+
+[node name="WallJumpState" type="Node" parent="FSM" unique_id=1462290601]
+script = ExtResource("10_cq04i")
 
 [node name="Sparks" parent="." unique_id=1224538931 instance=ExtResource("10_3iojc")]
 emitting = false
@@ -285,6 +290,16 @@ one_shot = true
 [node name="GrabTimer" type="Timer" parent="." unique_id=634432528]
 wait_time = 0.2
 one_shot = true
+
+[node name="JumpRayCasts" type="Node2D" parent="." unique_id=734513159]
+
+[node name="RayCastRight" type="RayCast2D" parent="JumpRayCasts" unique_id=259299380]
+rotation = -1.5707964
+target_position = Vector2(0, 45)
+
+[node name="RayCastLeft" type="RayCast2D" parent="JumpRayCasts" unique_id=525702890]
+rotation = -1.5707964
+target_position = Vector2(0, -45)
 
 [connection signal="animation_finished" from="SquashMarker/CharacterAnimated" to="." method="_on_character_animated_animation_finished"]
 [connection signal="hurt" from="Comp2dHurtbox" to="." method="_on_comp_2d_hurtbox_hurt"]

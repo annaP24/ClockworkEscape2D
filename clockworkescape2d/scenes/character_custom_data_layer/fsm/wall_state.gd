@@ -32,7 +32,7 @@ func Physics_Update(_delta):
 	# Tangente berechnen
 	var tang = Vector2(col_dir.y, -col_dir.x)
 	# move player
-	player.velocity =  tang * -roll_direction * player.max_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
+	player.velocity =  tang * -roll_direction * player.move_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
 
 	player.move_and_slide()
 

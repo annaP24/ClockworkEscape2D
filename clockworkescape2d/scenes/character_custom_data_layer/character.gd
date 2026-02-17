@@ -4,13 +4,14 @@ class_name PlayerFsmCustomDataLayer
 
 signal player_died
 
-@export var max_speed : float = 300.0
+@export var move_speed : float = 300.0
 @export var max_jump_count : int = 1
 @export var jump_height : float = 192 # 3*64px
 @export var jump_gravity : float = 2000.0
 @export var fall_gravity : float = 3600.0
 @export var jump_buffer_timeout : float = 0.3
 @export var coyote_timeout : float = 0.1
+@export var idle_fall_coyote_timeout : float = 0.5
 @export var wall_coyote_timeout : float = 0.1
 @export var gravity_coef : float = 5.0
 @export var move_acc : float = 50.0
@@ -27,6 +28,8 @@ signal player_died
 @onready var gear_with_animation: AnimatedSprite2D = $SquashMarker/CharacterAnimated
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 @onready var sparks: GPUParticles2D = $Sparks
+@onready var ray_cast_right: RayCast2D = $JumpRayCasts/RayCastRight
+@onready var ray_cast_left: RayCast2D = $JumpRayCasts/RayCastLeft
 
 enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
 
@@ -45,6 +48,13 @@ var can_grab : bool = true
 var fall_velocity : float = 1200.0
 var curr_nr_collectables : int = 0
 var is_player_moving : bool = false
+var last_wall_direction : WallSide = WallSide.NONE
+
+var wall_kick_acceleration = 500
+var wall_kick_deceleration = 100
+var wall_jump_y_speed_peak = 0 # y-speeed at witchh the wall jump will end and chage to fall state
+var wall_jump_velocity = -800
+var wall_jump_h_speed = 300
 
 enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
 
@@ -58,12 +68,11 @@ func _ready() -> void:
 	wall_jump_count = wall_jump_count_max
 	update_animation(animations.SPAWN)		#TODO Ins den spawn state schieben
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
+	wall_jump_velocity = jump_velocity
 	fsm.start()
 
 func _process(_delta: float) -> void:
 	Debug.print_value("State: ", fsm.current_state)
-	Debug.print_value("Velocity:", velocity)
-	print(fsm.current_state)
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and get_collision_points().size() == 0:
 		set_can_grab(true)
@@ -72,13 +81,13 @@ func apply_gravity(new_gravity : float, delta : float):
 	velocity.y += new_gravity * delta
 	velocity.y = min(velocity.y, fall_velocity)
 
-func move_player_x(directionX : float, speed : float = max_speed):
+func move_player_x(directionX : float, acc : float = move_acc, dec : float = move_dec):
 	if directionX != 0:
-		velocity.x = move_toward(velocity.x, speed * directionX, move_acc)  #speed * directionX
+		velocity.x = move_toward(velocity.x, move_speed * directionX, acc)  #speed * directionX
 	else:
-		velocity.x = move_toward(velocity.x, 0, move_dec)
+		velocity.x = move_toward(velocity.x, 0, dec)
 
-func move_player_y(directionY : float,  speed : float = max_speed):
+func move_player_y(directionY : float,  speed : float = move_speed):
 	velocity.y = speed * directionY		# TODO: Ändern zu Move_Toward???
 
 func move_player_position(move_delta):
@@ -172,6 +181,14 @@ func get_walkable_wall_side() -> WallSide:
 
 	return WallSide.NONE
 
+func get_wall_direction():
+	if ray_cast_right.is_colliding():
+		last_wall_direction = WallSide.RIGHT
+	elif ray_cast_left.is_colliding():
+		last_wall_direction = WallSide.LEFT
+	else:
+		last_wall_direction = WallSide.NONE
+
 func set_can_grab(grab : bool):
 	# rücksetzen des states nach einer gewissen zeit
 	can_grab = grab
@@ -224,9 +241,11 @@ func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
+	print("Reset coyote timer")
 	can_coyote_jump = false
 
 func _on_wall_jump_coyote_timer_timeout() -> void:
+	print("Wall Coyote false")
 	can_wall_coyote_jump = false
 
 # -------------------- On Signal Received -------------------------------------

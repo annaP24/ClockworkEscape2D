@@ -26,13 +26,14 @@ func Physics_Update(delta):
 	player.apply_gravity(player.jump_gravity, delta)
 
 	player.move_and_slide()
-	var colliders = player.get_colliding_tile_type()
 
 	if !Input.is_action_pressed("jump"):
 		#player.jump_button_released = true
 		change_state("FallState")
-	elif Input.is_action_just_pressed("jump") and (colliders.has("basic") or player.is_on_wall()) and player.wall_jump_count > 0:
+	elif (Input.is_action_just_pressed("jump") or player.jump_buffer) and player.last_wall_direction != player.WallSide.NONE and player.wall_jump_count > 0:
+		print("Fall - jump")
 		player.wall_jump_count = 0
 		change_state("JumpState")
+		#change_state("WallJumpState")
 	elif player.velocity.y >= 0:
 		change_state("FallState")

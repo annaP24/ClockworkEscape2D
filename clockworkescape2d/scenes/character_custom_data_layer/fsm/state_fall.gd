@@ -1,13 +1,9 @@
 extends FsmNodeState
-
+var was_on_wall : bool = false
 func Enter(player_node):
 	super(player_node)
-	#if player.get_walkable_wall_side() == player.WallSide.LEFT:
-		#player.move_player_x(1)
-	#elif player.get_walkable_wall_side() == player.WallSide.RIGHT:
-		#player.move_player_x(-1)
-	#elif player.get_walkable_wall_side() == player.WallSide.UP:
-		#player.move_player_y(1)
+	was_on_wall = false
+
 func Physics_Update(delta):
 	if not player.is_movable:
 		return
@@ -15,7 +11,7 @@ func Physics_Update(delta):
 	#Move player x-axis
 	var inputX = Input.get_axis("left", "right")
 	inputX = player.normalize_movement(inputX)
-	player.move_player_x(inputX, player.max_speed)
+	player.move_player_x(inputX)
 
 	# Move player y-axis
 
@@ -25,26 +21,28 @@ func Physics_Update(delta):
 	if player.velocity.y >= 0: #Falling
 		player.apply_gravity(player.fall_gravity, delta)
 
+	player.get_wall_direction()
 	player.move_and_slide()
-	var colliders = player.get_colliding_tile_type()
 
 	# jump buffer start
 	if Input.is_action_just_pressed("jump"):
+		print("Set jump buffer auf true")
 		player.jump_buffer = true
 		player.jump_buffer_timer.start(player.jump_buffer_timeout)
 
 	# Double jump
 	if Input.is_action_just_pressed("jump") and player.jump_count > 0:
+		print("Jump count > 0")
 		change_state("JumpState")
 	# Normal Wall jump
-	elif Input.is_action_just_pressed("jump") and (colliders.has("basic") or player.is_on_wall()) and player.wall_jump_count > 0:
+	elif (Input.is_action_just_pressed("jump") or player.jump_buffer) and player.last_wall_direction != player.WallSide.NONE and player.wall_jump_count > 0:
+		print("Fall - jump")
 		player.wall_jump_count = 0
-		#change_state("JumpState")
-		change_state("WallState")
-	elif Input.is_action_just_pressed("jump") and player.can_coyote_jump:
 		change_state("JumpState")
-	#elif Input.is_action_just_pressed("jump") and player.can_wall_coyote_jump:
-		#change_state("JumpState")
+		#change_state("WallJumpState")
+	elif Input.is_action_just_pressed("jump") and player.can_coyote_jump:
+		print("Coyote jump")
+		change_state("JumpState")
 	elif player.is_on_floor():
 		squash_on_land()
 		change_state("IdleState")

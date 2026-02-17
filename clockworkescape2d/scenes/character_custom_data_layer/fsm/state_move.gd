@@ -9,7 +9,7 @@ func Enter(player_node):
 	#player.jump_button_released = true
 	# Walljump counter zuruecksetzen
 	player.wall_jump_count = player.wall_jump_count_max
-	# Cojotejump zuruecksetzen
+	# Cojote jump zuruecksetzen
 	player.can_coyote_jump = true
 	player.can_wall_coyote_jump = true
 
