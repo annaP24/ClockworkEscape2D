@@ -1,8 +1,8 @@
 extends FsmNodeState
 var was_on_wall : bool = false
+
 func Enter(player_node):
 	super(player_node)
-	was_on_wall = false
 
 func Physics_Update(delta):
 	if not player.is_movable:
@@ -12,8 +12,6 @@ func Physics_Update(delta):
 	var inputX = Input.get_axis("left", "right")
 	inputX = player.normalize_movement(inputX)
 	player.move_player_x(inputX)
-
-	# Move player y-axis
 
 	#Apply gravity
 	if player.velocity.y < 0: # Still Rising
@@ -34,14 +32,13 @@ func Physics_Update(delta):
 	if Input.is_action_just_pressed("jump") and player.jump_count > 0:
 		print("Jump count > 0")
 		change_state("JumpState")
-	# Normal Wall jump
-	elif (Input.is_action_just_pressed("jump") or player.jump_buffer) and player.last_wall_direction != player.WallSide.NONE and player.wall_jump_count > 0:
-		print("Fall - jump")
+	elif (Input.is_action_just_pressed("jump") and player.can_wall_coyote_jump) and player.wall_jump_count > 0:
+		print("Fall Coyote - jump")
 		player.wall_jump_count = 0
 		change_state("JumpState")
 		#change_state("WallJumpState")
 	elif Input.is_action_just_pressed("jump") and player.can_coyote_jump:
-		print("Coyote jump")
+		print("Edge Coyote jump")
 		change_state("JumpState")
 	elif player.is_on_floor():
 		squash_on_land()

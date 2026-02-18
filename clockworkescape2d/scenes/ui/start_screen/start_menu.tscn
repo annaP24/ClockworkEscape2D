@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://dl6s4pemla15g"]
 
 [ext_resource type="Script" uid="uid://2qmntrsfjp47" path="res://scenes/ui/start_screen/start_menu.gd" id="1_m2m72"]
+[ext_resource type="Texture2D" uid="uid://d0t6sf58mou4w" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="2_jnk83"]
+[ext_resource type="Texture2D" uid="uid://bbmh8fl6b8kb" path="res://scenes/ui/start_screen/assets/Button_new_hover_brass.png" id="3_cck1k"]
+[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="4_cs5uu"]
 
 [sub_resource type="Theme" id="Theme_m2m72"]
+
+[sub_resource type="Theme" id="Theme_cs5uu"]
+default_font = ExtResource("4_cs5uu")
+default_font_size = 45
 
 [node name="StartMenu" type="Control" unique_id=339159820]
 process_mode = 2
@@ -16,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m2m72")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=756712721]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1131630118]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,9 +31,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_m2m72")
+color = Color(0, 0, 0, 0.7647059)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1085104694]
-custom_minimum_size = Vector2(250, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1085104694]
+custom_minimum_size = Vector2(250, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,54 +49,111 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="StartButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=9011564]
-custom_minimum_size = Vector2(0, 50)
+[node name="StartButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=668012155]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+texture_normal = ExtResource("2_jnk83")
+texture_pressed = ExtResource("3_cck1k")
+texture_hover = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer/StartButton" unique_id=224274608]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/StartButton" unique_id=1580207925]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -24.5
-offset_bottom = 24.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "START
-"
+theme = SubResource("Theme_cs5uu")
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_cs5uu")
+theme_override_font_sizes/font_size = 45
+text = "NEW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=1644680500]
-custom_minimum_size = Vector2(0, 50)
+[node name="ContinueButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=21990350]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+texture_normal = ExtResource("2_jnk83")
+texture_pressed = ExtResource("3_cck1k")
+texture_hover = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer/SettingsButton" unique_id=291244083]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/ContinueButton" unique_id=683717490]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_cs5uu")
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_cs5uu")
+theme_override_font_sizes/font_size = 45
+text = "CONTINUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=1874762650]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+texture_normal = ExtResource("2_jnk83")
+texture_pressed = ExtResource("3_cck1k")
+texture_hover = ExtResource("3_cck1k")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/SettingsButton" unique_id=1881736685]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_cs5uu")
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_cs5uu")
+theme_override_font_sizes/font_size = 45
 text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=1984954416]
-custom_minimum_size = Vector2(0, 50)
+[node name="QuitButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=1638342465]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+texture_normal = ExtResource("2_jnk83")
+texture_pressed = ExtResource("3_cck1k")
+texture_hover = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer/QuitButton" unique_id=2026944422]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/QuitButton" unique_id=1585434326]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 49.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "QUIT
-"
+grow_vertical = 2
+theme = SubResource("Theme_cs5uu")
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_cs5uu")
+theme_override_font_sizes/font_size = 45
+text = "QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="TextureRect/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="TextureRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="TextureRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

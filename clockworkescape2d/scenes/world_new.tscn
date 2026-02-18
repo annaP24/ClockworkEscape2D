@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bb0ibp365qg4t" path="res://scenes/world_new.gd" id="1_whjqg"]
 [ext_resource type="PackedScene" uid="uid://dl6s4pemla15g" path="res://scenes/ui/start_screen/start_menu.tscn" id="2_i63yd"]
 [ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="3_gty47"]
+[ext_resource type="Texture2D" uid="uid://d0t6sf58mou4w" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="3_v0ds7"]
 
 [node name="World" type="Node2D" unique_id=77284601]
 process_mode = 3
@@ -19,6 +20,18 @@ offset_right = 35.0
 offset_bottom = 1984.0
 grow_vertical = 0
 
+[node name="ColorRect" parent="StartMenu" index="0" unique_id=1131630118]
+custom_minimum_size = Vector2(3000, 2000)
+
+[node name="ContinueButton" parent="StartMenu/ColorRect/VBoxContainer" parent_id_path=PackedInt32Array(1955929386, 1085104694) index="1" unique_id=21990350]
+texture_normal = ExtResource("3_v0ds7")
+
+[node name="SettingsButton" parent="StartMenu/ColorRect/VBoxContainer" parent_id_path=PackedInt32Array(1955929386, 1085104694) index="2" unique_id=1874762650]
+texture_normal = ExtResource("3_v0ds7")
+
+[node name="QuitButton" parent="StartMenu/ColorRect/VBoxContainer" parent_id_path=PackedInt32Array(1955929386, 1085104694) index="3" unique_id=1638342465]
+texture_normal = ExtResource("3_v0ds7")
+
 [node name="WorldMap" parent="." unique_id=1188891860 instance=ExtResource("3_gty47")]
 
 [node name="Scene" type="Node2D" parent="." unique_id=65681456]
@@ -26,3 +39,5 @@ grow_vertical = 0
 [connection signal="quit_game" from="StartMenu" to="." method="_on_start_menu_quit_game"]
 [connection signal="settings" from="StartMenu" to="." method="_on_start_menu_settings"]
 [connection signal="start_game" from="StartMenu" to="." method="_on_start_menu_start_game"]
+
+[editable path="StartMenu"]

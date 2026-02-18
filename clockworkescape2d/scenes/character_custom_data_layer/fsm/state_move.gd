@@ -6,12 +6,10 @@ func Enter(player_node):
 	super(player_node)
 	# Jump counter zuruecksetzen
 	player.jump_count = player.max_jump_count
-	#player.jump_button_released = true
 	# Walljump counter zuruecksetzen
 	player.wall_jump_count = player.wall_jump_count_max
 	# Cojote jump zuruecksetzen
 	player.can_coyote_jump = true
-	player.can_wall_coyote_jump = true
 
 	#Update animation
 	var inputX = Input.get_axis("left", "right")

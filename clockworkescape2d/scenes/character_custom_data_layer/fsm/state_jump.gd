@@ -6,7 +6,6 @@ func Enter(player_node):
 	player.jump_count -= 1
 	player.jump_buffer = false
 	player.can_coyote_jump = false
-	player.can_wall_coyote_jump = false
 
 func jump():
 	player.velocity.y = player.jump_velocity
@@ -19,8 +18,6 @@ func Physics_Update(delta):
 	var inputX = Input.get_axis("left", "right")
 	inputX = player.normalize_movement(inputX)
 	player.move_player_x(inputX)
-
-	# Move player y-axis
 
 	#Apply gravity
 	player.apply_gravity(player.jump_gravity, delta)

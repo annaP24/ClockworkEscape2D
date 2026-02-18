@@ -76,6 +76,7 @@ func _process(_delta: float) -> void:
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and get_collision_points().size() == 0:
 		set_can_grab(true)
+	check_is_on_wall()
 
 func apply_gravity(new_gravity : float, delta : float):
 	velocity.y += new_gravity * delta
@@ -129,6 +130,11 @@ func normalize_movement(direction : float) -> float:
 		return 1.0
 	else:
 		return 0.0
+
+func check_is_on_wall():
+	if is_on_wall():
+		wall_jump_coyote_timer.start(wall_coyote_timeout)
+		can_wall_coyote_jump = true
 
 #------------------------RayCast management -----------------------------
 func get_colliding_tile_type() -> Array:

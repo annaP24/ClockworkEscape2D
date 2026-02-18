@@ -194,6 +194,7 @@ _data = {
 [node name="Character" type="CharacterBody2D" unique_id=443292463 groups=["player"]]
 collision_mask = 5
 script = ExtResource("1_w8owe")
+jump_buffer_timeout = 0.1
 idle_fall_coyote_timeout = 0.4
 wall_coyote_timeout = 0.5
 gravity_coef = 3.0
