@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/arrows/arrow_shooter.tscn" id="2_wqpph"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="4_km30e"]
 
-[node name="Level_13" unique_id=1226125096 instance=ExtResource("1_orty3")]
+[node name="Level_18" unique_id=1226125096 instance=ExtResource("1_orty3")]
 level_id = 18
 metadata/_edit_horizontal_guides_ = [452.0, 1167.0]
 
@@ -41,7 +41,3 @@ position = Vector2(832, 448)
 
 [node name="SpawnMarker" parent="." index="7" unique_id=630440161]
 position = Vector2(144.61539, 709.23083)
-
-[node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(27, 34)
-rotation = 1.5707964

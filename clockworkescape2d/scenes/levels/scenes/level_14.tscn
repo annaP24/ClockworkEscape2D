@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="3_6ju06"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="4_1fyov"]
 
-[node name="Level_4" unique_id=1628529268 instance=ExtResource("1_latwm")]
+[node name="Level_14" unique_id=1628529268 instance=ExtResource("1_latwm")]
 level_id = 14
 
 [node name="TileMapLayer_2" parent="." index="1" unique_id=1834929103]
@@ -30,5 +30,4 @@ position = Vector2(158.46155, 143.07693)
 position = Vector2(127, 754)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1942, 105)
-rotation = 1.5707964
+position = Vector2(1920, 64)

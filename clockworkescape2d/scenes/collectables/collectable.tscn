@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2d4snixdg62a"]
+[gd_scene format=3 uid="uid://d2d4snixdg62a"]
 
 [ext_resource type="Script" uid="uid://dt7f0qf4515w8" path="res://scenes/collectables/collectable.gd" id="1_vtu06"]
 [ext_resource type="Texture2D" uid="uid://ch34854mwjr1o" path="res://scenes/collectables/assets/collectable_alternative.png" id="2_vtu06"]
@@ -9,23 +9,39 @@ radius = 13.152946
 [sub_resource type="CircleShape2D" id="CircleShape2D_88g45"]
 radius = 15.033297
 
-[node name="Collectable" type="StaticBody2D"]
+[sub_resource type="Gradient" id="Gradient_vtu06"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_88g45"]
+gradient = SubResource("Gradient_vtu06")
+fill = 1
+fill_from = Vector2(0.4985755, 0.52136755)
+fill_to = Vector2(0.18233618, 0.19088319)
+
+[node name="Collectable" type="StaticBody2D" unique_id=1935967838]
 collision_layer = 0
 script = ExtResource("1_vtu06")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2063392076]
 scale = Vector2(2, 2)
 texture = ExtResource("2_vtu06")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1767080387]
 visible = false
 shape = SubResource("CircleShape2D_vtu06")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1750861715]
 visible = false
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1564365785]
 shape = SubResource("CircleShape2D_88g45")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1687910829]
+position = Vector2(0, 1)
+color = Color(1, 0.6156863, 0, 1)
+energy = 1.26
+texture = SubResource("GradientTexture2D_88g45")
+texture_scale = 0.6
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b0jynsb1u2r0j" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_5nwd0"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="3_ifrfd"]
 
-[node name="Level_8" unique_id=1008334403 instance=ExtResource("1_18vaq")]
+[node name="Level_12" unique_id=1008334403 instance=ExtResource("1_18vaq")]
 level_id = 12
 metadata/_edit_vertical_guides_ = [929.0, 833.0]
 
@@ -33,5 +33,4 @@ position = Vector2(544, 864)
 position = Vector2(121.53846, 1155.3846)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1941.5386, 44.615387)
-rotation = 1.5707964
+position = Vector2(1920, 0)

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="7_0mkrg"]
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="8_0mkrg"]
 
-[node name="Level_12" unique_id=730751651 instance=ExtResource("1_tpfwo")]
+[node name="Level_16" unique_id=730751651 instance=ExtResource("1_tpfwo")]
 level_id = 16
 
 [node name="TileMapLayer_2" parent="." index="1" unique_id=1834929103]
@@ -68,5 +68,4 @@ position = Vector2(1838.4617, 1124.6155)
 position = Vector2(143.07693, 1158.4615)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1956, 286)
-rotation = 1.5707964
+position = Vector2(1920, 256)

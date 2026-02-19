@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0jynsb1u2r0j" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="4_re3mj"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="5_ppxxq"]
 
-[node name="Level_1" unique_id=1701425959 instance=ExtResource("1_u3ff6")]
+[node name="Level_7" unique_id=1701425959 instance=ExtResource("1_u3ff6")]
 level_id = 7
 
 [node name="Background" parent="." index="0" unique_id=750593274]
@@ -49,4 +49,5 @@ position = Vector2(1284.3534, 854.0867)
 position = Vector2(123, 128)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1744, 1241)
+position = Vector2(1728, 1280)
+rotation = -1.5707964

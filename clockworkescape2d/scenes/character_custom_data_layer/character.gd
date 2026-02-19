@@ -30,6 +30,7 @@ signal player_died
 @onready var sparks: GPUParticles2D = $Sparks
 @onready var ray_cast_right: RayCast2D = $JumpRayCasts/RayCastRight
 @onready var ray_cast_left: RayCast2D = $JumpRayCasts/RayCastLeft
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
 
@@ -77,6 +78,7 @@ func _process(_delta: float) -> void:
 	if not get_can_grab() and get_collision_points().size() == 0:
 		set_can_grab(true)
 	check_is_on_wall()
+	point_light_2d.energy = lerp(point_light_2d.energy, randf_range(1.2, 1.8), 0.1)
 
 func apply_gravity(new_gravity : float, delta : float):
 	velocity.y += new_gravity * delta
@@ -247,11 +249,9 @@ func _on_jump_buffer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
-	print("Reset coyote timer")
 	can_coyote_jump = false
 
 func _on_wall_jump_coyote_timer_timeout() -> void:
-	print("Wall Coyote false")
 	can_wall_coyote_jump = false
 
 # -------------------- On Signal Received -------------------------------------

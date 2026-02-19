@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_xeuda"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="2_0pplq"]
 
-[node name="Level_17" unique_id=43132988 instance=ExtResource("1_xeuda")]
+[node name="Level_10" unique_id=43132988 instance=ExtResource("1_xeuda")]
 level_id = 10
 
 [node name="TileMapLayer_2" parent="." index="1" unique_id=1834929103]
@@ -22,5 +22,4 @@ position = Vector2(1160, 123.076904)
 position = Vector2(128, 256)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1946.1539, 98.46155)
-rotation = 1.5707964
+position = Vector2(1920, 64)

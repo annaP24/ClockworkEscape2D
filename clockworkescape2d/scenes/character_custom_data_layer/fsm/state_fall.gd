@@ -24,7 +24,6 @@ func Physics_Update(delta):
 
 	# jump buffer start
 	if Input.is_action_just_pressed("jump"):
-		print("Set jump buffer auf true")
 		player.jump_buffer = true
 		player.jump_buffer_timer.start(player.jump_buffer_timeout)
 
@@ -36,7 +35,6 @@ func Physics_Update(delta):
 		print("Fall Coyote - jump")
 		player.wall_jump_count = 0
 		change_state("JumpState")
-		#change_state("WallJumpState")
 	elif Input.is_action_just_pressed("jump") and player.can_coyote_jump:
 		print("Edge Coyote jump")
 		change_state("JumpState")

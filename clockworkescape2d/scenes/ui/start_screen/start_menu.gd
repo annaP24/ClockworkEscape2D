@@ -27,7 +27,6 @@ func _on_settings_button_mouse_entered() -> void:
 func _on_settings_button_mouse_exited() -> void:
 	on_mouse_exited(settings_button)
 
-
 func _on_quit_button_pressed() -> void:
 	quit_game.emit()
 
