@@ -4,12 +4,10 @@ func Enter(player_node):
 	super(player_node)
 	# Jump counter zuruecksetzen
 	player.jump_count = player.max_jump_count
-	#player.jump_button_released = true
 	# Walljump counter zuruecksetzen
 	player.wall_jump_count = player.wall_jump_count_max
 	# Cojotejump zuruecksetzen
 	player.can_coyote_jump = true
-	player.can_wall_coyote_jump = true
 	player.is_player_moving = false
 	player.set_can_grab(true)
 	player.update_animation(player.animations.IDLE)
@@ -24,16 +22,10 @@ func Physics_Update(_delta):
 	# Move player x-axis
 	player.move_player_x(0.0)
 
-	# Move player y-axis
-
-	# Apply gravity
-
 	player.move_and_slide()
-
 	#Input reactions
 	#Case where dissapearing platform dissappears undeneath player while in idle
 	if !player.is_on_floor():
-		print("Idle to fall")
 		player.jump_count = 0
 		# Start koyote timeot so the player has a short window of time to still jump after platform dissapears
 		player.coyote_timer.start(player.idle_fall_coyote_timeout)

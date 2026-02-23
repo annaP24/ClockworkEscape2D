@@ -41,7 +41,7 @@ func set_highlight(active : bool):
 	if is_selected:
 		# Simple visual feedback (replace with an animation or shader)
 		sprite_2d.modulate = Color(1.5, 1.5, 1.5) # Brighten
-		sprite_2d.scale = Vector2(1.05, 1.05)
+		sprite_2d.scale = Vector2(1.1, 1.1)
 	else:
 		sprite_2d.modulate = Color(1, 1, 1)
 		sprite_2d.scale = Vector2(1, 1)

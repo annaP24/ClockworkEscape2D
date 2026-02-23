@@ -1,23 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciupdc666uu87"]
+[gd_scene format=3 uid="uid://ciupdc666uu87"]
 
 [ext_resource type="Script" uid="uid://cbar0mcdmlng" path="res://scenes/world_map/level_node.gd" id="1_26ptv"]
 [ext_resource type="Texture2D" uid="uid://p7mg00uipuy" path="res://scenes/world_map/assets/gear.png" id="2_r226i"]
 [ext_resource type="PackedScene" uid="uid://b3x34ffhjvqsr" path="res://scenes/world_map/collectables_visual.tscn" id="3_mxuui"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxuui"]
-radius = 32.0
+radius = 65.03076
 
-[node name="LevelNode" type="Area2D"]
+[node name="LevelNode" type="Area2D" unique_id=1530583061]
 script = ExtResource("1_26ptv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1037414981]
 texture = ExtResource("2_r226i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067932886]
 visible = false
 shape = SubResource("CircleShape2D_mxuui")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=755305261]
 offset_left = -20.0
 offset_top = -17.0
 offset_right = 20.0
@@ -26,7 +26,7 @@ theme_override_font_sizes/font_size = 23
 text = "1"
 horizontal_alignment = 1
 
-[node name="CollectablesVisual" parent="." instance=ExtResource("3_mxuui")]
+[node name="CollectablesVisual" parent="." unique_id=476554268 instance=ExtResource("3_mxuui")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

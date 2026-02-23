@@ -13,6 +13,7 @@ var current_level_path : String = ""
 var curve : Curve2D = Curve2D.new()
 var current_focused_level : LevelNode
 var is_joypad_connected : bool = false
+
 func _ready():
 	# Get Worl node
 	parent = get_parent()
@@ -31,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 		var next_node : LevelNode = null
-		## Handle joystic movement (level selection)
+		# Handle joystic movement (level selection)
 		if event.is_action_pressed("level_up"):
 			next_node = current_focused_level.neighbour_up
 		elif event.is_action_pressed("level_down"):
@@ -102,10 +103,11 @@ func _change_focus(level : LevelNode, is_joypad_selection : bool):
 	if level.is_unlocked:
 		current_focused_level = level
 		current_focused_level.set_highlight(true)
-	if is_joypad_connected and is_joypad_selection:
-		camera_2d.move_camera_with_selection(current_focused_level)
+	if (is_joypad_connected and is_joypad_selection) or (Input.is_action_just_pressed("level_down") or \
+	Input.is_action_just_pressed("level_up")):
+		camera_2d.move_camera_with_selection(current_focused_level.position)
 # ---------------------- Signals -----------------------------------------------
 func _on_level_selected(level_id):
 	# Start level scene:
 	GameManager.current_level = level_id - 1
-	parent.load_level("res://scenes/levels/scenes/level_%s.tscn" % level_id)
+	parent.load_level(GameManager.get_level_path(), level_id)

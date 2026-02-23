@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends StaticBody2D
 
 @export var sway_speed : float = 1.0

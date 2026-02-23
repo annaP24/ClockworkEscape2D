@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://be14mabgg4v0v"]
+[gd_scene format=3 uid="uid://be14mabgg4v0v"]
 
 [ext_resource type="Script" uid="uid://dehsfx7cfqh6s" path="res://scenes/ui/score_ui.gd" id="1_oq8au"]
 [ext_resource type="Texture2D" uid="uid://jnn22tqcwljy" path="res://scenes/ui/assets/collectable.png" id="2_oq8au"]
+[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="3_dwi35"]
 
-[node name="Score_ui" type="Control"]
+[node name="Score_ui" type="Control" unique_id=1419331553]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,22 +13,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oq8au")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_right = 129.0
-offset_bottom = 25.0
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=339464042]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 149.0
+offset_bottom = 45.0
 scale = Vector2(2.83, 2.83)
 theme_override_constants/separation = -2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1273661847]
 layout_mode = 2
 texture = ExtResource("2_oq8au")
 expand_mode = 2
 
-[node name="Score" type="Label" parent="HBoxContainer"]
+[node name="Score" type="Label" parent="HBoxContainer" unique_id=1783113796]
 custom_minimum_size = Vector2(100, 23.965)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.18431373, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("3_dwi35")
 theme_override_font_sizes/font_size = 15
 text = "6"
 vertical_alignment = 1

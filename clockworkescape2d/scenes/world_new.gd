@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var scene_placeholder: Node2D = $Scene
 @onready var world_map: Node2D = $WorldMap
-@onready var start_menu: Control = $StartMenu
 
 var current_level_instance : Level = null
 var current_level_index : int = 0
@@ -18,6 +17,13 @@ func _ready() -> void:
 	max_level_reached = GameManager.load_progress()
 	world_map.unlock_levels()
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
+	EventBus.connect("sm_start_game", _on_sm_start_game)
+	EventBus.connect("sm_quit_game", _on_sm_quit_game)
+	EventBus.connect("sm_settings", _on_sm_settings)
+	EventBus.connect("lb_quit_level", _on_quit_level_received)
+	EventBus.connect("lb_restart_level", _on_restart_level_received)
+	EventBus.connect("lb_return_to_map", _on_return_to_map_received)
+
 	_check_input_controller()
 
 func _process(_delta: float) -> void:
@@ -26,7 +32,7 @@ func _process(_delta: float) -> void:
 		_pause_world_map(true)
 
 func _set_start_menu_visible(sm_is_visible : bool):
-	start_menu.visible = sm_is_visible
+	EventBus.world_hide_sm.emit(sm_is_visible)
 
 func _set_world_map_visible(is_world_map_visible : bool):
 	world_map.visible = is_world_map_visible
@@ -37,7 +43,7 @@ func _pause_world_map(is_paused : bool):
 func _set_camera_enabled(is_camera_enabled : bool):
 	world_map.camera_2d.enabled = is_camera_enabled
 
-func load_level(path_to_level : String):
+func load_level(path_to_level : String, level_id : int):
 	if path_to_level != "":
 		current_level_path = path_to_level
 		#Cleanup previous level
@@ -47,10 +53,7 @@ func load_level(path_to_level : String):
 			#Dynamic load
 			var level_scene = load(path_to_level)
 			current_level_instance = level_scene.instantiate()
-			current_level_instance.level_id = path_to_level.split("_")[1].to_int()
-			current_level_instance.connect("quit_level", _on_quit_level_received)
-			current_level_instance.connect("restart_level", _on_restart_level_received)
-			current_level_instance.connect("load_next_level", _on_load_next_level_received)
+			current_level_instance.level_id = level_id
 			scene_placeholder.call_deferred("add_child", current_level_instance)
 		is_level_manager_visible = false
 		_set_world_map_visible(is_level_manager_visible)
@@ -87,8 +90,8 @@ func _on_fade_out_finished():
 		_set_camera_enabled(is_level_manager_visible)
 		_set_start_menu_visible(false)
 		FadeScreen.fade_in()
-	else:
-		load_level(current_level_path)
+	#else:
+		#load_level(current_level_path)
 
 func _on_quit_level_received():
 	is_level_manager_visible = true
@@ -99,7 +102,7 @@ func _on_restart_level_received():
 	is_level_manager_visible = false
 	FadeScreen.fade_out()
 
-func _on_load_next_level_received(level_id : int):
+func _on_return_to_map_received(level_id : int):
 	#In case there is no other level, main manu will be shown
 	is_level_manager_visible = true
 	#Save level reached progress
@@ -109,17 +112,20 @@ func _on_load_next_level_received(level_id : int):
 	world_map.unlock_levels()
 	#In case there is another leve, it will be loaded and level manager visibility disabled
 	#ToDo: Switch to End Game screen if there are no other levels, from there to MainMenu
-	load_level(GameManager.get_next_level_path())
+	#load_level(GameManager.get_next_level_path())
+	#FadeScreen.fade_out()
+	is_level_manager_visible = true
 	FadeScreen.fade_out()
 
-func _on_start_menu_start_game() -> void:
+
+func _on_sm_start_game():
 	_set_start_menu_visible(false)
 	_pause_world_map(false)
 
-func _on_start_menu_settings() -> void:
+func _on_sm_settings() -> void:
 	pass # Replace with function body.
 
-func _on_start_menu_quit_game() -> void:
+func _on_sm_quit_game() -> void:
 	get_tree().quit()
 
 func _on_joypad_connection_changed(_device: int, connected: bool):

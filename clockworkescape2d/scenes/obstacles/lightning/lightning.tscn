@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bd0enwr66l8nf"]
+[gd_scene format=3 uid="uid://bd0enwr66l8nf"]
 
 [ext_resource type="Script" uid="uid://die5s0or5gnnp" path="res://scenes/obstacles/lightning/lightning.gd" id="1_gjjtp"]
 [ext_resource type="Texture2D" uid="uid://bk867eocc7gjx" path="res://scenes/obstacles/lightning/assets/blitz1t.png" id="1_lacsv"]
 [ext_resource type="Texture2D" uid="uid://dy2q8epbsajin" path="res://scenes/obstacles/lightning/assets/blitz2t.png" id="2_nwg2p"]
 [ext_resource type="Texture2D" uid="uid://c0ynakwr4c3bw" path="res://scenes/obstacles/lightning/assets/blitz3t.png" id="3_kf46m"]
 [ext_resource type="Texture2D" uid="uid://cvuk77pxpa3au" path="res://scenes/obstacles/lightning/assets/blitz4t.png" id="4_gjjtp"]
-[ext_resource type="Texture2D" uid="uid://ctkl26kan0cay" path="res://scenes/obstacles/lightning/assets/36_36_base.png" id="6_gjjtp"]
+[ext_resource type="Texture2D" uid="uid://bpw0vijteglaq" path="res://scenes/obstacles/lightning/assets/base_4.png" id="6_gjjtp"]
 [ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="7_gjjtp"]
+[ext_resource type="Texture2D" uid="uid://5l7wstka33ww" path="res://scenes/obstacles/lightning/assets/base_top.png" id="7_y1sro"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_y1sro"]
 frames = 4
@@ -23,49 +24,46 @@ frame_3/duration = 1.0
 size = Vector2(40, 472)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sro"]
-size = Vector2(52, 100)
+size = Vector2(52, 900)
 
-[node name="Lightning" type="StaticBody2D"]
+[node name="Lightning" type="StaticBody2D" unique_id=1597034869]
 collision_layer = 0
 script = ExtResource("1_gjjtp")
 
-[node name="BlitzLine" type="Line2D" parent="."]
+[node name="BlitzLine" type="Line2D" parent="." unique_id=1781101274]
 texture_repeat = 2
 points = PackedVector2Array(0, 29, 0, 129)
 width = 160.0
 texture = SubResource("AnimatedTexture_y1sro")
 texture_mode = 1
 
-[node name="LowerGuard" type="Sprite2D" parent="."]
+[node name="LowerGuard" type="Sprite2D" parent="." unique_id=1679950281]
 position = Vector2(0, 129)
-scale = Vector2(3, 3)
 texture = ExtResource("6_gjjtp")
 
-[node name="UpperGuard" type="Sprite2D" parent="."]
+[node name="UpperGuard" type="Sprite2D" parent="." unique_id=1389530810]
 position = Vector2(0, 29)
-rotation = 3.14159
-scale = Vector2(3, 3)
-texture = ExtResource("6_gjjtp")
+texture = ExtResource("7_y1sro")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703527519]
 visible = false
 position = Vector2(2, 287)
 shape = SubResource("RectangleShape2D_kf46m")
 
-[node name="Comp2dHitbox" type="Area2D" parent="."]
+[node name="Comp2dHitbox" type="Area2D" parent="." unique_id=1949732109]
 visible = false
 collision_layer = 0
 script = ExtResource("7_gjjtp")
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox" unique_id=1283912412]
 position = Vector2(0, 79)
 shape = SubResource("RectangleShape2D_y1sro")
 
-[node name="OffTimer" type="Timer" parent="."]
+[node name="OffTimer" type="Timer" parent="." unique_id=523748136]
 one_shot = true
 
-[node name="OnTimer" type="Timer" parent="."]
+[node name="OnTimer" type="Timer" parent="." unique_id=185345127]
 one_shot = true
 
 [connection signal="timeout" from="OffTimer" to="." method="_on_off_timer_timeout"]

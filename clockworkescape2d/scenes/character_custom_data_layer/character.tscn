@@ -197,8 +197,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cq04i"]
 gradient = SubResource("Gradient_cq04i")
 fill = 1
-fill_from = Vector2(0.5897436, 0.6039886)
-fill_to = Vector2(0.7692308, 0.19373219)
+fill_from = Vector2(0.5156695, 0.4985755)
+fill_to = Vector2(0.86609685, 0.13960114)
 
 [node name="Character" type="CharacterBody2D" unique_id=443292463 groups=["player"]]
 collision_mask = 5
@@ -261,7 +261,6 @@ visible = false
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1653585586]
-visible = false
 shape = SubResource("CircleShape2D_wh2hg")
 target_position = Vector2(0, 0)
 collision_mask = 2
@@ -313,11 +312,14 @@ target_position = Vector2(0, -45)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1696154025]
 position = Vector2(0, 1)
-color = Color(1, 0.6156863, 0, 1)
-energy = 1.26
-shadow_filter = 1
+color = Color(0.81, 0.4995, 0, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_color = Color(0.8117647, 0.49803922, 0, 0.49803922)
+shadow_filter = 2
+shadow_filter_smooth = 33.2
 texture = SubResource("GradientTexture2D_cq04i")
-texture_scale = 2.4
+texture_scale = 3.0
 
 [connection signal="animation_finished" from="SquashMarker/CharacterAnimated" to="." method="_on_character_animated_animation_finished"]
 [connection signal="hurt" from="Comp2dHurtbox" to="." method="_on_comp_2d_hurtbox_hurt"]

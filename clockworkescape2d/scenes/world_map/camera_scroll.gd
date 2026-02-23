@@ -34,9 +34,9 @@ func _input(event):
 			Vector2(max_x, max_y)
 		)
 
-func move_camera_with_selection(new_node : LevelNode):
+func move_camera_with_selection(new_node : Vector2):
 	# Zielposition berechnen (und innerhalb der Grenzen halten)
-	var target_y = clamp(new_node.position.y - 250, min_y, max_y)
+	var target_y = clamp(new_node.y - 250, min_y, max_y)
 
 	# Distanz zwischen aktueller Position und Ziel berechnen
 	var distance = abs(self.position.y - target_y)

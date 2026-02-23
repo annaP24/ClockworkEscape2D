@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw48g65rbks06"]
+[gd_scene format=3 uid="uid://bw48g65rbks06"]
 
 [ext_resource type="Script" uid="uid://dd2ei73p7j0p8" path="res://scenes/obstacles/pendent/pendent.gd" id="1_nw4xq"]
-[ext_resource type="Texture2D" uid="uid://d3wawntl7ljq7" path="res://scenes/obstacles/pendent/assets/pendent.png" id="1_p6yeh"]
+[ext_resource type="Texture2D" uid="uid://c3pcmhkum8c0a" path="res://scenes/obstacles/pendent/assets/pendent_new.png" id="2_ciggu"]
 [ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="2_nw4xq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ciggu"]
@@ -20,42 +20,42 @@ height = 17.283339
 radius = 7.213683
 height = 14.427366
 
-[node name="Pendent" type="StaticBody2D"]
+[node name="Pendent" type="StaticBody2D" unique_id=302682541]
 script = ExtResource("1_nw4xq")
 sway_speed = 1.5
 max_rotation = 70.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1831930713]
 visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ciggu")
 
-[node name="RotationMarker" type="Marker2D" parent="."]
-rotation = 0.8987371
+[node name="RotationMarker" type="Marker2D" parent="." unique_id=2114111655]
+rotation = -1.1997753
 
-[node name="Sprite2D" type="Sprite2D" parent="RotationMarker"]
+[node name="Sprite2D" type="Sprite2D" parent="RotationMarker" unique_id=2104687091]
 position = Vector2(-1, 125)
-texture = ExtResource("1_p6yeh")
+texture = ExtResource("2_ciggu")
 
-[node name="DetectionMarker" type="Marker2D" parent="RotationMarker/Sprite2D"]
+[node name="DetectionMarker" type="Marker2D" parent="RotationMarker/Sprite2D" unique_id=923474259]
 
-[node name="Comp2dHitbox" type="Area2D" parent="RotationMarker"]
+[node name="Comp2dHitbox" type="Area2D" parent="RotationMarker" unique_id=933442000]
 visible = false
 position = Vector2(-1, 64)
 script = ExtResource("2_nw4xq")
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationMarker/Comp2dHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationMarker/Comp2dHitbox" unique_id=1728987670]
 position = Vector2(1, 149)
 shape = SubResource("CapsuleShape2D_5lwuq")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RotationMarker/Comp2dHitbox"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RotationMarker/Comp2dHitbox" unique_id=115325305]
 position = Vector2(1, 89)
 rotation = 1.5912408
 scale = Vector2(0.78909093, 1.3859649)
 shape = SubResource("CapsuleShape2D_nw4xq")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RotationMarker/Comp2dHitbox"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RotationMarker/Comp2dHitbox" unique_id=259819805]
 position = Vector2(4.7683716e-07, 53)
 rotation = 1.5912408
 scale = Vector2(0.78909093, 1.3859649)

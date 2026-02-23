@@ -163,21 +163,21 @@ func get_colliding_tile_type() -> Array:
 	return current_tiles
 
 func get_walkable_wall_side() -> WallSide:
-	# Check Slide Collisions (Active movement)
-	for coll_point in get_slide_collision_count():
-		var collision_info = get_slide_collision(coll_point)
-		var collider = collision_info.get_collider()
+	if shape_cast_2d.is_colliding():
+		# Check Slide Collisions (Active movement)
+		for coll_point in get_slide_collision_count():
+			var collision_info = get_slide_collision(coll_point)
+			var collider = collision_info.get_collider()
 
-		if collider is TileMapLayer:
-			# Push position slightly in to be sure which tile map cell is it
-			var pos = collision_info.get_position() - collision_info.get_normal() * 4
-			var map_pos = collider.local_to_map(collider.to_local(pos))
-			var tile_data = collider.get_cell_tile_data(map_pos)
+			if collider is TileMapLayer:
+				# Push position slightly in to be sure which tile map cell is it
+				var pos = collision_info.get_position() - collision_info.get_normal() * 4
+				var map_pos = collider.local_to_map(collider.to_local(pos))
+				var tile_data = collider.get_cell_tile_data(map_pos)
 
-			if tile_data and tile_data.get_custom_data("tile_id") == "walkable":
-
-				var normal = collision_info.get_normal()
-				return get_wall_side_from_normal(normal)
+				if tile_data and tile_data.get_custom_data("tile_id") == "walkable":
+					var normal = collision_info.get_normal()
+					return get_wall_side_from_normal(normal)
 	# Check ShapeCast if no "walkable" tile was detected (Idle case)
 	if shape_cast_2d.is_colliding():
 		for collision_point in shape_cast_2d.get_collision_count():

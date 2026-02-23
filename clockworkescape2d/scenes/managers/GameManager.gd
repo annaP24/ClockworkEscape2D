@@ -109,3 +109,10 @@ func get_next_level_path() -> String:
 	else:
 		#ToDo The end screen, return to menu
 		return ""
+
+func get_level_path() -> String:
+	if current_level <= all_level_paths.size()-1:
+		return all_level_paths[current_level]
+	else:
+		#ToDo The end screen, return to menu
+		return ""
