@@ -110,4 +110,5 @@ func _change_focus(level : LevelNode, is_joypad_selection : bool):
 func _on_level_selected(level_id):
 	# Start level scene:
 	GameManager.current_level = level_id - 1
+	GameManager.level_id = level_id
 	parent.load_level(GameManager.get_level_path(), level_id)

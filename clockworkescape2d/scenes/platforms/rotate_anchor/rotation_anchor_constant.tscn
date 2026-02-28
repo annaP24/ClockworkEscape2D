@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://8xtbx51r0be3"]
+
+[ext_resource type="PackedScene" uid="uid://ck54gsramip0j" path="res://scenes/platforms/rotate_anchor/rotation_anchor.tscn" id="1_rbgtw"]
+
+[node name="RotationAnchorConstant" unique_id=2068553683 instance=ExtResource("1_rbgtw")]

@@ -1,6 +1,7 @@
 extends Node
 
 var current_level : int = 0
+var level_id : int = 0
 var all_level_paths : Array[String]
 var levels_path : String = "res://scenes/levels/scenes/"
 

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dwb5qoh4vb8ry"]
+
+[ext_resource type="PackedScene" uid="uid://ck54gsramip0j" path="res://scenes/platforms/rotate_anchor/rotation_anchor.tscn" id="1_5qgtv"]
+[ext_resource type="Script" uid="uid://8in4gd3mmjad" path="res://scenes/platforms/rotate_anchor/rotation_anchor_clock.gd" id="2_c7x4u"]
+
+[node name="RotationAnchorClock" unique_id=2068553683 instance=ExtResource("1_5qgtv")]
+script = ExtResource("2_c7x4u")
+rotation_deg = 90.0
+rotation_timeout = 0.5
+
+[node name="RotationTimer" type="Timer" parent="." index="1" unique_id=1403105542]
+
+[connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]

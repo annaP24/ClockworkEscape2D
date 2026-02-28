@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ck54gsramip0j"]
+
+[ext_resource type="Script" uid="uid://mgqfbhedfgd2" path="res://scenes/platforms/rotate_anchor/rotation_anchor_constant.gd" id="1_13nlb"]
+[ext_resource type="Texture2D" uid="uid://grwmfhbedhyp" path="res://scenes/platforms/rotate_anchor/assets/rotating_bolt.png" id="2_mcl3s"]
+
+[node name="RotationAnhor" type="Node2D" unique_id=2068553683]
+top_level = true
+script = ExtResource("1_13nlb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=975416254]
+texture = ExtResource("2_mcl3s")

@@ -90,8 +90,8 @@ func _on_fade_out_finished():
 		_set_camera_enabled(is_level_manager_visible)
 		_set_start_menu_visible(false)
 		FadeScreen.fade_in()
-	#else:
-		#load_level(current_level_path)
+	else:
+		load_level(current_level_path, GameManager.level_id)
 
 func _on_quit_level_received():
 	is_level_manager_visible = true

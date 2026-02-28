@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://rxjk0aftvp6t"]
+[gd_scene format=3 uid="uid://rxjk0aftvp6t"]
 
 [ext_resource type="Script" uid="uid://ds7b3tev8efnp" path="res://scenes/platforms/platform_base.gd" id="1_vxx0p"]
 [ext_resource type="PackedScene" uid="uid://b54p8om8spa8e" path="res://scenes/platforms/platform_type_detection_area.tscn" id="2_m2046"]
@@ -9,15 +9,17 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wpcb"]
 size = Vector2(63, 19)
 
-[node name="Platform" type="AnimatableBody2D"]
+[node name="Platform" type="AnimatableBody2D" unique_id=1350546348]
 script = ExtResource("1_vxx0p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1676338968]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1181645146]
+visible = false
 shape = SubResource("RectangleShape2D_m2046")
 
-[node name="PlatformTypeDetectionArea" parent="." instance=ExtResource("2_m2046")]
+[node name="PlatformTypeDetectionArea" parent="." unique_id=378534617 instance=ExtResource("2_m2046")]
+visible = false
 
 [node name="CollisionShape2D" parent="PlatformTypeDetectionArea" index="0"]
 position = Vector2(0, -23)

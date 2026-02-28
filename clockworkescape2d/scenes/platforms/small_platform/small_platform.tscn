@@ -1,28 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjww3w1a45857"]
+[gd_scene format=3 uid="uid://bjww3w1a45857"]
 
-[ext_resource type="Texture2D" uid="uid://cef2q88m75t3l" path="res://scenes/platforms/small_platform/assets/platform.png" id="2_pwuxp"]
+[ext_resource type="Texture2D" uid="uid://kh8irk67x2u5" path="res://scenes/platforms/small_platform/assets/small_platform.png" id="1_hmowh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4dh"]
-size = Vector2(128, 44)
+size = Vector2(128, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de33r"]
-size = Vector2(128, 46)
+size = Vector2(128, 36)
 
-[node name="Small_platform" type="StaticBody2D"]
+[node name="Small_platform" type="StaticBody2D" unique_id=1620481334]
 collision_mask = 0
+metadata/_edit_vertical_guides_ = [64.0, -64.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pwuxp")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=269219179]
+texture = ExtResource("1_hmowh")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1138852631]
 visible = false
 shape = SubResource("RectangleShape2D_tv4dh")
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=569695473]
 visible = false
 collision_layer = 0
 
-[node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
+[node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea" unique_id=775653997]
 shape = SubResource("RectangleShape2D_de33r")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

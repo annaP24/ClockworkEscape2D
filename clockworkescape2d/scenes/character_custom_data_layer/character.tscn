@@ -202,6 +202,7 @@ fill_to = Vector2(0.86609685, 0.13960114)
 
 [node name="Character" type="CharacterBody2D" unique_id=443292463 groups=["player"]]
 collision_mask = 5
+floor_max_angle = 0.5235988
 script = ExtResource("1_w8owe")
 jump_buffer_timeout = 0.1
 idle_fall_coyote_timeout = 0.4
@@ -257,10 +258,10 @@ animation = &"full"
 autoplay = "full"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=858918230]
-visible = false
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1653585586]
+visible = false
 shape = SubResource("CircleShape2D_wh2hg")
 target_position = Vector2(0, 0)
 collision_mask = 2

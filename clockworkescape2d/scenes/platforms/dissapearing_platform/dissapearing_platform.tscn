@@ -1,48 +1,47 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0jynsb1u2r0j"]
+[gd_scene format=3 uid="uid://ol8runu3wf7h"]
 
-[ext_resource type="Script" uid="uid://dnd4q2iavlxqf" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_3du1g"]
-[ext_resource type="Texture2D" uid="uid://bbycajsiy5hsm" path="res://scenes/platforms/dissapearing_platform/assets/platform_dissapearing0.png" id="2_57gib"]
+[ext_resource type="Script" uid="uid://cub12tb7qx5fp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_orvl5"]
+[ext_resource type="Texture2D" uid="uid://c738kt8qysox3" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform1_light.png" id="2_au3ms"]
+[ext_resource type="Texture2D" uid="uid://c2hc2li1cbfxa" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform3_light.png" id="3_h37rn"]
+[ext_resource type="Texture2D" uid="uid://dggpa6m0pqcj7" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform4_light.png" id="4_0kmtb"]
+[ext_resource type="Texture2D" uid="uid://chv3047cqoxam" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform5_light.png" id="5_f013x"]
+[ext_resource type="Texture2D" uid="uid://b86mu5fat388s" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform2_light.png" id="6_yr8lw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4dh"]
-size = Vector2(128, 34)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb1gf"]
+size = Vector2(128, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_de33r"]
-size = Vector2(128, 36)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fps72"]
+size = Vector2(128, 54)
 
-[sub_resource type="Animation" id="Animation_tg1qi"]
+[sub_resource type="Animation" id="Animation_77hul"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_au3ms")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_1el0k"]
-resource_name = "dissapear"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.51),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_57gib"]
+[sub_resource type="Animation" id="Animation_00rjw"]
 resource_name = "appear"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,60 +49,230 @@ tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.51, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_au3ms")]
+}
+
+[sub_resource type="Animation" id="Animation_2dxoa"]
+resource_name = "break"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0008172691, 0.200351, 0.39877698),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_h37rn"), ExtResource("4_0kmtb"), ExtResource("5_f013x")]
+}
+
+[sub_resource type="Animation" id="Animation_4lr8x"]
+resource_name = "break_light"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09721652),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_au3ms"), ExtResource("6_yr8lw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqq8f"]
+_data = {
+&"RESET": SubResource("Animation_77hul"),
+&"appear": SubResource("Animation_00rjw"),
+&"break": SubResource("Animation_2dxoa"),
+&"break_light": SubResource("Animation_4lr8x")
+}
+
+[sub_resource type="Animation" id="Animation_au3ms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h37rn"]
+resource_name = "dark"
+length = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.007870561),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9063318, 0.7977378, 0.7977378, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sfjr5"]
+resource_name = "dissapear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19361578),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(0.90588236, 0.79607844, 0.79607844, 1), Color(0.9063318, 0.7977378, 0.7977378, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10861375, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 10), Vector2(0, 15)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tg1qi"]
+[sub_resource type="Animation" id="Animation_0kmtb"]
+resource_name = "shake_critical"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.099956125, 0.1, 0.11995612, 0.13995612, 0.15995613, 0.17995612, 0.19995612),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(0, 0), Vector2(0, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f013x"]
+resource_name = "shake_heavy"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 0), Vector2(-2, 0), Vector2(0, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yr8lw"]
+resource_name = "shake_light"
+length = 0.19
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.19157411),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4lr8x"]
 _data = {
-&"RESET": SubResource("Animation_tg1qi"),
-&"appear": SubResource("Animation_57gib"),
-&"dissapear": SubResource("Animation_1el0k")
+&"RESET": SubResource("Animation_au3ms"),
+&"dark": SubResource("Animation_h37rn"),
+&"dissapear": SubResource("Animation_sfjr5"),
+&"shake_critical": SubResource("Animation_0kmtb"),
+&"shake_heavy": SubResource("Animation_f013x"),
+&"shake_light": SubResource("Animation_yr8lw")
 }
 
-[node name="Dissapearing_platform" type="StaticBody2D"]
-collision_mask = 0
-script = ExtResource("1_3du1g")
-is_disappearing = true
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_2i6ai"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 0.715)
-texture = ExtResource("2_57gib")
+[node name="Dissapearing_platform" type="StaticBody2D" unique_id=1085304983]
+script = ExtResource("1_orvl5")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1801470367]
+texture = ExtResource("2_au3ms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1882488819]
 visible = false
-shape = SubResource("RectangleShape2D_tv4dh")
+shape = SubResource("RectangleShape2D_nb1gf")
 
-[node name="CrackTimer1" type="Timer" parent="."]
-one_shot = true
-
-[node name="CrackTimer2" type="Timer" parent="."]
-one_shot = true
-
-[node name="DissapearTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="AppearTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=41899066]
 visible = false
 collision_layer = 0
 
-[node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("RectangleShape2D_de33r")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1785831424]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_fps72")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tg1qi")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1489439296]
+libraries/ = SubResource("AnimationLibrary_bqq8f")
 
-[connection signal="timeout" from="CrackTimer1" to="." method="_on_crack_timer_1_timeout"]
-[connection signal="timeout" from="CrackTimer2" to="." method="_on_crack_timer_2_timeout"]
-[connection signal="timeout" from="DissapearTimer" to="." method="_on_dissapear_timer_timeout"]
-[connection signal="timeout" from="AppearTimer" to="." method="_on_appear_timer_timeout"]
+[node name="ShakeAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2057241437]
+libraries/ = SubResource("AnimationLibrary_4lr8x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=228133818]
+stream = SubResource("AudioStreamGenerator_2i6ai")
+
+[node name="CrackTimeout" type="Timer" parent="." unique_id=556594465]
+one_shot = true
+
+[node name="AppearTimer" type="Timer" parent="." unique_id=1035744751]
+one_shot = true
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="ShakeAnimationPlayer" to="." method="_on_shake_animation_player_animation_finished"]
+[connection signal="timeout" from="CrackTimeout" to="." method="_on_crack_timeout_timeout"]
+[connection signal="timeout" from="AppearTimer" to="." method="_on_appear_timer_timeout"]
