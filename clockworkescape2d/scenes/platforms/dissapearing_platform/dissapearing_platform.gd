@@ -17,10 +17,6 @@ func _ready() -> void:
 	collision.disabled = false
 	sprite_2d.texture = load("res://scenes/platforms/dissapearing_platform/assets/breakable_platform1_light.png")
 
-func _physics_process(delta: float) -> void:
-
-	Debug.print_value("Animation:", shake_animation_player.current_animation)
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "appear":
 		collision.disabled = false
@@ -49,28 +45,26 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 
 			#play_crack_sound()
 
-
 func _on_shake_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "shake_light":
 		shake_animation_player.play("shake_heavy")
 	elif anim_name == "shake_heavy":
 		shake_animation_player.play("shake_critical")
 	elif anim_name == "shake_critical":
-		shake_animation_player.play("dark")
-	elif anim_name == "dark":
-		shake_animation_player.play("dissapear")
+		#shake_animation_player.play("dissapear")
+		shake_animation_player.play("dissolve")
 		collision.disabled = true
 		detection_collision.disabled = true
 		#ToDo- splash animation, parrticles
 		is_platform_visible = false
 	elif anim_name == "dissapear":
 		appear_timer.start(appear_timeout)
-
+	elif anim_name == "dissolve":
+		appear_timer.start(appear_timeout)
 
 func _on_crack_timeout_timeout() -> void:
 	animation_player.play("break")
 	shake_animation_player.play("shake_light")
-
 
 func _on_appear_timer_timeout() -> void:
 	animation_player.play("appear")

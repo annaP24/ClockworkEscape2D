@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://ol8runu3wf7h"]
 
+[ext_resource type="Shader" uid="uid://cjxqsqss46euy" path="res://dissolve_script.gdshader" id="1_0kmtb"]
 [ext_resource type="Script" uid="uid://cub12tb7qx5fp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_orvl5"]
 [ext_resource type="Texture2D" uid="uid://c738kt8qysox3" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform1_light.png" id="2_au3ms"]
+[ext_resource type="Material" uid="uid://vvcht2a55wgc" path="res://dissolve_material.tres" id="3_f013x"]
 [ext_resource type="Texture2D" uid="uid://c2hc2li1cbfxa" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform3_light.png" id="3_h37rn"]
 [ext_resource type="Texture2D" uid="uid://dggpa6m0pqcj7" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform4_light.png" id="4_0kmtb"]
 [ext_resource type="Texture2D" uid="uid://chv3047cqoxam" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform5_light.png" id="5_f013x"]
 [ext_resource type="Texture2D" uid="uid://b86mu5fat388s" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform2_light.png" id="6_yr8lw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr8lw"]
+shader = ExtResource("1_0kmtb")
+shader_parameter/change_point = 0.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/base_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nb1gf"]
 size = Vector2(128, 64)
@@ -39,6 +47,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:material:shader_parameter/change_point")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_00rjw"]
 resource_name = "appear"
@@ -65,6 +97,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_au3ms")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:material:shader_parameter/change_point")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_2dxoa"]
@@ -99,12 +155,40 @@ tracks/0/keys = {
 "values": [ExtResource("2_au3ms"), ExtResource("6_yr8lw")]
 }
 
+[sub_resource type="Animation" id="Animation_gjx4i"]
+resource_name = "dissapear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/change_point")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.606000028785, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqq8f"]
 _data = {
 &"RESET": SubResource("Animation_77hul"),
 &"appear": SubResource("Animation_00rjw"),
 &"break": SubResource("Animation_2dxoa"),
-&"break_light": SubResource("Animation_4lr8x")
+&"break_light": SubResource("Animation_4lr8x"),
+&"dissapear": SubResource("Animation_gjx4i")
 }
 
 [sub_resource type="Animation" id="Animation_au3ms"]
@@ -132,6 +216,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/change_point")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_h37rn"]
@@ -176,6 +272,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 3), Vector2(0, 10), Vector2(0, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_reium"]
+resource_name = "dissolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/change_point")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.38, 0.73),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.50000002375, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_0kmtb"]
@@ -231,6 +342,7 @@ _data = {
 &"RESET": SubResource("Animation_au3ms"),
 &"dark": SubResource("Animation_h37rn"),
 &"dissapear": SubResource("Animation_sfjr5"),
+&"dissolve": SubResource("Animation_reium"),
 &"shake_critical": SubResource("Animation_0kmtb"),
 &"shake_heavy": SubResource("Animation_f013x"),
 &"shake_light": SubResource("Animation_yr8lw")
@@ -239,9 +351,11 @@ _data = {
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_2i6ai"]
 
 [node name="Dissapearing_platform" type="StaticBody2D" unique_id=1085304983]
+material = SubResource("ShaderMaterial_yr8lw")
 script = ExtResource("1_orvl5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1801470367]
+material = ExtResource("3_f013x")
 texture = ExtResource("2_au3ms")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1882488819]

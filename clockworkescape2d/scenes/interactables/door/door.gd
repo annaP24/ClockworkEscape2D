@@ -7,9 +7,10 @@ extends StaticBody2D
 @onready var gpu_steam_particles: GPUParticles2D = $GPUSteamParticles
 @onready var sprites: Node2D = $Sprites
 @onready var move_delay_timer: Timer = $MoveDelayTimer
+@onready var sparks: GPUParticles2D = $Sparks
 
 var is_move_up : bool = true
-var max_move_offset : float = 3 * 64.0
+var max_move_offset : float = 2 * 64.0
 var init_position : Vector2 = Vector2.ZERO
 var target_position : Vector2 = Vector2.ZERO
 var current_target : Vector2 = Vector2.ZERO
@@ -19,6 +20,7 @@ func _ready() -> void:
 	move_delay_timer.wait_time = wait_timeout
 	init_position = global_position
 	move_speed = move_up_speed
+	sparks.emitting = false
 	var offset : Vector2 = Vector2.ZERO
 
 	if is_move_up:
@@ -36,16 +38,17 @@ func _ready() -> void:
 		switch_2.is_not_active.connect(_on_switch_is_not_active)
 
 func _physics_process(delta: float) -> void:
-	global_position = global_position.move_toward(current_target, move_speed * delta)
-
+	sprites.global_position = sprites.global_position.move_toward(current_target, move_speed * delta)
+	if sprites.global_position == target_position:
+		sparks.emitting = false
 func _on_switch_is_active():
 	move_delay_timer.stop() # Cancel timers
 	current_target = target_position
-	gpu_steam_particles.visible = true
+	sparks.emitting = true
 
 func _on_switch_is_not_active():
 	move_delay_timer.start()
-	gpu_steam_particles.visible = false
+	sparks.emitting = false
 
 func _on_move_delay_timer_timeout() -> void:
 	if switch_2:

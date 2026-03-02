@@ -12,9 +12,9 @@ func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
 	FadeScreen.fade_in()
 	var delta = Time.get_ticks_msec() - engine_start
-	print("Autoload-Init:", engine_start)
-	print("Zeit bis erstes _ready():", delta, "ms")
-
+	#print("Autoload-Init:", engine_start)
+	#print("Zeit bis erstes _ready():", delta, "ms")
+	print("Level ", str(level_id), " starting")
 func _on_fade_in_finished():
 	_spawn_player( )
 
