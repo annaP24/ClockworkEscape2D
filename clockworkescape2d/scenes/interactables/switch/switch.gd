@@ -29,10 +29,10 @@ func _process(_delta: float) -> void:
 		if player.is_player_moving:
 			if is_left_wind:
 				switch_sprite.rotate(-25.0)
-				switch_sprite_small.rotate(25.0)
+				#switch_sprite_small.rotate(25.0)
 			else:
 				switch_sprite.rotate(25.0)
-				switch_sprite_small.rotate(-25.0)
+				#switch_sprite_small.rotate(-25.0)
 	else:
 		if !is_not_active_emitted:
 			is_not_active_emitted = true

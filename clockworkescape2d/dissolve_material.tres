@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://vvcht2a55wgc"]
+
+[ext_resource type="Shader" uid="uid://cjxqsqss46euy" path="res://dissolve_script.gdshader" id="1_g648e"]
+
+[sub_resource type="Gradient" id="Gradient_epypp"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0hol4"]
+gradient = SubResource("Gradient_epypp")
+fill_from = Vector2(0.5521368, 1)
+fill_to = Vector2(0.50085473, 0.011965812)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0hol4"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q6r6c"]
+noise = SubResource("FastNoiseLite_0hol4")
+
+[resource]
+shader = ExtResource("1_g648e")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_q6r6c")
+shader_parameter/gradient_tex = SubResource("GradientTexture2D_0hol4")
+shader_parameter/change_point = 0.0
+shader_parameter/edge_color = Color(0.7254902, 0.34117648, 0.13333334, 1)
+shader_parameter/base_color = Color(0.41981313, 0.41981313, 0.4198131, 1)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlw5hya6y6fxl"]
+[gd_scene format=3 uid="uid://dlw5hya6y6fxl"]
 
 [ext_resource type="Script" uid="uid://b34ecwj7sgp6j" path="res://scenes/interactables/switch/switch.gd" id="1_j1cy3"]
-[ext_resource type="Texture2D" uid="uid://5hvu4y5bgsxm" path="res://scenes/interactables/switch/assets/Switch_64x64.png" id="2_j1cy3"]
+[ext_resource type="Texture2D" uid="uid://d0ilu7n08m3yn" path="res://scenes/interactables/switch/assets/Switch_brass_64x64.png" id="2_70f4f"]
+[ext_resource type="Texture2D" uid="uid://c7qx5qdtdj0pe" path="res://scenes/interactables/switch/assets/switch_stand.png" id="3_70f4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2o0j4"]
 radius = 27.018513
@@ -9,28 +10,51 @@ radius = 27.018513
 [sub_resource type="CircleShape2D" id="CircleShape2D_j1cy3"]
 radius = 32.06244
 
-[node name="Switch" type="StaticBody2D"]
+[sub_resource type="Gradient" id="Gradient_cq04i"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_70f4f"]
+gradient = SubResource("Gradient_cq04i")
+fill = 1
+fill_from = Vector2(0.5156695, 0.4985755)
+fill_to = Vector2(0.7188841, 0.29828325)
+
+[node name="Switch" type="StaticBody2D" unique_id=353889786]
 collision_mask = 0
 script = ExtResource("1_j1cy3")
+metadata/_edit_vertical_guides_ = [-117.0]
+metadata/_edit_horizontal_guides_ = [32.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_j1cy3")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1257959428]
+rotation = 6.2831855
+texture = ExtResource("2_70f4f")
+offset = Vector2(0.18, 5)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(44, 17)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_j1cy3")
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1424408349]
+show_behind_parent = true
+texture = ExtResource("3_70f4f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2055734053]
 visible = false
 shape = SubResource("CircleShape2D_2o0j4")
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1914724456]
 visible = false
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=972431558]
 shape = SubResource("CircleShape2D_j1cy3")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=89380694]
+position = Vector2(0, 1)
+color = Color(0.81, 0.4995, 0, 1)
+energy = 1.42
+shadow_enabled = true
+shadow_color = Color(0.8117647, 0.49803922, 0, 0.49803922)
+shadow_filter = 2
+shadow_filter_smooth = 33.2
+texture = SubResource("GradientTexture2D_70f4f")
+texture_scale = 3.24
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
