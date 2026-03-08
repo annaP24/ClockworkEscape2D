@@ -37,9 +37,9 @@ func Physics_Update(_delta):
 	elif Input.is_action_pressed("jump") and player.jump_buffer:
 		player.set_can_grab(false)
 		change_state("JumpState")
-	elif player.get_walkable_wall_side() != player.WallSide.NONE and inputY != 0:
+	elif (player.get_walkable_wall_side() == player.WallSide.LEFT or player.get_walkable_wall_side() == player.WallSide.RIGHT) and inputY != 0:
 		change_state("WallState")
-	elif player.get_walkable_wall_side() != player.WallSide.NONE and inputX != 0:
+	elif (player.get_walkable_wall_side() == player.WallSide.UP or player.get_walkable_wall_side() == player.WallSide.DOWN) and inputX != 0:
 		change_state("WallState")
 	elif player.get_movable_wall_side() != player.WallSide.NONE:
 		change_state("WallMovableState")

@@ -7,8 +7,10 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1144814241]
+position = Vector2(0, 16)
 texture = ExtResource("1_4kaec")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2098462865]
 visible = false
+position = Vector2(0, 16)
 polygon = PackedVector2Array(-11, 19, -3, -24, 4, 19, 11, -33, 19, 13, 23, -8, 31, 32, -32, 32, -21, -31)

@@ -4,7 +4,6 @@ extends StaticBody2D
 @export var wait_timeout : float = 0.3
 @export var move_up_speed : float = 200.0
 @export var move_down_speed : float = 100.0
-@onready var gpu_steam_particles: GPUParticles2D = $GPUSteamParticles
 @onready var sprites: Node2D = $Sprites
 @onready var move_delay_timer: Timer = $MoveDelayTimer
 @onready var sparks: GPUParticles2D = $Sparks

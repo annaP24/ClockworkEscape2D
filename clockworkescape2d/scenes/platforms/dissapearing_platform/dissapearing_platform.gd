@@ -5,7 +5,6 @@ extends StaticBody2D
 @onready var shake_animation_player: AnimationPlayer = $ShakeAnimationPlayer
 @onready var detection_collision: CollisionShape2D = $DetectionArea/CollisionShape2D
 @onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var crack_timer: Timer = $CrackTimeout
 @onready var appear_timer: Timer = $AppearTimer
 
 var is_platform_visible : bool = true
@@ -15,19 +14,12 @@ var appear_timeout : float = 2.0
 
 func _ready() -> void:
 	collision.disabled = false
-	sprite_2d.texture = load("res://scenes/platforms/dissapearing_platform/assets/breakable_platform1_light.png")
+	sprite_2d.texture = load("res://scenes/platforms/dissapearing_platform/assets/breakable_platform.png")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "appear":
-		collision.disabled = false
-		detection_collision.disabled = false
-	if anim_name == "break":
+	if anim_name == "break_light":
 		pass
-		#collision.disabled = true
-		#detection_collision.disabled = true
-		##ToDo- splash animation, parrticles
-		#is_platform_visible = false
-		#appear_timer.start(appear_timeout)
+		#animation_player.play("break")
 
 func low_crack_movement():
 	if move_left:
@@ -41,30 +33,20 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		if body.global_position.y < global_position.y:
 			# Character is above platform → enable collision
 			animation_player.play("break_light")
-			crack_timer.start(crack_timeout)
-
+			shake_animation_player.play("dissolve")
 			#play_crack_sound()
 
 func _on_shake_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "shake_light":
-		shake_animation_player.play("shake_heavy")
-	elif anim_name == "shake_heavy":
-		shake_animation_player.play("shake_critical")
-	elif anim_name == "shake_critical":
-		#shake_animation_player.play("dissapear")
-		shake_animation_player.play("dissolve")
+	if anim_name == "dissolve":
 		collision.disabled = true
 		detection_collision.disabled = true
-		#ToDo- splash animation, parrticles
-		is_platform_visible = false
-	elif anim_name == "dissapear":
+		##ToDo- splash animation, parrticles
 		appear_timer.start(appear_timeout)
-	elif anim_name == "dissolve":
-		appear_timer.start(appear_timeout)
+	elif anim_name == "appear":
+		collision.disabled = false
+		detection_collision.disabled = false
 
-func _on_crack_timeout_timeout() -> void:
-	animation_player.play("break")
-	shake_animation_player.play("shake_light")
 
 func _on_appear_timer_timeout() -> void:
-	animation_player.play("appear")
+	#animation_player.play("appear")
+	shake_animation_player.play("appear")

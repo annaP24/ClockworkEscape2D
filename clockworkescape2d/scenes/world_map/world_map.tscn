@@ -182,6 +182,7 @@ drag_vertical_enabled = true
 script = ExtResource("4_ixh7n")
 
 [node name="StartMenu" parent="Camera2D" unique_id=339159820 instance=ExtResource("6_0gg30")]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

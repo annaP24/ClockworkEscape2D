@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ol8runu3wf7h" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_8hcfr"]
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="2_ftdud"]
 [ext_resource type="PackedScene" uid="uid://cb3sk5bwptvai" path="res://scenes/obstacles/spider/spider.tscn" id="2_tyhfa"]
-[ext_resource type="PackedScene" uid="uid://ddt76rnhhboub" path="res://scenes/platforms/moving_platform_side_hang/platform_move.tscn" id="3_8hcfr"]
+[ext_resource type="PackedScene" uid="uid://ddt76rnhhboub" path="res://scenes/platforms/moving_platform/platform_move.tscn" id="3_8hcfr"]
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="3_tyhfa"]
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="4_afdjd"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="8_i7s8t"]

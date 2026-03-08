@@ -8,7 +8,7 @@ extends AnimatableBody2D
 @onready var move_delay_timer: Timer = $MoveDelayTimer
 
 @export var wait_timeout : float = 0.3
-var max_move_offset : float = 200.0
+var max_move_offset : float = 3*64.0
 var init_position : Vector2 = Vector2.ZERO
 var target_position : Vector2 = Vector2.ZERO
 var current_target : Vector2 = Vector2.ZERO

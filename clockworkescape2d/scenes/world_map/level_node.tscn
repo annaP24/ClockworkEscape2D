@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ciupdc666uu87"]
 
 [ext_resource type="Script" uid="uid://cbar0mcdmlng" path="res://scenes/world_map/level_node.gd" id="1_26ptv"]
+[ext_resource type="Texture2D" uid="uid://60bwsqt66m0b" path="res://scenes/world_map/assets/gear_2.png" id="2_mxuui"]
 [ext_resource type="Texture2D" uid="uid://p7mg00uipuy" path="res://scenes/world_map/assets/gear.png" id="2_r226i"]
 [ext_resource type="PackedScene" uid="uid://b3x34ffhjvqsr" path="res://scenes/world_map/collectables_visual.tscn" id="3_mxuui"]
 
@@ -13,6 +14,10 @@ script = ExtResource("1_26ptv")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1037414981]
 texture = ExtResource("2_r226i")
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=870002639]
+visible = false
+texture = ExtResource("2_mxuui")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067932886]
 visible = false
 shape = SubResource("CircleShape2D_mxuui")
@@ -22,6 +27,17 @@ offset_left = -20.0
 offset_top = -17.0
 offset_right = 20.0
 offset_bottom = 15.0
+theme_override_font_sizes/font_size = 23
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1290332725]
+visible = false
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0.3647059, 0.22745098, 0.101960786, 1)
 theme_override_font_sizes/font_size = 23
 text = "1"
 horizontal_alignment = 1
