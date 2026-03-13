@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dm850oo47usa3"]
 
 [ext_resource type="Script" uid="uid://cnkoj3a5dv85t" path="res://scenes/levels/exit.gd" id="1_kd23p"]
-[ext_resource type="Texture2D" uid="uid://cbr5d7rayyuhm" path="res://scenes/levels/exit_brass.png" id="2_cohyv"]
+[ext_resource type="Texture2D" uid="uid://cd77o114em2v8" path="res://scenes/levels/exit_brass.png" id="2_cohyv"]
+[ext_resource type="Texture2D" uid="uid://8stk2v4oof3x" path="res://scenes/levels/particle_spark.png" id="4_lxjgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kjkd"]
 size = Vector2(42, 34)
@@ -9,25 +10,45 @@ size = Vector2(42, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd23p"]
 size = Vector2(64, 128)
 
+[sub_resource type="Curve" id="Curve_d121m"]
+_data = [Vector2(0.010504201, 0.99025977), 0.0, 0.0, 0, 0, Vector2(1, 0.012987018), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6ioyk"]
+colors = PackedColorArray(0.750985, 0.5481132, 0.31110004, 1, 1, 1, 1, 0)
+
 [node name="Exit" type="StaticBody2D" unique_id=1583052456]
 collision_layer = 0
 script = ExtResource("1_kd23p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=274221195]
-position = Vector2(32, 32)
 texture = ExtResource("2_cohyv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1360644295]
 visible = false
-position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0kjkd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=378735146]
-position = Vector2(32, 33)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1950512700]
 position = Vector2(0, 95)
 shape = SubResource("RectangleShape2D_kd23p")
+
+[node name="ExitSparks" type="CPUParticles2D" parent="." unique_id=1679005022]
+position = Vector2(0, -6)
+emitting = false
+amount = 40
+texture = ExtResource("4_lxjgx")
+lifetime = 0.72
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.4
+scale_amount_curve = SubResource("Curve_d121m")
+color_ramp = SubResource("Gradient_6ioyk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

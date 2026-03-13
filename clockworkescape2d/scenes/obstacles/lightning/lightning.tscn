@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dy2q8epbsajin" path="res://scenes/obstacles/lightning/assets/blitz2t.png" id="2_nwg2p"]
 [ext_resource type="Texture2D" uid="uid://c0ynakwr4c3bw" path="res://scenes/obstacles/lightning/assets/blitz3t.png" id="3_kf46m"]
 [ext_resource type="Texture2D" uid="uid://cvuk77pxpa3au" path="res://scenes/obstacles/lightning/assets/blitz4t.png" id="4_gjjtp"]
-[ext_resource type="Texture2D" uid="uid://bpw0vijteglaq" path="res://scenes/obstacles/lightning/assets/base_4.png" id="6_gjjtp"]
+[ext_resource type="Texture2D" uid="uid://c32gshhlrhism" path="res://scenes/obstacles/lightning/assets/Designer.png" id="6_gjjtp"]
 [ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="7_gjjtp"]
-[ext_resource type="Texture2D" uid="uid://5l7wstka33ww" path="res://scenes/obstacles/lightning/assets/base_top.png" id="7_y1sro"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_y1sro"]
 frames = 4
@@ -24,7 +23,7 @@ frame_3/duration = 1.0
 size = Vector2(40, 472)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sro"]
-size = Vector2(52, 900)
+size = Vector2(52, 555)
 
 [node name="Lightning" type="StaticBody2D" unique_id=1597034869]
 collision_layer = 0
@@ -38,12 +37,16 @@ texture = SubResource("AnimatedTexture_y1sro")
 texture_mode = 1
 
 [node name="LowerGuard" type="Sprite2D" parent="." unique_id=1679950281]
-position = Vector2(0, 129)
+position = Vector2(0, 167)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_gjjtp")
+flip_h = true
 
 [node name="UpperGuard" type="Sprite2D" parent="." unique_id=1389530810]
-position = Vector2(0, 29)
-texture = ExtResource("7_y1sro")
+position = Vector2(-1, 12)
+rotation = 3.1415927
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_gjjtp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703527519]
 visible = false

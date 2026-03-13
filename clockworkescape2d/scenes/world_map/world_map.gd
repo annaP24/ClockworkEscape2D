@@ -95,7 +95,7 @@ func _generate_curve():
 	curve.set_bake_interval(20)
 	line_2d.points = curve.get_baked_points()
 	line_2d.width = 240
-	line_2d.texture = preload("res://scenes/world_map/assets/road2.png")
+	line_2d.texture = preload("res://scenes/world_map/assets/road.png")
 
 func _change_focus(level : LevelNode, is_joypad_selection : bool):
 	if current_focused_level:

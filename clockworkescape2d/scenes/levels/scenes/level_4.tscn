@@ -24,9 +24,9 @@ position = Vector2(896.9231, 767.6924)
 position = Vector2(678, 349)
 
 [node name="Lightning" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="0" unique_id=1597034869 instance=ExtResource("5_r37kt")]
-position = Vector2(1152, 640)
+position = Vector2(1120, 640)
 rotation = 1.5707964
-length = 900.0
+length = 873.085
 
 [node name="Switch" parent="Interactables" parent_id_path=PackedInt32Array(1109194341) index="0" unique_id=353889786 instance=ExtResource("5_x75rp")]
 position = Vector2(1824, 1184)

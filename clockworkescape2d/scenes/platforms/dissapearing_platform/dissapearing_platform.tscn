@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://vvcht2a55wgc" path="res://dissolve_material.tres" id="3_f013x"]
 [ext_resource type="Texture2D" uid="uid://c2hc2li1cbfxa" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform3_light.png" id="3_h37rn"]
 [ext_resource type="Texture2D" uid="uid://dggpa6m0pqcj7" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform4_light.png" id="4_0kmtb"]
-[ext_resource type="Texture2D" uid="uid://bvswhiiyaxm7o" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform.png" id="4_f013x"]
+[ext_resource type="Texture2D" uid="uid://df1o38q7ycl7l" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform.png" id="4_f013x"]
 [ext_resource type="Texture2D" uid="uid://chv3047cqoxam" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform5_light.png" id="5_f013x"]
 [ext_resource type="Texture2D" uid="uid://b86mu5fat388s" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform2_light.png" id="6_yr8lw"]
 
@@ -222,6 +222,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_reium"]
 resource_name = "dissolve"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -229,7 +230,7 @@ tracks/0/path = NodePath("Sprite2D:material:shader_parameter/change_point")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -275,14 +276,10 @@ libraries/ = SubResource("AnimationLibrary_4lr8x")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=228133818]
 stream = SubResource("AudioStreamGenerator_2i6ai")
 
-[node name="CrackTimeout" type="Timer" parent="." unique_id=556594465]
-one_shot = true
-
 [node name="AppearTimer" type="Timer" parent="." unique_id=1035744751]
 one_shot = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="ShakeAnimationPlayer" to="." method="_on_shake_animation_player_animation_finished"]
-[connection signal="timeout" from="CrackTimeout" to="." method="_on_crack_timeout_timeout"]
 [connection signal="timeout" from="AppearTimer" to="." method="_on_appear_timer_timeout"]
