@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dm850oo47usa3"]
 
 [ext_resource type="Script" uid="uid://cnkoj3a5dv85t" path="res://scenes/levels/exit.gd" id="1_kd23p"]
-[ext_resource type="Texture2D" uid="uid://cd77o114em2v8" path="res://scenes/levels/exit_brass.png" id="2_cohyv"]
-[ext_resource type="Texture2D" uid="uid://8stk2v4oof3x" path="res://scenes/levels/particle_spark.png" id="4_lxjgx"]
+[ext_resource type="Texture2D" uid="uid://cbr5d7rayyuhm" path="res://scenes/levels/exit_brass.png" id="2_cohyv"]
+[ext_resource type="Texture2D" uid="uid://dtq3erbyfyq6a" path="res://scenes/levels/particle_spark.png" id="4_lxjgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kjkd"]
 size = Vector2(42, 34)

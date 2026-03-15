@@ -1,7 +1,8 @@
 [gd_scene format=4 uid="uid://d2ggu2dvs14ao"]
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_nmvks"]
-[ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/arrows/arrow_shooter.tscn" id="2_oj12l"]
+[ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/projectiles/projectile_shooter/projectile_shooter.tscn" id="2_oj12l"]
+[ext_resource type="PackedScene" uid="uid://dbjycq4y1a3qw" path="res://scenes/obstacles/projectiles/arrows/arrow.tscn" id="3_ifrfd"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="3_l43d5"]
 
 [node name="Level_8" unique_id=1162975536 instance=ExtResource("1_nmvks")]
@@ -16,14 +17,13 @@ tile_map_data = PackedByteArray("AAAAAAAABQAGAAAAAAABAAAABQAGAAAAAAACAAAABQACAAI
 [node name="ArrowShooter" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="0" unique_id=91441025 instance=ExtResource("2_oj12l")]
 position = Vector2(480, 1120)
 shoot_cooldown = 2.0
-arrow_speed = 5.0
 
 [node name="ArrowShooter2" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="1" unique_id=502070747 instance=ExtResource("2_oj12l")]
 position = Vector2(1888, 480)
 rotation = 3.1415927
 shoot_cooldown = 2.0
-arrow_speed = 5.0
 flow_direction = 0
+arrow = ExtResource("3_ifrfd")
 
 [node name="Collectable" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="0" unique_id=2006787885]
 position = Vector2(1824, 896)
@@ -38,4 +38,4 @@ position = Vector2(1829, 142)
 position = Vector2(160, 1152)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1920, 512)
+position = Vector2(1952, 544)

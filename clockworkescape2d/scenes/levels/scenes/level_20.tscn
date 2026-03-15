@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b2otckoqvcbu0"]
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_h6uln"]
-[ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/arrows/arrow_shooter.tscn" id="2_ouxu0"]
+[ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/projectiles/projectile_shooter/projectile_shooter.tscn" id="2_ouxu0"]
 [ext_resource type="PackedScene" uid="uid://ol8runu3wf7h" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_wmnr7"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="3_1rxij"]
 

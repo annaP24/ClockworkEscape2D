@@ -48,4 +48,4 @@ position = Vector2(286.1538, 416.9231)
 position = Vector2(132, 1133)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1920, 192)
+position = Vector2(1952, 224)

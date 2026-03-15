@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dbjycq4y1a3qw"]
+
+[ext_resource type="Script" uid="uid://1is3gv0qqt02" path="res://scenes/obstacles/projectiles/arrows/arrow.gd" id="1_3ao5h"]
+[ext_resource type="Texture2D" uid="uid://b7oypiwrw83q0" path="res://scenes/obstacles/projectiles/arrows/assets/arrow_light_64x64.png" id="2_3ao5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mml86"]
+size = Vector2(94, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ao5h"]
+size = Vector2(96, 12)
+
+[node name="Arrow" type="StaticBody2D" unique_id=1862158398]
+z_index = -1
+collision_layer = 4
+script = ExtResource("1_3ao5h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1521470045]
+position = Vector2(-48, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_3ao5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711033401]
+position = Vector2(-47, 0)
+shape = SubResource("RectangleShape2D_mml86")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1414240094]
+position = Vector2(-58, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=535549377]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_3ao5h")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

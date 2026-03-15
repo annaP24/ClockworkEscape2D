@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d4lxpl5reul6v"]
+
+[ext_resource type="Script" uid="uid://b5eql3jqsafxv" path="res://scenes/obstacles/projectiles/star/throwing_star.gd" id="1_12eam"]
+[ext_resource type="Texture2D" uid="uid://b0nkmvuqqt34l" path="res://scenes/obstacles/projectiles/star/assets/throwing_star.png" id="2_ee0r5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ut32d"]
+radius = 21.023796
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ns72"]
+radius = 23.086792
+
+[node name="ThrowingStar" type="StaticBody2D" unique_id=849027159]
+script = ExtResource("1_12eam")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=800672982]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_ee0r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1887057214]
+visible = false
+shape = SubResource("CircleShape2D_ut32d")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=850130278]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=472603692]
+shape = SubResource("CircleShape2D_4ns72")

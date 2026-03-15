@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c2rmycd6yq3gc"]
+
+[ext_resource type="Script" uid="uid://bbeofe3v1vaxv" path="res://scenes/obstacles/projectiles/projectile_shooter/projectile_shooter.gd" id="1_en5jw"]
+[ext_resource type="Texture2D" uid="uid://dg56ybeh2h411" path="res://scenes/obstacles/projectiles/projectile_shooter/assets/arrow_thrower.png" id="2_jxv0a"]
+
+[node name="ArrowShooter" type="Node2D" unique_id=1146086650]
+script = ExtResource("1_en5jw")
+flow_direction = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=337174001]
+position = Vector2(-14, 0)
+rotation = 3.1415927
+texture = ExtResource("2_jxv0a")
+
+[node name="SpawnMarker" type="Marker2D" parent="Sprite2D" unique_id=36537985]
+position = Vector2(-32, 2.7975289e-06)
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1288745711]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

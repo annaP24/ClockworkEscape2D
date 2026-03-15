@@ -12,7 +12,7 @@ func _ready():
 	#activate()
 	start_pulsing()
 	burst_loop()
-	
+
 func start_pulsing():
 	# Soft breathing glow on the icon
 	sprite.self_modulate = Color(1, 1, 1, 1)
@@ -23,7 +23,7 @@ func start_pulsing():
 func burst_loop() -> void:
 	await get_tree().process_frame
 	while true:
-		var wait := randf_range(5.0, 10.0)	
+		var wait := randf_range(5.0, 10.0)
 		await get_tree().create_timer(wait).timeout
 		sparks.emitting = true
 		await get_tree().create_timer(0.06).timeout

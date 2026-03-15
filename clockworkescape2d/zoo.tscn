@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cuikgl8rqp8ks"]
 
-[ext_resource type="PackedScene" uid="uid://iglwn8ym85pe" path="res://scenes/obstacles/arrows/arrow.tscn" id="2_j32il"]
-[ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/arrows/arrow_shooter.tscn" id="3_fyn2c"]
+[ext_resource type="PackedScene" uid="uid://dbjycq4y1a3qw" path="res://scenes/obstacles/projectiles/arrows/arrow.tscn" id="2_j32il"]
+[ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/projectiles/projectile_shooter/projectile_shooter.tscn" id="3_fyn2c"]
 [ext_resource type="PackedScene" uid="uid://bd0enwr66l8nf" path="res://scenes/obstacles/lightning/lightning.tscn" id="4_lw2b8"]
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="5_oywgv"]
 [ext_resource type="PackedScene" uid="uid://cb3sk5bwptvai" path="res://scenes/obstacles/spider/spider.tscn" id="6_yt30y"]

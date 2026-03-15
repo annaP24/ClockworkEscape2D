@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6eq64g3e0jjy"]
+
+[ext_resource type="PackedScene" uid="uid://rxjk0aftvp6t" path="res://scenes/platforms/platform_base.tscn" id="1_myob3"]
+[ext_resource type="Texture2D" uid="uid://0xnganderc60" path="res://scenes/platforms/moving_platform_side_hang/assets/64_64_block_single_green.png" id="2_uk757"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk757"]
+size = Vector2(59, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h02gk"]
+size = Vector2(16.75, 84)
+
+[node name="PlatformMoveAndHold" instance=ExtResource("1_myob3")]
+metadata/_edit_vertical_guides_ = [-33.0, 33.0]
+metadata/_edit_horizontal_guides_ = [-37.0, 47.0]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -5)
+texture = ExtResource("2_uk757")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, 16)
+texture = ExtResource("2_uk757")
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = false
+position = Vector2(2.5, 5)
+shape = SubResource("RectangleShape2D_uk757")
+
+[node name="PlatformTypeDetectionArea" parent="." index="3"]
+visible = false
+position = Vector2(-2, 3)
+
+[node name="CollisionShape2D" parent="PlatformTypeDetectionArea" index="0"]
+position = Vector2(-23.375, 2)
+shape = SubResource("RectangleShape2D_h02gk")
+
+[editable path="PlatformTypeDetectionArea"]
