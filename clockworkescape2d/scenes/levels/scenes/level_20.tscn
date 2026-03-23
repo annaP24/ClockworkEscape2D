@@ -48,5 +48,5 @@ position = Vector2(570.7693, 158.46155)
 position = Vector2(184.61539, 953.8462)
 
 [node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1536, 1280)
+position = Vector2(1568, 1248)
 rotation = -1.5707964

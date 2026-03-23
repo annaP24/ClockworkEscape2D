@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dm850oo47usa3"]
 
 [ext_resource type="Script" uid="uid://cnkoj3a5dv85t" path="res://scenes/levels/exit.gd" id="1_kd23p"]
-[ext_resource type="Texture2D" uid="uid://cbr5d7rayyuhm" path="res://scenes/levels/exit_brass.png" id="2_cohyv"]
+[ext_resource type="Texture2D" uid="uid://bxr66gvm0ff57" path="res://scenes/levels/exit.png" id="2_6ioyk"]
 [ext_resource type="Texture2D" uid="uid://dtq3erbyfyq6a" path="res://scenes/levels/particle_spark.png" id="4_lxjgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kjkd"]
@@ -20,19 +20,25 @@ colors = PackedColorArray(0.750985, 0.5481132, 0.31110004, 1, 1, 1, 1, 0)
 [node name="Exit" type="StaticBody2D" unique_id=1583052456]
 collision_layer = 0
 script = ExtResource("1_kd23p")
+metadata/_edit_horizontal_guides_ = [-25.0]
+metadata/_edit_vertical_guides_ = [31.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=274221195]
-texture = ExtResource("2_cohyv")
+position = Vector2(32, -32)
+texture = ExtResource("2_6ioyk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1360644295]
 visible = false
+light_mask = 0
+visibility_layer = 0
 shape = SubResource("RectangleShape2D_0kjkd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=378735146]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1950512700]
-position = Vector2(0, 95)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_kd23p")
 
 [node name="ExitSparks" type="CPUParticles2D" parent="." unique_id=1679005022]
@@ -51,4 +57,11 @@ scale_amount_min = 0.4
 scale_amount_curve = SubResource("Curve_d121m")
 color_ramp = SubResource("Gradient_6ioyk")
 
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1477649682]
+position = Vector2(31, -25)
+
+[node name="Timer" type="Timer" parent="." unique_id=1987648313]
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

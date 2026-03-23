@@ -254,7 +254,7 @@ position = Vector2(0, 29)
 [node name="CharacterAnimated" type="AnimatedSprite2D" parent="SquashMarker" unique_id=1736147788]
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_q52vl")
-animation = &"full"
+animation = &"break"
 autoplay = "full"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=858918230]

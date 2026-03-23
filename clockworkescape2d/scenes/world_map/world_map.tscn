@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7dwjdlcy16v6"]
 
 [ext_resource type="Script" uid="uid://biq68t6qnim26" path="res://scenes/world_map/world_map.gd" id="1_i1wog"]
-[ext_resource type="Texture2D" uid="uid://c118n2w02pnhg" path="res://scenes/world_map/assets/levelauswahl_bg.png" id="2_ixh7n"]
+[ext_resource type="Texture2D" uid="uid://cv2jyxvy747b0" path="res://scenes/world_map/assets/bg5.png" id="2_0gg30"]
 [ext_resource type="PackedScene" uid="uid://ciupdc666uu87" path="res://scenes/world_map/level_node.tscn" id="3_kvdqv"]
 [ext_resource type="Script" uid="uid://dabr27233jmsg" path="res://scenes/world_map/camera_scroll.gd" id="4_ixh7n"]
 [ext_resource type="PackedScene" uid="uid://be14mabgg4v0v" path="res://scenes/ui/score_ui.tscn" id="5_llt4e"]
@@ -20,7 +20,7 @@ metadata/_edit_horizontal_guides_ = [3870.0, 4475.0]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=234084156]
 position = Vector2(643, 1636)
-texture = ExtResource("2_ixh7n")
+texture = ExtResource("2_0gg30")
 
 [node name="PathContainer" type="Node2D" parent="." unique_id=732591764]
 
