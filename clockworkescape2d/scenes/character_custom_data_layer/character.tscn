@@ -201,7 +201,8 @@ fill_from = Vector2(0.5156695, 0.4985755)
 fill_to = Vector2(0.86609685, 0.13960114)
 
 [node name="Character" type="CharacterBody2D" unique_id=443292463 groups=["player"]]
-collision_mask = 5
+collision_layer = 17
+collision_mask = 21
 floor_max_angle = 0.5235988
 script = ExtResource("1_w8owe")
 jump_buffer_timeout = 0.1

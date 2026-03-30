@@ -110,6 +110,7 @@ level_down={
 
 2d_physics/layer_3="obstacles"
 2d_physics/layer_4="grab_wall"
+2d_physics/layer_5="exit"
 
 [rendering]
 
