@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://vvcht2a55wgc"]
 
-[ext_resource type="Shader" uid="uid://cjxqsqss46euy" path="res://dissolve_script.gdshader" id="1_g648e"]
+[ext_resource type="Shader" uid="uid://cjxqsqss46euy" path="res://shaders/dissolve_script.gdshader" id="1_g648e"]
 
 [sub_resource type="Gradient" id="Gradient_epypp"]
 

@@ -103,8 +103,8 @@ func _change_focus(level : LevelNode, is_joypad_selection : bool):
 	if level.is_unlocked:
 		current_focused_level = level
 		current_focused_level.set_highlight(true)
-	if (is_joypad_connected and is_joypad_selection) or (Input.is_action_just_pressed("level_down") or \
-	Input.is_action_just_pressed("level_up")):
+	if (is_joypad_connected and is_joypad_selection) or (Input.is_action_pressed("level_down") or \
+	Input.is_action_pressed("level_up")):
 		camera_2d.move_camera_with_selection(current_focused_level.position)
 # ---------------------- Signals -----------------------------------------------
 func _on_level_selected(level_id):

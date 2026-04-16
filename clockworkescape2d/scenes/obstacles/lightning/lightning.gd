@@ -33,8 +33,8 @@ func _update_lightning():
 
 	# update line points
 	line.clear_points()
-	line.add_point(upper.position + Vector2(0.0,40.0))
-	line.add_point(lower.position - Vector2(0.0,40.0))
+	line.add_point(upper.position + Vector2(0.0,10.0))
+	line.add_point(lower.position - Vector2(0.0,10.0))
 
 	# --- Update CollisionShape2D ---
 	var shape := collision_shape_2d.shape

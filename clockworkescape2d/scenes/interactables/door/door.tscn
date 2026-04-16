@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ci3yddbely8hq" path="res://scenes/interactables/door/door.gd" id="1_57sya"]
 [ext_resource type="Texture2D" uid="uid://3a4j5rq6yehd" path="res://scenes/interactables/door/assets/gate.png" id="2_vg5pl"]
-[ext_resource type="Texture2D" uid="uid://dbt5cdcfjrmxh" path="res://scenes/interactables/assets_deco/switch marker.png" id="3_vg5pl"]
 [ext_resource type="PackedScene" uid="uid://c35feoy2jbarb" path="res://scenes/character_custom_data_layer/sparks.tscn" id="5_tcsf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70ylm"]
-size = Vector2(45, 192)
+size = Vector2(26, 128)
 
 [sub_resource type="Gradient" id="Gradient_tcsf3"]
 colors = PackedColorArray(0.9564174, 0.5847093, 0, 1, 1, 0.74509805, 0.13725491, 0)
@@ -33,26 +32,19 @@ scale_max = 3.0
 scale_curve = SubResource("CurveTexture_tyjgm")
 color_ramp = SubResource("GradientTexture1D_wu07v")
 
-[node name="Door" type="StaticBody2D" unique_id=688594012]
+[node name="Door" type="Node2D" unique_id=1331937860]
 z_index = -1
 script = ExtResource("1_57sya")
 metadata/_edit_horizontal_guides_ = [192.0, 129.0]
 
-[node name="Sprites" type="Node2D" parent="." unique_id=923778133]
+[node name="Sprites" type="Area2D" parent="." unique_id=461756201]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=969249298]
 position = Vector2(0, 32)
 texture = ExtResource("2_vg5pl")
 
-[node name="SwitchMarker" type="Sprite2D" parent="Sprites" unique_id=861260533]
-visible = false
-position = Vector2(0, 96.5)
-scale = Vector2(1.32, 1.32)
-texture = ExtResource("3_vg5pl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113756828]
-visible = false
-position = Vector2(22.5, 96)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprites" unique_id=1608320928]
+position = Vector2(0, 31)
 shape = SubResource("RectangleShape2D_70ylm")
 
 [node name="MoveDelayTimer" type="Timer" parent="." unique_id=425169384]

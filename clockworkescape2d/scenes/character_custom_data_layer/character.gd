@@ -138,6 +138,10 @@ func check_is_on_wall():
 		wall_jump_coyote_timer.start(wall_coyote_timeout)
 		can_wall_coyote_jump = true
 
+func turn_off_light():
+	point_light_2d.enabled = false
+func turn_on_light():
+	point_light_2d.enabled = true
 #------------------------RayCast management -----------------------------
 func get_colliding_tile_type() -> Array:
 	var current_tiles = []

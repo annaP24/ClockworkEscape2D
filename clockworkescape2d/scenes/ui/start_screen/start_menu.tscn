@@ -33,24 +33,55 @@ grow_vertical = 2
 theme = SubResource("Theme_m2m72")
 color = Color(0, 0, 0, 0.60784316)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1085104694]
-custom_minimum_size = Vector2(250, 300)
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect" unique_id=1463294649]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -90.0
-offset_right = 4.0
-offset_bottom = 90.0
+offset_left = -329.0
+offset_top = -251.5
+offset_right = 329.0
+offset_bottom = 251.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(125, 162)
+theme_override_constants/separation = 70
+
+[node name="ColorRect" type="TextureRect" parent="ColorRect/VBoxContainer2" unique_id=802096779]
+custom_minimum_size = Vector2(900, 110)
+layout_mode = 2
+texture = ExtResource("2_jnk83")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/ColorRect" unique_id=6694956]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -54.0
+offset_right = 329.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("4_cs5uu")
+theme_override_font_sizes/font_size = 100
+text = "CLOCKWORK ESCAPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=1085104694]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 15
 
-[node name="StartButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=668012155]
+[node name="StartButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=668012155]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -58,7 +89,7 @@ texture_normal = ExtResource("2_jnk83")
 texture_pressed = ExtResource("3_cck1k")
 texture_hover = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer/StartButton" unique_id=1580207925]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/StartButton" unique_id=1580207925]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,14 +106,15 @@ text = "NEW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=21990350]
+[node name="ContinueButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=21990350]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 texture_normal = ExtResource("2_jnk83")
 texture_pressed = ExtResource("3_cck1k")
 texture_hover = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer/ContinueButton" unique_id=683717490]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/ContinueButton" unique_id=683717490]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,14 +131,15 @@ text = "CONTINUE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=1874762650]
+[node name="SettingsButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1874762650]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 texture_normal = ExtResource("2_jnk83")
 texture_pressed = ExtResource("3_cck1k")
 texture_hover = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer/SettingsButton" unique_id=1881736685]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" unique_id=1881736685]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,14 +156,15 @@ text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=1638342465]
+[node name="QuitButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1638342465]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 texture_normal = ExtResource("2_jnk83")
 texture_pressed = ExtResource("3_cck1k")
 texture_hover = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer/QuitButton" unique_id=1585434326]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" unique_id=1585434326]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -147,15 +181,15 @@ text = "QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/VBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/VBoxContainer/ContinueButton" to="." method="_on_continue_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

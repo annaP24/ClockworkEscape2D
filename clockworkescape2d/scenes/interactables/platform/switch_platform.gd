@@ -7,12 +7,12 @@ extends AnimatableBody2D
 
 @onready var move_delay_timer: Timer = $MoveDelayTimer
 
-@export var wait_timeout : float = 0.3
+@export var wait_timeout : float = 0.5
 var max_move_offset : float = 3*64.0
 var init_position : Vector2 = Vector2.ZERO
 var target_position : Vector2 = Vector2.ZERO
 var current_target : Vector2 = Vector2.ZERO
-var move_speed : float = 100.0
+var move_speed : float = 150.0
 
 func _ready() -> void:
 	move_delay_timer.wait_time = wait_timeout

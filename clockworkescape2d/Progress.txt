@@ -3,8 +3,8 @@
 - Character movement fixes:
   - Wall jump: added new raycasts to detect wall (adds margin for error)
   - Wall walk: fall when there is no more walkable wall
-  - 
-- Elektro field: 
+  -
+- Elektro field:
   - Collision shape better working, detects character when it is inside it while collision starts
 - Swards:
   - Reduced collision shape for a fair play
@@ -14,21 +14,21 @@
 
 21.12.2025
 
-- Visuals: 
-  - Added better road for the world map. 
-  - for arrows (coils as alternative). 
-- Fixed bugs: 
+- Visuals:
+  - Added better road for the world map.
+  - for arrows (coils as alternative).
+- Fixed bugs:
   - player doesn't jump sometimes when it reaches ground,
-  - player can double jump if near wall but jumping from wall. Visuals 
+  - player can double jump if near wall but jumping from wall. Visuals
 - Removed unnecessary pngs.
 
 29.12.2025
 
 - Spider
- - Added mechanics and smooth left <-> right movement. 
+ - Added mechanics and smooth left <-> right movement.
  - Choose if start is left or right
  - Same range always
-- Switch platform 
+- Switch platform
  - Refactored movement code -> no jitter
 - Visuals
  - Particle effects on walk
@@ -37,7 +37,7 @@
 
 1.1.2026
 
-- Switch refactoring - now working each time 
+- Switch refactoring - now working each time
 - World map movable with joystick
 - Level node in world map highlight oh hover
 - Added joystick controls
@@ -58,4 +58,3 @@
 - Fixed door and platform movement
 - Revised levels 1-16
 - Fixed camera movement on main menu depending on input
-

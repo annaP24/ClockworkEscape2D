@@ -10,6 +10,8 @@ radius = 21.023796
 radius = 23.086792
 
 [node name="ThrowingStar" type="StaticBody2D" unique_id=849027159]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_12eam")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=800672982]
@@ -22,6 +24,8 @@ shape = SubResource("CircleShape2D_ut32d")
 
 [node name="DamageArea" type="Area2D" parent="." unique_id=850130278]
 visible = false
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=472603692]
 shape = SubResource("CircleShape2D_4ns72")

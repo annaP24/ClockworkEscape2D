@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 @export var switch_1: Switch
 @export var switch_2: Switch
 @export var wait_timeout : float = 0.3
@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 	sprites.global_position = sprites.global_position.move_toward(current_target, move_speed * delta)
 	if sprites.global_position == target_position:
 		sparks.emitting = false
+
 func _on_switch_is_active():
 	move_delay_timer.stop() # Cancel timers
 	current_target = target_position

@@ -15,11 +15,19 @@ const MAX_NUM_OF_LEVELS = 20
 var collected_objects : int = 0
 var max_level_reached : int
 var max_collected : int = 0
-
+var is_muted : bool = false
 func _ready() -> void:
 	set_level_paths()
 	load_progress()
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("mute"):
+		if not is_muted:
+			AudioManager.mute_all_sound(true)
+			is_muted = true
+		else:
+			AudioManager.mute_all_sound(false)
+			is_muted = false
 func load_progress() -> int:
 	var cf = ConfigFile.new()
 	#Check if dile exists

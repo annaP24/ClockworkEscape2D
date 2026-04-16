@@ -1,169 +1,94 @@
-[gd_scene format=3 uid="uid://ol8runu3wf7h"]
+[gd_scene format=3 uid="uid://bymnpebrbbpjp"]
 
-[ext_resource type="Shader" uid="uid://cjxqsqss46euy" path="res://dissolve_script.gdshader" id="1_0kmtb"]
-[ext_resource type="Script" uid="uid://cub12tb7qx5fp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_orvl5"]
-[ext_resource type="Texture2D" uid="uid://c738kt8qysox3" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform1_light.png" id="2_au3ms"]
-[ext_resource type="Material" uid="uid://vvcht2a55wgc" path="res://dissolve_material.tres" id="3_f013x"]
-[ext_resource type="Texture2D" uid="uid://c2hc2li1cbfxa" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform3_light.png" id="3_h37rn"]
-[ext_resource type="Texture2D" uid="uid://dggpa6m0pqcj7" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform4_light.png" id="4_0kmtb"]
-[ext_resource type="Texture2D" uid="uid://df1o38q7ycl7l" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform.png" id="4_f013x"]
-[ext_resource type="Texture2D" uid="uid://chv3047cqoxam" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform5_light.png" id="5_f013x"]
-[ext_resource type="Texture2D" uid="uid://b86mu5fat388s" path="res://scenes/platforms/dissapearing_platform/assets/breakable_platform2_light.png" id="6_yr8lw"]
+[ext_resource type="Script" uid="uid://pjbeh3ae6j3c" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.gd" id="1_0rreu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr8lw"]
-shader = ExtResource("1_0kmtb")
+[sub_resource type="Shader" id="Shader_0rreu"]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_tex;
+uniform sampler2D gradient_tex;
+uniform float change_point : hint_range(0,1)= 0;
+uniform vec4 edge_color : source_color;
+uniform vec4 base_color : source_color; 
+uniform float outline_size = 2.0;
+uniform vec4 outline_color : source_color = vec4(1.0, 0.8, 0.3, 1.0);
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	vec4 noise_pixel = texture(noise_tex, UV);
+	vec4 gradient_pixel = texture(gradient_tex, UV);
+	float sum = mix(noise_pixel.r, gradient_pixel.r, 0.5);
+	// same as sum >= change_point
+	float alpha = step(change_point,sum);
+	
+	float edge_mask = smoothstep(change_point + 0.3, change_point, sum);
+	//edge_mask *= alpha;
+	vec3 final_color = mix(COLOR.rgb,edge_color.rgb, edge_mask);
+	COLOR = vec4(final_color, alpha);
+	
+  
+
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_d87sv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v6xkk"]
+gradient = SubResource("Gradient_d87sv")
+fill_from = Vector2(0.5521368, 1)
+fill_to = Vector2(0.50085473, 0.011965812)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kpovn"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xlnyl"]
+noise = SubResource("FastNoiseLite_kpovn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rf0o7"]
+resource_local_to_scene = true
+shader = SubResource("Shader_0rreu")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_xlnyl")
+shader_parameter/gradient_tex = SubResource("GradientTexture2D_v6xkk")
 shader_parameter/change_point = 0.0
-shader_parameter/edge_color = Color(0, 0, 0, 1)
-shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/edge_color = Color(0.7254902, 0.34117648, 0.13333334, 1)
+shader_parameter/base_color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+shader_parameter/outline_size = 2.0
+shader_parameter/outline_color = Color(1, 0.8, 0.3, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb1gf"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d87sv"]
+load_path = "res://.godot/imported/breakable_platform.png-6e00eb6607f5b4798c1d8301c74abb23.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6xkk"]
 size = Vector2(128, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fps72"]
-size = Vector2(128, 54)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpovn"]
+size = Vector2(128, 45)
 
-[sub_resource type="Animation" id="Animation_77hul"]
+[sub_resource type="Animation" id="Animation_xlnyl"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/change_point")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_f013x")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:material:shader_parameter/change_point")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_2dxoa"]
-resource_name = "break"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0008172691, 0.200351, 0.39877698),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_h37rn"), ExtResource("4_0kmtb"), ExtResource("5_f013x")]
-}
-
-[sub_resource type="Animation" id="Animation_4lr8x"]
-resource_name = "break_light"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2772165),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_au3ms"), ExtResource("6_yr8lw")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqq8f"]
-_data = {
-&"RESET": SubResource("Animation_77hul"),
-&"break": SubResource("Animation_2dxoa"),
-&"break_light": SubResource("Animation_4lr8x")
-}
-
-[sub_resource type="Animation" id="Animation_au3ms"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:material:shader_parameter/change_point")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_f013x")]
-}
-
-[sub_resource type="Animation" id="Animation_evb3s"]
+[sub_resource type="Animation" id="Animation_v6xkk"]
 resource_name = "appear"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -177,52 +102,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0, 0.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_au3ms")]
-}
 
-[sub_resource type="Animation" id="Animation_f013x"]
-resource_name = "break_heavy"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0008172691, 0.200351, 0.39877698),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_h37rn"), ExtResource("4_0kmtb"), ExtResource("5_f013x")]
-}
-
-[sub_resource type="Animation" id="Animation_0kmtb"]
-resource_name = "break_light"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2772165),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_au3ms"), ExtResource("6_yr8lw")]
-}
-
-[sub_resource type="Animation" id="Animation_reium"]
+[sub_resource type="Animation" id="Animation_rf0o7"]
 resource_name = "dissolve"
-length = 2.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -230,56 +113,45 @@ tracks/0/path = NodePath("Sprite2D:material:shader_parameter/change_point")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0, 1.99),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4lr8x"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76hlp"]
 _data = {
-&"RESET": SubResource("Animation_au3ms"),
-&"appear": SubResource("Animation_evb3s"),
-&"break_heavy": SubResource("Animation_f013x"),
-&"break_light": SubResource("Animation_0kmtb"),
-&"dissolve": SubResource("Animation_reium")
+&"RESET": SubResource("Animation_xlnyl"),
+&"appear": SubResource("Animation_v6xkk"),
+&"dissolve": SubResource("Animation_rf0o7")
 }
 
-[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_2i6ai"]
+[node name="Dissapearing_platform" type="StaticBody2D" unique_id=1201871484]
+script = ExtResource("1_0rreu")
 
-[node name="Dissapearing_platform" type="StaticBody2D" unique_id=1085304983]
-material = SubResource("ShaderMaterial_yr8lw")
-script = ExtResource("1_orvl5")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35164095]
+material = SubResource("ShaderMaterial_rf0o7")
+texture = SubResource("CompressedTexture2D_d87sv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1801470367]
-material = ExtResource("3_f013x")
-texture = ExtResource("4_f013x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1882488819]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1586347495]
 visible = false
-shape = SubResource("RectangleShape2D_nb1gf")
+shape = SubResource("RectangleShape2D_v6xkk")
 
-[node name="DetectionArea" type="Area2D" parent="." unique_id=41899066]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=364245866]
 visible = false
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1785831424]
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_fps72")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1347940166]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_kpovn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1489439296]
-libraries/ = SubResource("AnimationLibrary_bqq8f")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1710698929]
+libraries/ = SubResource("AnimationLibrary_76hlp")
 
-[node name="ShakeAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2057241437]
-libraries/ = SubResource("AnimationLibrary_4lr8x")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=228133818]
-stream = SubResource("AudioStreamGenerator_2i6ai")
-
-[node name="AppearTimer" type="Timer" parent="." unique_id=1035744751]
+[node name="TimeoutTimer" type="Timer" parent="." unique_id=673981726]
+unique_name_in_owner = true
 one_shot = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="ShakeAnimationPlayer" to="." method="_on_shake_animation_player_animation_finished"]
-[connection signal="timeout" from="AppearTimer" to="." method="_on_appear_timer_timeout"]
+[connection signal="timeout" from="TimeoutTimer" to="." method="_on_appear_timer_timeout"]

@@ -1,12 +1,14 @@
 extends Control
-@onready var start_button: TextureButton = $ColorRect/VBoxContainer/StartButton
-@onready var continue_button: TextureButton = $ColorRect/VBoxContainer/ContinueButton
-@onready var settings_button: TextureButton = $ColorRect/VBoxContainer/SettingsButton
-@onready var quit_button: TextureButton = $ColorRect/VBoxContainer/QuitButton
+@onready var start_button: TextureButton = %StartButton
+@onready var continue_button: TextureButton = %ContinueButton
+@onready var settings_button: TextureButton = %SettingsButton
+@onready var quit_button: TextureButton = %QuitButton
+
 func _ready() -> void:
 	EventBus.world_hide_sm.connect(_on_hide_received)
 
 func _on_start_button_pressed() -> void:
+	AudioManager.play_sfx("click")
 	EventBus.sm_start_game.emit()
 
 func _on_start_button_mouse_entered() -> void:
@@ -16,6 +18,7 @@ func _on_start_button_mouse_exited() -> void:
 	on_mouse_exited(start_button)
 
 func _on_settings_button_pressed() -> void:
+	AudioManager.play_sfx("click")
 	EventBus.sm_settings.emit()
 
 func _on_settings_button_mouse_entered() -> void:
@@ -25,6 +28,7 @@ func _on_settings_button_mouse_exited() -> void:
 	on_mouse_exited(settings_button)
 
 func _on_quit_button_pressed() -> void:
+	AudioManager.play_sfx("click")
 	EventBus.sm_quit_game.emit()
 
 func _on_quit_button_mouse_entered() -> void:
@@ -34,8 +38,8 @@ func _on_quit_button_mouse_exited() -> void:
 	on_mouse_exited(quit_button)
 
 func _on_continue_button_pressed() -> void:
+	AudioManager.play_sfx("click")
 	EventBus.sm_start_game.emit()
-	#start_game.emit()
 
 func _on_continue_button_mouse_entered() -> void:
 	on_mouse_entered(continue_button)

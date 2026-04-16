@@ -11,6 +11,7 @@ var max_level_reached : int = 1
 var joypad_connected : bool = false
 
 func _ready() -> void:
+	#AudioManager.play_music("main_theme")
 	_set_start_menu_visible(true)
 	_set_world_map_visible(is_level_manager_visible)
 	_pause_world_map(true)

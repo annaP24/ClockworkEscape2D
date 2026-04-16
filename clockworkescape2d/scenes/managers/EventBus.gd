@@ -11,3 +11,6 @@ signal world_hide_sm(hide : bool)
 signal lb_quit_level
 signal lb_restart_level
 signal lb_return_to_map(level_id : int)
+
+
+signal pl_touched_ground(sound : String)

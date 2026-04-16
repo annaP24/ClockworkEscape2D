@@ -15,6 +15,7 @@ func _ready() -> void:
 	#print("Autoload-Init:", engine_start)
 	#print("Zeit bis erstes _ready():", delta, "ms")
 	print("Level ", str(level_id), " starting")
+
 func _on_fade_in_finished():
 	_spawn_player( )
 
@@ -31,7 +32,7 @@ func _process(_delta: float) -> void:
 func _on_player_died():
 	EventBus.lb_restart_level.emit()
 
-func _on_exit_level_finished() -> void:
+func _on_exit_platform_level_finished() -> void:
 	#If root node's name is not "World" then we are in debug mode and need restarting
 	if get_tree().current_scene.name != "World":
 		get_tree().call_deferred("reload_current_scene")

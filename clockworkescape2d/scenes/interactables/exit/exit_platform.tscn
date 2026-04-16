@@ -4,11 +4,23 @@
 [ext_resource type="Script" uid="uid://ds802ke88bmou" path="res://scenes/interactables/exit/exit_platform.gd" id="1_rqmy3"]
 [ext_resource type="Texture2D" uid="uid://i7jloiflkt56" path="res://scenes/interactables/exit/assets/exit_arrow.png" id="2_rqmy3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbh5h"]
-size = Vector2(62, 11)
+[sub_resource type="Gradient" id="Gradient_cq04i"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rqmy3"]
+gradient = SubResource("Gradient_cq04i")
+fill = 1
+fill_from = Vector2(0.5156695, 0.4985755)
+fill_to = Vector2(0.86609685, 0.13960114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqmy3"]
-size = Vector2(62, 128)
+size = Vector2(62, 448)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rqmy3"]
+size = Vector3(64, 448, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rynnd"]
+size = Vector2(20, 448)
 
 [node name="ExitPlatform" type="Node2D" unique_id=1776802071]
 script = ExtResource("1_rqmy3")
@@ -21,25 +33,56 @@ collision_mask = 16
 position = Vector2(0, -32)
 texture = ExtResource("1_iysvq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=613314543]
-position = Vector2(0, 25.5)
-shape = SubResource("RectangleShape2D_gbh5h")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Platform" unique_id=519074069]
+visible = false
+position = Vector2(1, 26.46154)
+rotation = 1.5707964
+polygon = PackedVector2Array(-6.4615383, 23.000002, -6.4615383, -19, 5.53846, -39, 5.53846, 39)
 
 [node name="SpriteArrow" type="Sprite2D" parent="." unique_id=686190412]
 position = Vector2(0, -20)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_rqmy3")
+
+[node name="PointLight2D" type="PointLight2D" parent="SpriteArrow" unique_id=1834247295]
+position = Vector2(3, -15)
+color = Color(0.43423486, 0.37323186, 0.37323186, 1)
+energy = 1.5
+shadow_color = Color(0.8117647, 0.49803922, 0, 0.49803922)
+shadow_filter = 2
+shadow_filter_smooth = 2.2
+texture = SubResource("GradientTexture2D_rqmy3")
+texture_scale = 3.0
 
 [node name="ExitArea" type="Area2D" parent="." unique_id=685160358]
 visible = false
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea" unique_id=163874187]
-position = Vector2(0, -33)
+[node name="ExitAreaCollision" type="CollisionShape2D" parent="ExitArea" unique_id=163874187]
+position = Vector2(0, -203)
 shape = SubResource("RectangleShape2D_rqmy3")
 
 [node name="ActivationTimer" type="Timer" parent="." unique_id=1634254042]
 one_shot = true
 
+[node name="EndTimer" type="Timer" parent="." unique_id=1513816156]
+one_shot = true
+
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=401589790]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D" unique_id=388253185]
+visible = false
+position = Vector2(66, -199)
+mesh = SubResource("BoxMesh_rqmy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1449575753]
+position = Vector2(43, -202)
+shape = SubResource("RectangleShape2D_rynnd")
+
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_exited" from="ExitArea" to="." method="_on_exit_area_body_exited"]
 [connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

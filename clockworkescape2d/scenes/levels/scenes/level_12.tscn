@@ -31,5 +31,7 @@ position = Vector2(544, 864)
 [node name="SpawnMarker" parent="." index="7" unique_id=630440161]
 position = Vector2(121.53846, 1155.3846)
 
-[node name="Exit" parent="." index="8" unique_id=533716483]
-position = Vector2(1920, 0)
+[node name="ExitPlatform" parent="." index="8" unique_id=1707809875]
+position = Vector2(1952, 160)
+
+[editable path="ExitPlatform"]

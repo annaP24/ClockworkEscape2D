@@ -22,6 +22,7 @@ func _input_event(_viewport, event, _shape_idx):
 		trigger_button()
 
 func trigger_button():
+	AudioManager.play_sfx("click", 0.2)
 	level_selected.emit(level_id)
 
 func update_visual():

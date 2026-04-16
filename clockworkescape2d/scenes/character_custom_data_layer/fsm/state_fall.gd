@@ -29,17 +29,16 @@ func Physics_Update(delta):
 
 	# Double jump
 	if Input.is_action_just_pressed("jump") and player.jump_count > 0:
-		print("Jump count > 0")
 		change_state("JumpState")
 	elif (Input.is_action_just_pressed("jump") and player.can_wall_coyote_jump) and player.wall_jump_count > 0:
-		print("Fall Coyote - jump")
 		player.wall_jump_count = 0
 		change_state("JumpState")
 	elif Input.is_action_just_pressed("jump") and player.can_coyote_jump:
-		print("Edge Coyote jump")
 		change_state("JumpState")
 	elif player.is_on_floor():
 		squash_on_land()
+		AudioManager.play_sfx("ground_reached")
+
 		change_state("IdleState")
 	elif player.get_walkable_wall_side() != player.WallSide.NONE:
 		if player.get_can_grab():
