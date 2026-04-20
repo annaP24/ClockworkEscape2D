@@ -44,10 +44,12 @@ func Physics_Update(_delta):
 			not Input.is_action_pressed("up") and \
 			not Input.is_action_pressed("down"):
 		player.set_can_grab(false)
+		player.jump_count = 0
 		change_state("FallState")
 	elif player.get_walkable_wall_side() == player.WallSide.NONE:
 		player.set_can_grab(false)
-		change_state("FallState")
+		player.jump_count = 0
+		change_state("d")
 	elif player.get_walkable_wall_side() == player.WallSide.NONE:
 		change_state("RunState")
 
