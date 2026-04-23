@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cvuk77pxpa3au" path="res://scenes/obstacles/lightning/assets/blitz4t.png" id="4_gjjtp"]
 [ext_resource type="Texture2D" uid="uid://beiwducbrwnxe" path="res://scenes/obstacles/lightning/assets/elektro_stand.png" id="6_gjjtp"]
 [ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="7_gjjtp"]
+[ext_resource type="Texture2D" uid="uid://c513ugh5gxy72" path="res://scenes/character_custom_data_layer/assets/sparks/flake_4_4.png" id="8_y1sro"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_y1sro"]
 frames = 4
@@ -23,7 +24,31 @@ frame_3/duration = 1.0
 size = Vector2(40, 472)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sro"]
-size = Vector2(52, 100)
+size = Vector2(52, 896)
+
+[sub_resource type="Gradient" id="Gradient_folvt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1b3d4"]
+gradient = SubResource("Gradient_folvt")
+
+[sub_resource type="Curve" id="Curve_yeqj5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9943181, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x686s"]
+curve = SubResource("Curve_yeqj5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6054b"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 100, 0)
+damping_max = 20.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_x686s")
+color_ramp = SubResource("GradientTexture1D_1b3d4")
 
 [node name="Lightning" type="StaticBody2D" unique_id=1597034869]
 collision_layer = 0
@@ -65,11 +90,35 @@ metadata/_custom_type_script = "uid://wujupbok4pj0"
 position = Vector2(32, 50)
 shape = SubResource("RectangleShape2D_y1sro")
 
-[node name="OffTimer" type="Timer" parent="." unique_id=523748136]
+[node name="WarrningTimer" type="Timer" parent="." unique_id=293570707]
 one_shot = true
 
 [node name="OnTimer" type="Timer" parent="." unique_id=185345127]
 one_shot = true
 
-[connection signal="timeout" from="OffTimer" to="." method="_on_off_timer_timeout"]
+[node name="OffTimer" type="Timer" parent="." unique_id=523748136]
+one_shot = true
+
+[node name="Sparks" type="Node2D" parent="." unique_id=1586639271]
+
+[node name="SparksUpper" type="GPUParticles2D" parent="Sparks" unique_id=1389697275]
+position = Vector2(32, 18)
+amount = 25
+texture = ExtResource("8_y1sro")
+lifetime = 0.55
+explosiveness = 0.35
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6054b")
+
+[node name="SparksLower" type="GPUParticles2D" parent="Sparks" unique_id=1396058782]
+position = Vector2(32, 84)
+amount = 25
+texture = ExtResource("8_y1sro")
+lifetime = 0.55
+explosiveness = 0.35
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6054b")
+
+[connection signal="timeout" from="WarrningTimer" to="." method="_on_warrning_timer_timeout"]
 [connection signal="timeout" from="OnTimer" to="." method="_on_on_timer_timeout"]
+[connection signal="timeout" from="OffTimer" to="." method="_on_off_timer_timeout"]

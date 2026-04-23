@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dl6s4pemla15g"]
 
 [ext_resource type="Script" uid="uid://2qmntrsfjp47" path="res://scenes/ui/start_screen/start_menu.gd" id="1_m2m72"]
-[ext_resource type="Texture2D" uid="uid://d0t6sf58mou4w" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="2_jnk83"]
-[ext_resource type="Texture2D" uid="uid://bbmh8fl6b8kb" path="res://scenes/ui/start_screen/assets/Button_hover.png" id="3_cck1k"]
+[ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="2_jnk83"]
+[ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/start_screen/assets/Button_hover.png" id="3_cck1k"]
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="4_cs5uu"]
 
 [sub_resource type="Theme" id="Theme_m2m72"]

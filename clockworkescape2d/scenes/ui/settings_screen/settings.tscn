@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c4xv4ndywrjxu"]
+
+[node name="Settings" type="Control" unique_id=701105397]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2140103670]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1722797423]
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=1828971466]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=326112406]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=610257466]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true

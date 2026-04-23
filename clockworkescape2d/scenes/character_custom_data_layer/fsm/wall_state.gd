@@ -22,7 +22,7 @@ func Enter(player_node):
 func Physics_Update(_delta):
 	if not player.is_movable:
 		return
-
+	
 	# Normale zur Wand ermitteln
 	var col_dir
 	if player.get_collision_points().size() > 0:
@@ -31,8 +31,12 @@ func Physics_Update(_delta):
 		col_dir = Vector2.ZERO
 	# Tangente berechnen
 	var tang = Vector2(col_dir.y, -col_dir.x)
+	# ensure tangent aligns with player intent
+	#if tang.dot(player.velocity) < 0:
+		#tang = -tang
 	# move player
-	player.velocity =  tang * -roll_direction * player.move_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
+	player.velocity =  tang * -roll_direction * player.move_speed #+ col_dir * tangent_coef # TODO evtl. delta hinzufügen
+	#player.velocity =  tang * -roll_direction * player.move_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
 
 	player.move_and_slide()
 
@@ -49,9 +53,20 @@ func Physics_Update(_delta):
 	elif player.get_walkable_wall_side() == player.WallSide.NONE:
 		player.set_can_grab(false)
 		player.jump_count = 0
-		change_state("d")
+		change_state("FallState")
 	elif player.get_walkable_wall_side() == player.WallSide.NONE:
 		change_state("RunState")
+		
+func get_average_wall_normal() -> Vector2:
+	var points = player.get_collision_points()
+	if points.is_empty():
+		return Vector2.ZERO
+		
+	var normal : Vector2 = Vector2.ZERO
+	for p in points:
+		normal += (player.global_position - p).normalized()
+	
+	return normal.normalized()
 
 func get_roll_direction() -> RollDirection:
 	var y_axis = Input.get_axis("up", "down")

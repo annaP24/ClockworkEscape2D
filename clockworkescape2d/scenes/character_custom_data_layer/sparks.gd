@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	update_sparks()
+	
 func update_sparks():
 	if player.is_on_floor() and abs(player.velocity.x) > 10:
 		emitting = true

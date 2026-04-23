@@ -262,7 +262,6 @@ autoplay = "full"
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1653585586]
-visible = false
 shape = SubResource("CircleShape2D_wh2hg")
 target_position = Vector2(0, 0)
 collision_mask = 2

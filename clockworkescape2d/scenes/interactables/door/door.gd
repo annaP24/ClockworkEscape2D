@@ -54,3 +54,7 @@ func _on_move_delay_timer_timeout() -> void:
 	if switch_2:
 		move_speed = move_down_speed
 		current_target = init_position
+	if sprites.global_position.distance_to(current_target) != 0:
+		move_speed = move_down_speed
+		current_target = init_position
+		
