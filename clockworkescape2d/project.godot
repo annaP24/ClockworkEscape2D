@@ -40,7 +40,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdscript-linter/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

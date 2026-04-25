@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var scene_placeholder: Node2D = $Scene
 @onready var world_map: Node2D = $WorldMap
+@onready var brightness_mat : Material = $BrightnessLayer.material
 
 var current_level_instance : Level = null
 var current_level_index : int = 0
@@ -10,8 +11,9 @@ var is_level_manager_visible : bool = true
 var max_level_reached : int = 1
 var joypad_connected : bool = false
 
+
 func _ready() -> void:
-	#AudioManager.play_music("main_theme")
+	AudioManager.play_music("main_theme")
 	_set_start_menu_visible(true)
 	_set_world_map_visible(is_level_manager_visible)
 	_pause_world_map(true)
@@ -24,6 +26,7 @@ func _ready() -> void:
 	EventBus.connect("lb_quit_level", _on_quit_level_received)
 	EventBus.connect("lb_restart_level", _on_restart_level_received)
 	EventBus.connect("lb_return_to_map", _on_return_to_map_received)
+	EventBus.connect("s_brightness_changed", _on_brightness_changed)
 
 	_check_input_controller()
 
@@ -33,13 +36,17 @@ func _process(_delta: float) -> void:
 		_pause_world_map(true)
 
 func _set_start_menu_visible(sm_is_visible : bool):
-	EventBus.world_hide_sm.emit(sm_is_visible)
+	EventBus.world_show_sm.emit(sm_is_visible)
+
+func _set_settings_menu_visible(settings_is_visible : bool):
+	EventBus.world_hide_settings_menu.emit(settings_is_visible)
 
 func _set_world_map_visible(is_world_map_visible : bool):
 	world_map.visible = is_world_map_visible
 
 func _pause_world_map(is_paused : bool):
 	get_tree().paused = is_paused
+
 
 func _set_camera_enabled(is_camera_enabled : bool):
 	world_map.camera_2d.enabled = is_camera_enabled
@@ -118,13 +125,13 @@ func _on_return_to_map_received(level_id : int):
 	is_level_manager_visible = true
 	FadeScreen.fade_out()
 
-
 func _on_sm_start_game():
 	_set_start_menu_visible(false)
 	_pause_world_map(false)
 
 func _on_sm_settings() -> void:
-	pass # Replace with function body.
+	_set_start_menu_visible(false)
+	_set_settings_menu_visible(true)
 
 func _on_sm_quit_game() -> void:
 	get_tree().quit()
@@ -135,3 +142,6 @@ func _on_joypad_connection_changed(_device: int, connected: bool):
 	else:
 		joypad_connected = false
 	world_map.set_joypad_connected(joypad_connected)
+
+func _on_brightness_changed(value : float) -> void:
+	brightness_mat.set_shader_parameter("brightness", value)

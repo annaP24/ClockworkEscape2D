@@ -15,7 +15,7 @@ var sounds = {
 }
 
 var music_tracks = {
-	"main_theme": ""
+	"main_theme": "res://assets/sounds/850443__cpfcfan10__tic-tock-goes-the-clock.wav"
 }
 
 func _ready() -> void:
@@ -23,7 +23,7 @@ func _ready() -> void:
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = &"Music"
 	add_child(music_player)
-
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Initialize SFX Pool
 	for i in sfx_pool_size:
 		var p = AudioStreamPlayer.new()
@@ -31,7 +31,13 @@ func _ready() -> void:
 		add_child(p)
 		sfx_players.append(p)
 
-## --- SFX LOGIC ---
+func _start_track(stream: AudioStream, fade_duration: float) -> void:
+	music_player.stream = stream
+	music_player.volume_db = -80.0 # Start silent
+	music_player.play()
+
+	var tween = create_tween()
+	tween.tween_property(music_player, "volume_db", 0.0, fade_duration)
 
 func play_sfx(sfx_name: String, pitch_variance: float = 0.1) -> void:
 	if not sounds.has(sfx_name):
@@ -49,13 +55,10 @@ func play_sfx(sfx_name: String, pitch_variance: float = 0.1) -> void:
 	# Increment pool index
 	pool_index = (pool_index + 1) % sfx_pool_size
 
-## --- MUSIC LOGIC ---
-
 func play_music(track_name: String, fade_duration: float = 1.0) -> void:
 	if not music_tracks.has(track_name): return
 
-	var stream = load(music_tracks[track_name])
-
+	var stream  = load(music_tracks[track_name])
 	# If music is already playing, fade out and switch
 	if music_player.playing:
 		var tween = create_tween()
@@ -64,16 +67,8 @@ func play_music(track_name: String, fade_duration: float = 1.0) -> void:
 	else:
 		_start_track(stream, fade_duration)
 
-func _start_track(stream: AudioStream, fade_duration: float) -> void:
-	music_player.stream = stream
-	music_player.volume_db = -80.0 # Start silent
-	music_player.play()
 
-	var tween = create_tween()
-	tween.tween_property(music_player, "volume_db", 0.0, fade_duration)
-
-## --- BUS VOLUME CONTROL (For Settings Menus) ---
-
+## --- Bus volume control (For Settings Menus) ---
 func set_bus_volume(bus_name: String, linear_volume: float) -> void:
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	# Convert 0.0-1.0 slider value to Decibels

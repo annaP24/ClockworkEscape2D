@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bb0ibp365qg4t" path="res://scenes/world_new.gd" id="1_whjqg"]
 [ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="3_gty47"]
+[ext_resource type="Shader" uid="uid://bhr460c3fu4xo" path="res://shaders/brightness.gdshader" id="3_i63yd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whjqg"]
+shader = ExtResource("3_i63yd")
+shader_parameter/brightness = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/gamma = 1.0
 
 [node name="World" type="Node2D" unique_id=77284601]
 process_mode = 3
@@ -10,3 +17,10 @@ script = ExtResource("1_whjqg")
 [node name="WorldMap" parent="." unique_id=1188891860 instance=ExtResource("3_gty47")]
 
 [node name="Scene" type="Node2D" parent="." unique_id=65681456]
+
+[node name="BrightnessLayer" type="ColorRect" parent="." unique_id=636824329]
+material = SubResource("ShaderMaterial_whjqg")
+offset_left = -1432.0
+offset_right = 2393.0
+offset_bottom = 3447.0
+mouse_filter = 2

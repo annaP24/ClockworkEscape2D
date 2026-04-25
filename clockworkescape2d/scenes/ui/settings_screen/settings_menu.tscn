@@ -1,0 +1,267 @@
+[gd_scene format=3 uid="uid://c4xv4ndywrjxu"]
+
+[ext_resource type="Script" uid="uid://c44vlwiwj6sw1" path="res://scenes/ui/settings_screen/settings_menu.gd" id="1_hhwlu"]
+[ext_resource type="Texture2D" uid="uid://yenxggxg8rrt" path="res://scenes/ui/start_screen/assets/title_holder.png" id="1_vfyx5"]
+[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="2_iylle"]
+[ext_resource type="Texture2D" uid="uid://yr6wur6i5cne" path="res://scenes/ui/settings_screen/assets/musicOn.png" id="2_l40yv"]
+[ext_resource type="Texture2D" uid="uid://cdcrv1bqqr8et" path="res://scenes/ui/settings_screen/assets/musicOff.png" id="3_p3sqi"]
+[ext_resource type="Texture2D" uid="uid://j4446dm1f5c2" path="res://scenes/ui/start_screen/assets/Base_idle.png" id="3_u88hq"]
+[ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="6_p78wt"]
+[ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/start_screen/assets/Button_hover.png" id="7_hf6bx"]
+
+[sub_resource type="Theme" id="Theme_aarj0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ov8vc"]
+texture = ExtResource("3_u88hq")
+texture_margin_top = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="Theme" id="Theme_vfyx5"]
+default_font = ExtResource("2_iylle")
+default_font_size = 45
+
+[node name="Settings" type="Control" unique_id=568827001]
+process_mode = 3
+top_level = true
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhwlu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=928503161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_aarj0")
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect" unique_id=750950462]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -251.5
+offset_right = 329.0
+offset_bottom = 251.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="ColorRect" type="TextureRect" parent="ColorRect/VBoxContainer2" unique_id=1413190783]
+custom_minimum_size = Vector2(900, 110)
+layout_mode = 2
+texture = ExtResource("1_vfyx5")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/ColorRect" unique_id=1569512907]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -54.0
+offset_right = 329.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_iylle")
+theme_override_font_sizes/font_size = 100
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=112754981]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1560289456]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1535081489]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_iylle")
+theme_override_font_sizes/font_size = 25
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1487540067]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 35)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_ov8vc")
+max_value = 1.0
+step = 0.005
+value = 0.5
+
+[node name="MusicMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=829589167]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_l40yv")
+texture_pressed = ExtResource("3_p3sqi")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1243048510]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1271493842]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_iylle")
+theme_override_font_sizes/font_size = 25
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1725352354]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 35)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_ov8vc")
+max_value = 1.0
+step = 0.005
+value = 0.5
+
+[node name="SfxMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1703187459]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_l40yv")
+texture_pressed = ExtResource("3_p3sqi")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=2038081203]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=867813709]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_iylle")
+theme_override_font_sizes/font_size = 25
+text = "Brightness"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BrightnessSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=1089804077]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 35)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxTexture_ov8vc")
+min_value = -0.3
+max_value = 0.3
+step = 0.05
+value = 0.10000000000000003
+
+[node name="Holder" type="Control" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=983115248]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=755341144]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=250292559]
+layout_mode = 2
+text = "Resolution"
+
+[node name="MenuButton" type="OptionButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=1457545936]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "1280x825"
+popup/item_0/id = 0
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 1
+popup/item_2/text = "2560x1440"
+popup/item_2/id = 2
+
+[node name="Holder2" type="Control" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=1239489711]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=420317469]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 200
+
+[node name="DefaultButton" type="TextureButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=323440012]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_p78wt")
+texture_pressed = ExtResource("7_hf6bx")
+texture_hover = ExtResource("7_hf6bx")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" unique_id=5523179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vfyx5")
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_iylle")
+theme_override_font_sizes/font_size = 45
+text = "DEFAULT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1151494165]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_p78wt")
+texture_pressed = ExtResource("7_hf6bx")
+texture_hover = ExtResource("7_hf6bx")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/BackButton" unique_id=1133733535]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vfyx5")
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_iylle")
+theme_override_font_sizes/font_size = 45
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/MusicMuteButton" to="." method="_on_music_mute_button_toggled"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2/SfxMuteButton" to="." method="_on_sfx_mute_button_toggled"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

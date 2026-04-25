@@ -22,7 +22,7 @@ func Enter(player_node):
 func Physics_Update(_delta):
 	if not player.is_movable:
 		return
-	
+
 	# Normale zur Wand ermitteln
 	var col_dir
 	if player.get_collision_points().size() > 0:
@@ -56,16 +56,16 @@ func Physics_Update(_delta):
 		change_state("FallState")
 	elif player.get_walkable_wall_side() == player.WallSide.NONE:
 		change_state("RunState")
-		
+
 func get_average_wall_normal() -> Vector2:
 	var points = player.get_collision_points()
 	if points.is_empty():
 		return Vector2.ZERO
-		
+
 	var normal : Vector2 = Vector2.ZERO
 	for p in points:
 		normal += (player.global_position - p).normalized()
-	
+
 	return normal.normalized()
 
 func get_roll_direction() -> RollDirection:

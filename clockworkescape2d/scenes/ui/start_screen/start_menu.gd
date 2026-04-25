@@ -5,7 +5,7 @@ extends Control
 @onready var quit_button: TextureButton = %QuitButton
 
 func _ready() -> void:
-	EventBus.world_hide_sm.connect(_on_hide_received)
+	EventBus.world_show_sm.connect(_on_show_received)
 
 func _on_start_button_pressed() -> void:
 	AudioManager.play_sfx("click")
@@ -47,7 +47,7 @@ func _on_continue_button_mouse_entered() -> void:
 func _on_continue_button_mouse_exited() -> void:
 	on_mouse_exited(continue_button)
 
-func _on_hide_received(is_show : bool):
+func _on_show_received(is_show : bool):
 	visible = is_show
 
 func on_mouse_entered(button : TextureButton):

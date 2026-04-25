@@ -200,18 +200,18 @@ func get_wall_direction():
 		last_wall_direction = WallSide.LEFT
 	else:
 		last_wall_direction = WallSide.NONE
-		
+
 func get_closest_wall_distance() -> float:
 	if not shape_cast_2d.is_colliding():
 		return INF
-		
+
 	var min_dist : float = INF
 	for i in range(shape_cast_2d.get_collision_count()):
 		var p : Vector2 = shape_cast_2d.get_collision_point(i)
 		var delta : Vector2 = p - global_position
 		var proj = abs(delta.dot(p))
 		min_dist = min(min_dist,proj)
-	
+
 	return min_dist
 
 func set_can_grab(grab : bool):

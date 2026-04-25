@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dabr27233jmsg" path="res://scenes/world_map/camera_scroll.gd" id="4_ixh7n"]
 [ext_resource type="PackedScene" uid="uid://be14mabgg4v0v" path="res://scenes/ui/score_ui.tscn" id="5_llt4e"]
 [ext_resource type="PackedScene" uid="uid://dl6s4pemla15g" path="res://scenes/ui/start_screen/start_menu.tscn" id="6_0gg30"]
+[ext_resource type="PackedScene" uid="uid://c4xv4ndywrjxu" path="res://scenes/ui/settings_screen/settings_menu.tscn" id="6_cbbp4"]
 
 [sub_resource type="Curve2D" id="Curve2D_ixh7n"]
 _data = {
@@ -181,8 +182,14 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("4_ixh7n")
 
-[node name="StartMenu" parent="Camera2D" unique_id=339159820 instance=ExtResource("6_0gg30")]
+[node name="Settings" parent="Camera2D" unique_id=701105397 instance=ExtResource("6_cbbp4")]
 visible = false
+offset_left = 4.0
+offset_top = 2381.0
+offset_right = 4.0
+offset_bottom = 2381.0
+
+[node name="StartMenu" parent="Camera2D" unique_id=339159820 instance=ExtResource("6_0gg30")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
