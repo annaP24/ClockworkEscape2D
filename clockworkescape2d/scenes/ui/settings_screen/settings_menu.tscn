@@ -5,16 +5,24 @@
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="2_iylle"]
 [ext_resource type="Texture2D" uid="uid://yr6wur6i5cne" path="res://scenes/ui/settings_screen/assets/musicOn.png" id="2_l40yv"]
 [ext_resource type="Texture2D" uid="uid://cdcrv1bqqr8et" path="res://scenes/ui/settings_screen/assets/musicOff.png" id="3_p3sqi"]
-[ext_resource type="Texture2D" uid="uid://j4446dm1f5c2" path="res://scenes/ui/start_screen/assets/Base_idle.png" id="3_u88hq"]
+[ext_resource type="Texture2D" uid="uid://cdwk60254grdg" path="res://scenes/ui/settings_screen/assets/slider_bg.png" id="4_vbkbu"]
 [ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="6_p78wt"]
 [ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/start_screen/assets/Button_hover.png" id="7_hf6bx"]
 
 [sub_resource type="Theme" id="Theme_aarj0"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ov8vc"]
-texture = ExtResource("3_u88hq")
-texture_margin_top = 30.0
-texture_margin_bottom = 30.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr1fm"]
+bg_color = Color(0.15686275, 0.15686275, 0.15686275, 0.62352943)
+expand_margin_top = 28.0
+expand_margin_bottom = 28.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8dnjv"]
+load_path = "res://.godot/imported/slider_inner.png-0c00bf66731f9350d69d12bd1547cb98.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0t43g"]
+texture = SubResource("CompressedTexture2D_8dnjv")
+expand_margin_top = 28.0
+expand_margin_bottom = 28.0
 
 [sub_resource type="Theme" id="Theme_vfyx5"]
 default_font = ExtResource("2_iylle")
@@ -31,6 +39,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hhwlu")
+metadata/_edit_vertical_guides_ = [224.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=928503161]
 layout_mode = 1
@@ -87,92 +96,185 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1560289456]
+[node name="HBoxContainerMusic" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=984230686]
+layout_mode = 2
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic" unique_id=888638493]
+custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_vbkbu")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1535081489]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/NinePatchRect" unique_id=1994889127]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainerSFX2" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer" unique_id=1587060663]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=1337369915]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.25
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("2_iylle")
 theme_override_font_sizes/font_size = 25
-text = "Music"
-horizontal_alignment = 1
+text = "MUSIC"
 vertical_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1487540067]
+[node name="MusicSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=2027363100]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 35)
+show_behind_parent = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_styles/slider = SubResource("StyleBoxTexture_ov8vc")
+theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
 max_value = 1.0
 step = 0.005
 value = 0.5
 
-[node name="MusicMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=829589167]
+[node name="MusicMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic" unique_id=836722099]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_l40yv")
 texture_pressed = ExtResource("3_p3sqi")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1243048510]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=771476892]
+layout_mode = 2
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=323383413]
+custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_vbkbu")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1271493842]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/NinePatchRect" unique_id=1985418079]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainerSFX2" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer" unique_id=1921791757]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=1968491734]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.25
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("2_iylle")
 theme_override_font_sizes/font_size = 25
 text = "SFX"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SfxSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1725352354]
+[node name="SfxSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=938385528]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 35)
+show_behind_parent = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_styles/slider = SubResource("StyleBoxTexture_ov8vc")
+theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
 max_value = 1.0
 step = 0.005
 value = 0.5
 
-[node name="SfxMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1703187459]
+[node name="SfxMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=281198510]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_l40yv")
 texture_pressed = ExtResource("3_p3sqi")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=2038081203]
+[node name="HBoxContainerBrightness" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=147691924]
+layout_mode = 2
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness" unique_id=126171937]
+custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_vbkbu")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=867813709]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect" unique_id=210139800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainerSFX2" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer" unique_id=1352051041]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=626810619]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.25
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("2_iylle")
 theme_override_font_sizes/font_size = 25
-text = "Brightness"
-horizontal_alignment = 1
+text = "BRIGHTNESS"
 vertical_alignment = 1
 
-[node name="BrightnessSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=1089804077]
+[node name="BrightnessSlider" type="HSlider" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=1526428489]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 35)
+show_behind_parent = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_styles/slider = SubResource("StyleBoxTexture_ov8vc")
-min_value = -0.3
+theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
 max_value = 0.3
 step = 0.05
-value = 0.10000000000000003
 
-[node name="Holder" type="Control" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=983115248]
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness" unique_id=2088171888]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
@@ -185,6 +287,7 @@ layout_mode = 2
 text = "Resolution"
 
 [node name="MenuButton" type="OptionButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=1457545936]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 selected = 0
@@ -257,11 +360,11 @@ text = "BACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/MusicMuteButton" to="." method="_on_music_mute_button_toggled"]
-[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2/SfxMuteButton" to="." method="_on_sfx_mute_button_toggled"]
-[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer3/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/MusicMuteButton" to="." method="_on_music_mute_button_toggled"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton" to="." method="_on_sfx_mute_button_toggled"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
 [connection signal="item_selected" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_menu_button_item_selected"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -11,11 +11,21 @@ const COLLECTED_IN_LEVEL_TAG = "collected_per_level"
 const MAX_LEVEL_TAG = "max_level"
 const MAX_COLLECTED_TAG = "max_collected"
 const NR_OF_LEVLES_TAG = "nr_of_levels"
+const SFX_VOLUME = "sfx_volume"
+const MUSIC_VOLUME = "music_volume"
+const BRIGHTNESS = "brightness"
+const RESOLUTION = "resolution"
+
 const MAX_NUM_OF_LEVELS = 20
 var collected_objects : int = 0
 var max_level_reached : int
 var max_collected : int = 0
 var is_muted : bool = false
+var sfx_vol : float = 0.5
+var music_vol : float = 0.0
+var brightness : float = 0.0
+var resolution : float = 0.0
+
 func _ready() -> void:
 	set_level_paths()
 	load_progress()
@@ -28,6 +38,7 @@ func _process(delta: float) -> void:
 		else:
 			AudioManager.mute_all_sound(false)
 			is_muted = false
+
 func load_progress() -> int:
 	var cf = ConfigFile.new()
 	#Check if dile exists
@@ -61,14 +72,22 @@ func get_collected_count_for_level(level_id : int) -> int:
 
 func create_default_progress():
 	var cf := ConfigFile.new()
+	#------------ MAX/MIN Level reached ------------------
 	cf.set_value("progress", MAX_LEVEL_TAG, 1) # Starting at level 1
 	cf.set_value("progress", MAX_COLLECTED_TAG, 0) # Starting at level 1
+
+	#-------- Levels progress ----------------------------
 	#Initialize empty array of level-collectables_nr for progress
 	for i in range(1,MAX_NUM_OF_LEVELS + 1):
 		cf.set_value(COLLECTED_IN_LEVEL_TAG, str(i), 0)
+
+	#------ Settings -------------------------------------
+	cf.set_value("settings", SFX_VOLUME, sfx_vol)
+	cf.set_value("settings", MUSIC_VOLUME, music_vol)
+	cf.set_value("settings", BRIGHTNESS, brightness)
+	cf.set_value("settings", RESOLUTION, resolution)
 	cf.save(PROGRESS_PATH)
 	max_level_reached = 1
-	print("Created new progress file at:", PROGRESS_PATH)
 
 func save_collectables_count_for_level(level_id : int, count : int):
 	var cf = ConfigFile.new()
@@ -99,7 +118,6 @@ func _update_total_collected():
 	cf.set_value("progress", MAX_COLLECTED_TAG, max_collected)
 	#Write to disk
 	cf.save(PROGRESS_PATH)
-	print("Update max collected ", max_collected + collected_objects)
 	collected_objects = 0
 
 func set_level_paths():
@@ -125,3 +143,20 @@ func get_level_path() -> String:
 	else:
 		#ToDo The end screen, return to menu
 		return ""
+
+func load_settings_for_player(_player_id : int, setting_name : String) -> float:
+	var cf = ConfigFile.new()
+
+	if cf.load(PROGRESS_PATH) == OK:
+		return cf.get_value("settings",setting_name,1)
+	return INF
+
+func update_settings_for_player(_player_id : int, settings_name : String, value : float) -> void:
+	var cf = ConfigFile.new()
+	#Check if dile exists
+	if FileAccess.file_exists(PROGRESS_PATH):
+		cf.load(PROGRESS_PATH)
+
+	cf.set_value("settings", settings_name, value)
+	#Write to disk
+	cf.save(PROGRESS_PATH)

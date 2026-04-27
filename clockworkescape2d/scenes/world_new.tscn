@@ -6,9 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_whjqg"]
 shader = ExtResource("3_i63yd")
-shader_parameter/brightness = 0.0
-shader_parameter/contrast = 1.0
-shader_parameter/gamma = 1.0
+shader_parameter/brightness = 0.06200005044500001
 
 [node name="World" type="Node2D" unique_id=77284601]
 process_mode = 3
@@ -19,6 +17,7 @@ script = ExtResource("1_whjqg")
 [node name="Scene" type="Node2D" parent="." unique_id=65681456]
 
 [node name="BrightnessLayer" type="ColorRect" parent="." unique_id=636824329]
+z_index = 12
 material = SubResource("ShaderMaterial_whjqg")
 offset_left = -1432.0
 offset_right = 2393.0

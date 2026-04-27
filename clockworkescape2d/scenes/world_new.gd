@@ -3,6 +3,7 @@ extends Node2D
 @onready var scene_placeholder: Node2D = $Scene
 @onready var world_map: Node2D = $WorldMap
 @onready var brightness_mat : Material = $BrightnessLayer.material
+@onready var brightness_layer: ColorRect = $BrightnessLayer
 
 var current_level_instance : Level = null
 var current_level_index : int = 0

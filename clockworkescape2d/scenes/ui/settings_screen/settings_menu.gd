@@ -3,12 +3,12 @@ extends Control
 @onready var music_slider: HSlider = %MusicSlider
 @onready var sfx_slider: HSlider = %SfxSlider
 @onready var brightness_slider: HSlider = %BrightnessSlider
-@onready var music_mute_button: TextureButton = $ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/MusicMuteButton
-@onready var sfx_mute_button: TextureButton = $ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer2/SfxMuteButton
-@onready var resolution_list: OptionButton = $ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/MenuButton
+@onready var music_mute_button: TextureButton =%MusicMuteButton
+@onready var sfx_mute_button: TextureButton = %SfxMuteButton
+@onready var resolution_list: OptionButton = %MenuButton
 
 var def_sfx_vol : float = 0.5
-var def_music_vol : float = 0.5
+var def_music_vol : float = 0.0
 var def_brightness : float = 0.0
 var def_resolution : int = 2
 
@@ -22,7 +22,6 @@ func _on_music_slider_value_changed(value: float) -> void:
 		music_mute_button.set_pressed(true)
 	else:
 		music_mute_button.set_pressed(false)
-
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioManager.set_bus_volume("SFX", value)
@@ -61,21 +60,26 @@ func _on_back_button_pressed() -> void:
 	AudioManager.play_sfx("click")
 	EventBus.world_show_sm.emit(true)
 	visible = false
-
+	_update_settings()
 
 func _on_save_button_pressed() -> void:
 	GameManager.save_settings()
-
 
 func _on_default_button_pressed() -> void:
 	_set_defaults()
 
 func _set_defaults():
-	sfx_slider.value = def_sfx_vol
-	music_slider.value = def_music_vol
-	brightness_slider.value = def_brightness
-	resolution_list.selected = 0
+	sfx_slider.value = GameManager.load_settings_for_player(0, GameManager.SFX_VOLUME) #def_sfx_vol
+	music_slider.value = GameManager.load_settings_for_player(0, GameManager.MUSIC_VOLUME)
+	brightness_slider.value = GameManager.load_settings_for_player(0, GameManager.BRIGHTNESS)
+	resolution_list.selected = int(GameManager.load_settings_for_player(0, GameManager.RESOLUTION))
 
 func _on_menu_button_item_selected(index: int) -> void:
 	var resolutions : PackedStringArray = resolution_list.get_item_text(index).split("x")
 	DisplayServer.window_set_size(Vector2i(int(resolutions[0]), int(resolutions[1])))
+
+func _update_settings()-> void:
+	GameManager.update_settings_for_player(0, GameManager.SFX_VOLUME, sfx_slider.value)
+	GameManager.update_settings_for_player(0, GameManager.MUSIC_VOLUME, music_slider.value)
+	GameManager.update_settings_for_player(0, GameManager.BRIGHTNESS, brightness_slider.value)
+	GameManager.update_settings_for_player(0, GameManager.RESOLUTION, resolution_list.selected)
