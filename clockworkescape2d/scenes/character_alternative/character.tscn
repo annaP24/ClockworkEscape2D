@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://8t3g16frg1kn"]
+[gd_scene format=3 uid="uid://8t3g16frg1kn"]
 
 [ext_resource type="Script" uid="uid://cfmb13t2dwrei" path="res://scenes/character_alternative/character.gd" id="1_ey463"]
 [ext_resource type="PackedScene" uid="uid://8xm743ivfdp0" path="res://scenes/character_alternative/sparks.tscn" id="2_ogwc5"]
@@ -190,126 +190,125 @@ _data = {
 &"rotate_right": SubResource("Animation_cuyo6")
 }
 
-[node name="Character" type="CharacterBody2D" groups=["player"]]
+[node name="Character" type="CharacterBody2D" unique_id=57246045 groups=["player"]]
 collision_mask = 5
+floor_max_angle = 1.2339478
 script = ExtResource("1_ey463")
 gravity_coef = 3.0
 move_acc = 35.0
 move_dec = 50.0
 
-[node name="FSM" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="FSM" type="Node2D" parent="." unique_id=1557267038 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("28_hhdcx")
 initial_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="FSM"]
+[node name="IdleState" type="Node" parent="FSM" unique_id=1129509009]
 script = ExtResource("29_xop42")
 
-[node name="RunState" type="Node" parent="FSM"]
+[node name="RunState" type="Node" parent="FSM" unique_id=220898788]
 script = ExtResource("30_367my")
 
-[node name="JumpState" type="Node" parent="FSM"]
+[node name="JumpState" type="Node" parent="FSM" unique_id=1053675495]
 script = ExtResource("31_pcyoi")
 
-[node name="FallState" type="Node" parent="FSM"]
+[node name="FallState" type="Node" parent="FSM" unique_id=1233977355]
 script = ExtResource("32_tg2rc")
 
-[node name="WallState" type="Node" parent="FSM"]
+[node name="WallState" type="Node" parent="FSM" unique_id=1690209716]
 script = ExtResource("33_5jkar")
 
-[node name="WallContactState" type="Node" parent="FSM"]
+[node name="WallContactState" type="Node" parent="FSM" unique_id=2120513468]
 script = ExtResource("8_ogwc5")
 metadata/_custom_type_script = "uid://jh8i4uv87bqn"
 
-[node name="falldown_timer" type="Timer" parent="FSM/WallContactState"]
+[node name="falldown_timer" type="Timer" parent="FSM/WallContactState" unique_id=984459427]
 wait_time = 2.0
 one_shot = true
 
-[node name="WallMovableState" type="Node" parent="FSM"]
+[node name="WallMovableState" type="Node" parent="FSM" unique_id=684214758]
 script = ExtResource("9_ts5ps")
 metadata/_custom_type_script = "uid://jh8i4uv87bqn"
 
-[node name="Sparks" parent="." instance=ExtResource("2_ogwc5")]
+[node name="Sparks" parent="." unique_id=1700991271 instance=ExtResource("2_ogwc5")]
 emitting = false
 
-[node name="SquashMarker" type="Marker2D" parent="."]
+[node name="SquashMarker" type="Marker2D" parent="." unique_id=1924877917]
 position = Vector2(0, 29)
 
-[node name="CharacterAnimated" type="AnimatedSprite2D" parent="SquashMarker"]
+[node name="CharacterAnimated" type="AnimatedSprite2D" parent="SquashMarker" unique_id=1358610156]
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_q52vl")
 animation = &"full"
 autoplay = "full"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049217657]
 shape = SubResource("CircleShape2D_fgi2k")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1038098469]
 visible = false
 shape = SubResource("CircleShape2D_wh2hg")
 target_position = Vector2(0, 0)
 collision_mask = 2
 
-[node name="Raycasts" type="Node2D" parent="."]
+[node name="Raycasts" type="Node2D" parent="." unique_id=1546173036]
 
-[node name="RayCastUp" type="RayCast2D" parent="Raycasts"]
+[node name="RayCastUp" type="RayCast2D" parent="Raycasts" unique_id=1893531475]
 target_position = Vector2(0, -34)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="RayCastLeft" type="RayCast2D" parent="Raycasts"]
+[node name="RayCastLeft" type="RayCast2D" parent="Raycasts" unique_id=776595950]
 target_position = Vector2(-36, 0)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="RayCastRight" type="RayCast2D" parent="Raycasts"]
+[node name="RayCastRight" type="RayCast2D" parent="Raycasts" unique_id=1221285428]
 target_position = Vector2(36, 0)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="RayCastDown" type="RayCast2D" parent="Raycasts"]
+[node name="RayCastDown" type="RayCast2D" parent="Raycasts" unique_id=2138318571]
 target_position = Vector2(0, 36)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="RayCastWallRight" type="RayCast2D" parent="Raycasts"]
+[node name="RayCastWallRight" type="RayCast2D" parent="Raycasts" unique_id=821925309]
 target_position = Vector2(36, 0)
 collision_mask = 8
 collide_with_areas = true
 
-[node name="RayCastWallLeft" type="RayCast2D" parent="Raycasts"]
+[node name="RayCastWallLeft" type="RayCast2D" parent="Raycasts" unique_id=678782002]
 target_position = Vector2(-36, 0)
 collision_mask = 8
 collide_with_areas = true
 
-[node name="Comp2dHurtbox" type="Area2D" parent="."]
+[node name="Comp2dHurtbox" type="Area2D" parent="." unique_id=1197644889]
 visible = false
 script = ExtResource("34_f3k4b")
 metadata/_custom_type_script = "uid://7u31tu5877wc"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHurtbox"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHurtbox" unique_id=268925617]
 shape = SubResource("CircleShape2D_fgi2k")
 
-[node name="HurtDetectionArea" type="Area2D" parent="."]
+[node name="HurtDetectionArea" type="Area2D" parent="." unique_id=1297576163]
 visible = false
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtDetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtDetectionArea" unique_id=1419353675]
 shape = SubResource("CircleShape2D_0fyol")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mutn8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1879502121]
+libraries/ = SubResource("AnimationLibrary_mutn8")
 
-[node name="JumpBuffer" type="Timer" parent="."]
+[node name="JumpBuffer" type="Timer" parent="." unique_id=558098466]
 one_shot = true
 
-[node name="CoyoteTimer" type="Timer" parent="."]
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=507974121]
 wait_time = 0.05
 one_shot = true
 
-[node name="GrabTimer" type="Timer" parent="."]
+[node name="GrabTimer" type="Timer" parent="." unique_id=775963679]
 wait_time = 0.1
 one_shot = true
 

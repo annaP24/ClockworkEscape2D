@@ -55,7 +55,7 @@ func _update_lightning():
 		# center it between upper and lower
 		collision_shape_2d.position = upper.position + offset * 0.5
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	match current_state:
 		State.WARR:
 			sparks.visible = true
@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 			current_state = State.DEFAULT
 		State.DEFAULT:
 			pass
-			
+
 func _on_off_timer_timeout() -> void:
 	current_state = State.WARR
 
@@ -87,10 +87,9 @@ func _on():
 	comp_2d_hitbox.monitorable = true
 	comp_2d_hitbox.monitoring = true
 	line.visible = true
-	
+
 func _off():
 	line.visible = false
 	comp_2d_hitbox.monitorable = false
 	comp_2d_hitbox.monitoring = false
 	comp_2d_hitbox.is_enable = false
-	

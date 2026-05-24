@@ -50,3 +50,7 @@ func move_camera_with_selection(new_node : Vector2):
 
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", target_y, duration)
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_STOP)
+
+func stop_drag():
+	dragging = false

@@ -182,28 +182,16 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("4_ixh7n")
 
-[node name="Settings" parent="Camera2D" unique_id=701105397 instance=ExtResource("6_cbbp4")]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=685586273]
+
+[node name="Settings" parent="UILayer" unique_id=701105397 instance=ExtResource("6_cbbp4")]
 visible = false
-offset_left = 4.0
-offset_top = 2381.0
-offset_right = 4.0
-offset_bottom = 2381.0
 
-[node name="StartMenu" parent="Camera2D" unique_id=339159820 instance=ExtResource("6_0gg30")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = 35.0
-offset_top = 1984.0
-offset_right = 35.0
-offset_bottom = 1984.0
-grow_vertical = 0
+[node name="StartMenu" parent="UILayer" unique_id=339159820 instance=ExtResource("6_0gg30")]
 
-[node name="ColorRect" parent="Camera2D/StartMenu" index="0" unique_id=1131630118]
-custom_minimum_size = Vector2(3000, 2000)
-
-[node name="Score_ui" parent="Camera2D" unique_id=1132659938 instance=ExtResource("5_llt4e")]
+[node name="Score_ui" parent="UILayer" unique_id=1132659938 instance=ExtResource("5_llt4e")]
+offset_top = 2380.31
+offset_bottom = 2380.31
 
 [editable path="LevelsContainer/LevelNode1"]
 [editable path="LevelsContainer/LevelNode2"]
@@ -222,4 +210,3 @@ custom_minimum_size = Vector2(3000, 2000)
 [editable path="LevelsContainer/LevelNode18"]
 [editable path="LevelsContainer/LevelNode19"]
 [editable path="LevelsContainer/LevelNode20"]
-[editable path="Camera2D/StartMenu"]

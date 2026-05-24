@@ -1,22 +1,23 @@
 [gd_scene format=3 uid="uid://cx885i6g6gwnh"]
 
-[ext_resource type="Script" uid="uid://bb0ibp365qg4t" path="res://scenes/world_new.gd" id="1_whjqg"]
-[ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="3_gty47"]
-[ext_resource type="Shader" uid="uid://bhr460c3fu4xo" path="res://shaders/brightness.gdshader" id="3_i63yd"]
+[ext_resource type="Script" uid="uid://bb0ibp365qg4t" path="res://scenes/world.gd" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="2_k0juu"]
+[ext_resource type="Shader" uid="uid://bhr460c3fu4xo" path="res://shaders/brightness.gdshader" id="3_71j4m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_whjqg"]
-shader = ExtResource("3_i63yd")
+shader = ExtResource("3_71j4m")
 shader_parameter/brightness = 0.06200005044500001
 
 [node name="World" type="Node2D" unique_id=77284601]
 process_mode = 3
-script = ExtResource("1_whjqg")
+script = ExtResource("1_4wyf3")
 
-[node name="WorldMap" parent="." unique_id=1188891860 instance=ExtResource("3_gty47")]
+[node name="WorldMap" parent="." unique_id=1188891860 instance=ExtResource("2_k0juu")]
 
 [node name="Scene" type="Node2D" parent="." unique_id=65681456]
 
 [node name="BrightnessLayer" type="ColorRect" parent="." unique_id=636824329]
+visible = false
 z_index = 12
 material = SubResource("ShaderMaterial_whjqg")
 offset_left = -1432.0

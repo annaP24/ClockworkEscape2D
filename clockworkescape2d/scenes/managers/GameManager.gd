@@ -1,7 +1,7 @@
 extends Node
 
 var current_level : int = 0
-var level_id : int = 0
+var current_level_id : int = 0
 var all_level_paths : Array[String]
 var levels_path : String = "res://scenes/levels/scenes/"
 
@@ -30,7 +30,7 @@ func _ready() -> void:
 	set_level_paths()
 	load_progress()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("mute"):
 		if not is_muted:
 			AudioManager.mute_all_sound(true)

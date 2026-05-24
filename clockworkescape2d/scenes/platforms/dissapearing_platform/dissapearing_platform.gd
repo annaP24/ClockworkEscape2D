@@ -7,7 +7,7 @@ extends StaticBody2D
 @onready var timeout_timer: Timer = %TimeoutTimer
 
 var timeout : float = 0.3
-var is_visible : bool = true
+var is_platform_visible : bool = true
 
 func _ready() -> void:
 	collision.disabled = false
@@ -26,15 +26,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "dissolve":
 		collision.disabled = true
 		detection_collision.disabled = true
-		is_visible = false
+		is_platform_visible = false
 		timeout_timer.start(timeout)
 	elif anim_name == "appear":
-		is_visible = true
+		is_platform_visible = true
 		collision.disabled = false
 		detection_collision.disabled = false
 
 func _on_appear_timer_timeout() -> void:
-	if is_visible:
+	if is_platform_visible:
 		animation_player.play("dissolve")
 	else:
 		animation_player.play("appear")

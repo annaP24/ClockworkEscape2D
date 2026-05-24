@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://yr6wur6i5cne" path="res://scenes/ui/settings_screen/assets/musicOn.png" id="2_l40yv"]
 [ext_resource type="Texture2D" uid="uid://cdcrv1bqqr8et" path="res://scenes/ui/settings_screen/assets/musicOff.png" id="3_p3sqi"]
 [ext_resource type="Texture2D" uid="uid://cdwk60254grdg" path="res://scenes/ui/settings_screen/assets/slider_bg.png" id="4_vbkbu"]
+[ext_resource type="Texture2D" uid="uid://babq5a6q43mbf" path="res://scenes/ui/settings_screen/assets/musicOn2.png" id="5_rr1fm"]
 [ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="6_p78wt"]
 [ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/start_screen/assets/Button_hover.png" id="7_hf6bx"]
 
@@ -155,7 +156,7 @@ value = 0.5
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("2_l40yv")
+texture_normal = ExtResource("5_rr1fm")
 texture_pressed = ExtResource("3_p3sqi")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=771476892]
@@ -282,14 +283,48 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=250292559]
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=806620182]
+custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
-text = "Resolution"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_vbkbu")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="MenuButton" type="OptionButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=1457545936]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 50)
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect" unique_id=1249303225]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainerSFX2" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer" unique_id=1437778095]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=2087888269]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.25
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_iylle")
+theme_override_font_sizes/font_size = 25
+text = "RESOLUTION"
+vertical_alignment = 1
+
+[node name="MenuButton" type="OptionButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2" unique_id=1457545936]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 selected = 0
 item_count = 3
 popup/item_0/text = "1280x825"
@@ -299,8 +334,8 @@ popup/item_1/id = 1
 popup/item_2/text = "2560x1440"
 popup/item_2/id = 2
 
-[node name="Holder2" type="Control" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=1239489711]
-custom_minimum_size = Vector2(145, 0)
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5" unique_id=1852608314]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=420317469]
@@ -365,6 +400,6 @@ vertical_alignment = 1
 [connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton" to="." method="_on_sfx_mute_button_toggled"]
 [connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
-[connection signal="item_selected" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton" to="." method="_on_menu_button_item_selected"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

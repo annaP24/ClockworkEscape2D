@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://ds802ke88bmou" path="res://scenes/interactables/exit/exit_platform.gd" id="1_rqmy3"]
 [ext_resource type="Texture2D" uid="uid://c8n02wkrratso" path="res://scenes/interactables/exit/assets/exit_arrow.png" id="2_rqmy3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbh5h"]
-size = Vector2(62, 11)
-
 [sub_resource type="Gradient" id="Gradient_cq04i"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
@@ -30,10 +27,10 @@ collision_mask = 16
 position = Vector2(0, -32)
 texture = ExtResource("1_iysvq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=613314543]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Platform" unique_id=706137717]
 visible = false
-position = Vector2(0, 25.5)
-shape = SubResource("RectangleShape2D_gbh5h")
+position = Vector2(-1.0137506, 26.336178)
+polygon = PackedVector2Array(-27.98625, -6.336178, 27.01375, -6.3361783, 39.013752, 5.663822, -42.986248, 5.663822)
 
 [node name="SpriteArrow" type="Sprite2D" parent="." unique_id=686190412]
 position = Vector2(0, -20)

@@ -1,5 +1,5 @@
 extends Node2D
-signal level_finished
+
 # --------Variables-----------------------------------------------------------
 @export var move_range : float = 3*64.0
 @onready var sprite_arrow: Sprite2D = $SpriteArrow
@@ -63,11 +63,6 @@ func _move_platform(delta : float):
 			sprite_arrow.visible = true
 			current_state = State.IDLE
 
-	if current_state == State.MOVE_DOWN:
-		if platform.position.distance_to(init_position) < POSITION_THRESHOLD:
-			sprite_arrow.visible = true
-			current_state = State.IDLE
-
 # --------Signals-------------------------------------------------------------
 func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -82,7 +77,7 @@ func _on_activation_timer_timeout() -> void:
 
 func _on_exit_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		player.set_collision_mask_value(1,true)
+		player.set_collision_mask_value(1, true)
 		player.turn_on_light()
 		player = null
 		is_player_on_platform = false
@@ -91,4 +86,4 @@ func _on_exit_area_body_exited(body: Node2D) -> void:
 
 func _on_end_timer_timeout() -> void:
 	if is_player_on_platform:
-		level_finished.emit()
+		EventBus.exit_level_finished.emit()

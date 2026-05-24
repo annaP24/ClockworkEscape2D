@@ -15,7 +15,7 @@ var sounds = {
 }
 
 var music_tracks = {
-	"main_theme": "res://assets/sounds/850443__cpfcfan10__tic-tock-goes-the-clock.wav"
+	"main_theme": "res://assets/sounds/Uhr_Project_Test1.ogg"
 }
 
 func _ready() -> void:

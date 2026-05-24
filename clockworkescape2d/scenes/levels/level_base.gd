@@ -11,10 +11,11 @@ var player : PlayerFsmCustomDataLayer
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
 	FadeScreen.fade_in()
-	var delta = Time.get_ticks_msec() - engine_start
+	#var delta = Time.get_ticks_msec() - engine_start
 	#print("Autoload-Init:", engine_start)
 	#print("Zeit bis erstes _ready():", delta, "ms")
 	print("Level ", str(level_id), " starting")
+	EventBus.exit_level_finished.connect(_on_exit_platform_level_finished)
 
 func _on_fade_in_finished():
 	_spawn_player( )
@@ -25,9 +26,11 @@ func _spawn_player():
 	add_child(player)
 	player.connect("player_died", _on_player_died)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("return"):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("return"):
 		EventBus.lb_quit_level.emit()
+		# Prevents the action propagating to _unhandled_input of world_new and doe not show mainmenu for a moment
+		get_viewport().set_input_as_handled()
 
 func _on_player_died():
 	EventBus.lb_restart_level.emit()

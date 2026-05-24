@@ -21,3 +21,6 @@ signal lb_return_to_map(level_id : int)
 
 
 signal pl_touched_ground(sound : String)
+
+#----------- Exit platform -----------------
+signal exit_level_finished
