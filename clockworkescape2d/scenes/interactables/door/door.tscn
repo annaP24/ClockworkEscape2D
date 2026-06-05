@@ -37,13 +37,14 @@ z_index = -1
 script = ExtResource("1_57sya")
 metadata/_edit_horizontal_guides_ = [192.0, 129.0]
 
-[node name="Sprites" type="Area2D" parent="." unique_id=461756201]
+[node name="Sprites" type="StaticBody2D" parent="." unique_id=782793211]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=969249298]
 position = Vector2(0, 32)
 texture = ExtResource("2_vg5pl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprites" unique_id=1608320928]
+visible = false
 position = Vector2(0, 31)
 shape = SubResource("RectangleShape2D_70ylm")
 
@@ -51,6 +52,7 @@ shape = SubResource("RectangleShape2D_70ylm")
 one_shot = true
 
 [node name="Sparks" parent="." unique_id=894752949 instance=ExtResource("5_tcsf3")]
+visible = false
 position = Vector2(0, -32)
 process_material = SubResource("ParticleProcessMaterial_6q1cg")
 script = null

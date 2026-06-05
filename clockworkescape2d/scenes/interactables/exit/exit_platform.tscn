@@ -14,7 +14,10 @@ fill_from = Vector2(0.5156695, 0.4985755)
 fill_to = Vector2(0.86609685, 0.13960114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqmy3"]
-size = Vector2(62, 351)
+size = Vector2(62, 678.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbh5h"]
+size = Vector2(47, 621)
 
 [node name="ExitPlatform" type="Node2D" unique_id=1776802071]
 script = ExtResource("1_rqmy3")
@@ -28,9 +31,10 @@ position = Vector2(0, -32)
 texture = ExtResource("1_iysvq")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Platform" unique_id=706137717]
-visible = false
 position = Vector2(-1.0137506, 26.336178)
 polygon = PackedVector2Array(-27.98625, -6.336178, 27.01375, -6.3361783, 39.013752, 5.663822, -42.986248, 5.663822)
+one_way_collision = true
+one_way_collision_margin = 22.9
 
 [node name="SpriteArrow" type="Sprite2D" parent="." unique_id=686190412]
 position = Vector2(0, -20)
@@ -51,7 +55,7 @@ texture_scale = 3.0
 collision_layer = 0
 
 [node name="ExitAreaCollision" type="CollisionShape2D" parent="ExitArea" unique_id=163874187]
-position = Vector2(0, -33)
+position = Vector2(0, -196.75)
 shape = SubResource("RectangleShape2D_rqmy3")
 
 [node name="ActivationTimer" type="Timer" parent="." unique_id=1634254042]
@@ -59,6 +63,15 @@ one_shot = true
 
 [node name="EndTimer" type="Timer" parent="." unique_id=1513816156]
 one_shot = true
+
+[node name="NoFallArea" type="StaticBody2D" parent="." unique_id=657656915]
+position = Vector2(13, -1)
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoFallArea" unique_id=1319686943]
+position = Vector2(56.5, -252.5)
+shape = SubResource("RectangleShape2D_gbh5h")
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_exited" from="ExitArea" to="." method="_on_exit_area_body_exited"]

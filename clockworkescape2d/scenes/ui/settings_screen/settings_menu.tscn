@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://c44vlwiwj6sw1" path="res://scenes/ui/settings_screen/settings_menu.gd" id="1_hhwlu"]
 [ext_resource type="Texture2D" uid="uid://yenxggxg8rrt" path="res://scenes/ui/start_screen/assets/title_holder.png" id="1_vfyx5"]
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="2_iylle"]
-[ext_resource type="Texture2D" uid="uid://yr6wur6i5cne" path="res://scenes/ui/settings_screen/assets/musicOn.png" id="2_l40yv"]
-[ext_resource type="Texture2D" uid="uid://cdcrv1bqqr8et" path="res://scenes/ui/settings_screen/assets/musicOff.png" id="3_p3sqi"]
 [ext_resource type="Texture2D" uid="uid://cdwk60254grdg" path="res://scenes/ui/settings_screen/assets/slider_bg.png" id="4_vbkbu"]
 [ext_resource type="Texture2D" uid="uid://babq5a6q43mbf" path="res://scenes/ui/settings_screen/assets/musicOn2.png" id="5_rr1fm"]
-[ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/start_screen/assets/Button_idle.png" id="6_p78wt"]
-[ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/start_screen/assets/Button_hover.png" id="7_hf6bx"]
+[ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/assets/Button_idle.png" id="6_p78wt"]
+[ext_resource type="Texture2D" uid="uid://2smp8shoyfvx" path="res://scenes/ui/settings_screen/assets/musicOff2.png" id="6_vbkbu"]
+[ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/assets/Button_hover.png" id="7_hf6bx"]
+[ext_resource type="Texture2D" uid="uid://mxpkdefbs1e5" path="res://scenes/ui/settings_screen/assets/musicOn2_hower.png" id="7_rr1fm"]
 
 [sub_resource type="Theme" id="Theme_aarj0"]
 
@@ -145,6 +145,11 @@ show_behind_parent = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+focus_neighbor_left = NodePath("../../../../../../HBoxContainer/BackButton")
+focus_neighbor_right = NodePath("../../../../MusicMuteButton")
+focus_neighbor_bottom = NodePath("../../../../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
+focus_next = NodePath("../../../../MusicMuteButton")
+focus_previous = NodePath("../../../../../../HBoxContainer/BackButton")
 theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
@@ -155,9 +160,15 @@ value = 0.5
 [node name="MusicMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic" unique_id=836722099]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider")
+focus_neighbor_right = NodePath("../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
+focus_next = NodePath("../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
+focus_previous = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider")
 toggle_mode = true
 texture_normal = ExtResource("5_rr1fm")
-texture_pressed = ExtResource("3_p3sqi")
+texture_pressed = ExtResource("6_vbkbu")
+texture_hover = ExtResource("7_rr1fm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=771476892]
 layout_mode = 2
@@ -217,9 +228,15 @@ value = 0.5
 [node name="SfxMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=281198510]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
+focus_neighbor_top = NodePath("../../HBoxContainerMusic/MusicMuteButton")
+focus_neighbor_right = NodePath("../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
+focus_neighbor_bottom = NodePath("../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
+focus_next = NodePath("../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
+focus_previous = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
 toggle_mode = true
-texture_normal = ExtResource("2_l40yv")
-texture_pressed = ExtResource("3_p3sqi")
+texture_normal = ExtResource("5_rr1fm")
+texture_pressed = ExtResource("6_vbkbu")
 
 [node name="HBoxContainerBrightness" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=147691924]
 layout_mode = 2
@@ -269,6 +286,11 @@ show_behind_parent = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+focus_neighbor_left = NodePath("../../../../../HBoxContainer/SfxMuteButton")
+focus_neighbor_top = NodePath("../../../../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
+focus_neighbor_bottom = NodePath("../../../../../HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_next = NodePath("../../../../../HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_previous = NodePath("../../../../../HBoxContainer/SfxMuteButton")
 theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
@@ -325,6 +347,10 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../../../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
+focus_neighbor_bottom = NodePath("../../../../../../HBoxContainer/DefaultButton")
+focus_next = NodePath("../../../../../../HBoxContainer/DefaultButton")
+focus_previous = NodePath("../../../../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
 selected = 0
 item_count = 3
 popup/item_0/text = "1280x825"
@@ -348,9 +374,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_neighbor_right = NodePath("../BackButton")
+focus_next = NodePath("../BackButton")
+focus_previous = NodePath("../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
 texture_normal = ExtResource("6_p78wt")
 texture_pressed = ExtResource("7_hf6bx")
 texture_hover = ExtResource("7_hf6bx")
+texture_focused = ExtResource("7_hf6bx")
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" unique_id=5523179]
 layout_mode = 1
@@ -359,6 +391,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../BackButton")
+focus_neighbor_top = NodePath("../../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_neighbor_right = NodePath("../../BackButton")
+focus_next = NodePath("../../BackButton")
+focus_previous = NodePath("../../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
 theme = SubResource("Theme_vfyx5")
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
@@ -377,6 +414,7 @@ size_flags_horizontal = 4
 texture_normal = ExtResource("6_p78wt")
 texture_pressed = ExtResource("7_hf6bx")
 texture_hover = ExtResource("7_hf6bx")
+texture_focused = ExtResource("7_hf6bx")
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/BackButton" unique_id=1133733535]
 layout_mode = 1
@@ -385,6 +423,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../DefaultButton")
+focus_neighbor_top = NodePath("../../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_neighbor_right = NodePath("../../DefaultButton")
+focus_next = NodePath("../../../VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider")
+focus_previous = NodePath("../../DefaultButton")
 theme = SubResource("Theme_vfyx5")
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
@@ -401,5 +444,13 @@ vertical_alignment = 1
 [connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton" to="." method="_on_sfx_mute_button_toggled"]
 [connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
 [connection signal="item_selected" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="focus_entered" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_focus_entered"]
+[connection signal="focus_exited" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_focus_exited"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_mouse_exited"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
+[connection signal="focus_entered" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_focus_entered"]
+[connection signal="focus_exited" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_focus_exited"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_mouse_exited"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

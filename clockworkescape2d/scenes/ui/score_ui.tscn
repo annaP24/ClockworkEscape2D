@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://be14mabgg4v0v"]
 
 [ext_resource type="Script" uid="uid://dehsfx7cfqh6s" path="res://scenes/ui/score_ui.gd" id="1_oq8au"]
-[ext_resource type="Texture2D" uid="uid://jnn22tqcwljy" path="res://scenes/ui/assets/collectable.png" id="2_oq8au"]
+[ext_resource type="Texture2D" uid="uid://djtf3hakpg6a2" path="res://scenes/ui/assets/collectable.png" id="2_oq8au"]
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="3_dwi35"]
 
 [node name="Score_ui" type="Control" unique_id=1419331553]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_oq8au")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=339464042]

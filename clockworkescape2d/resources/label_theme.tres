@@ -1,0 +1,18 @@
+[gd_resource type="Theme" format=3 uid="uid://cx0xw7kuwquce"]
+
+[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="1_nkclu"]
+
+[resource]
+default_font = ExtResource("1_nkclu")
+LabelBody/colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+LabelBody/colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+LabelBody/font_sizes/font_size = 25
+LabelBody/fonts/font = ExtResource("1_nkclu")
+LabelButton/colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+LabelButton/colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+LabelButton/font_sizes/font_size = 45
+LabelButton/fonts/font = ExtResource("1_nkclu")
+LabelHeader/colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+LabelHeader/colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+LabelHeader/font_sizes/font_size = 100
+LabelHeader/fonts/font = ExtResource("1_nkclu")

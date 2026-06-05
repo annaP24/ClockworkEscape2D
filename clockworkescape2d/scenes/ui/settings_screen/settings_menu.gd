@@ -6,6 +6,8 @@ extends Control
 @onready var music_mute_button: TextureButton =%MusicMuteButton
 @onready var sfx_mute_button: TextureButton = %SfxMuteButton
 @onready var resolution_list: OptionButton = %MenuButton
+@onready var default_button: TextureButton = %DefaultButton
+@onready var back_button: TextureButton = %BackButton
 
 var def_sfx_vol : float = 0.5
 var def_music_vol : float = 0.0
@@ -15,6 +17,8 @@ var def_resolution : int = 2
 func _ready() -> void:
 	EventBus.world_hide_settings_menu.connect(_on_hide_received)
 	_set_defaults()
+	if GameManager.is_joypad_connected:
+		music_slider.grab_focus()
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_bus_volume("Music", value)
@@ -51,7 +55,7 @@ func _on_music_mute_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		AudioManager.set_bus_volume("Music", 0.0)
 	else:
-		AudioManager.set_bus_volume("Music", 1.0)
+		AudioManager.set_bus_volume("Music", music_slider.value)
 
 func _on_hide_received(is_show : bool)-> void:
 	visible = is_show
@@ -83,3 +87,28 @@ func _update_settings()-> void:
 	GameManager.update_settings_for_player(0, GameManager.MUSIC_VOLUME, music_slider.value)
 	GameManager.update_settings_for_player(0, GameManager.BRIGHTNESS, brightness_slider.value)
 	GameManager.update_settings_for_player(0, GameManager.RESOLUTION, resolution_list.selected)
+
+
+func _on_default_button_focus_entered() -> void:
+	VisualsManager.on_mouse_entered(default_button)
+
+func _on_default_button_focus_exited() -> void:
+	VisualsManager.on_mouse_exited(default_button)
+
+func _on_default_button_mouse_entered() -> void:
+	VisualsManager.on_mouse_entered(default_button)
+
+func _on_default_button_mouse_exited() -> void:
+	VisualsManager.on_mouse_exited(default_button)
+
+func _on_back_button_focus_entered() -> void:
+	VisualsManager.on_mouse_entered(back_button)
+
+func _on_back_button_focus_exited() -> void:
+	VisualsManager.on_mouse_exited(back_button)
+
+func _on_back_button_mouse_entered() -> void:
+	VisualsManager.on_mouse_entered(back_button)
+
+func _on_back_button_mouse_exited() -> void:
+	VisualsManager.on_mouse_exited(back_button)

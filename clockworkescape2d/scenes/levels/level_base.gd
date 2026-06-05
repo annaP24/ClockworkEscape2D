@@ -33,6 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _on_player_died():
+	GameManager.update_number_of_deaths()
 	EventBus.lb_restart_level.emit()
 
 func _on_exit_platform_level_finished() -> void:

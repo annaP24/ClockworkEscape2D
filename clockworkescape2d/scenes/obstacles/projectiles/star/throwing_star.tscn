@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d4lxpl5reul6v"]
 
 [ext_resource type="Script" uid="uid://b5eql3jqsafxv" path="res://scenes/obstacles/projectiles/star/throwing_star.gd" id="1_12eam"]
-[ext_resource type="Texture2D" uid="uid://b0nkmvuqqt34l" path="res://scenes/obstacles/projectiles/star/assets/throwing_star.png" id="2_ee0r5"]
+[ext_resource type="Texture2D" uid="uid://b2n8wsui4npkt" path="res://scenes/obstacles/projectiles/star/assets/throwing_star.png" id="2_ee0r5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ut32d"]
 radius = 21.023796
@@ -10,6 +10,7 @@ radius = 21.023796
 radius = 23.086792
 
 [node name="ThrowingStar" type="StaticBody2D" unique_id=849027159]
+z_index = -1
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_12eam")

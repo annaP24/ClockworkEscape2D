@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjww3w1a45857"]
 
-[ext_resource type="Texture2D" uid="uid://kh8irk67x2u5" path="res://scenes/platforms/small_platform/assets/small_platform.png" id="1_hmowh"]
+[ext_resource type="Texture2D" uid="uid://c2l64qknmok83" path="res://scenes/platforms/small_platform/assets/small_platform.png" id="1_hmowh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4dh"]
 size = Vector2(128, 32)
@@ -9,6 +9,7 @@ size = Vector2(128, 32)
 size = Vector2(128, 36)
 
 [node name="Small_platform" type="StaticBody2D" unique_id=1620481334]
+z_index = 1
 collision_mask = 0
 metadata/_edit_vertical_guides_ = [64.0, -64.0]
 

@@ -6,6 +6,9 @@ extends Node
 var music_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer] = []
 var pool_index: int = 0
+var music_volume : float = 0.0
+var sfx_volume : float = 0.0
+var master_volume : float = 0.0
 
 # A dictionary to store preloaded sounds or use ResourcePaths
 var sounds = {
@@ -15,7 +18,7 @@ var sounds = {
 }
 
 var music_tracks = {
-	"main_theme": "res://assets/sounds/Uhr_Project_Test1.ogg"
+	"main_theme": "res://assets/sounds/intern/Uhr_Project_Test1.ogg"
 }
 
 func _ready() -> void:
@@ -33,7 +36,7 @@ func _ready() -> void:
 
 func _start_track(stream: AudioStream, fade_duration: float) -> void:
 	music_player.stream = stream
-	music_player.volume_db = -80.0 # Start silent
+	music_player.volume_db = -80.0
 	music_player.play()
 
 	var tween = create_tween()
@@ -74,6 +77,13 @@ func set_bus_volume(bus_name: String, linear_volume: float) -> void:
 	# Convert 0.0-1.0 slider value to Decibels
 	var db = linear_to_db(linear_volume)
 	AudioServer.set_bus_volume_db(bus_index, db)
+	if linear_volume != 0.0:
+		if bus_name == "SFX":
+			sfx_volume = db
+		elif bus_name == "Music":
+			music_volume = db
+		elif bus_name == "Master":
+			master_volume = db
 
 func play_sfx_for_object(sfx_name: String, position: Vector3):
 	var p = AudioStreamPlayer2D.new()
@@ -86,10 +96,10 @@ func play_sfx_for_object(sfx_name: String, position: Vector3):
 
 func mute_all_sound(is_muted : bool):
 	if is_muted:
-		set_bus_volume("SFX",0.0)
-		set_bus_volume("Music",0.0)
-		set_bus_volume("Master",0.0)
+		set_bus_volume("SFX", 0.0)
+		set_bus_volume("Music", 0.0)
+		set_bus_volume("Master", 0.0)
 	else:
-		set_bus_volume("SFX",1.0)
-		set_bus_volume("Music",1.0)
-		set_bus_volume("Master",1.0)
+		set_bus_volume("SFX", sfx_volume)
+		set_bus_volume("Music", music_volume)
+		set_bus_volume("Master", master_volume)

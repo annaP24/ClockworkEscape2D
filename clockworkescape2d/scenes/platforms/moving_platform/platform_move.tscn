@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ddt76rnhhboub"]
 
 [ext_resource type="PackedScene" uid="uid://rxjk0aftvp6t" path="res://scenes/platforms/platform_base.tscn" id="1_0lsv4"]
-[ext_resource type="Texture2D" uid="uid://btok0p7guxyxk" path="res://scenes/platforms/moving_platform/assets/small_platform.png" id="2_pv6c5"]
+[ext_resource type="Texture2D" uid="uid://62e46cteoelw" path="res://scenes/platforms/moving_platform/assets/small_platform.png" id="2_pv6c5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxyy"]
-size = Vector2(126, 46)
+size = Vector2(126, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv6c5"]
 size = Vector2(123.25, 18.25)

@@ -3,7 +3,7 @@ extends Node2D
 @export var switch_2: Switch
 @export var wait_timeout : float = 0.3
 @export var move_up_speed : float = 200.0
-@export var move_down_speed : float = 100.0
+@export var move_down_speed : float = 50.0
 @onready var sprites: Node2D = $Sprites
 @onready var move_delay_timer: Timer = $MoveDelayTimer
 @onready var sparks: GPUParticles2D = $Sparks
@@ -40,11 +40,13 @@ func _physics_process(delta: float) -> void:
 	sprites.global_position = sprites.global_position.move_toward(current_target, move_speed * delta)
 	if sprites.global_position == target_position:
 		sparks.emitting = false
-		
+
+
 func _on_switch_is_active():
 	move_delay_timer.stop() # Cancel timers
 	current_target = target_position
 	sparks.emitting = true
+	move_speed = move_up_speed
 
 func _on_switch_is_not_active():
 	move_delay_timer.start()
@@ -57,4 +59,3 @@ func _on_move_delay_timer_timeout() -> void:
 	if sprites.global_position.distance_to(current_target) != 0:
 		move_speed = move_down_speed
 		current_target = init_position
-		

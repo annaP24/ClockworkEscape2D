@@ -16,9 +16,6 @@ var is_joypad_connected := false
 
 func _ready() -> void:
 	_generate_curve()
-	unlock_levels()
-	_focus_first_available_level()
-
 
 func _unhandled_input(event: InputEvent) -> void:
 
@@ -55,11 +52,11 @@ func _unhandled_input(event: InputEvent) -> void:
 # Level Setup
 # -----------------------------------------------------------------------------
 
-func unlock_levels() -> void:
+func unlock_levels(id : int) -> void:
 
 	var levels : Array = levels_container.get_children() as Array[LevelNode]
 	var level_count := levels.size()
-
+	var max_level_unlocked : int = GameManager.load_progress(id)
 	for i in range(level_count):
 
 		var node : LevelNode = levels[i]
@@ -74,7 +71,10 @@ func unlock_levels() -> void:
 			node.neighbour_down = levels[i - 1]
 
 		# Unlock state
-		node.is_unlocked = node.level_id <= GameManager.load_progress()
+		if node.level_id <= max_level_unlocked:
+			node.is_unlocked = true
+		else:
+			node.is_unlocked = false
 
 		node.update_visual()
 
@@ -82,11 +82,12 @@ func unlock_levels() -> void:
 			node.level_selected.connect(_on_level_selected)
 
 
-func _focus_first_available_level() -> void:
+func focus_last_played_level() -> void:
 
 	var levels : Array = levels_container.get_children() as Array[LevelNode]
-
-	for level in levels:
+	print(levels.size())
+	for level_id in range(levels.size()-1, 0, -1):
+		var level = levels[level_id]
 		if level.is_unlocked:
 			current_focused_level = level
 			current_focused_level.set_highlight(true)
@@ -118,11 +119,7 @@ func set_camera_enabled(enabled : bool) -> void:
 # Curve Generation
 # -----------------------------------------------------------------------------
 
-func _calc_tangent_in(
-	point_before : Vector2,
-	point_after : Vector2,
-	current_point : Vector2
-) -> Vector2:
+func _calc_tangent_in(point_before : Vector2, point_after : Vector2, current_point : Vector2) -> Vector2:
 
 	var tangent = (point_before - point_after).normalized()
 	var distance = current_point.distance_to(point_before)
@@ -130,11 +127,7 @@ func _calc_tangent_in(
 	return tangent * (distance * CURVE_TANGENT_COEF)
 
 
-func _calc_tangent_out(
-	point_before : Vector2,
-	point_after : Vector2,
-	current_point : Vector2
-) -> Vector2:
+func _calc_tangent_out(point_before : Vector2, point_after : Vector2, current_point : Vector2) -> Vector2:
 
 	var tangent = (point_before - point_after).normalized()
 	var distance = current_point.distance_to(point_after)
