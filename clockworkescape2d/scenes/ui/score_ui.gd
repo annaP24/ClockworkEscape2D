@@ -7,5 +7,5 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	score.text = str(GameManager.max_collected)
 
-func _on_hide_socore(is_visible : bool) -> void:
-	visible = is_visible
+func _on_hide_socore(is_score_visible : bool) -> void:
+	visible = is_score_visible

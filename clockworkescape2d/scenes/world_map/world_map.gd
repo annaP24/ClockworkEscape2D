@@ -86,7 +86,8 @@ func focus_last_played_level() -> void:
 
 	var levels : Array = levels_container.get_children() as Array[LevelNode]
 	print(levels.size())
-	for level_id in range(levels.size()-1, 0, -1):
+	for level_id in range(levels.size()-1, -1, -1):
+		print(level_id)
 		var level = levels[level_id]
 		if level.is_unlocked:
 			current_focused_level = level

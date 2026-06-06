@@ -79,7 +79,7 @@ func _process(_delta: float) -> void:
 		set_can_grab(true)
 	check_is_on_wall()
 	point_light_2d.energy = lerp(point_light_2d.energy, randf_range(1.2, 1.8), 0.1)
-
+	
 func apply_gravity(new_gravity : float, delta : float):
 	velocity.y += new_gravity * delta
 	velocity.y = min(velocity.y, fall_velocity)
@@ -145,7 +145,7 @@ func turn_on_light():
 #------------------------RayCast management -----------------------------
 func get_colliding_tile_type() -> Array:
 	var current_tiles = []
-	for i in get_slide_collision_count():
+	for i in range(get_slide_collision_count()):
 		var collision_info = get_slide_collision(i)
 		var collider = collision_info.get_collider()
 
@@ -169,7 +169,7 @@ func get_colliding_tile_type() -> Array:
 func get_walkable_wall_side() -> WallSide:
 	if shape_cast_2d.is_colliding():
 		# Check Slide Collisions (Active movement)
-		for coll_point in get_slide_collision_count():
+		for coll_point in range(get_slide_collision_count()):
 			var collision_info = get_slide_collision(coll_point)
 			var collider = collision_info.get_collider()
 
@@ -184,7 +184,7 @@ func get_walkable_wall_side() -> WallSide:
 					return get_wall_side_from_normal(normal)
 	# Check ShapeCast if no "walkable" tile was detected (Idle case)
 	if shape_cast_2d.is_colliding():
-		for collision_point in shape_cast_2d.get_collision_count():
+		for collision_point in range(shape_cast_2d.get_collision_count()):
 			var collider = shape_cast_2d.get_collider(collision_point)
 			if collider is TileMapLayer:
 				# Get collision normal from ShapeCast
@@ -223,13 +223,13 @@ func get_can_grab() -> bool:
 
 func get_collision_points() -> Array:
 	var collision_points : Array = []
-	for point_number in shape_cast_2d.get_collision_count():
+	for point_number in range(shape_cast_2d.get_collision_count()):
 		var point = shape_cast_2d.get_collision_point(point_number)
 		collision_points.append(point)
 	return collision_points
 
 func get_movable_wall_side() -> WallSide:
-	for collision_point in shape_cast_2d.get_collision_count():
+	for collision_point in range(shape_cast_2d.get_collision_count()):
 		var collider = shape_cast_2d.get_collider(collision_point)
 		if collider is PlatformDetectionArea:
 			# Get collision normal from ShapeCast
@@ -238,7 +238,7 @@ func get_movable_wall_side() -> WallSide:
 	return WallSide.NONE
 
 func get_movable_wall_collider():
-	for collision_point in shape_cast_2d.get_collision_count():
+	for collision_point in range(shape_cast_2d.get_collision_count()):
 		var collider = shape_cast_2d.get_collider(collision_point)
 		if collider is PlatformDetectionArea:
 			return collider

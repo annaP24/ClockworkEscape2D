@@ -114,8 +114,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button/MarginContainer" unique_id=388018794]
@@ -158,23 +159,13 @@ texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" unique_id=1565068710]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button/MarginContainer" unique_id=287370798]
-layout_mode = 2
-theme_override_constants/separation = -2
-
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button/MarginContainer/VBoxContainer" unique_id=1631467903]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" unique_id=1631467903]
 z_index = 1
-layout_mode = 2
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 300.0
+offset_bottom = 80.0
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("3_nt52n")
@@ -183,8 +174,26 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" unique_id=1565068710]
+custom_minimum_size = Vector2(300, 350)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button/MarginContainer" unique_id=287370798]
+layout_mode = 2
+theme_override_constants/separation = -2
+
 [node name="Stats_sl2" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button/MarginContainer/VBoxContainer" unique_id=734622740 instance=ExtResource("6_3cpcx")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="EmptyLabel2" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" unique_id=1086881948]
@@ -217,22 +226,13 @@ texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" unique_id=555133834]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button/MarginContainer" unique_id=2043470080]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button/MarginContainer/VBoxContainer" unique_id=2128607858]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" unique_id=2128607858]
 z_index = 1
-layout_mode = 2
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 300.0
+offset_bottom = 80.0
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("3_nt52n")
@@ -241,8 +241,24 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" unique_id=555133834]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button/MarginContainer" unique_id=2043470080]
+layout_mode = 2
+
 [node name="Stats_sl3" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button/MarginContainer/VBoxContainer" unique_id=853412243 instance=ExtResource("6_3cpcx")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="EmptyLabel3" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" unique_id=1255074056]

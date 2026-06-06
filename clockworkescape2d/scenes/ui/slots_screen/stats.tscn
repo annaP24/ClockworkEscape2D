@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://bekngooqd5av7"]
 
 [ext_resource type="Script" uid="uid://br3er32hfpyjk" path="res://scenes/ui/slots_screen/stats.gd" id="1_4ebri"]
-[ext_resource type="Texture2D" uid="uid://dqs60j5mej876" path="res://scenes/ui/slots_screen/assets/collectable_icon_new.png" id="2_eut6f"]
-[ext_resource type="Texture2D" uid="uid://cgw46lgyi2e03" path="res://scenes/ui/slots_screen/assets/gear.png" id="2_niuux"]
+[ext_resource type="Texture2D" uid="uid://cpybrf1ve4cyw" path="res://scenes/ui/slots_screen/assets/gear_dark.png" id="2_eut6f"]
 [ext_resource type="Texture2D" uid="uid://dwfqgcwmi530m" path="res://scenes/ui/slots_screen/assets/death_color.png" id="4_eut6f"]
-[ext_resource type="Texture2D" uid="uid://jvjml6j0yi8j" path="res://scenes/ui/slots_screen/assets/icon_bg.png" id="4_p04wv"]
-[ext_resource type="Texture2D" uid="uid://bq2b6q1ko2nn8" path="res://scenes/ui/slots_screen/assets/stopwatch_color.png" id="6_eut6f"]
+[ext_resource type="Texture2D" uid="uid://bbtwgv6cj4dhf" path="res://scenes/ui/slots_screen/assets/flagg.png" id="5_eut6f"]
+[ext_resource type="Texture2D" uid="uid://c32a5hxdwuoil" path="res://scenes/ui/slots_screen/assets/stopwatch_bw2.png" id="6_eut6f"]
 
 [node name="Stats_sl1" type="VBoxContainer" unique_id=1799307487]
 anchors_preset = 14
@@ -21,7 +20,7 @@ script = ExtResource("1_4ebri")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1179172290]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=863187518]
 custom_minimum_size = Vector2(40, 40)
@@ -39,31 +38,13 @@ text = "20"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1161257565]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2" unique_id=851776381]
-custom_minimum_size = Vector2(45, 45)
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2" unique_id=821465574]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("4_p04wv")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/TextureRect2" unique_id=821465574]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -27.4375
-offset_top = -19.25
-offset_right = 27.4375
-offset_bottom = 19.25
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("4_eut6f")
 expand_mode = 3
-stretch_mode = 5
 
 [node name="Deaths" type="Label" parent="HBoxContainer2" unique_id=1162196019]
 unique_name_in_owner = true
@@ -75,12 +56,12 @@ text = "20"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=72117656]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer3" unique_id=585571671]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("2_niuux")
+texture = ExtResource("5_eut6f")
 expand_mode = 3
 
 [node name="Level" type="Label" parent="HBoxContainer3" unique_id=477353033]
@@ -93,7 +74,7 @@ text = "20"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="." unique_id=961803628]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer4" unique_id=2017186072]
 custom_minimum_size = Vector2(40, 40)

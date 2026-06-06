@@ -2,7 +2,7 @@ extends Node
 
 var current_level : int = 0
 var current_level_id : int = 0
-var all_level_paths : Array[String]
+var all_level_paths : Array[String] = []
 var levels_path : String = "res://scenes/levels/scenes/"
 
 const PROGRESS_PATH = "res://"
@@ -134,7 +134,7 @@ func save_collectables_count_for_level(level_id : int, count : int):
 	if FileAccess.file_exists(current_progress_path):
 		cf.load(current_progress_path)
 	#Get current value
-	var current_max = cf.get_value(COLLECTED_IN_LEVEL_TAG, str(level_id), 1)
+	var current_max = cf.get_value(COLLECTED_IN_LEVEL_TAG, str(level_id), 0)
 	#If newly gathered collectables are more than previously saved number
 	if count > current_max:
 		#Update value
@@ -165,7 +165,7 @@ func set_level_paths():
 	if FileAccess.file_exists(LEVELS_PATH):
 		if cfg.load(LEVELS_PATH) == OK:
 			nr_of_levels = cfg.get_value(NR_OF_LEVLES_TAG, "max")
-			for i in range(1, nr_of_levels):
+			for i in range(1, nr_of_levels + 1):
 				all_level_paths.append(levels_path + cfg.get_value("level_order", str(i)))
 
 func get_next_level_path() -> String:
@@ -261,7 +261,7 @@ func check_progress_data_for_slot(slot_id: int) -> Dictionary:
 
 	if cf.load(file_name) == OK:
 		dic["level"] = cf.get_value("progress", MAX_LEVEL_TAG,1)
-		dic["collected"] = cf.get_value("progress", MAX_COLLECTED_TAG,1)
+		dic["collected"] = cf.get_value("progress", MAX_COLLECTED_TAG, 0)
 		dic["time"] = cf.get_value("progress", TOTAL_TIME_PLAYED_TAG,1)
 		dic["deaths"] = cf.get_value("progress", TOTAL_DEATHS_TAG,1)
 		dic["progress"] = get_completion_percentage(float(dic["level"]), float(dic["collected"]))

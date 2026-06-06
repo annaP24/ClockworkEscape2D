@@ -10,4 +10,4 @@ func _physics_process(delta: float) -> void:
 	if is_clockwise:
 		rotation_degrees = time * rotion_speed
 	else:
-		rotation_degrees = time * rotion_speed
+		rotation_degrees = -time * rotion_speed
