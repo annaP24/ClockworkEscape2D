@@ -58,10 +58,11 @@ func load_progress(slot_id : int) -> int:
 	var cf = ConfigFile.new()
 	current_save_slot = slot_id
 	current_progress_path = _get_file_name(current_save_slot)
-	#Check if dile exists
+	#Check if file exists
 	if !FileAccess.file_exists(current_progress_path):
 		print("No cfg file found creating one")
 		_create_default_progress(current_progress_path)
+		start_play_session()
 		return max_level_reached
 
 	if cf.load(current_progress_path) == OK:
@@ -113,7 +114,7 @@ func _create_default_progress(filename : String):
 	cf.set_value("progress", MAX_LEVEL_TAG, 1) # Starting at level 1
 	cf.set_value("progress", MAX_COLLECTED_TAG, 0)
 	cf.set_value("progress", TOTAL_DEATHS_TAG, max_deaths_for_slot) # Starting at level 1
-	cf.set_value("progress", TOTAL_TIME_PLAYED_TAG, total_play_time_seconds) # Starting at level 1
+	cf.set_value("progress", TOTAL_TIME_PLAYED_TAG, 0) # Starting at level 1
 
 	#-------- Levels progress ----------------------------
 	#Initialize empty array of level-collectables_nr for progress
@@ -260,10 +261,10 @@ func check_progress_data_for_slot(slot_id: int) -> Dictionary:
 		return dic
 
 	if cf.load(file_name) == OK:
-		dic["level"] = cf.get_value("progress", MAX_LEVEL_TAG,1)
+		dic["level"] = cf.get_value("progress", MAX_LEVEL_TAG, 1)
 		dic["collected"] = cf.get_value("progress", MAX_COLLECTED_TAG, 0)
-		dic["time"] = cf.get_value("progress", TOTAL_TIME_PLAYED_TAG,1)
-		dic["deaths"] = cf.get_value("progress", TOTAL_DEATHS_TAG,1)
+		dic["time"] = cf.get_value("progress", TOTAL_TIME_PLAYED_TAG, 0)
+		dic["deaths"] = cf.get_value("progress", TOTAL_DEATHS_TAG, 0)
 		dic["progress"] = get_completion_percentage(float(dic["level"]), float(dic["collected"]))
 		return dic
 	return dic
@@ -271,14 +272,14 @@ func check_progress_data_for_slot(slot_id: int) -> Dictionary:
 func format_play_time(total_seconds: float) -> String:
 	# Ensure we are working with whole numbers
 	var total_seconds_int : int = int(total_seconds)
-	var hours = total_seconds_int / 3600
-	var minutes = (total_seconds_int % 3600) / 60
-	var seconds = total_seconds_int % 60
+	var hours = int(total_seconds_int / 3600)
+	var minutes = int((total_seconds_int % 3600) / 60)
+	var seconds = int(total_seconds_int % 60)
 	if hours > 0:
 		return "%02d:%02d:%02d" % [hours, minutes, seconds]
 	else:
 		return "%02d:%02d" % [minutes, seconds]
-
+	#TODO: if we want to show hours, we can add it to the string
 func get_completion_percentage(max_level : float, max_collected : float) -> float:
 
 	var level_progress = max_level / MAX_NUM_OF_LEVELS

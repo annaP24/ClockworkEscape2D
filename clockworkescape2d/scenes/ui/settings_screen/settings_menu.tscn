@@ -294,7 +294,8 @@ focus_previous = NodePath("../../../../../HBoxContainer/SfxMuteButton")
 theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
-max_value = 0.3
+min_value = -0.5
+max_value = 0.5
 step = 0.05
 
 [node name="Control" type="Control" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness" unique_id=2088171888]

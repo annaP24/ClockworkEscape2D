@@ -73,13 +73,13 @@ func _ready() -> void:
 	fsm.start()
 
 func _process(_delta: float) -> void:
-	Debug.print_value("State: ", fsm.current_state)
+	# Debug.print_value("State: ", fsm.current_state)
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and get_collision_points().size() == 0:
 		set_can_grab(true)
 	check_is_on_wall()
 	point_light_2d.energy = lerp(point_light_2d.energy, randf_range(1.2, 1.8), 0.1)
-	
+
 func apply_gravity(new_gravity : float, delta : float):
 	velocity.y += new_gravity * delta
 	velocity.y = min(velocity.y, fall_velocity)
@@ -152,7 +152,6 @@ func get_colliding_tile_type() -> Array:
 		# Check if we hit a tilemap
 		if collider is TileMapLayer:
 			# Get the collision position
-			# A bit of normal is subtracted to "push" the point into the tile
 			var pos = collision_info.get_position() - collision_info.get_normal()
 
 			# Convert global position to map coordinates

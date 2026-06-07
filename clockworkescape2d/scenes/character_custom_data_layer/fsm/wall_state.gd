@@ -35,7 +35,7 @@ func Physics_Update(_delta):
 	#if tang.dot(player.velocity) < 0:
 		#tang = -tang
 	# move player
-	player.velocity =  tang * -roll_direction * player.move_speed #+ col_dir * tangent_coef # TODO evtl. delta hinzufügen
+	player.velocity =  tang * -roll_direction * player.move_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
 	#player.velocity =  tang * -roll_direction * player.move_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
 
 	player.move_and_slide()

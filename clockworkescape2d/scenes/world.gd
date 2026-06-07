@@ -41,6 +41,10 @@ func _ready() -> void:
 	EventBus.connect("s_brightness_changed", _on_brightness_changed)
 	EventBus.connect("slot_pressed", _on_slot_pressed)
 
+	# Load and apply saved brightness setting
+	var saved_brightness = GameManager.load_settings_for_player(0, GameManager.BRIGHTNESS)
+	_on_brightness_changed(saved_brightness)
+
 	_check_input_controller()
 	_open_main_menu()
 
@@ -125,8 +129,8 @@ func _enter_level():
 func _set_start_menu_visible(sm_is_visible : bool):
 	EventBus.world_show_sm.emit(sm_is_visible)
 
-func _set_score_ui_visible(is_visible : bool):
-	EventBus.world_hide_score_view.emit(is_visible)
+func _set_score_ui_visible(is_score_visible : bool):
+	EventBus.world_hide_score_view.emit(is_score_visible)
 
 func _set_settings_menu_visible(settings_is_visible : bool):
 	EventBus.world_hide_settings_menu.emit(settings_is_visible)
@@ -193,6 +197,7 @@ func _on_fade_out_finished():
 	pending_transition = TransitionAction.NONE
 
 func _on_quit_level_received():
+	GameManager.save_stats_progress()
 	pending_transition = TransitionAction.RETURN_TO_MAP
 	FadeScreen.fade_out()
 
@@ -201,6 +206,7 @@ func _on_restart_level_received():
 	FadeScreen.fade_out()
 
 func _on_return_to_map_received(level_id : int):
+	GameManager.save_stats_progress()
 	max_level_reached = GameManager.load_progress(GameManager.current_save_slot)
 
 	if level_id + 1 > max_level_reached:
@@ -229,7 +235,7 @@ func _on_joypad_connection_changed(_device: int, connected: bool):
 
 func _on_brightness_changed(value : float) -> void:
 	brightness_mat.set_shader_parameter("brightness", value)
-
+	#TODO: save brightness setting
 func _on_slot_pressed(id : int) -> void:
 	GameManager.load_progress(id)
 	world_map.unlock_levels(id)
