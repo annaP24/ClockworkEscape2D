@@ -1,5 +1,12 @@
 extends Node
 class_name CompFsmNode
+## Finite State Machine controller managing character states.
+##
+## State lifecycle:
+##   1. Enter(player) - Initialize state resources
+##   2. Update(delta) - Handle frame updates
+##   3. Physics_Update(delta) - Handle physics
+##   4. Exit() - Cleanup resources
 
 @export var initial_state: FsmNodeState
 @onready var platformer : PlayerFsmCustomDataLayer = $".."

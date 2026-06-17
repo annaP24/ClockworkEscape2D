@@ -25,27 +25,43 @@ var current_level_path : String = ""
 var max_level_reached : int = 1
 
 func _ready() -> void:
+	# Initialize managers in dependency order
+	# _initialize_managers()
+
 	AudioManager.play_music("main_theme")
 	_set_start_menu_visible(true)
 	_set_world_map_visible(true)
 	_pause_world_map(true)
 
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
-	EventBus.connect("sm_start_game", _on_sm_start_game)
-	EventBus.connect("sm_show_game_slots", _on_sm_show_game_slots)
-	EventBus.connect("sm_quit_game", _on_sm_quit_game)
-	EventBus.connect("sm_settings", _on_sm_settings)
-	EventBus.connect("lb_quit_level", _on_quit_level_received)
-	EventBus.connect("lb_restart_level", _on_restart_level_received)
-	EventBus.connect("lb_return_to_map", _on_return_to_map_received)
-	EventBus.connect("s_brightness_changed", _on_brightness_changed)
-	EventBus.connect("slot_pressed", _on_slot_pressed)
+	EventBus.connect("menu_start_game", _on_sm_start_game)
+	EventBus.connect("menu_show_game_slots", _on_sm_show_game_slots)
+	EventBus.connect("menu_quit_game", _on_sm_quit_game)
+	EventBus.connect("menu_show_settings", _on_sm_settings)
+	EventBus.connect("level_quit_requested", _on_quit_level_received)
+	EventBus.connect("level_restart_requested", _on_restart_level_received)
+	EventBus.connect("level_return_to_map", _on_return_to_map_received)
+	EventBus.connect("settings_brightness_changed", _on_brightness_changed)
+	EventBus.connect("save_slot_selected", _on_slot_pressed)
 
 	# Apply default brightness on start
 	_on_brightness_changed(1.0)
 
 	_check_input_controller()
 	_open_main_menu()
+
+func _initialize_managers() -> void:
+	## Initialize all manager singletons in dependency order.
+	## GameManager must load saves first, then audio/visuals can configure themselves.
+
+	if not GameManager.is_ready():
+		GameManager.initialize()
+
+	if not AudioManager.is_ready():
+		AudioManager.initialize()
+
+	if not VisualsManager.is_ready():
+		VisualsManager.initialize()
 
 func _unhandled_input(event):
 

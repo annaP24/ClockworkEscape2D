@@ -1,3 +1,16 @@
+## Player character controller with FSM-based state management.
+##
+## DAMAGE FLOW (Bottom-to-Top):
+##   1. Obstacle.Comp2dHitbox hits area → emits hit_something signal
+##   2. Hurtbox.Comp2dHurtbox receives → calls take_damage()
+##   3. Hurtbox emits hurt(damage_amount) signal
+##   4. Character listens to hurt signal → calls FSM state for handling
+##   5. FSM state can trigger death, knockback, or damage animation
+##   6. On death: emit player_died → world.gd receives via EventBus
+##
+## This bottom-to-top flow keeps damage logic local while propagating
+## death events globally via EventBus for UI/level management.
+
 extends CharacterBody2D
 
 class_name PlayerFsmCustomDataLayer
