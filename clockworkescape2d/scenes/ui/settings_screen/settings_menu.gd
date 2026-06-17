@@ -73,10 +73,10 @@ func _on_default_button_pressed() -> void:
 	_set_defaults()
 
 func _set_defaults():
-	sfx_slider.value = GameManager.load_settings_for_player(0, GameManager.SFX_VOLUME) #def_sfx_vol
-	music_slider.value = GameManager.load_settings_for_player(0, GameManager.MUSIC_VOLUME)
-	brightness_slider.value = GameManager.load_settings_for_player(0, GameManager.BRIGHTNESS)
-	resolution_list.selected = int(GameManager.load_settings_for_player(0, GameManager.RESOLUTION))
+	sfx_slider.value = GameManager.sfx_vol
+	music_slider.value = GameManager.music_vol
+	brightness_slider.value = GameManager.brightness
+	resolution_list.selected = int(GameManager.resolution)
 
 func _on_menu_button_item_selected(index: int) -> void:
 	var resolutions : PackedStringArray = resolution_list.get_item_text(index).split("x")

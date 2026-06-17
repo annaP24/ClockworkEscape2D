@@ -233,7 +233,6 @@ script = ExtResource("7_o7d7g")
 
 [node name="WallContactState" type="Node" parent="FSM" unique_id=1713168846]
 script = ExtResource("8_320r6")
-falldown_time = 0.05
 metadata/_custom_type_script = "uid://jh8i4uv87bqn"
 
 [node name="falldown_timer" type="Timer" parent="FSM/WallContactState" unique_id=61036461]

@@ -13,19 +13,19 @@ texture = ExtResource("5_ynct0")
 texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(19.756584, 32, 9.596058, -17.216454, 2.8223686, 21.167767, -13.547371, 32, -25.401325, 9.031578, -27.37698, -32, 26.812511, -32)
-2:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-27.593742, -32, 32, -32, 22.129639, 27.593742, -11.747829, 27.593742, -23.768867, 7.376541)
 2:0/0/custom_data_0 = "damage"
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 19.756584, 17.216454, 9.596058, -21.167767, 2.8223686, -32, -13.547371, -9.031582, -25.401325, 32, -27.37698, 32, 26.812511)
-4:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-12.840652, -25.408104, 32, -32, 32, 15.5727005, -12.294239, 9.015778, -15.026295, -12.840656)
 4:2/0/custom_data_0 = "damage"
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -19.756584, -17.216454, -9.596058, 21.167767, -2.8223686, 32, 13.547371, 7.90263, 25.965797, -32, 27.37698, -32, -26.812511)
-0:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -27.047337, 27.593742, -18.851173, 32, 12.294235, 13.933472, 24.861687, -32, 27.593742)
 0:2/0/custom_data_0 = "damage"
 2:4/0 = 0
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-19.756584, -32, -9.596058, 17.216454, -2.8223686, -21.167767, 13.547371, -32, 26.53027, -4.515793, 32, 32, -26.812511, 32)
-2:4/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:4/0/physics_layer_2/polygon_0/points = PackedVector2Array(-19.39758, -32, 15.572708, -32, 24.315277, -4.0980835, 27.593742, 32, -28.140152, 32)
 2:4/0/custom_data_0 = "damage"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ynct0"]

@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://c4x4prf1dmtn7"]
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_nc1an"]
-[ext_resource type="PackedScene" uid="uid://ol8runu3wf7h" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_8hcfr"]
+[ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_8hcfr"]
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="2_ftdud"]
 [ext_resource type="PackedScene" uid="uid://cb3sk5bwptvai" path="res://scenes/obstacles/spider/spider.tscn" id="2_tyhfa"]
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="3_tyhfa"]
+[ext_resource type="PackedScene" uid="uid://dwb5qoh4vb8ry" path="res://scenes/platforms/rotate_anchor/rotation_anchor_clock.tscn" id="4_8thdu"]
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="4_afdjd"]
+[ext_resource type="PackedScene" uid="uid://bjww3w1a45857" path="res://scenes/platforms/small_platform/small_platform.tscn" id="5_pq5nq"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="8_i7s8t"]
 
 [node name="Level_9" unique_id=1480095566 instance=ExtResource("1_nc1an")]
@@ -15,21 +17,41 @@ level_id = 9
 position = Vector2(9, 2)
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer_2" parent="." index="1" unique_id=1834929103]
+[node name="SpawnMarker" parent="." index="1" unique_id=630440161]
+position = Vector2(160, 1152)
+
+[node name="TileMapLayer_2" parent="." index="2" unique_id=1834929103]
 z_index = 0
 tile_map_data = PackedByteArray("AAAAAAAABQACAAIAAAABAAAABQAGAAAAAAACAAAABQAGAAAAAAADAAAABQAGAAAAAAAEAAAABQAGAAAAAAAFAAAABQAGAAAAAAAGAAAABQAGAAAAAAAHAAAABQAGAAAAAAAIAAAABQAGAAAAAAAJAAAABQAAAAAAAAAKAAAABQAIAAAAAAAMAAAABQAGAAAAAAANAAAABQAGAAAAAAAOAAAABQAIAAAAAAAQAAAABQAGAAAAAAARAAAABgAGAAAAAAASAAAABgACAAQAAAATAAAABgACAAQAAAAUAAAABgACAAQAAAAVAAAABgACAAQAAAAWAAAABgACAAQAAAAXAAAABgACAAQAAAAYAAAABgACAAQAAAAZAAAABgACAAQAAAAaAAAABgACAAQAAAAbAAAABgACAAQAAAAcAAAABgACAAQAAAAdAAAABgACAAQAAAAeAAAABgAIAAAAAAABABMABQAGAAAAAAACABMABQACAAIAAAADABMABQACAAIAAAAEABMABQAGAAAAAAAFABMABQACAAIAAAAGABMABQAGAAAAAAAHABMABQAGAAAAAAAIABMABQAGAAAAAAAJABMABQAGAAAAAAAKABMABQACAAIAAAALABMABQAGAAAAAAAMABMABQAGAAAAAAANABMABQAGAAAAAAAOABMABQAGAAAAAAAPABMABQAGAAAAAAAQABMABQAGAAAAAAARABMABQAGAAAAAAASABMABQACAAIAAAATABMABQAGAAAAAAAUABMABQAGAAAAAAAVABMABQAGAAAAAAAWABMABQACAAIAAAAXABMABQACAAIAAAAYABMABQAGAAAAAAAZABMABQAGAAAAAAAaABMABQAGAAAAAAAbABMABQAGAAAAAAAcABMABQAGAAAAAAAdABMABQAGAAAAAAAeABMABQACAAIAAAAeABIABQAAAAAAAAAeABEABQAAAAAAAAAeABAABQAGAAAAAAAeAA8ABQAGAAAAAAAeAA4ABQACAAIAAAAeAA0ABQAGAAAAAAAeAAoABQAGAAAAAAAeAAkABQAGAAAAAAAeAAgABQAGAAAAAAAeAAcABgAAAAIAAAAeAAYABgAAAAIAAAAeAAUABgAAAAIAAAAeAAQABgAAAAIAAAAeAAMABgAAAAIAAAAeAAIABgAAAAIAAAAeAAEABgAAAAIAAAAAAAEABQAGAAAAAAAAAAIABQAGAAAAAAAAAAMABQAGAAAAAAAAAAQABQAGAAAAAAAAAAUABQAGAAAAAAAAAAYABQAGAAAAAAAAAAcABQAGAAAAAAAAAAgABQAGAAAAAAAAAAkABgAEAAIAAAAAAAoABgAEAAIAAAAAAAsABgAEAAIAAAAAAAwABgAEAAIAAAAAAA0ABgAEAAIAAAAAAA4ABgAEAAIAAAAAAA8ABgAEAAIAAAAAABAABgAEAAIAAAAAABEABQAAAAAAAAAAABIABQAAAAAAAAAAABMABQAGAAAAAAAQABIAAgACAAQAAAAMABIAAgACAAQAAAANABAABQAGAAAAAAANABEABQAGAAAAAAANABIABQACAAIAAAAOABAABQACAAIAAAAOABEABQAGAAAAAAAOABIABQAGAAAAAAAPABIAAgACAAQAAAAdAA8ABQAGAAAAAAAaAA4ABQAGAAAAAAAdAA4ABQAGAAAAAAAaAA8ABQAGAAAAAAATABIABQAGAAAAAAATABEABQACAAIAAAATABAABQAGAAAAAAASABAABQAGAAAAAAASABEABQAGAAAAAAASABIABQACAAIAAAAaAA0ABQAGAAAAAAAbAA0ABQAGAAAAAAAcAA0ABQACAAIAAAAdAA0ABQAGAAAAAAAEAAsABQACAAIAAAAFAAsABQACAAIAAAAFAAoABQACAAIAAAAEAAoABQACAAIAAAAFAAEABQAEAAIAAAAFAAIABgACAAQAAAAGAAEABgAEAAIAAAAGAAIABgAEAAQAAAAEAAIABgAAAAQAAAAEAAEABgAAAAIAAAALAAMABQAGAAAAAAALAAQABgACAAQAAAAMAAEABQAGAAAAAAAMAAQABgACAAQAAAANAAEABQAGAAAAAAANAAQABgACAAQAAAAOAAIABQAGAAAAAAAOAAMABQACAAIAAAAOAAQABgACAAQAAAAPAAIABQAGAAAAAAAPAAMABQACAAIAAAAPAAQABgACAAQAAAAQAAEABQACAAIAAAAQAAIABQAGAAAAAAAQAAMABQAGAAAAAAAQAAQABgACAAQAAAARAAEABgAEAAIAAAARAAIABgAEAAIAAAARAAMABgAEAAIAAAARAAQABgAEAAQAAAAJAAEABgAAAAIAAAAJAAIABgAAAAIAAAAJAAMABgAAAAIAAAAJAAQABgAAAAQAAAAKAAMABQAGAAAAAAAKAAQABgACAAQAAAARABIAAgACAAQAAAAKABIAAgACAAQAAAALABIAAgACAAQAAAAHABEABQAGAAAAAAAHABIABQACAAIAAAAIABAABQACAAIAAAAIABIABQAGAAAAAAAJABAABQAGAAAAAAAJABIABQAGAAAAAAAHABAABQAGAAAAAAAaABAABQAGAAAAAAAbABAABQAGAAAAAAAcABAABQAGAAAAAAAdABAABQAGAAAAAAAIABEABQAGAAAAAAAJABEABQACAAIAAAAKAAIABQAGAAAAAAALAAIABQAGAAAAAAAMAAIABQAIAAAAAAAbAA4ABQAIAAAAAAA=")
 
-[node name="Dissapearing_platform" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="0" unique_id=1414422469 instance=ExtResource("2_8hcfr")]
-position = Vector2(544, 544)
+[node name="Collectable" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="0" unique_id=2006787885]
+position = Vector2(1824, 1120)
 
-[node name="Dissapearing_platform3" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="1" unique_id=1154276062 instance=ExtResource("2_8hcfr")]
+[node name="Collectable2" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="1" unique_id=1977420297 instance=ExtResource("8_i7s8t")]
+position = Vector2(160, 160)
+
+[node name="Collectable3" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="2" unique_id=37852670 instance=ExtResource("8_i7s8t")]
+position = Vector2(1248, 160)
+
+[node name="Dissapearing_platform3" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="0" unique_id=1154276062 instance=ExtResource("2_8hcfr")]
 position = Vector2(1184, 672)
 
-[node name="Dissapearing_platform4" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="2" unique_id=211304320 instance=ExtResource("2_8hcfr")]
+[node name="Dissapearing_platform4" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="1" unique_id=211304320 instance=ExtResource("2_8hcfr")]
 position = Vector2(1376, 864)
 
-[node name="Dissapearing_platform2" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="3" unique_id=892797463 instance=ExtResource("2_8hcfr")]
+[node name="RotationAnchorClock" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="2" unique_id=2068553683 instance=ExtResource("4_8thdu")]
 position = Vector2(352, 352)
+rotation_deg = 180.0
+rotation_timeout = 1.5
+
+[node name="Small_platform" parent="Platforms/RotationAnchorClock" index="2" unique_id=1620481334 instance=ExtResource("5_pq5nq")]
+
+[node name="RotationAnchorClock2" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="3" unique_id=2086983986 instance=ExtResource("4_8thdu")]
+position = Vector2(544, 544)
+rotation_deg = 180.0
+rotation_timeout = 1.5
+
+[node name="Small_platform" parent="Platforms/RotationAnchorClock2" index="2" unique_id=806559692 instance=ExtResource("5_pq5nq")]
 
 [node name="Spider" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="0" unique_id=2085975055 instance=ExtResource("2_tyhfa")]
 position = Vector2(1696, 800)
@@ -50,19 +72,7 @@ position = Vector2(1312, 1184)
 position = Vector2(1696, 1120)
 switch_1 = NodePath("../Switch")
 
-[node name="Collectable" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="0" unique_id=2006787885]
-position = Vector2(1824, 1120)
-
-[node name="Collectable2" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="1" unique_id=1977420297 instance=ExtResource("8_i7s8t")]
-position = Vector2(160, 160)
-
-[node name="Collectable3" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="2" unique_id=37852670 instance=ExtResource("8_i7s8t")]
-position = Vector2(1248, 160)
-
-[node name="SpawnMarker" parent="." index="7" unique_id=630440161]
-position = Vector2(160, 1152)
-
-[node name="ExitPlatform" parent="." index="8" unique_id=1707809875]
+[node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 800)
 
 [editable path="ExitPlatform"]

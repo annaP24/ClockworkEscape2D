@@ -36,6 +36,7 @@ VisualsManager="*uid://binpop5bes0ro"
 
 window/size/viewport_width=1280
 window/size/viewport_height=825
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

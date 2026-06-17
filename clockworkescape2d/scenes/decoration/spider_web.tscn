@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bocm6jigt4jbs"]
+
+[ext_resource type="Texture2D" uid="uid://b86vrgk6gxln5" path="res://assets/deco/spider_web.png" id="1_3m6i1"]
+
+[node name="SpiderWeb" type="Node2D" unique_id=1513705380]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1455103797]
+texture = ExtResource("1_3m6i1")

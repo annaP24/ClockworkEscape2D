@@ -8,6 +8,12 @@ class_name Level
 var engine_start := Time.get_ticks_msec()
 var player : PlayerFsmCustomDataLayer
 
+func _process(_delta):
+	if Input.is_action_pressed("return"):
+		#If root node's name is not "World" then we are in debug mode and need restarting
+		if get_tree().current_scene.name != "World":
+				get_tree().quit()
+
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
 	FadeScreen.fade_in()

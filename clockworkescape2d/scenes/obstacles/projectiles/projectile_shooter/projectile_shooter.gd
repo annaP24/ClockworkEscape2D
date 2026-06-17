@@ -18,16 +18,12 @@ func _ready() -> void:
 	projectile = arrow
 	if flow_direction == direction.LEFT:
 		current_shoot_dir = Vector2(-1,0)
-		#sprite_2d.rotation = deg_to_rad(0)
 	elif flow_direction == direction.RIGHT:
 		current_shoot_dir = Vector2(1,0)
-		#sprite_2d.rotation = deg_to_rad(180)
 	elif flow_direction == direction.UP:
 		current_shoot_dir = Vector2(0,-1)
-		#sprite_2d.rotation = deg_to_rad(90)
 	elif flow_direction == direction.DOWN:
 		current_shoot_dir = Vector2(0,1)
-		#sprite_2d.rotation = deg_to_rad(-90)
 
 	cooldown.wait_time = shoot_cooldown
 

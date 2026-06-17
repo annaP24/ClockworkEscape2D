@@ -52,6 +52,6 @@ func squash_on_land():
 	tween.set_trans(Tween.TRANS_BOUNCE)
 	tween.set_ease(Tween.EASE_OUT)
 	# 1. Squash down: scale X up (1.3) and Y down (0.7)
-	tween.tween_property(player.squash_marker, "scale", Vector2(1.3, 0.7), 0.1) #.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(player.squash_marker, "scale", Vector2(1.3, 0.7), 0.1)
 	# 2. Return to normal: scale back to (1.0, 1.0)
-	tween.tween_property(player.squash_marker, "scale", Vector2(1.0, 1.0), 0.2) #.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(player.squash_marker, "scale", Vector2(1.0, 1.0), 0.2)

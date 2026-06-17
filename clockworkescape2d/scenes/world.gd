@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var scene_placeholder: Node2D = $Scene
 @onready var world_map: WorldMap = $WorldMap
-@onready var brightness_mat : Material = $BrightnessLayer.material
-@onready var brightness_layer: ColorRect = $BrightnessLayer
+@onready var brightness_mat : Material = %BrightnessLayer.material
+@onready var brightness_layer: ColorRect = %BrightnessLayer
 
 enum GameState {
 	MAIN_MENU,
@@ -41,9 +41,8 @@ func _ready() -> void:
 	EventBus.connect("s_brightness_changed", _on_brightness_changed)
 	EventBus.connect("slot_pressed", _on_slot_pressed)
 
-	# Load and apply saved brightness setting
-	var saved_brightness = GameManager.load_settings_for_player(0, GameManager.BRIGHTNESS)
-	_on_brightness_changed(saved_brightness)
+	# Apply default brightness on start
+	_on_brightness_changed(1.0)
 
 	_check_input_controller()
 	_open_main_menu()
@@ -234,7 +233,9 @@ func _on_joypad_connection_changed(_device: int, connected: bool):
 	GameManager.is_joypad_connected = connected
 
 func _on_brightness_changed(value : float) -> void:
-	brightness_mat.set_shader_parameter("brightness", value)
+	#brightness_mat.set_shader_parameter("brightness", value)
+	brightness_mat.set_shader_parameter("gamma", value)
+	GameManager.save_brightness_setting(value)
 	#TODO: save brightness setting
 func _on_slot_pressed(id : int) -> void:
 	GameManager.load_progress(id)

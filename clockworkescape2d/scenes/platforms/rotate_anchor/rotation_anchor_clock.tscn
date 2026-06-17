@@ -7,7 +7,13 @@
 script = ExtResource("2_c7x4u")
 rotation_deg = 90.0
 rotation_timeout = 0.5
+start_delay = 0.0
 
 [node name="RotationTimer" type="Timer" parent="." index="1" unique_id=1403105542]
 
+[node name="StartDelay" type="Timer" parent="." index="2" unique_id=1231370130]
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
+[connection signal="timeout" from="StartDelay" to="." method="_on_start_delay_timeout"]

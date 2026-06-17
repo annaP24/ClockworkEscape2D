@@ -1,8 +1,8 @@
 extends FsmNodeState
 
-func Enter(player_node : Character):
+func Enter(player_node : PlayerFsmCustomDataLayer):
 	player = player_node
-	player.gravity = Vector2(0, 0)
+	player.gravity = 9.81
 
 func Physics_Update(_delta):
 	if player.rc_dr() and Input.is_action_just_pressed("right"):

@@ -25,8 +25,8 @@ var max_level_reached : int
 var max_collected : int = 0
 var is_muted : bool = false
 var sfx_vol : float = 0.5
-var music_vol : float = 0.0
-var brightness : float = 0.0
+var music_vol : float = 0.5
+var brightness : float = 1.0
 var resolution : float = 0.0
 var session_start_time : int = 0
 var total_play_time_seconds : int = 0
@@ -145,6 +145,15 @@ func save_collectables_count_for_level(level_id : int, count : int):
 		#If max count of collected per level increased
 		_update_total_collected()
 
+func save_brightness_setting(value : float):
+	var cf = ConfigFile.new()
+	#Check if dile exists
+	if FileAccess.file_exists(current_progress_path):
+		cf.load(current_progress_path)
+	#Update value
+	cf.set_value("settings", BRIGHTNESS, value)
+	#Write to disk
+	cf.save(current_progress_path)
 
 func _update_total_collected():
 	var cf = ConfigFile.new()

@@ -1,13 +1,12 @@
 extends FsmNodeState
 
-@export var falldown_time = 0.2
+@export var falldown_time = 0.05
 
 @onready var falldown_timer = $falldown_timer
 
 func Enter(player_node):
 	super(player_node)
-	# Stoppe den Player
-	player.velocity = Vector2.ZERO
+
 	falldown_timer.start(falldown_time)
 
 	player.update_animation(player.animations.IDLE)
@@ -23,8 +22,6 @@ func Physics_Update(_delta):
 	# Move player y-axis
 	var inputY = Input.get_axis("up", "down")
 	inputY = player.normalize_movement(inputY)
-
-	#Apply gravity
 
 	player.move_and_slide()
 

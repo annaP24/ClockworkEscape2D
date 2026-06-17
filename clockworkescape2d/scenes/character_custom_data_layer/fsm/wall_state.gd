@@ -1,9 +1,10 @@
 extends FsmNodeState
 
-enum RollDirection {CW = 1, CCW = -1}
+enum RollDirection {CW = 1, CCW = -1, NONE = 0}
 
 var roll_direction : RollDirection = RollDirection.CW
 var tangent_coef : int = 30
+var pressed_direction : int = 0
 
 func Enter(player_node):
 	super(player_node)
@@ -13,6 +14,10 @@ func Enter(player_node):
 	# cw und ccw detection
 	roll_direction = get_roll_direction()
 
+	if roll_direction == 0:
+		player.set_can_grab(false)
+		change_state("FallState")
+		
 	# Update animation
 	if roll_direction < 0:
 		player.update_animation(player.animations.RUN_RIGHT)
@@ -32,8 +37,8 @@ func Physics_Update(_delta):
 	# Tangente berechnen
 	var tang = Vector2(col_dir.y, -col_dir.x)
 	# ensure tangent aligns with player intent
-	#if tang.dot(player.velocity) < 0:
-		#tang = -tang
+	# if tang.dot(player.velocity) < 0:
+	# 	tang = -tang
 	# move player
 	player.velocity =  tang * -roll_direction * player.move_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
 	#player.velocity =  tang * -roll_direction * player.move_speed + col_dir * tangent_coef # TODO evtl. delta hinzufügen
@@ -69,8 +74,18 @@ func get_average_wall_normal() -> Vector2:
 	return normal.normalized()
 
 func get_roll_direction() -> RollDirection:
+
 	var y_axis = Input.get_axis("up", "down")
 	var x_axis = Input.get_axis("left", "right")
+
+	if y_axis == 1:
+		pressed_direction = 1 #down
+	elif y_axis == -1:
+		pressed_direction = -1 #up
+	elif x_axis == 1:
+		pressed_direction = 2 #right
+	elif x_axis == -1:
+		pressed_direction = -2	#left
 
 	if player.get_walkable_wall_side() == player.WallSide.RIGHT and y_axis > 0:
 		return RollDirection.CW
@@ -92,4 +107,4 @@ func get_roll_direction() -> RollDirection:
 	if player.get_walkable_wall_side() == player.WallSide.DOWN and x_axis < 0:
 		return RollDirection.CW
 
-	return RollDirection.CW
+	return RollDirection.NONE
