@@ -37,4 +37,7 @@ position = Vector2(544, 940.9231)
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 160)
 
+[node name="SpriteArrow" parent="ExitPlatform" index="1" unique_id=686190412]
+position = Vector2(0, -34.145905)
+
 [editable path="ExitPlatform"]

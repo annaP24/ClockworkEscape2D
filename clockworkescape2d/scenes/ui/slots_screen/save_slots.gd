@@ -55,28 +55,33 @@ func _world_hide_slots_view(is_show : bool)-> void:
 
 func _on_back_button_pressed() -> void:
 	AudioManager.play_sfx("click")
-	EventBus.world_show_sm.emit(true)
+	EventBus.world_show_menu.emit(true)
 	visible = false
 
 func _on_update_data()-> void:
 	_check_slot_data()
 
 func _on_slot_1_button_toggled(toggled_on: bool) -> void:
+	AudioManager.play_sfx("click")
 	_enable_disable_buttons(1, toggled_on)
 
 func _on_slot_2_button_toggled(toggled_on: bool) -> void:
+	AudioManager.play_sfx("click")
 	_enable_disable_buttons(2, toggled_on)
 
 func _on_slot_3_button_toggled(toggled_on: bool) -> void:
+	AudioManager.play_sfx("click")
 	_enable_disable_buttons(3, toggled_on)
 
 func _on_play_pressed() -> void:
+	AudioManager.play_sfx("click")
 	if selected_slot != 0:
-		EventBus.slot_pressed.emit(selected_slot)
+		EventBus.save_slot_selected.emit(selected_slot)
 
 
 func _on_delete_button_pressed() -> void:
 	GameManager.delete_configuration(selected_slot)
+	AudioManager.play_sfx("click")
 	_check_slot_data()
 
 func _enable_disable_buttons(slot : int, toggle_on : bool):

@@ -2,13 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b220yq0l1uofs" path="res://scenes/ui/slots_screen/save_slots.gd" id="1_rlrl8"]
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="3_nt52n"]
-[ext_resource type="ButtonGroup" uid="uid://n7pp1lmyv7ym" path="res://resources/slot_button_group.tres" id="4_p1n1k"]
 [ext_resource type="Texture2D" uid="uid://yenxggxg8rrt" path="res://scenes/ui/start_screen/assets/title_holder.png" id="4_rlrl8"]
 [ext_resource type="Texture2D" uid="uid://c17erafcnf2d8" path="res://scenes/ui/slots_screen/assets/slot_long.png" id="5_7qntd"]
+[ext_resource type="ButtonGroup" uid="uid://n7pp1lmyv7ym" path="res://resources/slot_button_group.tres" id="5_r6r3v"]
 [ext_resource type="PackedScene" uid="uid://bekngooqd5av7" path="res://scenes/ui/slots_screen/stats.tscn" id="6_3cpcx"]
 [ext_resource type="Texture2D" uid="uid://dt5uwj0mmbt7k" path="res://scenes/ui/slots_screen/assets/slot_hower_long.png" id="6_oscg4"]
-[ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/assets/Button_idle.png" id="8_p1n1k"]
-[ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/assets/Button_hover.png" id="9_3cpcx"]
+[ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="10_6h2y5"]
 
 [sub_resource type="Theme" id="Theme_p1n1k"]
 
@@ -78,29 +77,27 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="Slot1Button" type="TextureButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1354707682]
+[node name="Slot1Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1354707682 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("4_p1n1k")
+button_group = ExtResource("5_r6r3v")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
+texture_focused = ExtResource("6_oscg4")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button" unique_id=1294933093]
+[node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button" index="0" unique_id=1342168869]
 z_index = 1
-layout_mode = 1
 anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
 offset_left = -11.0
+offset_top = 0.0
 offset_right = 11.0
 offset_bottom = 75.0
-grow_horizontal = 2
+grow_vertical = 1
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("3_nt52n")
 theme_override_font_sizes/font_size = 70
 text = "1"
@@ -149,25 +146,30 @@ theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960
 theme_override_font_sizes/font_size = 80
 text = "EMPTY"
 
-[node name="Slot2Button" type="TextureButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=216618707]
+[node name="Slot2Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=216618707 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("4_p1n1k")
+button_group = ExtResource("5_r6r3v")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
+texture_focused = ExtResource("6_oscg4")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" unique_id=1631467903]
+[node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" index="0" unique_id=1342168869]
 z_index = 1
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 10.0
 offset_top = 5.0
 offset_right = 300.0
 offset_bottom = 80.0
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+grow_horizontal = 1
+grow_vertical = 1
 theme_override_fonts/font = ExtResource("3_nt52n")
 theme_override_font_sizes/font_size = 70
 text = "2"
@@ -216,25 +218,30 @@ theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960
 theme_override_font_sizes/font_size = 80
 text = "EMPTY"
 
-[node name="Slot3Button" type="TextureButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1097796718]
+[node name="Slot3Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1097796718 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("4_p1n1k")
+button_group = ExtResource("5_r6r3v")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
+texture_focused = ExtResource("6_oscg4")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" unique_id=2128607858]
+[node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" index="0" unique_id=1342168869]
 z_index = 1
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 10.0
 offset_top = 5.0
 offset_right = 300.0
 offset_bottom = 80.0
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+grow_horizontal = 1
+grow_vertical = 1
 theme_override_fonts/font = ExtResource("3_nt52n")
 theme_override_font_sizes/font_size = 70
 text = "3"
@@ -285,82 +292,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 50
 
-[node name="Play" type="TextureButton" parent="ColorRect/VBoxContainer2/Buttons" unique_id=1834422199]
+[node name="Play" parent="ColorRect/VBoxContainer2/Buttons" unique_id=1834422199 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 2
-texture_normal = ExtResource("8_p1n1k")
-texture_pressed = ExtResource("9_3cpcx")
-texture_hover = ExtResource("9_3cpcx")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/Buttons/Play" unique_id=857961774]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -9.0
-offset_right = 20.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 45
+[node name="Label" parent="ColorRect/VBoxContainer2/Buttons/Play" index="0" unique_id=1342168869]
 text = "PLAY"
 
-[node name="DeleteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/Buttons" unique_id=826709414]
+[node name="DeleteButton" parent="ColorRect/VBoxContainer2/Buttons" unique_id=826709414 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 2
-texture_normal = ExtResource("8_p1n1k")
-texture_pressed = ExtResource("9_3cpcx")
-texture_hover = ExtResource("9_3cpcx")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/Buttons/DeleteButton" unique_id=958542280]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -9.0
-offset_right = 20.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 45
+[node name="Label" parent="ColorRect/VBoxContainer2/Buttons/DeleteButton" index="0" unique_id=1342168869]
 text = "DELETE"
 
-[node name="BackButton" type="TextureButton" parent="ColorRect/VBoxContainer2/Buttons" unique_id=9106851]
+[node name="BackButton" parent="ColorRect/VBoxContainer2/Buttons" unique_id=9106851 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 2
-texture_normal = ExtResource("8_p1n1k")
-texture_pressed = ExtResource("9_3cpcx")
-texture_hover = ExtResource("9_3cpcx")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/Buttons/BackButton" unique_id=1419590799]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -9.0
-offset_right = 20.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 45
+[node name="Label" parent="ColorRect/VBoxContainer2/Buttons/BackButton" index="0" unique_id=1342168869]
 text = "BACK"
 
 [connection signal="toggled" from="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button" to="." method="_on_slot_1_button_toggled"]
@@ -370,3 +320,10 @@ text = "BACK"
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Buttons/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Buttons/BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button"]
+[editable path="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button"]
+[editable path="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button"]
+[editable path="ColorRect/VBoxContainer2/Buttons/Play"]
+[editable path="ColorRect/VBoxContainer2/Buttons/DeleteButton"]
+[editable path="ColorRect/VBoxContainer2/Buttons/BackButton"]

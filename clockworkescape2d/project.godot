@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="uid://cwb4nyalvg867"
+buses/audio_bus_layout="uid://bqkyourp723uy"
 
 [autoload]
 
@@ -31,12 +31,12 @@ FadeScreen="*res://scenes/ui/fade_screen.tscn"
 EventBus="*uid://gsw0bmao2vkn"
 AudioManager="*uid://cu5pwy4jr3mrg"
 VisualsManager="*uid://binpop5bes0ro"
+SettingManager="*uid://c7afxmwl6ncg1"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=825
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

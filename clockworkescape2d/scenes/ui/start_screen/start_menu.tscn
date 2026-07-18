@@ -1,17 +1,12 @@
 [gd_scene format=3 uid="uid://dl6s4pemla15g"]
 
 [ext_resource type="Script" uid="uid://2qmntrsfjp47" path="res://scenes/ui/start_screen/start_menu.gd" id="1_m2m72"]
-[ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/assets/Button_idle.png" id="2_jnk83"]
 [ext_resource type="Texture2D" uid="uid://yenxggxg8rrt" path="res://scenes/ui/start_screen/assets/title_holder.png" id="2_ps3jn"]
 [ext_resource type="Theme" uid="uid://cx0xw7kuwquce" path="res://resources/label_theme.tres" id="3_62xst"]
-[ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/assets/Button_hover.png" id="3_cck1k"]
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="4_cs5uu"]
+[ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="5_ps3jn"]
 
 [sub_resource type="Theme" id="Theme_m2m72"]
-
-[sub_resource type="Theme" id="Theme_cs5uu"]
-default_font = ExtResource("4_cs5uu")
-default_font_size = 45
 
 [node name="StartMenu" type="Control" unique_id=339159820]
 process_mode = 2
@@ -83,109 +78,27 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 15
 
-[node name="StartButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=668012155]
+[node name="StartButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=51180377 instance=ExtResource("5_ps3jn")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../QuitButton")
-focus_neighbor_bottom = NodePath("../SettingsButton")
-focus_next = NodePath("../SettingsButton")
-focus_previous = NodePath("../QuitButton")
-texture_normal = ExtResource("2_jnk83")
-texture_pressed = ExtResource("3_cck1k")
-texture_hover = ExtResource("3_cck1k")
-texture_focused = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/StartButton" unique_id=1580207925]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_cs5uu")
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("4_cs5uu")
-theme_override_font_sizes/font_size = 45
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/StartButton" index="0" unique_id=1342168869]
 text = "PLAY"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="SettingsButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1874762650]
+[node name="SettingsButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1949984531 instance=ExtResource("5_ps3jn")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
-focus_next = NodePath("../QuitButton")
-focus_previous = NodePath("../StartButton")
-texture_normal = ExtResource("2_jnk83")
-texture_pressed = ExtResource("3_cck1k")
-texture_hover = ExtResource("3_cck1k")
-texture_focused = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" unique_id=1881736685]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_cs5uu")
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("4_cs5uu")
-theme_override_font_sizes/font_size = 45
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" index="0" unique_id=1342168869]
 text = "SETTINGS"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1638342465]
+[node name="QuitButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1164782172 instance=ExtResource("5_ps3jn")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-focus_neighbor_top = NodePath("../SettingsButton")
-focus_neighbor_bottom = NodePath("../StartButton")
-focus_next = NodePath("../StartButton")
-focus_previous = NodePath("../SettingsButton")
-texture_normal = ExtResource("2_jnk83")
-texture_pressed = ExtResource("3_cck1k")
-texture_hover = ExtResource("3_cck1k")
-texture_focused = ExtResource("3_cck1k")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" unique_id=1585434326]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_cs5uu")
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("4_cs5uu")
-theme_override_font_sizes/font_size = 45
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" index="0" unique_id=1342168869]
 text = "QUIT"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[connection signal="focus_entered" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_focus_entered"]
-[connection signal="focus_exited" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_focus_exited"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="focus_entered" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_focus_entered"]
-[connection signal="focus_exited" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_focus_exited"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="focus_entered" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_entered"]
-[connection signal="focus_exited" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_exited"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/StartButton"]
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton"]
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/QuitButton"]

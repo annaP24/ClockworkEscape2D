@@ -1,0 +1,157 @@
+@startuml
+title ClockworkEscape2D - Current Class Architecture
+
+skinparam packageStyle rectangle
+skinparam linetype ortho
+hide empty methods
+hide empty fields
+
+package "Autoload Singletons" {
+  class EventBus <<Node, autoload>>
+  class GameManager <<Node, autoload>>
+  class AudioManager <<Node, autoload>>
+  class SettingManager <<Node, autoload>>
+  class VisualsManager <<Node, autoload>>
+  class DebugScreen <<CanvasLayer, autoload>>
+}
+
+package "Core" {
+  class CompFsmNode <<Node>>
+  class FsmNodeState <<Node>>
+  class Comp2dHitbox <<Area2D>>
+  class Comp2dHurtbox <<Area2D>>
+  class CompObjectPool <<Node>>
+}
+
+package "World Flow" {
+  class World <<Node2D>>
+  class Level <<Node2D>>
+  class WorldMap <<Node2D>>
+  class LevelNode <<Area2D>>
+  class CollectableVisual <<Node2D>>
+  class PlayerFsmCustomDataLayer <<CharacterBody2D>>
+}
+
+package "Player FSM States" {
+  class edge_state
+  class state_idle
+  class state_move
+  class state_jump
+  class state_fall
+  class state_dash
+  class wall_state
+  class wall_contact_state
+  class wall_movable_state
+  class wall_jump_state
+}
+
+package "Interactables & Platforms" {
+  class Exit <<StaticBody2D>>
+  class ExitPlatform <<Node2D>>
+  class Door <<Node2D>>
+  class Switch <<StaticBody2D>>
+  class SwitchPlatform <<AnimatableBody2D>>
+  class PlatformBase <<AnimatableBody2D>>
+  class PlatformDetectionArea <<Area2D>>
+  class Collectable <<StaticBody2D>>
+}
+
+package "Obstacles" {
+  class Projectile <<StaticBody2D>>
+  class Arrow
+  class ThrowingStar
+  class ProjectileShooter <<Node2D>>
+}
+
+package "UI" {
+  class StartMenu <<Control>>
+  class SettingsMenu <<Control>>
+  class SaveSlots <<Control>>
+  class ScoreUI <<Control>>
+  class StandardButton <<TextureButton>>
+  class Stats <<VBoxContainer>>
+  class FadeScreen <<Node, autoload scene>>
+}
+
+' Inheritance
+Arrow --|> Projectile
+ThrowingStar --|> Projectile
+
+edge_state --|> FsmNodeState
+state_idle --|> FsmNodeState
+state_move --|> FsmNodeState
+state_jump --|> FsmNodeState
+state_fall --|> FsmNodeState
+state_dash --|> FsmNodeState
+wall_state --|> FsmNodeState
+wall_contact_state --|> FsmNodeState
+wall_movable_state --|> FsmNodeState
+wall_jump_state --|> FsmNodeState
+
+' Core relationships
+Comp2dHitbox ..> Comp2dHurtbox : deal damage
+CompFsmNode o-- FsmNodeState : manages current/initial states
+PlayerFsmCustomDataLayer *-- CompFsmNode : owns FSM
+
+' World orchestration
+World *-- WorldMap
+World o-- Level : loads/unloads current level
+World ..> EventBus : connect/emit
+World ..> GameManager
+World ..> AudioManager
+World ..> SettingManager
+World ..> FadeScreen
+
+Level *-- PlayerFsmCustomDataLayer : spawn player
+Level ..> EventBus : level_* signals
+Level ..> GameManager : progression/stats
+Level ..> FadeScreen
+
+WorldMap *-- LevelNode
+LevelNode *-- CollectableVisual
+WorldMap ..> GameManager : load progress / level path
+LevelNode ..> AudioManager : click sfx
+
+' Gameplay objects
+ExitPlatform ..> PlayerFsmCustomDataLayer : controls platform rider
+ExitPlatform ..> EventBus : exit_animation_finished
+Exit ..> Level : level_finished signal consumed by level flow
+
+Door ..> Switch : depends on switch signals
+SwitchPlatform ..> Switch : depends on switch signals
+PlatformDetectionArea ..> PlatformBase : queries wall type and movement
+Collectable ..> PlayerFsmCustomDataLayer : update collectables
+Collectable ..> AudioManager : collected sfx
+
+ProjectileShooter ..> Projectile : instantiates projectile scene
+
+' UI dependencies
+StartMenu ..> EventBus
+StartMenu ..> AudioManager
+StartMenu ..> GameManager
+
+SettingsMenu ..> EventBus
+SettingsMenu ..> AudioManager
+SettingsMenu ..> SettingManager
+SettingsMenu ..> GameManager
+
+SaveSlots ..> EventBus
+SaveSlots ..> AudioManager
+SaveSlots ..> GameManager
+
+ScoreUI ..> EventBus
+ScoreUI ..> GameManager
+Stats ..> GameManager
+StandardButton ..> EventBus
+StandardButton ..> AudioManager
+
+' Manager collaboration
+GameManager ..> SettingManager
+GameManager ..> AudioManager
+
+note top of EventBus
+Global signal hub:
+UI/Scenes -> EventBus -> World
+end note
+
+@enduml

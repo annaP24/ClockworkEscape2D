@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://5b2m78kae04p"]
+
+[ext_resource type="Texture2D" uid="uid://be6487ikfjxxq" path="res://assets/deco/chain_i2.png" id="1_0gqy1"]
+
+[node name="ChainU" type="Node2D" unique_id=1653464195]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1941986416]
+z_index = -1
+scale = Vector2(1.296875, 1.7734375)
+texture = ExtResource("1_0gqy1")

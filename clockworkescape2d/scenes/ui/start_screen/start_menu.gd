@@ -6,7 +6,8 @@ extends Control
 var is_joypad : bool = false
 
 func _ready() -> void:
-	EventBus.world_show_sm.connect(_on_show_received)
+	EventBus.world_show_menu.connect(_on_show_received)
+	EventBus.button_pressed.connect(_on_button_pressed)
 	if GameManager.is_joypad_connected:
 		start_button.grab_focus()
 
@@ -17,63 +18,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		var focused = get_viewport().gui_get_focus_owner()
 		if focused == null:
 			return
-		if focused.name == "StartButton":
-			EventBus.sm_show_game_slots.emit()
-		elif focused.name == "SettingsButton":
-			EventBus.sm_settings.emit()
-		elif focused.name == "QuitButton":
-			EventBus.sm_quit_game.emit()
-
-
-func _on_start_button_pressed() -> void:
-	AudioManager.play_sfx("click")
-	EventBus.sm_show_game_slots.emit()
-
-func _on_start_button_mouse_entered() -> void:
-	VisualsManager.on_mouse_entered(start_button)
-
-func _on_start_button_mouse_exited() -> void:
-	VisualsManager.on_mouse_exited(start_button)
-
-func _on_settings_button_pressed() -> void:
-	AudioManager.play_sfx("click")
-	EventBus.sm_settings.emit()
-
-func _on_settings_button_mouse_entered() -> void:
-	VisualsManager.on_mouse_entered(settings_button)
-
-func _on_settings_button_mouse_exited() -> void:
-	VisualsManager.on_mouse_exited(settings_button)
-
-func _on_quit_button_pressed() -> void:
-	AudioManager.play_sfx("click")
-	EventBus.sm_quit_game.emit()
-
-func _on_quit_button_mouse_entered() -> void:
-	VisualsManager.on_mouse_entered(quit_button)
-
-func _on_quit_button_mouse_exited() -> void:
-	VisualsManager.on_mouse_exited(quit_button)
-
+		if focused == start_button:
+			EventBus.menu_show_game_slots.emit()
+		elif focused == settings_button:
+			EventBus.menu_show_settings.emit()
+		elif focused == quit_button:
+			EventBus.menu_quit_game.emit()
+			
+# ---------------------- Signals ----------------------
 func _on_show_received(is_show : bool):
 	visible = is_show
 	if GameManager.is_joypad_connected:
 		start_button.grab_focus()
 
-func _on_start_button_focus_entered() -> void:
-	VisualsManager.on_mouse_entered(start_button)
-
-func _on_start_button_focus_exited() -> void:
-	VisualsManager.on_mouse_exited(start_button)
-
-func _on_settings_button_focus_entered() -> void:
-	VisualsManager.on_mouse_entered(settings_button)
-
-func _on_settings_button_focus_exited() -> void:
-	VisualsManager.on_mouse_exited(settings_button)
-
-func _on_quit_button_focus_entered() -> void:
-	VisualsManager.on_mouse_entered(quit_button)
-
-func _on_quit_button_focus_exited() -> void:
-	VisualsManager.on_mouse_exited(quit_button)
+func _on_button_pressed(button : TextureButton) -> void:
+	if button == start_button:
+		EventBus.menu_show_game_slots.emit()
+	elif button == settings_button:
+		EventBus.menu_show_settings.emit()
+	elif button == quit_button:
+		EventBus.menu_quit_game.emit()

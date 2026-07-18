@@ -166,3 +166,7 @@ When proposing a feature:
 * Describe scene setup.
 * Describe required scripts.
 * Then provide code.
+
+## Changelong
+
+* Always show diff of the files you made changes on

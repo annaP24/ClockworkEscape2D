@@ -6,8 +6,16 @@ extends Node2D
 @export var start_delay : float = 0.0
 
 @onready var rotation_timer: Timer = $RotationTimer
+@onready var start_delay_timer: Timer = $StartDelay
 
 var time : float = 0.0
+
+func _ready() -> void:
+	if start_delay > 0.0:
+		start_delay_timer.wait_time = start_delay
+		start_delay_timer.start()
+	else:
+		rotation_timer.start(rotation_timeout)
 
 func _on_rotation_timer_timeout() -> void:
 	var tween = get_parent().create_tween()

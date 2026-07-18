@@ -5,10 +5,9 @@
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="2_iylle"]
 [ext_resource type="Texture2D" uid="uid://cdwk60254grdg" path="res://scenes/ui/settings_screen/assets/slider_bg.png" id="4_vbkbu"]
 [ext_resource type="Texture2D" uid="uid://babq5a6q43mbf" path="res://scenes/ui/settings_screen/assets/musicOn2.png" id="5_rr1fm"]
-[ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/assets/Button_idle.png" id="6_p78wt"]
 [ext_resource type="Texture2D" uid="uid://2smp8shoyfvx" path="res://scenes/ui/settings_screen/assets/musicOff2.png" id="6_vbkbu"]
-[ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/assets/Button_hover.png" id="7_hf6bx"]
 [ext_resource type="Texture2D" uid="uid://mxpkdefbs1e5" path="res://scenes/ui/settings_screen/assets/musicOn2_hower.png" id="7_rr1fm"]
+[ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="8_vbkbu"]
 
 [sub_resource type="Theme" id="Theme_aarj0"]
 
@@ -24,10 +23,6 @@ load_path = "res://.godot/imported/slider_inner.png-0c00bf66731f9350d69d12bd1547
 texture = SubResource("CompressedTexture2D_8dnjv")
 expand_margin_top = 28.0
 expand_margin_bottom = 28.0
-
-[sub_resource type="Theme" id="Theme_vfyx5"]
-default_font = ExtResource("2_iylle")
-default_font_size = 45
 
 [node name="Settings" type="Control" unique_id=568827001]
 process_mode = 3
@@ -145,11 +140,9 @@ show_behind_parent = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-focus_neighbor_left = NodePath("../../../../../../HBoxContainer/BackButton")
 focus_neighbor_right = NodePath("../../../../MusicMuteButton")
 focus_neighbor_bottom = NodePath("../../../../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
 focus_next = NodePath("../../../../MusicMuteButton")
-focus_previous = NodePath("../../../../../../HBoxContainer/BackButton")
 theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
@@ -350,8 +343,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_top = NodePath("../../../../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
-focus_neighbor_bottom = NodePath("../../../../../../HBoxContainer/DefaultButton")
-focus_next = NodePath("../../../../../../HBoxContainer/DefaultButton")
 focus_previous = NodePath("../../../../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
 selected = 0
 item_count = 3
@@ -371,74 +362,19 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 200
 
-[node name="DefaultButton" type="TextureButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=323440012]
+[node name="DefaultButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=51180377 instance=ExtResource("8_vbkbu")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../BackButton")
-focus_neighbor_top = NodePath("../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
-focus_neighbor_right = NodePath("../BackButton")
-focus_next = NodePath("../BackButton")
-focus_previous = NodePath("../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
-texture_normal = ExtResource("6_p78wt")
-texture_pressed = ExtResource("7_hf6bx")
-texture_hover = ExtResource("7_hf6bx")
-texture_focused = ExtResource("7_hf6bx")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" unique_id=5523179]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_neighbor_left = NodePath("../../BackButton")
-focus_neighbor_top = NodePath("../../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
-focus_neighbor_right = NodePath("../../BackButton")
-focus_next = NodePath("../../BackButton")
-focus_previous = NodePath("../../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
-theme = SubResource("Theme_vfyx5")
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("2_iylle")
-theme_override_font_sizes/font_size = 45
-text = "DEFAULT"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" index="0" unique_id=1342168869]
+text = "default"
 
-[node name="BackButton" type="TextureButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1151494165]
+[node name="BackButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1343990414 instance=ExtResource("8_vbkbu")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("6_p78wt")
-texture_pressed = ExtResource("7_hf6bx")
-texture_hover = ExtResource("7_hf6bx")
-texture_focused = ExtResource("7_hf6bx")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/BackButton" unique_id=1133733535]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_neighbor_left = NodePath("../../DefaultButton")
-focus_neighbor_top = NodePath("../../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
-focus_neighbor_right = NodePath("../../DefaultButton")
-focus_next = NodePath("../../../VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider")
-focus_previous = NodePath("../../DefaultButton")
-theme = SubResource("Theme_vfyx5")
-theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("2_iylle")
-theme_override_font_sizes/font_size = 45
-text = "BACK"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/BackButton" index="0" unique_id=1342168869]
+text = "back"
 
 [connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/MusicMuteButton" to="." method="_on_music_mute_button_toggled"]
@@ -446,13 +382,6 @@ vertical_alignment = 1
 [connection signal="toggled" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton" to="." method="_on_sfx_mute_button_toggled"]
 [connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
 [connection signal="item_selected" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton" to="." method="_on_menu_button_item_selected"]
-[connection signal="focus_entered" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_focus_entered"]
-[connection signal="focus_exited" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_focus_exited"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
-[connection signal="focus_entered" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_focus_entered"]
-[connection signal="focus_exited" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_focus_exited"]
-[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton"]
+[editable path="ColorRect/VBoxContainer2/HBoxContainer/BackButton"]

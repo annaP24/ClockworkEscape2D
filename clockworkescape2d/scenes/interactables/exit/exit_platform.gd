@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 # --------Variables-----------------------------------------------------------
@@ -86,4 +87,4 @@ func _on_exit_area_body_exited(body: Node2D) -> void:
 
 func _on_end_timer_timeout() -> void:
 	if is_player_on_platform:
-		EventBus.exit_level_finished.emit()
+		EventBus.exit_animation_finished.emit()

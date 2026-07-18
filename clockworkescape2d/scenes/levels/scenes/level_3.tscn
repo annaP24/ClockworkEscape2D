@@ -59,3 +59,4 @@ move_down_speed = 10.0
 
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 1184)
+move_range = 128.0

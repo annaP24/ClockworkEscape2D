@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://iqugc023ga4x"]
+[gd_scene format=3 uid="uid://iqugc023ga4x"]
 
 [sub_resource type="GDScript" id="GDScript_lkodm"]
 script/source = "extends StaticBody2D
@@ -21,22 +21,22 @@ size = Vector2(20, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eq5a"]
 size = Vector2(24, 20)
 
-[node name="LevelEnd" type="StaticBody2D"]
+[node name="LevelEnd" type="StaticBody2D" unique_id=1673731877]
 collision_layer = 0
 script = SubResource("GDScript_lkodm")
 
-[node name="LevelEnd" type="MeshInstance2D" parent="."]
+[node name="LevelEnd" type="MeshInstance2D" parent="." unique_id=1866306443]
 scale = Vector2(21.5, 19.5)
 mesh = SubResource("BoxMesh_nwfqy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479547129]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_rkyih")
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=521121998]
 collision_layer = 0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionArea" unique_id=811375594]
 shape = SubResource("RectangleShape2D_8eq5a")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

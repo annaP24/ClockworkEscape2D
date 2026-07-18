@@ -1,0 +1,99 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class World {
+  +current_state : GameState
+  +current_level_instance : Level
+  +max_level_reached : int
+
+  +_open_main_menu()
+  +_open_world_map()
+  +_open_settings()
+  +_enter_level()
+  +load_level()
+}
+
+class WorldMap {
+  +current_focused_level : LevelNode
+  +curve : Curve2D
+
+  +unlock_levels()
+  +_change_focus()
+  +_generate_curve()
+}
+
+class CameraScroll {
+  +dragging : bool
+
+  +move_camera_with_selection()
+  +stop_drag()
+  +_input()
+}
+
+class Level {
+  +level_id : int
+  +player : PlayerFsmCustomDataLayer
+
+  +_spawn_player()
+  +_on_player_died()
+  +_on_exit_platform_level_finished()
+}
+
+class PlayerFsmCustomDataLayer {
+  +move_speed : float
+  +jump_height : float
+
+  +update_collectables_number()
+  +turn_off_light()
+  +turn_on_light()
+}
+
+class UILayer {
+  +StartMenu
+  +SettingsMenu
+  +SaveSlots
+  +ScoreUI
+  +FadeScreen
+}
+
+class EventBus {
+  menu_start_game
+  menu_show_game_slots
+  menu_show_settings
+  menu_quit_game
+  level_quit_requested
+  level_restart_requested
+  level_return_to_map(level_id)
+  save_slot_selected(slot_id)
+}
+
+class AudioManager {
+  +play_music()
+  +play_sfx()
+  +mute_all_sound()
+}
+
+class GameManager {
+  +save_progress()
+  +load_progress()
+  +get_level_path()
+}
+
+class SettingManager {
+  +save_brightness_setting()
+  +update_setting()
+}
+
+World --> WorldMap : controls
+WorldMap --> CameraScroll : owns
+World --> Level : loads/unloads
+World --> UILayer : shows/hides
+World --> EventBus : connects
+Level --> EventBus : emits
+World --> AudioManager : uses
+World --> GameManager : uses
+World --> SettingManager : uses
+Level --> GameManager : saves progress
+Level --> PlayerFsmCustomDataLayer : spawns
+
+@enduml

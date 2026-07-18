@@ -13,21 +13,12 @@ const MAX_COLLECTED_TAG = "max_collected"
 const TOTAL_DEATHS_TAG = "deaths"
 const TOTAL_TIME_PLAYED_TAG = "play_time_seconds"
 const NR_OF_LEVLES_TAG = "nr_of_levels"
-const SFX_VOLUME = "sfx_volume"
-const MUSIC_VOLUME = "music_volume"
-const BRIGHTNESS = "brightness"
-const RESOLUTION = "resolution"
 const MAX_NUM_OF_LEVELS = 20
 const TOTAL_COLLECTABLES = MAX_NUM_OF_LEVELS * 3
 
 var collected_objects : int = 0
 var max_level_reached : int
 var max_collected : int = 0
-var is_muted : bool = false
-var sfx_vol : float = 0.5
-var music_vol : float = 0.5
-var brightness : float = 1.0
-var resolution : float = 0.0
 var session_start_time : int = 0
 var total_play_time_seconds : int = 0
 var current_save_slot : int = 1
@@ -47,17 +38,18 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("mute"):
-		if not is_muted:
+		var is_muted = SettingManager.toggle_mute()
+		if is_muted:
 			AudioManager.mute_all_sound(true)
-			is_muted = true
 		else:
 			AudioManager.mute_all_sound(false)
-			is_muted = false
 
-func load_progress(slot_id : int) -> int:
-	var cf = ConfigFile.new()
+func set_current_slot_id(slot_id: int) -> void:
+	current_progress_path = _get_file_name(slot_id)
 	current_save_slot = slot_id
-	current_progress_path = _get_file_name(current_save_slot)
+
+func load_progress() -> int:
+	var cf = ConfigFile.new()
 	#Check if file exists
 	if !FileAccess.file_exists(current_progress_path):
 		print("No cfg file found creating one")
@@ -122,10 +114,7 @@ func _create_default_progress(filename : String):
 		cf.set_value(COLLECTED_IN_LEVEL_TAG, str(i), 0)
 
 	#------ Settings -------------------------------------
-	cf.set_value("settings", SFX_VOLUME, sfx_vol)
-	cf.set_value("settings", MUSIC_VOLUME, music_vol)
-	cf.set_value("settings", BRIGHTNESS, brightness)
-	cf.set_value("settings", RESOLUTION, resolution)
+	SettingManager.create_default_settings(cf)
 	cf.save(filename)
 	max_level_reached = 1
 
@@ -144,16 +133,6 @@ func save_collectables_count_for_level(level_id : int, count : int):
 		cf.save(current_progress_path)
 		#If max count of collected per level increased
 		_update_total_collected()
-
-func save_brightness_setting(value : float):
-	var cf = ConfigFile.new()
-	#Check if dile exists
-	if FileAccess.file_exists(current_progress_path):
-		cf.load(current_progress_path)
-	#Update value
-	cf.set_value("settings", BRIGHTNESS, value)
-	#Write to disk
-	cf.save(current_progress_path)
 
 func _update_total_collected():
 	var cf = ConfigFile.new()
@@ -192,23 +171,6 @@ func get_level_path() -> String:
 	else:
 		#ToDo The end screen, return to menu
 		return ""
-
-func load_settings_for_player(_player_id : int, setting_name : String) -> float:
-	var cf = ConfigFile.new()
-
-	if cf.load(current_progress_path) == OK:
-		return cf.get_value("settings", setting_name, 1)
-	return INF
-
-func update_settings_for_player(_player_id : int, settings_name : String, value : float) -> void:
-	var cf = ConfigFile.new()
-	#Check if dile exists
-	if FileAccess.file_exists(current_progress_path):
-		cf.load(current_progress_path)
-
-	cf.set_value("settings", settings_name, value)
-	#Write to disk
-	cf.save(current_progress_path)
 
 func update_number_of_deaths():
 	max_deaths_for_slot += 1

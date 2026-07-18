@@ -21,8 +21,8 @@
                            │
 ┌──────────────────────────────────────────────────────┐
 │                    EVENT BUS (Singleton)             │
-│   Global signal hub: menu, level, settings, player  │
-│   Pattern: All emissions flow UP from child scenes  │
+│   Global signal hub: menu, level, settings, player   │
+│   Pattern: All emissions flow UP from child scenes   │
 └──────────────────────────────────────────────────────┘
          ▲                      ▲                 ▲
          │ (emits)             │ (emits)       │ (emits)

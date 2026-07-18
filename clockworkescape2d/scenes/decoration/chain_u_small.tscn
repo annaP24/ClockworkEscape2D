@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bb7v2hhinpk5j"]
+
+[ext_resource type="Texture2D" uid="uid://bd5oiphb0lcd8" path="res://assets/deco/chain_u_Small.png" id="1_igidg"]
+
+[node name="ChainU_small" type="Node2D" unique_id=1653464195]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1941986416]
+scale = Vector2(1.296875, 1.7734375)
+texture = ExtResource("1_igidg")

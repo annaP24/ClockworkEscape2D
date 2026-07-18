@@ -56,7 +56,7 @@ func unlock_levels(id : int) -> void:
 
 	var levels : Array = levels_container.get_children() as Array[LevelNode]
 	var level_count := levels.size()
-	var max_level_unlocked : int = GameManager.load_progress(id)
+	var max_level_unlocked : int = GameManager.load_progress()
 	for i in range(level_count):
 
 		var node : LevelNode = levels[i]

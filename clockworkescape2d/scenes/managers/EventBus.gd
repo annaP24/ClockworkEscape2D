@@ -54,29 +54,6 @@ signal exit_animation_finished
 ## Emitted when a save slot is selected
 signal save_slot_selected(slot_id: int)
 
-# @warning_ignore_end("unused_signal")
-
-# ========== BACKWARD COMPATIBILITY LAYER ==========
-# Legacy signal aliases for existing code (deprecated, use new names above)
-var sm_start_game: Signal:
-	get: return menu_start_game
-var sm_quit_game: Signal:
-	get: return menu_quit_game
-var sm_settings: Signal:
-	get: return menu_show_settings
-var sm_show_game_slots: Signal:
-	get: return menu_show_game_slots
-var s_brightness_changed: Signal:
-	get: return settings_brightness_changed
-var world_show_sm: Signal:
-	get: return world_show_menu
-var lb_quit_level: Signal:
-	get: return level_quit_requested
-var lb_restart_level: Signal:
-	get: return level_restart_requested
-var lb_return_to_map: Signal:
-	get: return level_return_to_map
-var exit_level_finished: Signal:
-	get: return exit_animation_finished
-var slot_pressed: Signal:
-	get: return save_slot_selected
+#========== BUTTON SIGNALS ==========
+signal button_pressed(id : TextureButton)
+signal button_toggled(id : TextureButton, toggled_on : bool)
