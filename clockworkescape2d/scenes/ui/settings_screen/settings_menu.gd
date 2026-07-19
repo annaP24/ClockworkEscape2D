@@ -22,8 +22,7 @@ func _ready() -> void:
 	EventBus.world_hide_settings_menu.connect(_on_hide_received)
 	EventBus.button_pressed.connect(_on_button_pressed)
 	_set_defaults()
-	if GameManager.is_joypad_connected:
-		music_slider.grab_focus()
+	
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_bus_volume("Music", value)
@@ -97,7 +96,15 @@ func _update_settings()-> void:
 	SettingManager.update_setting(SettingManager.BRIGHTNESS, brightness_slider.value)
 	SettingManager.update_setting(SettingManager.RESOLUTION, resolution_list.selected)
 
+# func _unhandled_input(event: InputEvent) -> void:
+# 	if event.is_action_pressed("ui_accept"):
+# 		AudioManager.play_sfx("click")
 
+# 		var focused = get_viewport().gui_get_focus_owner()
+# 		if focused == null:
+# 			return
+# 		if focused == music_slider:
+# 			EventBus.menu_show_game_slots.emit()
 # ---------------------- Signals ----------------------
 func _on_button_pressed(button : TextureButton) -> void:
 	if button == default_button:
@@ -107,3 +114,6 @@ func _on_button_pressed(button : TextureButton) -> void:
 
 func _on_hide_received(is_show : bool)-> void:
 	visible = is_show
+	if is_show:		
+		if GameManager.is_joypad_connected:
+			music_slider.grab_focus()

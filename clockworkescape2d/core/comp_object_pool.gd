@@ -43,7 +43,7 @@ func get_instance() -> Node:
 		instance.set_meta("pooled", true)
 		return instance
 	
-	var instance := pool.pop_front()
+	var instance : Node = pool.pop_front()
 	instance.show()
 	return instance
 

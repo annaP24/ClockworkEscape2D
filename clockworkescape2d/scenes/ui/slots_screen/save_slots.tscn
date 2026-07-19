@@ -4,14 +4,22 @@
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="3_nt52n"]
 [ext_resource type="Texture2D" uid="uid://yenxggxg8rrt" path="res://scenes/ui/start_screen/assets/title_holder.png" id="4_rlrl8"]
 [ext_resource type="Texture2D" uid="uid://c17erafcnf2d8" path="res://scenes/ui/slots_screen/assets/slot_long.png" id="5_7qntd"]
-[ext_resource type="ButtonGroup" uid="uid://n7pp1lmyv7ym" path="res://resources/slot_button_group.tres" id="5_r6r3v"]
 [ext_resource type="PackedScene" uid="uid://bekngooqd5av7" path="res://scenes/ui/slots_screen/stats.tscn" id="6_3cpcx"]
 [ext_resource type="Texture2D" uid="uid://dt5uwj0mmbt7k" path="res://scenes/ui/slots_screen/assets/slot_hower_long.png" id="6_oscg4"]
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="10_6h2y5"]
 
 [sub_resource type="Theme" id="Theme_p1n1k"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_rlrl8"]
+allow_unpress = true
+
 [sub_resource type="Theme" id="Theme_r6r3v"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_r6r3v"]
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_p1n1k"]
+allow_unpress = true
 
 [node name="SaveSlots" type="Control" unique_id=1820339539]
 layout_mode = 3
@@ -80,8 +88,10 @@ theme_override_constants/separation = 18
 [node name="Slot1Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1354707682 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_right = NodePath("../Slot2Button")
+focus_neighbor_bottom = NodePath("../../Buttons/Play")
 toggle_mode = true
-button_group = ExtResource("5_r6r3v")
+button_group = SubResource("ButtonGroup_rlrl8")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
@@ -149,8 +159,11 @@ text = "EMPTY"
 [node name="Slot2Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=216618707 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../Slot1Button")
+focus_neighbor_right = NodePath("../Slot3Button")
+focus_neighbor_bottom = NodePath("../../Buttons/DeleteButton")
 toggle_mode = true
-button_group = ExtResource("5_r6r3v")
+button_group = SubResource("ButtonGroup_r6r3v")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
@@ -221,8 +234,10 @@ text = "EMPTY"
 [node name="Slot3Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1097796718 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../Slot2Button")
+focus_neighbor_bottom = NodePath("../../Buttons/BackButton")
 toggle_mode = true
-button_group = ExtResource("5_r6r3v")
+button_group = SubResource("ButtonGroup_p1n1k")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
@@ -295,6 +310,9 @@ theme_override_constants/separation = 50
 [node name="Play" parent="ColorRect/VBoxContainer2/Buttons" unique_id=1834422199 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../../HBoxContainer/Slot3Button")
+focus_neighbor_top = NodePath("../../HBoxContainer/Slot1Button")
+focus_neighbor_right = NodePath("../DeleteButton")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/Buttons/Play" index="0" unique_id=1342168869]
 text = "PLAY"
@@ -302,6 +320,9 @@ text = "PLAY"
 [node name="DeleteButton" parent="ColorRect/VBoxContainer2/Buttons" unique_id=826709414 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../Play")
+focus_neighbor_top = NodePath("../../HBoxContainer/Slot2Button")
+focus_neighbor_right = NodePath("../BackButton")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/Buttons/DeleteButton" index="0" unique_id=1342168869]
 text = "DELETE"
@@ -309,6 +330,9 @@ text = "DELETE"
 [node name="BackButton" parent="ColorRect/VBoxContainer2/Buttons" unique_id=9106851 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../DeleteButton")
+focus_neighbor_top = NodePath("../../HBoxContainer/Slot3Button")
+focus_neighbor_right = NodePath("../../HBoxContainer/Slot1Button")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/Buttons/BackButton" index="0" unique_id=1342168869]
 text = "BACK"

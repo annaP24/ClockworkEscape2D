@@ -140,9 +140,6 @@ show_behind_parent = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-focus_neighbor_right = NodePath("../../../../MusicMuteButton")
-focus_neighbor_bottom = NodePath("../../../../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
-focus_next = NodePath("../../../../MusicMuteButton")
 theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
@@ -150,18 +147,19 @@ max_value = 1.0
 step = 0.005
 value = 0.5
 
-[node name="MusicMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic" unique_id=836722099]
+[node name="MusicMuteButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic" unique_id=51180377 instance=ExtResource("8_vbkbu")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider")
 focus_neighbor_right = NodePath("../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
 focus_neighbor_bottom = NodePath("../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
-focus_next = NodePath("../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
-focus_previous = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider")
 toggle_mode = true
 texture_normal = ExtResource("5_rr1fm")
 texture_pressed = ExtResource("6_vbkbu")
 texture_hover = ExtResource("7_rr1fm")
+
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/MusicMuteButton" index="0" unique_id=1342168869]
+text = ""
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=771476892]
 layout_mode = 2
@@ -218,18 +216,20 @@ max_value = 1.0
 step = 0.005
 value = 0.5
 
-[node name="SfxMuteButton" type="TextureButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=281198510]
+[node name="SfxMuteButton" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=848488924 instance=ExtResource("8_vbkbu")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
-focus_neighbor_top = NodePath("../../HBoxContainerMusic/MusicMuteButton")
+focus_neighbor_top = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
 focus_neighbor_right = NodePath("../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
 focus_neighbor_bottom = NodePath("../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
-focus_next = NodePath("../../HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider")
-focus_previous = NodePath("../NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
 toggle_mode = true
 texture_normal = ExtResource("5_rr1fm")
 texture_pressed = ExtResource("6_vbkbu")
+texture_hover = ExtResource("7_rr1fm")
+
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton" index="0" unique_id=1342168869]
+text = ""
 
 [node name="HBoxContainerBrightness" type="HBoxContainer" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=147691924]
 layout_mode = 2
@@ -279,11 +279,8 @@ show_behind_parent = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-focus_neighbor_left = NodePath("../../../../../HBoxContainer/SfxMuteButton")
-focus_neighbor_top = NodePath("../../../../../HBoxContainer/NinePatchRect/MarginContainer/HBoxContainerSFX2/SfxSlider")
+focus_neighbor_top = NodePath("../../../../../HBoxContainer/SfxMuteButton")
 focus_neighbor_bottom = NodePath("../../../../../HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
-focus_next = NodePath("../../../../../HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
-focus_previous = NodePath("../../../../../HBoxContainer/SfxMuteButton")
 theme_override_styles/slider = SubResource("StyleBoxFlat_rr1fm")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0t43g")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_0t43g")
@@ -362,9 +359,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 200
 
-[node name="DefaultButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=51180377 instance=ExtResource("8_vbkbu")]
+[node name="DefaultButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1121989372 instance=ExtResource("8_vbkbu")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_neighbor_top = NodePath("../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_neighbor_right = NodePath("../BackButton")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton" index="0" unique_id=1342168869]
 text = "default"
@@ -372,6 +372,9 @@ text = "default"
 [node name="BackButton" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1343990414 instance=ExtResource("8_vbkbu")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../DefaultButton")
+focus_neighbor_top = NodePath("../../VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton")
+focus_neighbor_right = NodePath("../../VBoxContainer/HBoxContainerMusic/NinePatchRect/MarginContainer/HBoxContainerSFX2/MusicSlider")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/BackButton" index="0" unique_id=1342168869]
 text = "back"
@@ -383,5 +386,7 @@ text = "back"
 [connection signal="value_changed" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerBrightness/NinePatchRect/MarginContainer/HBoxContainerSFX2/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
 [connection signal="item_selected" from="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer5/NinePatchRect/MarginContainer/HBoxContainerSFX2/MenuButton" to="." method="_on_menu_button_item_selected"]
 
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/MusicMuteButton"]
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton"]
 [editable path="ColorRect/VBoxContainer2/HBoxContainer/DefaultButton"]
 [editable path="ColorRect/VBoxContainer2/HBoxContainer/BackButton"]

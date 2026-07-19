@@ -6,14 +6,10 @@ func _on_pressed() -> void:
 	AudioManager.play_sfx("click")
 	EventBus.button_pressed.emit(self)
 
-
 func _on_toggled(toggled_on: bool) -> void:
+	AudioManager.play_sfx("click")
 	EventBus.button_toggled.emit(self, toggled_on)
 	is_toggled = toggled_on
-	# if toggled_on:
-	# 	_on_focus_entered()
-	# else:
-	# 	_on_focus_exited()
 
 func _on_focus_entered() -> void:
 	pivot_offset = size / 2

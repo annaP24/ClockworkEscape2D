@@ -35,7 +35,7 @@ func _ready() -> void:
 
 	FadeScreen.connect("fade_out_finished", _on_fade_out_finished)
 	EventBus.connect("menu_start_game", _on_sm_start_game)
-	EventBus.menu_show_game_slots.connect(_on_sm_show_game_slots)
+	EventBus.connect("menu_show_game_slots", _on_sm_show_game_slots)
 	EventBus.connect("menu_quit_game", _on_sm_quit_game)
 	EventBus.connect("menu_show_settings", _on_sm_settings)
 	EventBus.connect("level_quit_requested", _on_quit_level_received)
@@ -101,7 +101,6 @@ func _open_settings():
 
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(true)
-
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _open_world_map():
@@ -253,6 +252,7 @@ func _on_brightness_changed(value : float) -> void:
 	brightness_mat.set_shader_parameter("gamma", value)
 	SettingManager.save_brightness_setting(value)
 	#TODO: save brightness setting
+
 func _on_slot_pressed(id : int) -> void:
 	GameManager.set_current_slot_id(id)
 	# GameManager.load_progress()
