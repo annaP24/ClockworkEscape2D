@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_nc1an"]
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="2_ftdud"]
 [ext_resource type="PackedScene" uid="uid://cb3sk5bwptvai" path="res://scenes/obstacles/spider/spider.tscn" id="2_tyhfa"]
-[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain_u.tscn" id="2_x8cqq"]
+[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="2_x8cqq"]
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="3_tyhfa"]
 [ext_resource type="PackedScene" uid="uid://dwb5qoh4vb8ry" path="res://scenes/platforms/rotate_anchor/rotation_anchor_clock.tscn" id="4_8thdu"]
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="4_afdjd"]
@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="6_q7m2p"]
 [ext_resource type="PackedScene" uid="uid://ddt76rnhhboub" path="res://scenes/platforms/moving_platform/platform_move.tscn" id="7_x8cqq"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="8_i7s8t"]
-[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain_i.tscn" id="12_2ra3l"]
-[ext_resource type="PackedScene" uid="uid://3vn5xl5f5fkl" path="res://scenes/decoration/chain_ui.tscn" id="13_t3386"]
-[ext_resource type="PackedScene" uid="uid://3k6h4t63lif" path="res://scenes/decoration/chain_ui_small.tscn" id="14_ccltd"]
+[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain/chain_i.tscn" id="12_2ra3l"]
+[ext_resource type="PackedScene" uid="uid://3vn5xl5f5fkl" path="res://scenes/decoration/chain/chain_ui.tscn" id="13_t3386"]
+[ext_resource type="PackedScene" path="res://scenes/decoration/chain_ui_small.tscn" id="14_ccltd"]
 
 [node name="Level_9" unique_id=1480095566 instance=ExtResource("1_nc1an")]
 level_id = 9

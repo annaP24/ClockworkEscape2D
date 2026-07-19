@@ -2,12 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_yx8f7"]
 [ext_resource type="PackedScene" uid="uid://bjww3w1a45857" path="res://scenes/platforms/small_platform/small_platform.tscn" id="2_l0ahl"]
-[ext_resource type="PackedScene" uid="uid://3k6h4t63lif" path="res://scenes/decoration/chain_ui_small.tscn" id="3_4imb8"]
-[ext_resource type="PackedScene" uid="uid://3vn5xl5f5fkl" path="res://scenes/decoration/chain_ui.tscn" id="4_2gyid"]
-[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain_i.tscn" id="5_anp2p"]
-[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain_u.tscn" id="6_kv3rv"]
-[ext_resource type="PackedScene" uid="uid://bb7v2hhinpk5j" path="res://scenes/decoration/chain_u_small.tscn" id="7_2gyid"]
-[ext_resource type="PackedScene" uid="uid://bocm6jigt4jbs" path="res://scenes/decoration/spider_web.tscn" id="7_anp2p"]
+[ext_resource type="PackedScene" uid="uid://3vn5xl5f5fkl" path="res://scenes/decoration/chain/chain_ui.tscn" id="4_2gyid"]
+[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain/chain_i.tscn" id="5_anp2p"]
+[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="6_kv3rv"]
+[ext_resource type="PackedScene" uid="uid://phl4klxt2yja" path="res://scenes/decoration/web/spider_web_quarter.tscn" id="10_bwk2g"]
+[ext_resource type="PackedScene" path="res://scenes/decoration/spider_web_braun.tscn" id="10_pu7te"]
 
 [node name="Testing" unique_id=515195593 instance=ExtResource("1_yx8f7")]
 
@@ -26,33 +25,27 @@ position = Vector2(730, 352)
 [node name="Small_platform2" parent="." index="11" unique_id=1688704621 instance=ExtResource("2_l0ahl")]
 position = Vector2(1167, 595)
 
-[node name="ChainU" parent="." index="13" unique_id=1653464195 instance=ExtResource("3_4imb8")]
-z_index = -1
-position = Vector2(416, 160)
-
-[node name="ChainUI_long" parent="." index="14" unique_id=2142369325 instance=ExtResource("4_2gyid")]
+[node name="ChainUI_long" parent="." index="13" unique_id=2142369325 instance=ExtResource("4_2gyid")]
 z_index = -1
 position = Vector2(672, 160)
 
-[node name="ChainU2" parent="." index="15" unique_id=1953220622 instance=ExtResource("5_anp2p")]
+[node name="ChainU2" parent="." index="14" unique_id=1953220622 instance=ExtResource("5_anp2p")]
 z_index = -1
 position = Vector2(864, 160)
 
-[node name="ChainU3" parent="." index="16" unique_id=1501711986 instance=ExtResource("6_kv3rv")]
+[node name="ChainU3" parent="." index="15" unique_id=1501711986 instance=ExtResource("6_kv3rv")]
 z_index = -1
 position = Vector2(1120, 160)
 
-[node name="SpiderWeb" parent="." index="17" unique_id=1513705380 instance=ExtResource("7_anp2p")]
-position = Vector2(84, 85)
+[node name="SpiderWeb6" parent="." index="16" unique_id=1730547380 instance=ExtResource("10_bwk2g")]
+position = Vector2(1306, 102.00001)
+scale = Vector2(0.69, 0.69)
 
-[node name="SpiderWeb2" parent="." index="18" unique_id=1678910895 instance=ExtResource("7_anp2p")]
-position = Vector2(1873, 98)
-scale = Vector2(1.15, 1.15)
+[node name="SpiderWeb7" parent="." index="17" unique_id=26515641 instance=ExtResource("10_bwk2g")]
+position = Vector2(120.99999, 118.99999)
+rotation = 4.728097
 
-[node name="SpiderWeb3" parent="." index="19" unique_id=1449880050 instance=ExtResource("7_anp2p")]
-position = Vector2(1415, 118)
-rotation = 0.6482148
-scale = Vector2(1.3058727, 1.9462552)
-
-[node name="ChainU_small" parent="." index="20" unique_id=1818699843 instance=ExtResource("7_2gyid")]
-position = Vector2(1312, 160)
+[node name="SpiderWeb5" parent="." index="18" unique_id=2086836950 instance=ExtResource("10_pu7te")]
+visible = false
+position = Vector2(1342.9999, 64.00001)
+scale = Vector2(2.0248933, 1.8230559)

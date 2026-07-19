@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5b2m78kae04p"]
 
-[ext_resource type="Texture2D" uid="uid://be6487ikfjxxq" path="res://assets/deco/chain_i2.png" id="1_0gqy1"]
+[ext_resource type="Texture2D" uid="uid://b8sn8c8d06lns" path="res://scenes/decoration/assets/chain_i.png" id="1_0gqy1"]
 
 [node name="ChainU" type="Node2D" unique_id=1653464195]
 

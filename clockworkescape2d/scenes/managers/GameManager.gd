@@ -251,9 +251,9 @@ func format_play_time(total_seconds: float) -> String:
 	else:
 		return "%02d:%02d" % [minutes, seconds]
 	#TODO: if we want to show hours, we can add it to the string
-func get_completion_percentage(max_level : float, max_collected : float) -> float:
+func get_completion_percentage(max_level : float, max_collected_coll : float) -> float:
 
 	var level_progress = max_level / MAX_NUM_OF_LEVELS
-	var collectable_progress = max_collected / TOTAL_COLLECTABLES
+	var collectable_progress = max_collected_coll / TOTAL_COLLECTABLES
 
 	return level_progress * 0.6 + collectable_progress * 0.4

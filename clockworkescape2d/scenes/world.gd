@@ -228,7 +228,7 @@ func _on_return_to_map_received(level_id : int):
 		GameManager.save_progress(max_level_reached)
 
 	pending_transition = TransitionAction.RETURN_TO_MAP
-	world_map.unlock_levels(GameManager.current_save_slot)
+	world_map.unlock_levels()
 	world_map.focus_last_played_level()
 	FadeScreen.fade_out()
 
@@ -257,6 +257,6 @@ func _on_slot_pressed(id : int) -> void:
 	GameManager.set_current_slot_id(id)
 	# GameManager.load_progress()
 	# SettingsManager.load_settings()
-	world_map.unlock_levels(id)
+	world_map.unlock_levels()
 	world_map.focus_last_played_level()
 	_open_world_map()

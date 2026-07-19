@@ -85,7 +85,7 @@ func set_bus_volume(bus_name: String, linear_volume: float) -> void:
 		elif bus_name == "Master":
 			master_volume = db
 
-func play_sfx_for_object(sfx_name: String, position: Vector3):
+func play_sfx_for_object(sfx_name: String, _position: Vector3):
 	var p = AudioStreamPlayer2D.new()
 	p.stream = sounds[sfx_name]
 	p.bus = &"SFX"

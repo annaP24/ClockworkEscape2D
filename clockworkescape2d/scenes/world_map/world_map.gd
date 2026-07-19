@@ -52,7 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # Level Setup
 # -----------------------------------------------------------------------------
 
-func unlock_levels(id : int) -> void:
+func unlock_levels() -> void:
 
 	var levels : Array = levels_container.get_children() as Array[LevelNode]
 	var level_count := levels.size()

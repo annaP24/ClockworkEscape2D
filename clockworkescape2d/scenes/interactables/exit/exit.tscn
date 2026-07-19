@@ -1,14 +1,70 @@
-[gd_scene format=3 uid="uid://dm850oo47usa3"]
+[gd_scene format=3 uid="uid://irwcjkmyh64g"]
 
-[ext_resource type="Script" uid="uid://cnkoj3a5dv85t" path="res://scenes/interactables/exit/exit.gd" id="1_kd23p"]
-[ext_resource type="Texture2D" uid="uid://bkyf4qew6s6t4" path="res://scenes/interactables/exit/assets/exit.png" id="2_6ioyk"]
-[ext_resource type="Texture2D" uid="uid://dtq3erbyfyq6a" path="res://scenes/levels/particle_spark.png" id="4_lxjgx"]
+[sub_resource type="GDScript" id="GDScript_3tb3t"]
+script/source = "extends StaticBody2D
+
+signal level_finished
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var area: Area2D = $Area2D
+@onready var sparks: CPUParticles2D = $ExitSparks
+@onready var marker_2d: Marker2D = $Marker2D
+@onready var timer: Timer = $Timer
+var timer_timeout : float = 1.0
+
+func _ready():
+	randomize()
+	#activate()
+	start_pulsing()
+	#burst_loop()
+
+func start_pulsing():
+	# Soft breathing glow on the icon
+	sprite.self_modulate = Color(1, 1, 1, 1)
+	var tw := create_tween().set_loops()
+	tw.tween_property(sprite, \"self_modulate\", Color(1.4, 1.2, 1.0, 1.0), 2.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tw.tween_property(sprite, \"self_modulate\", Color(1.0, 1.0, 1.0, 1.0), 2.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+func burst_loop() -> void:
+	await get_tree().process_frame
+	while true:
+		var wait := randf_range(5.0, 10.0)
+		await get_tree().create_timer(wait).timeout
+		sparks.emitting = true
+		await get_tree().create_timer(0.06).timeout
+		sparks.emitting = false
+
+func activate():
+	# Call this when all collectibles are taken
+	var tw := create_tween()
+	tw.tween_property(sprite, \"self_modulate\", Color(2.0, 1.6, 1.0, 1.0), 0.15)
+	tw.tween_property(sprite, \"self_modulate\", Color(1.0, 1.0, 1.0, 1.0), 0.35)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"player\"):
+		#ToDO: pull player
+		var tween = get_parent().create_tween()
+		tween.tween_property(body, \"global_position\", marker_2d.global_position, 1.0)
+		await tween.finished
+		body.process_mode = Node.PROCESS_MODE_DISABLED
+		timer.start(timer_timeout)
+
+
+func _on_timer_timeout() -> void:
+	level_finished.emit()
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ch0uu"]
+load_path = "res://.godot/imported/exit.png-e2ebf45d32813ff43b1496c4f96fc329.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kjkd"]
 size = Vector2(42, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd23p"]
 size = Vector2(64, 128)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bhd3i"]
+load_path = "res://.godot/imported/particle_spark.png-ec259184a8f8bca7426645e27fd72d84.ctex"
 
 [sub_resource type="Curve" id="Curve_d121m"]
 _data = [Vector2(0.010504201, 0.99025977), 0.0, 0.0, 0, 0, Vector2(1, 0.012987018), 0.0, 0.0, 0, 0]
@@ -19,13 +75,13 @@ colors = PackedColorArray(0.750985, 0.5481132, 0.31110004, 1, 1, 1, 1, 0)
 
 [node name="Exit" type="StaticBody2D" unique_id=1583052456]
 collision_layer = 0
-script = ExtResource("1_kd23p")
+script = SubResource("GDScript_3tb3t")
 metadata/_edit_horizontal_guides_ = [-25.0]
 metadata/_edit_vertical_guides_ = [31.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=274221195]
 position = Vector2(32, -32)
-texture = ExtResource("2_6ioyk")
+texture = SubResource("CompressedTexture2D_ch0uu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1360644295]
 visible = false
@@ -45,7 +101,7 @@ shape = SubResource("RectangleShape2D_kd23p")
 position = Vector2(0, -6)
 emitting = false
 amount = 40
-texture = ExtResource("4_lxjgx")
+texture = SubResource("CompressedTexture2D_bhd3i")
 lifetime = 0.72
 one_shot = true
 explosiveness = 1.0
