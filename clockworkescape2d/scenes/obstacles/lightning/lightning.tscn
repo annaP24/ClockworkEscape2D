@@ -21,10 +21,21 @@ frame_3/texture = ExtResource("4_gjjtp")
 frame_3/duration = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf46m"]
-size = Vector2(40, 472)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6mcs"]
+size = Vector2(64, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6054b"]
+size = Vector2(20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyv88"]
+size = Vector2(68, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnxsf"]
+size = Vector2(26.000004, 58)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sro"]
-size = Vector2(52, 896)
+size = Vector2(52, 320)
 
 [sub_resource type="Gradient" id="Gradient_folvt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -53,37 +64,51 @@ color_ramp = SubResource("GradientTexture1D_1b3d4")
 [node name="Lightning" type="StaticBody2D" unique_id=1597034869]
 collision_layer = 0
 script = ExtResource("1_gjjtp")
+warrning_time = 0.5
 
 [node name="BlitzLine" type="Line2D" parent="." unique_id=1781101274]
-visible = false
 texture_repeat = 2
 points = PackedVector2Array(32, 10, 32, 90)
 width = 70.0
 texture = SubResource("AnimatedTexture_y1sro")
 texture_mode = 1
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703527519]
+shape = SubResource("RectangleShape2D_kf46m")
+
 [node name="LowerGuard" type="Sprite2D" parent="." unique_id=1679950281]
 position = Vector2(32, 100)
 texture = ExtResource("6_gjjtp")
 flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LowerGuard" unique_id=1228319329]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerGuard/StaticBody2D" unique_id=587098154]
+position = Vector2(-1, 24)
+shape = SubResource("RectangleShape2D_w6mcs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LowerGuard/StaticBody2D" unique_id=2142977369]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_6054b")
 
 [node name="UpperGuard" type="Sprite2D" parent="." unique_id=1389530810]
 position = Vector2(32, 0)
 rotation = 3.1415927
 texture = ExtResource("6_gjjtp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703527519]
-visible = false
-position = Vector2(2, 287)
-shape = SubResource("RectangleShape2D_kf46m")
+[node name="StaticBody" type="StaticBody2D" parent="UpperGuard" unique_id=95659840]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperGuard/StaticBody" unique_id=1824603031]
+position = Vector2(2.000002, 23.5)
+shape = SubResource("RectangleShape2D_kyv88")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="UpperGuard/StaticBody" unique_id=1916272175]
+position = Vector2(2.000002, 1.9999999)
+shape = SubResource("RectangleShape2D_bnxsf")
 
 [node name="Comp2dHitbox" type="Area2D" parent="." unique_id=1949732109]
-visible = false
 collision_layer = 0
-monitoring = false
-monitorable = false
 script = ExtResource("7_gjjtp")
-is_enable = false
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox" unique_id=1283912412]
@@ -91,15 +116,18 @@ position = Vector2(32, 50)
 shape = SubResource("RectangleShape2D_y1sro")
 
 [node name="WarrningTimer" type="Timer" parent="." unique_id=293570707]
+wait_time = 0.5
 one_shot = true
 
 [node name="OnTimer" type="Timer" parent="." unique_id=185345127]
 one_shot = true
 
 [node name="OffTimer" type="Timer" parent="." unique_id=523748136]
+wait_time = 1.2
 one_shot = true
 
 [node name="Sparks" type="Node2D" parent="." unique_id=1586639271]
+visible = false
 
 [node name="SparksUpper" type="GPUParticles2D" parent="Sparks" unique_id=1389697275]
 position = Vector2(32, 18)
@@ -111,7 +139,7 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_6054b")
 
 [node name="SparksLower" type="GPUParticles2D" parent="Sparks" unique_id=1396058782]
-position = Vector2(32, 84)
+position = Vector2(32, 68)
 amount = 25
 texture = ExtResource("8_y1sro")
 lifetime = 0.55

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbjycq4y1a3qw"]
 
 [ext_resource type="Script" uid="uid://1is3gv0qqt02" path="res://scenes/obstacles/projectiles/arrows/arrow.gd" id="1_3ao5h"]
-[ext_resource type="Texture2D" uid="uid://b7oypiwrw83q0" path="res://scenes/obstacles/projectiles/arrows/assets/arrow_light_64x64.png" id="2_3ao5h"]
+[ext_resource type="Texture2D" uid="uid://b1xx6tn38an1j" path="res://scenes/obstacles/projectiles/arrows/assets/arrow_light_64x64.png" id="2_3ao5h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mml86"]
 size = Vector2(94, 10)
@@ -20,6 +20,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_3ao5h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711033401]
+visible = false
 position = Vector2(-47, 0)
 shape = SubResource("RectangleShape2D_mml86")
 
@@ -27,6 +28,7 @@ shape = SubResource("RectangleShape2D_mml86")
 position = Vector2(-58, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=535549377]
+visible = false
 position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_3ao5h")
 

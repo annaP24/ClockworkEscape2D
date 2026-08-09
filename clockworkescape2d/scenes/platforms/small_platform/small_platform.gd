@@ -20,7 +20,7 @@ func _ready() -> void:
 		dissapear_timer.wait_time = dissapear_timeout
 	else:
 		sprite_2d.texture = load("res://scenes/platforms/assets/Platform_64x64.png")
-		
+
 func _on_dissapear_timer_timeout() -> void:
 	animation_player.play("dissapear")
 	is_platform_visible = false
@@ -30,7 +30,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		collision.disabled = true
 		detection_collision.disabled = true
 		appear_timer.start(appear_timeout)
-	
+
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if is_disappearing:
 		if body.is_in_group("player"):
@@ -39,7 +39,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 				dissapear_timer.start(dissapear_timeout)
 			else:
 				dissapear_timer.start(dissapear_timeout)
-		
+
 func _on_appear_timer_timeout() -> void:
 	collision.disabled = false
 	detection_collision.disabled = false

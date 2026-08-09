@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ciupdc666uu87"]
 
 [ext_resource type="Script" uid="uid://cbar0mcdmlng" path="res://scenes/world_map/level_node.gd" id="1_26ptv"]
-[ext_resource type="Texture2D" uid="uid://cf0c7l0k7mqe2" path="res://scenes/world_map/assets/gear_2.png" id="2_mxuui"]
-[ext_resource type="Texture2D" uid="uid://cbe7lov2yv224" path="res://scenes/world_map/assets/gear.png" id="2_r226i"]
+[ext_resource type="Texture2D" uid="uid://drn7vbog2w3nt" path="res://scenes/world_map/assets/level_gear_shadow_2.png" id="2_uq5ac"]
 [ext_resource type="PackedScene" uid="uid://b3x34ffhjvqsr" path="res://scenes/world_map/collectables_visual.tscn" id="3_mxuui"]
+[ext_resource type="Texture2D" uid="uid://cq2b03k60tin5" path="res://scenes/world_map/assets/level_gear_shadow.png" id="3_uq5ac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxuui"]
 radius = 65.03076
@@ -11,12 +11,17 @@ radius = 65.03076
 [node name="LevelNode" type="Area2D" unique_id=1530583061]
 script = ExtResource("1_26ptv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1037414981]
-texture = ExtResource("2_r226i")
+[node name="Sprite" type="Node2D" parent="." unique_id=1438900643]
+scale = Vector2(0.7, 0.7)
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=870002639]
+[node name="Sprite2D_Gear" type="Sprite2D" parent="Sprite" unique_id=1037414981]
+unique_name_in_owner = true
+texture = ExtResource("2_uq5ac")
+
+[node name="Sprite2D_Disabled" type="Sprite2D" parent="Sprite" unique_id=1633753246]
+unique_name_in_owner = true
 visible = false
-texture = ExtResource("2_mxuui")
+texture = ExtResource("3_uq5ac")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067932886]
 visible = false

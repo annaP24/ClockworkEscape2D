@@ -78,4 +78,7 @@ position = Vector2(1952, 608)
 polygon = PackedVector2Array(-16.986206, -6.3361816, 33.013794, -6.3361816, 34.013794, 5.6638184, -41.986206, 5.6638184)
 one_way_collision_margin = 4.2
 
+[node name="SpriteArrow" parent="ExitPlatform" index="1" unique_id=686190412]
+position = Vector2(0, -39.33867)
+
 [editable path="ExitPlatform"]

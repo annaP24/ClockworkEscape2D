@@ -9,7 +9,6 @@ size = Vector2(128, 32)
 size = Vector2(128, 36)
 
 [node name="Small_platform" type="StaticBody2D" unique_id=1620481334]
-z_index = 1
 collision_mask = 0
 metadata/_edit_vertical_guides_ = [64.0, -64.0]
 

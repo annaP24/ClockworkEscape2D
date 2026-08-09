@@ -156,28 +156,6 @@ func turn_off_light():
 func turn_on_light():
 	point_light_2d.enabled = true
 #------------------------RayCast management -----------------------------
-func get_colliding_tile_type() -> Array:
-	var current_tiles = []
-	for i in range(get_slide_collision_count()):
-		var collision_info = get_slide_collision(i)
-		var collider = collision_info.get_collider()
-
-		# Check if we hit a tilemap
-		if collider is TileMapLayer:
-			# Get the collision position
-			var pos = collision_info.get_position() - collision_info.get_normal()
-
-			# Convert global position to map coordinates
-			var map_pos = collider.local_to_map(collider.to_local(pos))
-			# Get the TileData at that coordinate
-			var tile_data = collider.get_cell_tile_data(map_pos)
-			if tile_data:
-				# Retrive custom ID
-				var tile_type = tile_data.get_custom_data("tile_id")
-				if tile_type != "" and !current_tiles.has(tile_type):
-					current_tiles.append(tile_type)
-	return current_tiles
-
 func get_walkable_wall_side() -> WallSide:
 	if shape_cast_2d.is_colliding():
 		# Check Slide Collisions (Active movement)
@@ -212,19 +190,6 @@ func get_wall_direction():
 		last_wall_direction = WallSide.LEFT
 	else:
 		last_wall_direction = WallSide.NONE
-
-func get_closest_wall_distance() -> float:
-	if not shape_cast_2d.is_colliding():
-		return INF
-
-	var min_dist : float = INF
-	for i in range(shape_cast_2d.get_collision_count()):
-		var p : Vector2 = shape_cast_2d.get_collision_point(i)
-		var delta : Vector2 = p - global_position
-		var proj = abs(delta.dot(p))
-		min_dist = min(min_dist,proj)
-
-	return min_dist
 
 func set_can_grab(grab : bool):
 	# rücksetzen des states nach einer gewissen zeit

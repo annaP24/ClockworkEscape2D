@@ -6,7 +6,7 @@ extends StaticBody2D
 		_update_lightning()
 @export var on_time : float = 1.0
 @export var off_time : float = 1.2
-@export var warrning_time : float = 0.5
+@export var warrning_time : float = 1.0
 
 @onready var lower: Sprite2D = $LowerGuard
 @onready var upper: Sprite2D = $UpperGuard

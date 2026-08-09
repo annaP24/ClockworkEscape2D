@@ -16,10 +16,6 @@ shader_parameter/gamma = 1.0
 process_mode = 3
 script = ExtResource("1_4wyf3")
 
-[node name="WorldMap" parent="." unique_id=1188891860 instance=ExtResource("2_k0juu")]
-
-[node name="Scene" type="Node2D" parent="." unique_id=65681456]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1161635258]
 
 [node name="BrightnessLayer" type="ColorRect" parent="CanvasLayer" unique_id=636824329]
@@ -30,6 +26,10 @@ offset_left = -1432.0
 offset_right = 2393.0
 offset_bottom = 3447.0
 mouse_filter = 2
+
+[node name="WorldMap" parent="." unique_id=1188891860 instance=ExtResource("2_k0juu")]
+
+[node name="Scene" type="Node2D" parent="." unique_id=65681456]
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=824527178]
 

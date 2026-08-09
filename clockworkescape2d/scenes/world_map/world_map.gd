@@ -164,7 +164,7 @@ func _generate_curve() -> void:
 
 	line_2d.points = curve.get_baked_points()
 	line_2d.width = 240
-	line_2d.texture = preload("res://scenes/world_map/assets/road.png")
+	line_2d.texture = preload("res://scenes/world_map/assets/road_3.png")
 
 
 # -----------------------------------------------------------------------------
