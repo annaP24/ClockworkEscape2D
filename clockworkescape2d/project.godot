@@ -36,7 +36,7 @@ SettingManager="*uid://c7afxmwl6ncg1"
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=825
+window/size/viewport_height=830
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

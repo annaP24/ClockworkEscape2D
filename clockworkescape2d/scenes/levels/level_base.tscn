@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cpsw2uhsllv53" path="res://scenes/ui/background.tscn" id="7_g7p6o"]
 [ext_resource type="PackedScene" uid="uid://drcww5ckdke3c" path="res://scenes/interactables/exit/exit_platform.tscn" id="8_40ga3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_40ga3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7p6o"]
 texture = ExtResource("5_ynct0")
 texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
@@ -58,7 +58,7 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x2afm"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynct0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_40ga3"]
 texture = ExtResource("3_40ga3")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -218,7 +218,7 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uqgjy"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w06h8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynct0"]
 texture = ExtResource("5_g7p6o")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -296,9 +296,9 @@ terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 custom_data_layer_0/name = "tile_id"
 custom_data_layer_0/type = 4
-sources/2 = SubResource("TileSetAtlasSource_40ga3")
-sources/6 = SubResource("TileSetAtlasSource_w06h8")
-sources/5 = SubResource("TileSetAtlasSource_ynct0")
+sources/2 = SubResource("TileSetAtlasSource_g7p6o")
+sources/6 = SubResource("TileSetAtlasSource_ynct0")
+sources/5 = SubResource("TileSetAtlasSource_40ga3")
 
 [node name="Level_base" type="Node2D" unique_id=575594771]
 process_mode = 3
@@ -326,7 +326,7 @@ tile_set = SubResource("TileSet_pwolw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1004786378]
 anchor_mode = 0
-zoom = Vector2(0.645, 0.645)
+zoom = Vector2(0.645, 0.65)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1690913]
 color = Color(0.78039217, 0.70980394, 0.6627451, 1)
