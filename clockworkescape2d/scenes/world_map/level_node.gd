@@ -31,23 +31,19 @@ func trigger_button():
 
 func update_visual():
 	if is_unlocked:
-		sprite.modulate = Color.WHITE
 		sprite_enabled.visible = true
 		sprite_disabled.visible = false
-		collectables_visual.update_visual(Color.WHITE)
 		set_highlight(is_selected)
 	else:
-		sprite.modulate = Color.GRAY
 		sprite_enabled.visible = false
 		sprite_disabled.visible = true
-		collectables_visual.update_visual(Color.GRAY)
 	collectables_visual.update_collected_count()
 	label.text = str(level_id)
 
 
 func set_highlight(active : bool):
 	is_selected = active
-	if is_selected:
+	if is_selected and is_unlocked:
 		# Simple visual feedback (replace with an animation or shader)
 		sprite.modulate = Color(1.5, 1.5, 1.5) # Brighten
 		sprite.scale = Vector2(init_scale.x + 0.1, init_scale.y + 0.1)

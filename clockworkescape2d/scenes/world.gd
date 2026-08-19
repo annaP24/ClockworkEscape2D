@@ -4,6 +4,7 @@ extends Node2D
 @onready var world_map: WorldMap = $WorldMap
 @onready var brightness_mat : Material = %BrightnessLayer.material
 @onready var brightness_layer: ColorRect = %BrightnessLayer
+@onready var frame_tilemap: TileMapLayer = %TileMapLayer
 
 enum GameState {
 	MAIN_MENU,
@@ -85,6 +86,7 @@ func _unhandled_input(event):
 func _open_main_menu():
 
 	current_state = GameState.MAIN_MENU
+	_update_mouse_pointer()
 
 	_set_start_menu_visible(true)
 	_set_settings_menu_visible(false)
@@ -98,6 +100,7 @@ func _open_main_menu():
 func _open_settings():
 
 	current_state = GameState.SETTINGS
+	_update_mouse_pointer()
 
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(true)
@@ -106,6 +109,7 @@ func _open_settings():
 func _open_world_map():
 
 	current_state = GameState.WORLD_MAP
+	_update_mouse_pointer()
 
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(false)
@@ -121,6 +125,7 @@ func _open_world_map():
 
 func _open_save_slots():
 	current_state = GameState.SAVE_SLOTS
+	_update_mouse_pointer()
 	_set_start_menu_visible(false)
 	_set_slots_menu_visible(true)
 
@@ -157,6 +162,7 @@ func _set_slots_menu_visible(slots_is_visible : bool):
 
 func _set_world_map_visible(is_world_map_visible : bool):
 	world_map.visible = is_world_map_visible
+	frame_tilemap.visible = is_world_map_visible
 
 func _pause_world_map(is_paused : bool):
 	get_tree().paused = is_paused
@@ -188,9 +194,16 @@ func _check_input_controller():
 		GameManager.is_joypad_connected = true
 	else:
 		GameManager.is_joypad_connected = false
+	_update_mouse_pointer()
 
 	# Subscribe to joypad connection
 	Input.joy_connection_changed.connect(_on_joypad_connection_changed)
+
+func _update_mouse_pointer() -> void:
+	if GameManager.is_joypad_connected:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # --------------- Signals -----------------------
 func  _on_player_finished():
@@ -246,6 +259,7 @@ func _on_sm_quit_game() -> void:
 
 func _on_joypad_connection_changed(_device: int, connected: bool):
 	GameManager.is_joypad_connected = connected
+	_update_mouse_pointer()
 
 func _on_brightness_changed(value : float) -> void:
 	#brightness_mat.set_shader_parameter("brightness", value)

@@ -200,7 +200,8 @@ func _on_level_selected(level_id : int) -> void:
 
 	GameManager.current_level = level_id - 1
 	GameManager.current_level_id = level_id
-
+	#hide mouse courser
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_parent().load_level(
 		GameManager.get_level_path(),
 		level_id
