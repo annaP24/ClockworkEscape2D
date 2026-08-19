@@ -8,7 +8,7 @@ var is_joypad : bool = false
 func _ready() -> void:
 	EventBus.world_show_menu.connect(_on_show_received)
 	EventBus.button_pressed.connect(_on_button_pressed)
-	if GameManager.is_joypad_connected:
+	if GameSaveManager.is_joypad_connected:
 		start_button.grab_focus()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # ---------------------- Signals ----------------------
 func _on_show_received(is_show : bool):
 	visible = is_show
-	if GameManager.is_joypad_connected:
+	if GameSaveManager.is_joypad_connected:
 		start_button.grab_focus()
 
 func _on_button_pressed(button : TextureButton) -> void:

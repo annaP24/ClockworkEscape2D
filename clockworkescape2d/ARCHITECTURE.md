@@ -97,7 +97,7 @@ EventBus.connect("menu_start_game", _on_menu_start_game)
 **Files**:
 - `core/comp_2d_hitbox.gd` — Offensive collision (Area2D wrapper)
 - `core/comp_2d_hurtbox.gd` — Defensive collision (receives damage)
-- `core/comp_object_pool.gd` — Object pooling (NEW)
+- `core/comp_object_pool.gd` — Object pooling 
 
 **Pattern**: Reusable components avoid inheritance bloat.
 
@@ -212,32 +212,6 @@ instance.position = spawn_pos
 collectable_pool.return_instance(instance)
 ```
 
-### Node Caching
-
-Always cache frequently accessed nodes:
-```gdscript
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-func _process(_delta: float) -> void:
-    animation_player.play("idle")  # No tree search each frame
-```
-
-### Avoid Searching Tree in Loops
-
-✗ Bad:
-```gdscript
-func _process(_delta):
-    for enemy in get_tree().get_nodes_in_group("enemies"):
-        enemy.take_damage(1)  # Searches tree every frame
-```
-
-✓ Good:
-```gdscript
-var enemies: Array[Node] = []
-
-func _ready():
-    enemies = get_tree().get_nodes_in_group("enemies")  # Cache once
-```
 
 ---
 
@@ -249,30 +223,6 @@ func _ready():
 2. Inherit from `level_base.gd`
 3. Place obstacles, collectables, platforms
 4. Create exit platform connecting to `level_completed` signal
-
-### Adding a New UI Menu
-
-1. Create scene in `scenes/ui/my_menu/my_menu.tscn`
-2. Emit signals via EventBus (never direct references)
-3. Connect to World via EventBus in `world.gd`
-
-**Example**:
-```gdscript
-# my_menu.gd
-func _on_start_pressed():
-    EventBus.menu_start_game.emit()
-
-# world.gd
-func _ready():
-    EventBus.connect("menu_start_game", _on_menu_start_game)
-```
-
-### Adding a New Obstacle Type
-
-1. Create `scenes/obstacles/my_obstacle/my_obstacle.tscn`
-2. Inherit from `CharacterBody2D` or `Area2D`
-3. Add `Comp2dHitbox` child component
-4. Connect hitbox signals as needed
 
 ---
 
@@ -304,14 +254,4 @@ func _ready():
 
 ---
 
-## Future Improvements
-
-1. **Dialog system**: Create `DialogEventBus` for NPC conversations
-2. **Enemy AI**: Apply FSM pattern to enemies with their own state machines
-3. **Weapon system**: Use component pattern for different weapon types
-4. **Level progression**: Expand `GameManager` to track global progress
-5. **Replay system**: Record EventBus signal emissions to create playback
-
----
-
-**Last Updated**: 2026-06-17
+**Last Updated**: 2026-08-20

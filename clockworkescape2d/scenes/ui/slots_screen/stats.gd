@@ -9,7 +9,7 @@ class_name  Stats
 
 
 func fill_data(data : Dictionary):
-	var readable_time = GameManager.format_play_time(data["time"])
+	var readable_time = GameSaveManager.format_play_time(data["time"])
 	collectables.text = str(data["collected"])
 	deaths.text = str(data["deaths"])
 	timelaps.text = readable_time

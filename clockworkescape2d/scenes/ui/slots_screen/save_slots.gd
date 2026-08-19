@@ -23,9 +23,9 @@ func _ready() -> void:
 		play_button.disabled = true
 
 func _check_slot_data():
-	slot1_data = GameManager.check_progress_data_for_slot(1)
-	slot2_data = GameManager.check_progress_data_for_slot(2)
-	slot3_data = GameManager.check_progress_data_for_slot(3)
+	slot1_data = GameSaveManager.check_progress_data_for_slot(1)
+	slot2_data = GameSaveManager.check_progress_data_for_slot(2)
+	slot3_data = GameSaveManager.check_progress_data_for_slot(3)
 
 	if slot1_data.is_empty():
 		stats_sl_1.visible = false
@@ -80,7 +80,7 @@ func _on_play_pressed() -> void:
 
 
 func _on_delete_button_pressed() -> void:
-	GameManager.delete_configuration(selected_slot)
+	GameSaveManager.delete_configuration(selected_slot)
 	AudioManager.play_sfx("click")
 	_check_slot_data()
 

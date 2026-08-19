@@ -56,7 +56,7 @@ func unlock_levels() -> void:
 
 	var levels : Array = levels_container.get_children() as Array[LevelNode]
 	var level_count := levels.size()
-	var max_level_unlocked : int = GameManager.load_progress()
+	var max_level_unlocked : int = GameSaveManager.load_progress()
 	for i in range(level_count):
 
 		var node : LevelNode = levels[i]
@@ -198,10 +198,10 @@ func _change_focus(level : LevelNode, is_joypad_selection : bool) -> void:
 
 func _on_level_selected(level_id : int) -> void:
 
-	GameManager.current_level = level_id - 1
-	GameManager.current_level_id = level_id
+	GameSaveManager.current_level = level_id - 1
+	GameSaveManager.current_level_id = level_id
 
 	get_parent().load_level(
-		GameManager.get_level_path(),
+		GameSaveManager.get_level_path(),
 		level_id
 	)

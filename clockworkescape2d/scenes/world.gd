@@ -52,10 +52,10 @@ func _ready() -> void:
 
 func _initialize_managers() -> void:
 	## Initialize all manager singletons in dependency order.
-	## GameManager must load saves first, then audio/visuals can configure themselves.
+	## GameSaveManager must load saves first, then audio/visuals can configure themselves.
 
-	if not GameManager.is_ready():
-		GameManager.initialize()
+	if not GameSaveManager.is_ready():
+		GameSaveManager.initialize()
 
 	if not AudioManager.is_ready():
 		AudioManager.initialize()
@@ -70,7 +70,7 @@ func _unhandled_input(event):
 
 	match current_state:
 		GameState.WORLD_MAP:
-			GameManager.save_stats_progress()
+			GameSaveManager.save_stats_progress()
 			_open_main_menu()
 		GameState.MAIN_MENU:
 			_open_world_map()
@@ -185,9 +185,9 @@ func _unload_level():
 func _check_input_controller():
 	var joypads = Input.get_connected_joypads()
 	if joypads.size() > 0:
-		GameManager.is_joypad_connected = true
+		GameSaveManager.is_joypad_connected = true
 	else:
-		GameManager.is_joypad_connected = false
+		GameSaveManager.is_joypad_connected = false
 
 	# Subscribe to joypad connection
 	Input.joy_connection_changed.connect(_on_joypad_connection_changed)
@@ -201,7 +201,7 @@ func _on_fade_out_finished():
 	match pending_transition:
 
 		TransitionAction.RELOAD_LEVEL:
-			load_level(current_level_path, GameManager.current_level_id)
+			load_level(current_level_path, GameSaveManager.current_level_id)
 
 		TransitionAction.RETURN_TO_MAP:
 			_unload_level()
@@ -211,7 +211,7 @@ func _on_fade_out_finished():
 	pending_transition = TransitionAction.NONE
 
 func _on_quit_level_received():
-	GameManager.save_stats_progress()
+	GameSaveManager.save_stats_progress()
 	pending_transition = TransitionAction.RETURN_TO_MAP
 	FadeScreen.fade_out()
 
@@ -220,12 +220,12 @@ func _on_restart_level_received():
 	FadeScreen.fade_out()
 
 func _on_return_to_map_received(level_id : int):
-	GameManager.save_stats_progress()
-	max_level_reached = GameManager.load_progress()
+	GameSaveManager.save_stats_progress()
+	max_level_reached = GameSaveManager.load_progress()
 
 	if level_id + 1 > max_level_reached:
 		max_level_reached += 1
-		GameManager.save_progress(max_level_reached)
+		GameSaveManager.save_progress(max_level_reached)
 
 	pending_transition = TransitionAction.RETURN_TO_MAP
 	world_map.unlock_levels()
@@ -245,7 +245,7 @@ func _on_sm_quit_game() -> void:
 	get_tree().quit()
 
 func _on_joypad_connection_changed(_device: int, connected: bool):
-	GameManager.is_joypad_connected = connected
+	GameSaveManager.is_joypad_connected = connected
 
 func _on_brightness_changed(value : float) -> void:
 	#brightness_mat.set_shader_parameter("brightness", value)
@@ -254,8 +254,8 @@ func _on_brightness_changed(value : float) -> void:
 	#TODO: save brightness setting
 
 func _on_slot_pressed(id : int) -> void:
-	GameManager.set_current_slot_id(id)
-	# GameManager.load_progress()
+	GameSaveManager.set_current_slot_id(id)
+	# GameSaveManager.load_progress()
 	# SettingsManager.load_settings()
 	world_map.unlock_levels()
 	world_map.focus_last_played_level()
