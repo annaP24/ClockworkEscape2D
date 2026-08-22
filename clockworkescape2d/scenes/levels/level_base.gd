@@ -40,7 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _on_player_died():
-	GameManager.update_number_of_deaths()
+	GameSaveManager.update_number_of_deaths()
 	EventBus.level_restart_requested.emit()
 
 func _on_exit_platform_level_finished() -> void:
@@ -49,5 +49,5 @@ func _on_exit_platform_level_finished() -> void:
 		get_tree().call_deferred("reload_current_scene")
 	else:
 		#Save current collected count to progress.cfg
-		GameManager.save_collectables_count_for_level(level_id, player.get_nr_of_collected_items())
+		GameSaveManager.save_collectables_count_for_level(level_id, player.get_nr_of_collected_items())
 		EventBus.level_return_to_map.emit(level_id)

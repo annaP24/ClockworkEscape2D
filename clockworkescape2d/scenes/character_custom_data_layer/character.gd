@@ -128,11 +128,11 @@ func update_animation(new_animation : animations):
 
 func update_collectables_number():
 	curr_nr_collectables += 1
-	GameManager.collected_objects += 1
+	GameSaveManager.collected_objects += 1
 
 func reset_collectables():
 	#Reset number of collected objects to the number before this level
-	GameManager.collected_objects = GameManager.collected_objects - curr_nr_collectables
+	GameSaveManager.collected_objects = GameSaveManager.collected_objects - curr_nr_collectables
 	curr_nr_collectables = 0
 
 func get_nr_of_collected_items()->int:

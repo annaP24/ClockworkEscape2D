@@ -25,7 +25,7 @@ func _ready() -> void:
 	elif flow_direction == direction.DOWN:
 		current_shoot_dir = Vector2(0,1)
 
-	cooldown.wait_time = shoot_cooldown
+	cooldown.start(0.0)
 
 func _process(_delta: float) -> void:
 	if is_shoot:
@@ -43,3 +43,4 @@ func shoot_bullet():
 
 func _on_cooldown_timeout() -> void:
 	is_shoot = true
+	cooldown.start(shoot_cooldown)

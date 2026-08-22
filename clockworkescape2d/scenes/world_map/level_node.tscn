@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ciupdc666uu87"]
 
 [ext_resource type="Script" uid="uid://cbar0mcdmlng" path="res://scenes/world_map/level_node.gd" id="1_26ptv"]
-[ext_resource type="Texture2D" uid="uid://dgmhnbly5p6t3" path="res://scenes/world_map/assets/level_gear_6.png" id="2_uq5ac"]
+[ext_resource type="Texture2D" uid="uid://8u4r21xdp6k5" path="res://scenes/world_map/assets/level_gear_7.png" id="2_uq5ac"]
 [ext_resource type="PackedScene" uid="uid://b3x34ffhjvqsr" path="res://scenes/world_map/collectables_visual.tscn" id="3_mxuui"]
-[ext_resource type="Texture2D" uid="uid://cq2b03k60tin5" path="res://scenes/world_map/assets/level_gear_shadow.png" id="3_uq5ac"]
+[ext_resource type="Texture2D" uid="uid://bbdbnjteewetr" path="res://scenes/world_map/assets/level_gear_disabled_7.png" id="3_uq5ac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxuui"]
 radius = 65.03076

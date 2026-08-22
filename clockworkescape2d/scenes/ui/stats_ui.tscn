@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dui4j26cdjcr8"]
+
+[ext_resource type="Texture2D" uid="uid://ckfgfnq0rldh6" path="res://scenes/ui/assets/collectable_icon.png" id="1_3ktwi"]
+[ext_resource type="Script" uid="uid://dehsfx7cfqh6s" path="res://scenes/ui/stats_ui.gd" id="1_7klq2"]
+[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="2_7klq2"]
+[ext_resource type="Texture2D" uid="uid://bopgumf75y6g5" path="res://scenes/ui/assets/grave_icon.png" id="3_it41h"]
+[ext_resource type="Texture2D" uid="uid://cysuxfbhd8t2t" path="res://scenes/ui/assets/level_icon.png" id="4_0nbfn"]
+
+[node name="UI" type="Control" unique_id=299092503]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_7klq2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1175282654]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 768.0
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=2135754772]
+custom_minimum_size = Vector2(0, 740)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=132592216]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=450201424]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="ColectablesTeyture" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1962415697]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+texture = ExtResource("1_3ktwi")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1288140806]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 23.965)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.18431373, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("2_7klq2")
+theme_override_font_sizes/font_size = 40
+text = "60/60"
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1865877848]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="DeathTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=787945482]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+texture = ExtResource("3_it41h")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="DeathsLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=2071669578]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 23.965)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.18431373, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("2_7klq2")
+theme_override_font_sizes/font_size = 40
+text = "600000000"
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=1498024431]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="LevelIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1755484835]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+texture = ExtResource("4_0nbfn")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="LevelsLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=191660016]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 23.965)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.18431373, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("2_7klq2")
+theme_override_font_sizes/font_size = 40
+text = "600000000"
+vertical_alignment = 1

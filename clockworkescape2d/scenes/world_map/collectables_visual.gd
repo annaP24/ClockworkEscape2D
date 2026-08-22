@@ -19,7 +19,7 @@ func _ready() -> void:
 	update_collected_count()
 
 func update_collected_count():
-	collected_count = GameManager.get_collected_count_for_level(level_id)
+	collected_count = GameSaveManager.get_collected_count_for_level(level_id)
 	set_images()
 
 func set_images():

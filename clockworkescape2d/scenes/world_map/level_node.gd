@@ -45,8 +45,8 @@ func set_highlight(active : bool):
 	is_selected = active
 	if is_selected and is_unlocked:
 		# Simple visual feedback (replace with an animation or shader)
-		sprite.modulate = Color(1.5, 1.5, 1.5) # Brighten
-		sprite.scale = Vector2(init_scale.x + 0.1, init_scale.y + 0.1)
+		sprite.modulate = Color(1.2, 1.2, 1.2) # Brighten
+		sprite.scale = Vector2(init_scale.x + 0.05, init_scale.y + 0.05)
 	else:
 		sprite.modulate = Color(1, 1, 1)
 		sprite.scale = init_scale

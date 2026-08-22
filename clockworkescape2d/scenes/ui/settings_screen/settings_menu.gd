@@ -22,7 +22,7 @@ func _ready() -> void:
 	EventBus.world_hide_settings_menu.connect(_on_hide_received)
 	EventBus.button_pressed.connect(_on_button_pressed)
 	_set_defaults()
-	
+
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_bus_volume("Music", value)
@@ -114,6 +114,6 @@ func _on_button_pressed(button : TextureButton) -> void:
 
 func _on_hide_received(is_show : bool)-> void:
 	visible = is_show
-	if is_show:		
-		if GameManager.is_joypad_connected:
+	if is_show:
+		if GameSaveManager.is_joypad_connected:
 			music_slider.grab_focus()
