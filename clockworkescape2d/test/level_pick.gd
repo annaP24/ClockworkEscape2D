@@ -15,6 +15,7 @@ var current_focused_level: Node = null
 var is_joypad_connected := false
 var current_page := 0
 var all_levels: Array = []
+var is_transitioning := false
 
 func _ready() -> void:
 	_collect_levels()
@@ -56,9 +57,46 @@ func _on_next_page_pressed() -> void:
 func _change_page(offset: int) -> void:
 	if !visible:
 		return
+	if is_transitioning:
+		return
+	var previous_page := current_page
+	var direction := 1 if offset > 0 else -1
 	current_page = clamp(current_page + offset, 0, TOTAL_PAGES - 1)
+	if current_page == previous_page:
+		return
 	_apply_page()
+	_animate_page_transition(direction)
 	_update_page_buttons()
+
+func _animate_page_transition(direction: int) -> void:
+	is_transitioning = true
+	_update_page_buttons()
+	var slide_distance = 220.0 * direction
+	var visible_levels: Array = []
+	for level in all_levels:
+		if is_instance_valid(level) and level.visible:
+			visible_levels.append(level)
+
+	for index in range(visible_levels.size()):
+		var level = visible_levels[index]
+		if !is_instance_valid(level):
+			continue
+		var start_x = level.position.x + slide_distance
+		var start_rotation = -10.0 if index % 2 == 0 else 10.0
+		level.position.x = start_x
+		level.rotation_degrees = start_rotation
+		level.modulate.a = 0.25
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.parallel().tween_property(level, "position:x", level.position.x - slide_distance, 0.75)
+		tween.parallel().tween_property(level, "rotation_degrees", 0.0, 0.75)
+		tween.parallel().tween_property(level, "modulate:a", 1.0, 0.75)
+		tween.finished.connect(func():
+			if is_transitioning:
+				is_transitioning = false
+				_update_page_buttons()
+		)
 
 func _apply_page() -> void:
 	var max_level_unlocked: int = GameSaveManager.load_progress()
@@ -85,18 +123,21 @@ func _apply_page() -> void:
 		slot_index += 1
 
 func _update_page_buttons() -> void:
+	var can_go_left := current_page > 0 and !is_transitioning
+	var can_go_right := current_page < TOTAL_PAGES - 1 and !is_transitioning
+
 	if is_instance_valid(left_button):
 		left_button.visible = current_page > 0
 		control_button_left.visible = current_page == 0
-		left_button.disabled = !(current_page > 0)
-		left_button.set_process_input(current_page > 0)
-		left_button.set_process_unhandled_input(current_page > 0)
+		left_button.disabled = !can_go_left
+		left_button.set_process_input(can_go_left)
+		left_button.set_process_unhandled_input(can_go_left)
 	if is_instance_valid(right_button):
 		right_button.visible = current_page < TOTAL_PAGES - 1
 		control_button_right.visible = current_page == TOTAL_PAGES - 1
-		right_button.disabled = !(current_page < TOTAL_PAGES - 1)
-		right_button.set_process_input(current_page < TOTAL_PAGES - 1)
-		right_button.set_process_unhandled_input(current_page < TOTAL_PAGES - 1)
+		right_button.disabled = !can_go_right
+		right_button.set_process_input(can_go_right)
+		right_button.set_process_unhandled_input(can_go_right)
 
 func unlock_levels() -> void:
 	_apply_page()
