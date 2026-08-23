@@ -24,10 +24,10 @@ func _ready() -> void:
 
 func _show_navigation() -> void:
 	visible = true
+	levels_root.visible = true
 	set_process_input(true)
 	set_process_unhandled_input(true)
-	if levels_root:
-		levels_root.visible = true
+	_update_page_buttons()
 
 func _collect_levels() -> void:
 	all_levels.clear()
@@ -83,8 +83,16 @@ func _apply_page() -> void:
 		slot_index += 1
 
 func _update_page_buttons() -> void:
-	left_button.visible = current_page > 0
-	right_button.visible = current_page < TOTAL_PAGES - 1
+	if is_instance_valid(left_button):
+		left_button.visible = current_page > 0
+		left_button.disabled = !(current_page > 0)
+		left_button.set_process_input(current_page > 0)
+		left_button.set_process_unhandled_input(current_page > 0)
+	if is_instance_valid(right_button):
+		right_button.visible = current_page < TOTAL_PAGES - 1
+		right_button.disabled = !(current_page < TOTAL_PAGES - 1)
+		right_button.set_process_input(current_page < TOTAL_PAGES - 1)
+		right_button.set_process_unhandled_input(current_page < TOTAL_PAGES - 1)
 
 func unlock_levels() -> void:
 	_apply_page()
