@@ -149,6 +149,7 @@ func _update_total_collected():
 	collected_objects = 0
 
 func set_level_paths():
+	all_level_paths.clear()
 	var nr_of_levels : int
 	var cfg = ConfigFile.new()
 	if FileAccess.file_exists(LEVELS_PATH):
@@ -166,7 +167,9 @@ func get_next_level_path() -> String:
 		return ""
 
 func get_level_path() -> String:
-	if current_level <= all_level_paths.size()-1:
+	if all_level_paths.is_empty():
+		set_level_paths()
+	if current_level >= 0 and current_level <= all_level_paths.size()-1:
 		return all_level_paths[current_level]
 	else:
 		#ToDo The end screen, return to menu

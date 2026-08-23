@@ -1,7 +1,7 @@
 # Refactored `WorldMap.gd`
 
 extends Node2D
-class_name WorldMap
+class_name WorldMap2
 
 @onready var line_2d: Line2D = $PathContainer/Line2D
 @onready var levels_container: Node2D = $LevelsContainer
@@ -200,7 +200,6 @@ func _on_level_selected(level_id : int) -> void:
 
 	GameSaveManager.current_level = level_id - 1
 	GameSaveManager.current_level_id = level_id
-	#hide mouse courser
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_parent().load_level(
 		GameSaveManager.get_level_path(),

@@ -27,7 +27,7 @@ expand_margin_bottom = 22.0
 [node name="Settings" type="Control" unique_id=568827001]
 process_mode = 3
 top_level = true
-z_index = 1
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,7 +59,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 10
 
 [node name="Control" type="Control" parent="ColorRect/VBoxContainer2" unique_id=832829992]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="ColorRect" type="TextureRect" parent="ColorRect/VBoxContainer2" unique_id=1413190783]

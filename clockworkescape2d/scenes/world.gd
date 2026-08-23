@@ -5,6 +5,7 @@ extends Node2D
 @onready var brightness_mat : Material = %BrightnessLayer.material
 @onready var brightness_layer: ColorRect = %BrightnessLayer
 @onready var ui: Control = %UI
+@onready var frame: TileMapLayer = %TileMapLayer
 
 enum GameState {
 	MAIN_MENU,
@@ -83,6 +84,12 @@ func _unhandled_input(event):
 		GameState.IN_LEVEL:
 			pass
 
+func _update_mouse_visibility(force_hidden : bool = false) -> void:
+	if force_hidden or GameSaveManager.is_joypad_connected:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func _open_main_menu():
 
 	current_state = GameState.MAIN_MENU
@@ -90,9 +97,12 @@ func _open_main_menu():
 	_set_start_menu_visible(true)
 	_set_settings_menu_visible(false)
 	_set_slots_menu_visible(false)
-	_set_world_map_visible(true)
+	_set_world_map_visible(false)
+	world_map._hide_navigation()
 	_set_score_ui_visible(false)
+	frame.visible = true
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
+	_update_mouse_visibility()
 
 	_pause_world_map(true)
 
@@ -102,7 +112,12 @@ func _open_settings():
 
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(true)
+	_set_world_map_visible(false)
+	world_map._hide_navigation()
 	_set_score_ui_visible(false)
+	frame.visible = true
+	_update_mouse_visibility()
+
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _open_world_map():
@@ -113,11 +128,14 @@ func _open_world_map():
 	_set_settings_menu_visible(false)
 	_set_slots_menu_visible(false)
 	_set_world_map_visible(true)
+	world_map._show_navigation()
 	_set_score_ui_visible(true)
+	frame.visible = true
 
 	world_map.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 	world_map.set_camera_enabled(true)
+	_update_mouse_visibility()
 
 	_pause_world_map(false)
 
@@ -125,7 +143,11 @@ func _open_save_slots():
 	current_state = GameState.SAVE_SLOTS
 	_set_start_menu_visible(false)
 	_set_slots_menu_visible(true)
+	_set_world_map_visible(false)
+	world_map._hide_navigation()
 	_set_score_ui_visible(false)
+	frame.visible = true
+	_update_mouse_visibility()
 
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -136,10 +158,12 @@ func _enter_level():
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(false)
 	_set_score_ui_visible(false)
+	frame.visible = false
 
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
 
 	world_map.set_camera_enabled(false)
+	_update_mouse_visibility(true)
 
 	_pause_world_map(false)
 
@@ -191,6 +215,8 @@ func _check_input_controller():
 		GameSaveManager.is_joypad_connected = true
 	else:
 		GameSaveManager.is_joypad_connected = false
+
+	_update_mouse_visibility()
 
 	# Subscribe to joypad connection
 	Input.joy_connection_changed.connect(_on_joypad_connection_changed)
@@ -249,6 +275,7 @@ func _on_sm_quit_game() -> void:
 
 func _on_joypad_connection_changed(_device: int, connected: bool):
 	GameSaveManager.is_joypad_connected = connected
+	_update_mouse_visibility()
 
 func _on_brightness_changed(value : float) -> void:
 	#brightness_mat.set_shader_parameter("brightness", value)

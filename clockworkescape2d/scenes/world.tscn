@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cx885i6g6gwnh"]
 
 [ext_resource type="Script" uid="uid://bb0ibp365qg4t" path="res://scenes/world.gd" id="1_4wyf3"]
-[ext_resource type="PackedScene" uid="uid://b7dwjdlcy16v6" path="res://scenes/world_map/world_map.tscn" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://cnmpd5bv5jxwc" path="res://test/level_pick.tscn" id="2_k0juu"]
 [ext_resource type="Shader" uid="uid://drilqq4hpvy1" path="res://shaders/brightness_gamma.gdshader" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://c4xv4ndywrjxu" path="res://scenes/ui/settings_screen/settings_menu.tscn" id="4_i7141"]
 [ext_resource type="PackedScene" uid="uid://dl6s4pemla15g" path="res://scenes/ui/start_screen/start_menu.tscn" id="5_4mrxx"]
@@ -38,18 +38,10 @@ custom_data_layer_0/name = "tile_id"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_e3hyu")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhx03"]
-texture = ExtResource("8_7r4gi")
-texture_region_size = Vector2i(64, 64)
-7:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_03acl"]
-tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_jhx03")
-
 [node name="World" type="Node2D" unique_id=77284601]
 process_mode = 3
 script = ExtResource("1_4wyf3")
+metadata/_edit_vertical_guides_ = [1280.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1161635258]
 
@@ -67,6 +59,7 @@ mouse_filter = 2
 [node name="Scene" type="Node2D" parent="." unique_id=65681456]
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=824527178]
+layer = 10
 
 [node name="Settings" parent="UILayer" unique_id=568827001 instance=ExtResource("4_i7141")]
 visible = false
@@ -77,10 +70,6 @@ z_index = 3
 [node name="UI" parent="UILayer" unique_id=299092503 instance=ExtResource("6_w7kh3")]
 unique_name_in_owner = true
 z_index = 3
-mouse_filter = 2
-
-[node name="SaveSlots" parent="UILayer" unique_id=1820339539 instance=ExtResource("7_w7kh3")]
-visible = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="UILayer" unique_id=1757839547]
 unique_name_in_owner = true
@@ -88,7 +77,5 @@ z_index = 3
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAKAAAAAAACAAAAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAANAAAAAAACAAAAAAAOAAAAAAACAAAAAAAPAAAAAAACAAAAAAAQAAAAAAACAAAAAAARAAAAAAACAAAAAAASAAAAAAACAAAAAAATAAAAAAAEAAAAAAATAAEAAAAEAAIAAAATAAIAAAAEAAIAAAATAAMAAAAEAAIAAAATAAQAAAAEAAIAAAATAAUAAAAEAAIAAAATAAYAAAAEAAIAAAATAAcAAAAEAAIAAAATAAgAAAAEAAIAAAATAAkAAAAEAAIAAAATAAoAAAAEAAIAAAATAAsAAAAEAAAAAAATAAwAAAAEAAQAAAASAAwAAAACAAQAAAARAAwAAAACAAQAAAAQAAwAAAACAAQAAAAPAAwAAAACAAQAAAAOAAwAAAACAAQAAAANAAwAAAACAAQAAAAMAAwAAAACAAQAAAALAAwAAAACAAQAAAAKAAwAAAACAAQAAAAJAAwAAAACAAQAAAAIAAwAAAACAAQAAAAHAAwAAAACAAQAAAAGAAwAAAACAAQAAAAFAAwAAAACAAQAAAAEAAwAAAACAAQAAAADAAwAAAACAAQAAAACAAwAAAACAAQAAAABAAwAAAACAAQAAAAAAAwAAAAAAAQAAAAAAAoAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAEAAAAAAAIAAAAIAAsAAAACAAAAAAAJAAsAAAACAAAAAAAKAAsAAAACAAAAAAALAAsAAAACAAAAAAAMAAsAAAACAAAAAAANAAsAAAACAAAAAAAOAAsAAAACAAAAAAAPAAsAAAACAAAAAAAQAAsAAAACAAAAAAASAAsAAAACAAAAAAARAAsAAAACAAAAAAAHAAsAAAACAAAAAAAGAAsAAAACAAAAAAAFAAsAAAACAAAAAAAEAAsAAAACAAAAAAADAAsAAAACAAAAAAACAAsAAAACAAAAAAABAAsAAAACAAAAAAAAAAsAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_dss4m")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="UILayer" unique_id=795674542]
-z_index = 2
-tile_map_data = PackedByteArray("AAAAAAwAAAAHAAIAAAABAAwAAAAHAAIAAAACAAwAAAAHAAIAAAADAAwAAAAHAAIAAAAEAAwAAAAHAAIAAAAFAAwAAAAHAAIAAAAGAAwAAAAHAAIAAAAHAAwAAAAHAAIAAAAIAAwAAAAHAAIAAAAJAAwAAAAHAAIAAAAKAAwAAAAHAAIAAAALAAwAAAAHAAIAAAAMAAwAAAAHAAIAAAANAAwAAAAHAAIAAAAOAAwAAAAHAAIAAAAPAAwAAAAHAAIAAAAQAAwAAAAHAAIAAAARAAwAAAAHAAIAAAASAAwAAAAHAAIAAAATAAwAAAAHAAIAAAATAAsAAAAHAAIAAAASAAsAAAAHAAIAAAARAAsAAAAHAAIAAAAQAAsAAAAHAAIAAAAPAAsAAAAHAAIAAAAOAAsAAAAHAAIAAAANAAsAAAAHAAIAAAAMAAsAAAAHAAIAAAALAAsAAAAHAAIAAAAKAAsAAAAHAAIAAAAJAAsAAAAHAAIAAAAIAAsAAAAHAAIAAAAHAAsAAAAHAAIAAAAGAAsAAAAHAAIAAAAFAAsAAAAHAAIAAAAEAAsAAAAHAAIAAAADAAsAAAAHAAIAAAACAAsAAAAHAAIAAAABAAsAAAAHAAIAAAAAAAsAAAAHAAIAAAA=")
-tile_set = SubResource("TileSet_03acl")
+[node name="SaveSlots" parent="UILayer" unique_id=1820339539 instance=ExtResource("7_w7kh3")]
+visible = false

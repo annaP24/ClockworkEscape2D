@@ -1,0 +1,179 @@
+[gd_scene format=4 uid="uid://cnmpd5bv5jxwc"]
+
+[ext_resource type="Script" uid="uid://clw52i8maxlrq" path="res://test/level_pick.gd" id="1_ftbes"]
+[ext_resource type="Texture2D" uid="uid://dxxdisa8ojqwv" path="res://assets/tilemap/frame.png" id="3_dj0na"]
+[ext_resource type="PackedScene" uid="uid://cdogeofl1g7no" path="res://test/level_node.tscn" id="3_qghd1"]
+[ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="5_vpdr7"]
+[ext_resource type="Texture2D" uid="uid://b6vn2n10ejw6d" path="res://test/assets/Background_new.png" id="7_025iv"]
+[ext_resource type="Texture2D" uid="uid://civhgro2m2v0f" path="res://test/assets/arrow_right_normal.png" id="7_kl1bo"]
+[ext_resource type="Texture2D" uid="uid://njgciasb2v2w" path="res://test/assets/arrow_left_normal.png" id="7_qmxkt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvspi"]
+texture = ExtResource("3_dj0na")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+2:2/0 = 0
+0:0/0 = 0
+4:0/0 = 0
+4:2/0 = 0
+4:4/0 = 0
+2:4/0 = 0
+0:4/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xoq5d"]
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+custom_data_layer_0/name = "tile_id"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_rvspi")
+
+[node name="WorldMap" type="Node2D" unique_id=1660041574]
+script = ExtResource("1_ftbes")
+metadata/_edit_horizontal_guides_ = [337.0]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1272043443]
+unique_name_in_owner = true
+visibility_layer = 3
+z_index = 17
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAKAAAAAAACAAAAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAANAAAAAAACAAAAAAAOAAAAAAACAAAAAAAPAAAAAAACAAAAAAAQAAAAAAACAAAAAAARAAAAAAACAAAAAAASAAAAAAACAAAAAAATAAAAAAAEAAAAAAATAAEAAAAEAAIAAAATAAIAAAAEAAIAAAATAAMAAAAEAAIAAAATAAQAAAAEAAIAAAATAAUAAAAEAAIAAAATAAYAAAAEAAIAAAATAAcAAAAEAAIAAAATAAgAAAAEAAIAAAATAAkAAAAEAAIAAAATAAoAAAAEAAIAAAATAAwAAAAEAAQAAAASAAwAAAACAAQAAAARAAwAAAACAAQAAAAQAAwAAAACAAQAAAAPAAwAAAACAAQAAAAOAAwAAAACAAQAAAANAAwAAAACAAQAAAAMAAwAAAACAAQAAAALAAwAAAACAAQAAAAKAAwAAAACAAQAAAAJAAwAAAACAAQAAAAIAAwAAAACAAQAAAAHAAwAAAACAAQAAAAGAAwAAAACAAQAAAAFAAwAAAACAAQAAAAEAAwAAAACAAQAAAADAAwAAAACAAQAAAACAAwAAAACAAQAAAABAAwAAAACAAQAAAAAAAwAAAAAAAQAAAAAAAoAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAsAAAAAAAIAAAATAAsAAAAEAAIAAAA=")
+tile_set = SubResource("TileSet_xoq5d")
+collision_enabled = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=44639868]
+z_index = -1
+position = Vector2(639, -158)
+texture = ExtResource("7_025iv")
+
+[node name="Levels" type="Node2D" parent="." unique_id=703100845]
+unique_name_in_owner = true
+
+[node name="LevelNode1" parent="Levels" unique_id=1530583061 instance=ExtResource("3_qghd1")]
+position = Vector2(300, 420)
+level_id = 1
+
+[node name="LevelNode2" parent="Levels" unique_id=884006334 instance=ExtResource("3_qghd1")]
+position = Vector2(534, 392)
+level_id = 2
+
+[node name="LevelNode3" parent="Levels" unique_id=1724068039 instance=ExtResource("3_qghd1")]
+position = Vector2(752, 480)
+level_id = 3
+
+[node name="LevelNode4" parent="Levels" unique_id=1128805596 instance=ExtResource("3_qghd1")]
+position = Vector2(965, 394)
+level_id = 4
+
+[node name="LevelNode5" parent="Levels" unique_id=2100000001 instance=ExtResource("3_qghd1")]
+position = Vector2(1580, 420)
+level_id = 5
+
+[node name="LevelNode6" parent="Levels" unique_id=2100000002 instance=ExtResource("3_qghd1")]
+position = Vector2(1814, 392)
+level_id = 6
+
+[node name="LevelNode7" parent="Levels" unique_id=2100000003 instance=ExtResource("3_qghd1")]
+position = Vector2(2032, 480)
+level_id = 7
+
+[node name="LevelNode8" parent="Levels" unique_id=2100000004 instance=ExtResource("3_qghd1")]
+position = Vector2(2245, 394)
+level_id = 8
+
+[node name="LevelNode9" parent="Levels" unique_id=2100000005 instance=ExtResource("3_qghd1")]
+position = Vector2(2860, 420)
+level_id = 9
+
+[node name="LevelNode10" parent="Levels" unique_id=2100000006 instance=ExtResource("3_qghd1")]
+position = Vector2(3094, 392)
+level_id = 10
+
+[node name="LevelNode11" parent="Levels" unique_id=2100000007 instance=ExtResource("3_qghd1")]
+position = Vector2(3312, 480)
+level_id = 11
+
+[node name="LevelNode12" parent="Levels" unique_id=2100000008 instance=ExtResource("3_qghd1")]
+position = Vector2(3525, 394)
+level_id = 12
+
+[node name="LevelNode13" parent="Levels" unique_id=2100000009 instance=ExtResource("3_qghd1")]
+position = Vector2(4140, 420)
+level_id = 13
+
+[node name="LevelNode14" parent="Levels" unique_id=2100000010 instance=ExtResource("3_qghd1")]
+position = Vector2(4374, 392)
+level_id = 14
+
+[node name="LevelNode15" parent="Levels" unique_id=2100000011 instance=ExtResource("3_qghd1")]
+position = Vector2(4592, 480)
+level_id = 15
+
+[node name="LevelNode16" parent="Levels" unique_id=2100000012 instance=ExtResource("3_qghd1")]
+position = Vector2(4805, 394)
+level_id = 16
+
+[node name="LevelNode17" parent="Levels" unique_id=2100000013 instance=ExtResource("3_qghd1")]
+position = Vector2(5420, 420)
+level_id = 17
+
+[node name="LevelNode18" parent="Levels" unique_id=2100000014 instance=ExtResource("3_qghd1")]
+position = Vector2(5654, 392)
+level_id = 18
+
+[node name="LevelNode19" parent="Levels" unique_id=2100000015 instance=ExtResource("3_qghd1")]
+position = Vector2(5872, 480)
+level_id = 19
+
+[node name="LevelNode20" parent="Levels" unique_id=2100000016 instance=ExtResource("3_qghd1")]
+position = Vector2(6085, 394)
+level_id = 20
+
+[node name="NavigationLayer" type="CanvasLayer" parent="." unique_id=735174110]
+layer = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NavigationLayer" unique_id=503636686]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -564.0
+offset_top = -75.0
+offset_right = 564.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 1000
+
+[node name="ButtonLeft" parent="NavigationLayer/HBoxContainer" unique_id=51180377 instance=ExtResource("5_vpdr7")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("7_qmxkt")
+texture_pressed = ExtResource("7_qmxkt")
+texture_hover = ExtResource("7_qmxkt")
+stretch_mode = 0
+
+[node name="Label" parent="NavigationLayer/HBoxContainer/ButtonLeft" index="0" unique_id=1342168869]
+text = ""
+
+[node name="ButtonRight" parent="NavigationLayer/HBoxContainer" unique_id=660963454 instance=ExtResource("5_vpdr7")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("7_kl1bo")
+texture_pressed = ExtResource("7_kl1bo")
+texture_hover = ExtResource("7_kl1bo")
+stretch_mode = 0
+
+[node name="Label" parent="NavigationLayer/HBoxContainer/ButtonRight" index="0" unique_id=1342168869]
+text = ""
+
+[editable path="NavigationLayer/HBoxContainer/ButtonLeft"]
+[editable path="NavigationLayer/HBoxContainer/ButtonRight"]

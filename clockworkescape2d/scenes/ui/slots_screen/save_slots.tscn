@@ -6,22 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://c17erafcnf2d8" path="res://scenes/ui/slots_screen/assets/slot_long.png" id="5_7qntd"]
 [ext_resource type="PackedScene" uid="uid://bekngooqd5av7" path="res://scenes/ui/slots_screen/stats.tscn" id="6_3cpcx"]
 [ext_resource type="Texture2D" uid="uid://dt5uwj0mmbt7k" path="res://scenes/ui/slots_screen/assets/slot_hower_long.png" id="6_oscg4"]
+[ext_resource type="PackedScene" uid="uid://c4xv4ndywrjxu" path="res://scenes/ui/settings_screen/settings_menu.tscn" id="8_r6r3v"]
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="10_6h2y5"]
 
 [sub_resource type="Theme" id="Theme_p1n1k"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_rlrl8"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_r6r3v"]
 allow_unpress = true
 
 [sub_resource type="Theme" id="Theme_r6r3v"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_r6r3v"]
-allow_unpress = true
-
 [sub_resource type="ButtonGroup" id="ButtonGroup_p1n1k"]
 allow_unpress = true
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_3cpcx"]
+allow_unpress = true
+
 [node name="SaveSlots" type="Control" unique_id=1820339539]
+process_mode = 2
+top_level = true
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,8 +56,10 @@ offset_left = -468.0
 offset_right = 468.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 65
-alignment = 1
+
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer2" unique_id=1274405510]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="ColorRect" type="TextureRect" parent="ColorRect/VBoxContainer2" unique_id=1060640328]
 custom_minimum_size = Vector2(900, 110)
@@ -81,21 +87,28 @@ text = "SAVE SLOTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Control2" type="Control" parent="ColorRect/VBoxContainer2" unique_id=729003433]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=808980770]
 layout_mode = 2
-theme_override_constants/separation = 18
+alignment = 1
 
 [node name="Slot1Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1354707682 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 focus_neighbor_right = NodePath("../Slot2Button")
 focus_neighbor_bottom = NodePath("../../Buttons/Play")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_rlrl8")
+button_group = SubResource("ButtonGroup_r6r3v")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
 texture_focused = ExtResource("6_oscg4")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button" index="0" unique_id=1342168869]
 z_index = 1
@@ -109,16 +122,19 @@ offset_bottom = 75.0
 grow_vertical = 1
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_nt52n")
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 55
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button" unique_id=565528075]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -144.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -126,11 +142,7 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button/MarginContainer" unique_id=388018794]
-layout_mode = 2
-alignment = 1
-
-[node name="Stats_sl1" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button/MarginContainer/VBoxContainer" unique_id=1799307487 instance=ExtResource("6_3cpcx")]
+[node name="Stats_sl1" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button/MarginContainer" unique_id=1799307487 instance=ExtResource("6_3cpcx")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 1
@@ -144,57 +156,58 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -9.0
-offset_right = 20.0
-offset_bottom = 9.0
+offset_left = -57.0
+offset_top = -29.5
+offset_right = 57.0
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_r6r3v")
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 55
 text = "EMPTY"
 
 [node name="Slot2Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=216618707 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Slot1Button")
 focus_neighbor_right = NodePath("../Slot3Button")
 focus_neighbor_bottom = NodePath("../../Buttons/DeleteButton")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_r6r3v")
+button_group = SubResource("ButtonGroup_p1n1k")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
 texture_focused = ExtResource("6_oscg4")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" index="0" unique_id=1342168869]
 z_index = 1
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
+anchors_preset = 5
 anchor_top = 0.0
-anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 300.0
-offset_bottom = 80.0
-grow_horizontal = 1
+offset_left = -145.0
+offset_top = 0.0
+offset_right = 145.0
+offset_bottom = 75.0
 grow_vertical = 1
 theme_override_fonts/font = ExtResource("3_nt52n")
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 55
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" unique_id=1565068710]
-custom_minimum_size = Vector2(300, 350)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -144.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -208,66 +221,68 @@ theme_override_constants/separation = -2
 
 [node name="Stats_sl2" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button/MarginContainer/VBoxContainer" unique_id=734622740 instance=ExtResource("6_3cpcx")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="EmptyLabel2" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" unique_id=1086881948]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -83.0
-offset_top = -43.0
-offset_right = 83.0
-offset_bottom = 43.0
+offset_left = -57.0
+offset_top = -29.5
+offset_right = 57.0
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_r6r3v")
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 55
 text = "EMPTY"
 
 [node name="Slot3Button" parent="ColorRect/VBoxContainer2/HBoxContainer" unique_id=1097796718 instance=ExtResource("10_6h2y5")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Slot2Button")
 focus_neighbor_bottom = NodePath("../../Buttons/BackButton")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_p1n1k")
+button_group = SubResource("ButtonGroup_3cpcx")
 texture_normal = ExtResource("5_7qntd")
 texture_pressed = ExtResource("6_oscg4")
 texture_hover = ExtResource("6_oscg4")
 texture_focused = ExtResource("6_oscg4")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" index="0" unique_id=1342168869]
 z_index = 1
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
+anchors_preset = 5
 anchor_top = 0.0
-anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 300.0
-offset_bottom = 80.0
-grow_horizontal = 1
+offset_left = -145.0
+offset_top = 0.0
+offset_right = 145.0
+offset_bottom = 75.0
 grow_vertical = 1
 theme_override_fonts/font = ExtResource("3_nt52n")
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 55
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" unique_id=555133834]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -144.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -280,27 +295,31 @@ layout_mode = 2
 
 [node name="Stats_sl3" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button/MarginContainer/VBoxContainer" unique_id=853412243 instance=ExtResource("6_3cpcx")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="EmptyLabel3" type="Label" parent="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" unique_id=1255074056]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -83.0
-offset_top = -43.0
-offset_right = 83.0
-offset_bottom = 43.0
+offset_left = -57.0
+offset_top = -29.5
+offset_right = 57.0
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 55
 text = "EMPTY"
+
+[node name="Control3" type="Control" parent="ColorRect/VBoxContainer2" unique_id=4873870]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=609758936]
 layout_mode = 2
@@ -337,6 +356,10 @@ focus_neighbor_right = NodePath("../../HBoxContainer/Slot1Button")
 [node name="Label" parent="ColorRect/VBoxContainer2/Buttons/BackButton" index="0" unique_id=1342168869]
 text = "BACK"
 
+[node name="Settings" parent="." unique_id=568827001 instance=ExtResource("8_r6r3v")]
+visible = false
+layout_mode = 1
+
 [connection signal="toggled" from="ColorRect/VBoxContainer2/HBoxContainer/Slot1Button" to="." method="_on_slot_1_button_toggled"]
 [connection signal="toggled" from="ColorRect/VBoxContainer2/HBoxContainer/Slot2Button" to="." method="_on_slot_2_button_toggled"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/HBoxContainer/Slot3Button" to="." method="_on_slot_3_button_pressed"]
@@ -351,3 +374,8 @@ text = "BACK"
 [editable path="ColorRect/VBoxContainer2/Buttons/Play"]
 [editable path="ColorRect/VBoxContainer2/Buttons/DeleteButton"]
 [editable path="ColorRect/VBoxContainer2/Buttons/BackButton"]
+[editable path="Settings"]
+[editable path="Settings/ColorRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/MusicMuteButton"]
+[editable path="Settings/ColorRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton"]
+[editable path="Settings/ColorRect/VBoxContainer2/HBoxContainer/DefaultButton"]
+[editable path="Settings/ColorRect/VBoxContainer2/HBoxContainer/BackButton"]

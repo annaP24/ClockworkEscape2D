@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://br3er32hfpyjk" path="res://scenes/ui/slots_screen/stats.gd" id="1_4ebri"]
 [ext_resource type="Texture2D" uid="uid://cpybrf1ve4cyw" path="res://scenes/ui/slots_screen/assets/gear_dark.png" id="2_eut6f"]
-[ext_resource type="Texture2D" uid="uid://dwfqgcwmi530m" path="res://scenes/ui/slots_screen/assets/death_color.png" id="4_eut6f"]
+[ext_resource type="Texture2D" uid="uid://bswi6cb562kuy" path="res://scenes/ui/slots_screen/assets/death_color_2.png" id="3_p04wv"]
 [ext_resource type="Texture2D" uid="uid://bbtwgv6cj4dhf" path="res://scenes/ui/slots_screen/assets/flagg.png" id="5_eut6f"]
 [ext_resource type="Texture2D" uid="uid://c32a5hxdwuoil" path="res://scenes/ui/slots_screen/assets/stopwatch_bw2.png" id="6_eut6f"]
 
@@ -19,11 +19,12 @@ size_flags_horizontal = 3
 script = ExtResource("1_4ebri")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1179172290]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=863187518]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("2_eut6f")
 expand_mode = 3
@@ -33,7 +34,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 18
 text = "20"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1161257565]
@@ -41,9 +42,9 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2" unique_id=821465574]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture = ExtResource("4_eut6f")
+texture = ExtResource("3_p04wv")
 expand_mode = 3
 
 [node name="Deaths" type="Label" parent="HBoxContainer2" unique_id=1162196019]
@@ -51,7 +52,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 18
 text = "20"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=72117656]
@@ -59,7 +60,7 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer3" unique_id=585571671]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("5_eut6f")
 expand_mode = 3
@@ -69,7 +70,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 18
 text = "20"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="." unique_id=961803628]
@@ -77,7 +78,7 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer4" unique_id=2017186072]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("6_eut6f")
 expand_mode = 3
@@ -88,16 +89,17 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 18
 text = "20"
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1611142153]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
 [node name="HBoxProgress" type="HBoxContainer" parent="." unique_id=1197868806]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
 
 [node name="Label" type="Label" parent="HBoxProgress" unique_id=544564576]
 layout_mode = 2

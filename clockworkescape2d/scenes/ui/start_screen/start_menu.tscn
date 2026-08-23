@@ -11,7 +11,7 @@
 [node name="StartMenu" type="Control" unique_id=339159820]
 process_mode = 2
 top_level = true
-z_index = 1
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m2m72")
 metadata/_edit_vertical_guides_ = [-273.0]
-metadata/_edit_horizontal_guides_ = [155.0]
+metadata/_edit_horizontal_guides_ = [-226.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1131630118]
 layout_mode = 1
@@ -34,23 +34,24 @@ color = Color(0, 0, 0, 0.60784316)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect" unique_id=1463294649]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -450.0
 offset_right = 450.0
+offset_bottom = 820.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 100
-alignment = 1
 
-[node name="ColorRect" type="TextureRect" parent="ColorRect/VBoxContainer2" unique_id=802096779]
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer2" unique_id=1591018917]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer2" unique_id=802096779]
 custom_minimum_size = Vector2(900, 110)
 layout_mode = 2
 texture = ExtResource("2_ps3jn")
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/ColorRect" unique_id=6694956]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/TextureRect" unique_id=6694956]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,6 +72,10 @@ theme_override_font_sizes/font_size = 100
 text = "CLOCKWORK ESCAPE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="ColorRect/VBoxContainer2" unique_id=1405941991]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=1085104694]
 custom_minimum_size = Vector2(250, 300)
