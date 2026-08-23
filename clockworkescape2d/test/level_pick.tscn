@@ -149,11 +149,10 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 1000
 
 [node name="ButtonLeft" parent="NavigationLayer/HBoxContainer" unique_id=51180377 instance=ExtResource("5_vpdr7")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
 texture_normal = ExtResource("7_qmxkt")
 texture_pressed = ExtResource("7_qmxkt")
@@ -163,9 +162,28 @@ stretch_mode = 0
 [node name="Label" parent="NavigationLayer/HBoxContainer/ButtonLeft" index="0" unique_id=1342168869]
 text = ""
 
+[node name="ControlButtonLeft" type="Control" parent="NavigationLayer/HBoxContainer" unique_id=316193465]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control2" type="Control" parent="NavigationLayer/HBoxContainer" unique_id=1407490115]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ControlButtonRight" type="Control" parent="NavigationLayer/HBoxContainer" unique_id=1788217030]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+mouse_filter = 2
+
 [node name="ButtonRight" parent="NavigationLayer/HBoxContainer" unique_id=660963454 instance=ExtResource("5_vpdr7")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
 texture_normal = ExtResource("7_kl1bo")
 texture_pressed = ExtResource("7_kl1bo")

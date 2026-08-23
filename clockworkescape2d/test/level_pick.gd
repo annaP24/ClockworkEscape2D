@@ -8,6 +8,8 @@ const TOTAL_LEVELS := 20
 @onready var levels_root: Node2D = %Levels
 @onready var left_button: TextureButton = %ButtonLeft
 @onready var right_button: TextureButton = %ButtonRight
+@onready var control_button_left: Control = %ControlButtonLeft
+@onready var control_button_right: Control = %ControlButtonRight
 
 var current_focused_level: Node = null
 var is_joypad_connected := false
@@ -85,11 +87,13 @@ func _apply_page() -> void:
 func _update_page_buttons() -> void:
 	if is_instance_valid(left_button):
 		left_button.visible = current_page > 0
+		control_button_left.visible = current_page == 0
 		left_button.disabled = !(current_page > 0)
 		left_button.set_process_input(current_page > 0)
 		left_button.set_process_unhandled_input(current_page > 0)
 	if is_instance_valid(right_button):
 		right_button.visible = current_page < TOTAL_PAGES - 1
+		control_button_right.visible = current_page == TOTAL_PAGES - 1
 		right_button.disabled = !(current_page < TOTAL_PAGES - 1)
 		right_button.set_process_input(current_page < TOTAL_PAGES - 1)
 		right_button.set_process_unhandled_input(current_page < TOTAL_PAGES - 1)
