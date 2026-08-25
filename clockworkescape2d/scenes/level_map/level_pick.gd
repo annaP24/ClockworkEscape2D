@@ -1,5 +1,5 @@
 extends Node2D
-class_name WorldMap
+class_name LevelPick
 
 const LEVELS_PER_PAGE := 4
 const TOTAL_PAGES := 5
@@ -25,7 +25,7 @@ func _ready() -> void:
 	_update_page_buttons()
 	_apply_page()
 
-func _show_navigation() -> void:
+func show_navigation() -> void:
 	visible = true
 	levels_root.visible = true
 	set_process_input(true)
@@ -220,7 +220,7 @@ func _move_to_page_for_level(level) -> void:
 func _on_level_selected(level_id: int) -> void:
 	if level_id < 1 or level_id > TOTAL_LEVELS:
 		return
-	_hide_navigation()
+	hide_navigation()
 	GameSaveManager.current_level = level_id - 1
 	GameSaveManager.current_level_id = level_id
 	GameSaveManager.set_level_paths()
@@ -231,7 +231,7 @@ func _on_level_selected(level_id: int) -> void:
 		return
 	get_parent().load_level(target_path, level_id)
 
-func _hide_navigation() -> void:
+func hide_navigation() -> void:
 	visible = false
 	levels_root.visible = false
 	if is_instance_valid(left_button):

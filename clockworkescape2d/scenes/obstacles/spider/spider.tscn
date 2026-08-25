@@ -1,15 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cb3sk5bwptvai"]
+[gd_scene format=3 uid="uid://cb3sk5bwptvai"]
 
 [ext_resource type="Script" uid="uid://b84mscunqmeri" path="res://scenes/obstacles/spider/spider.gd" id="1_bgjvm"]
-[ext_resource type="Texture2D" uid="uid://dwpq8a6hfrw" path="res://scenes/obstacles/spider/assets/spider.png" id="2_cej61"]
+[ext_resource type="Texture2D" uid="uid://cinmabi4n2unq" path="res://scenes/obstacles/spider/assets/spider.png" id="2_cej61"]
 [ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="3_cej61"]
-[ext_resource type="Texture2D" uid="uid://dpvgk0bbmr271" path="res://scenes/obstacles/spider/assets/spider_a1.png" id="4_y416d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgjvm"]
 size = Vector2(30, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y416d"]
 size = Vector2(36, 36)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cej61"]
+load_path = "res://.godot/imported/spider_a1.png-6658860f04e94e2590df1594a4738ab0.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cej61"]
 animations = [{
@@ -18,33 +20,33 @@ animations = [{
 "texture": ExtResource("2_cej61")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_y416d")
+"texture": SubResource("CompressedTexture2D_cej61")
 }],
-"loop": true,
+"loop": 1,
 "name": &"new_animation",
 "speed": 5.0
 }]
 
-[node name="Spider" type="CharacterBody2D"]
+[node name="Spider" type="CharacterBody2D" unique_id=1276173630]
 script = ExtResource("1_bgjvm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=436307777]
 visible = false
 texture = ExtResource("2_cej61")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=587745463]
 visible = false
 shape = SubResource("RectangleShape2D_bgjvm")
 
-[node name="Comp2dHitbox" type="Area2D" parent="."]
+[node name="Comp2dHitbox" type="Area2D" parent="." unique_id=1196237551]
 visible = false
 script = ExtResource("3_cej61")
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHitbox"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Comp2dHitbox" unique_id=909069504]
 shape = SubResource("RectangleShape2D_y416d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1793223734]
 sprite_frames = SubResource("SpriteFrames_cej61")
 animation = &"new_animation"
 autoplay = "new_animation"

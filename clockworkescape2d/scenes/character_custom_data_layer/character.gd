@@ -104,7 +104,7 @@ func move_player_x(directionX : float, acc : float = move_acc, dec : float = mov
 		velocity.x = move_toward(velocity.x, 0, dec)
 
 func move_player_y(directionY : float,  speed : float = move_speed):
-	velocity.y = speed * directionY		# TODO: Ändern zu Move_Toward???
+	velocity.y = speed * directionY
 
 func move_player_position(move_delta):
 	global_position += move_delta
@@ -118,10 +118,7 @@ func update_animation(new_animation : animations):
 		animations.IDLE:
 			animation_player_rotate.stop()
 		animations.DIE:
-			is_movable = false
 			animation_player_rotate.stop()
-			player_died_received = true
-			reset_collectables()
 			gear_with_animation.play("break")
 		animations.SPAWN:
 			is_movable = true
@@ -253,6 +250,9 @@ func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:
 	update_animation(animations.DIE)
 
 func _on_hurt_detection_area_body_entered(_body: Node2D) -> void:
+	is_movable = false
+	player_died_received = true
+	reset_collectables()
 	update_animation(animations.DIE)
 
 func _on_character_animated_animation_finished() -> void:

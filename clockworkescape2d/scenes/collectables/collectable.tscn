@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2d4snixdg62a"]
 
 [ext_resource type="Script" uid="uid://dt7f0qf4515w8" path="res://scenes/collectables/collectable.gd" id="1_vtu06"]
-[ext_resource type="Texture2D" uid="uid://ch34854mwjr1o" path="res://scenes/collectables/assets/collectable_alternative.png" id="2_vtu06"]
+[ext_resource type="Texture2D" uid="uid://ch34854mwjr1o" path="res://scenes/collectables/assets/collectable.png" id="2_vtu06"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtu06"]
 radius = 13.152946

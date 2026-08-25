@@ -56,82 +56,102 @@ unique_name_in_owner = true
 [node name="LevelNode1" parent="Levels" unique_id=1530583061 instance=ExtResource("3_qghd1")]
 position = Vector2(300, 420)
 level_id = 1
+is_unlocked = null
 
 [node name="LevelNode2" parent="Levels" unique_id=884006334 instance=ExtResource("3_qghd1")]
 position = Vector2(534, 392)
 level_id = 2
+is_unlocked = null
 
 [node name="LevelNode3" parent="Levels" unique_id=1724068039 instance=ExtResource("3_qghd1")]
 position = Vector2(752, 480)
 level_id = 3
+is_unlocked = null
 
 [node name="LevelNode4" parent="Levels" unique_id=1128805596 instance=ExtResource("3_qghd1")]
 position = Vector2(965, 394)
 level_id = 4
+is_unlocked = null
 
 [node name="LevelNode5" parent="Levels" unique_id=2100000001 instance=ExtResource("3_qghd1")]
 position = Vector2(1580, 420)
 level_id = 5
+is_unlocked = null
 
 [node name="LevelNode6" parent="Levels" unique_id=2100000002 instance=ExtResource("3_qghd1")]
 position = Vector2(1814, 392)
 level_id = 6
+is_unlocked = null
 
 [node name="LevelNode7" parent="Levels" unique_id=2100000003 instance=ExtResource("3_qghd1")]
 position = Vector2(2032, 480)
 level_id = 7
+is_unlocked = null
 
 [node name="LevelNode8" parent="Levels" unique_id=2100000004 instance=ExtResource("3_qghd1")]
 position = Vector2(2245, 394)
 level_id = 8
+is_unlocked = null
 
 [node name="LevelNode9" parent="Levels" unique_id=2100000005 instance=ExtResource("3_qghd1")]
 position = Vector2(2860, 420)
 level_id = 9
+is_unlocked = null
 
 [node name="LevelNode10" parent="Levels" unique_id=2100000006 instance=ExtResource("3_qghd1")]
 position = Vector2(3094, 392)
 level_id = 10
+is_unlocked = null
 
 [node name="LevelNode11" parent="Levels" unique_id=2100000007 instance=ExtResource("3_qghd1")]
 position = Vector2(3312, 480)
 level_id = 11
+is_unlocked = null
 
 [node name="LevelNode12" parent="Levels" unique_id=2100000008 instance=ExtResource("3_qghd1")]
 position = Vector2(3525, 394)
 level_id = 12
+is_unlocked = null
 
 [node name="LevelNode13" parent="Levels" unique_id=2100000009 instance=ExtResource("3_qghd1")]
 position = Vector2(4140, 420)
 level_id = 13
+is_unlocked = null
 
 [node name="LevelNode14" parent="Levels" unique_id=2100000010 instance=ExtResource("3_qghd1")]
 position = Vector2(4374, 392)
 level_id = 14
+is_unlocked = null
 
 [node name="LevelNode15" parent="Levels" unique_id=2100000011 instance=ExtResource("3_qghd1")]
 position = Vector2(4592, 480)
 level_id = 15
+is_unlocked = null
 
 [node name="LevelNode16" parent="Levels" unique_id=2100000012 instance=ExtResource("3_qghd1")]
 position = Vector2(4805, 394)
 level_id = 16
+is_unlocked = null
 
 [node name="LevelNode17" parent="Levels" unique_id=2100000013 instance=ExtResource("3_qghd1")]
 position = Vector2(5420, 420)
 level_id = 17
+is_unlocked = null
 
 [node name="LevelNode18" parent="Levels" unique_id=2100000014 instance=ExtResource("3_qghd1")]
 position = Vector2(5654, 392)
 level_id = 18
+is_unlocked = null
 
 [node name="LevelNode19" parent="Levels" unique_id=2100000015 instance=ExtResource("3_qghd1")]
 position = Vector2(5872, 480)
 level_id = 19
+is_unlocked = null
 
 [node name="LevelNode20" parent="Levels" unique_id=2100000016 instance=ExtResource("3_qghd1")]
 position = Vector2(6085, 394)
 level_id = 20
+is_unlocked = null
 
 [node name="NavigationLayer" type="CanvasLayer" parent="." unique_id=735174110]
 layer = 20

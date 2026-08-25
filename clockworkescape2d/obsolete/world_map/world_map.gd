@@ -1,7 +1,5 @@
-# Refactored `WorldMap.gd`
-
 extends Node2D
-class_name WorldMap2
+class_name WorldMap
 
 @onready var line_2d: Line2D = $PathContainer/Line2D
 @onready var levels_container: Node2D = $LevelsContainer
@@ -164,7 +162,7 @@ func _generate_curve() -> void:
 
 	line_2d.points = curve.get_baked_points()
 	line_2d.width = 240
-	line_2d.texture = preload("res://scenes/world_map/assets/road_3.png")
+	line_2d.texture = preload("res://obsolete/world_map/assets/road_3.png")
 
 
 # -----------------------------------------------------------------------------

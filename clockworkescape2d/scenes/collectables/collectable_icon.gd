@@ -6,8 +6,8 @@ class_name CollectableVisual
 
 @onready var level_node : LevelNode = get_parent()
 
-var sprite_img_full = preload("res://scenes/world_map/assets/collectable.png")
-var sprite_img_empty = preload("res://scenes/world_map/assets/collectable_disabled.png")
+@export var sprite_img_full : Texture2D
+@export var sprite_img_empty : Texture2D
 var collected_count : int = 0
 var level_id : int = 0
 var is_unlocked : bool = false

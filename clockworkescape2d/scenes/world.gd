@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var scene_placeholder: Node2D = $Scene
-@onready var world_map: WorldMap = $WorldMap
+@onready var world_map: LevelPick = $WorldMap
 @onready var brightness_mat : Material = %BrightnessLayer.material
 @onready var brightness_layer: ColorRect = %BrightnessLayer
 @onready var ui: Control = %UI
@@ -98,7 +98,6 @@ func _open_main_menu():
 	_set_settings_menu_visible(false)
 	_set_slots_menu_visible(false)
 	_set_world_map_visible(false)
-	world_map._hide_navigation()
 	_set_score_ui_visible(false)
 	frame.visible = true
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
@@ -113,7 +112,6 @@ func _open_settings():
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(true)
 	_set_world_map_visible(false)
-	world_map._hide_navigation()
 	_set_score_ui_visible(false)
 	frame.visible = true
 	_update_mouse_visibility()
@@ -128,7 +126,6 @@ func _open_world_map():
 	_set_settings_menu_visible(false)
 	_set_slots_menu_visible(false)
 	_set_world_map_visible(true)
-	world_map._show_navigation()
 	_set_score_ui_visible(true)
 	frame.visible = true
 
@@ -144,7 +141,6 @@ func _open_save_slots():
 	_set_start_menu_visible(false)
 	_set_slots_menu_visible(true)
 	_set_world_map_visible(false)
-	world_map._hide_navigation()
 	_set_score_ui_visible(false)
 	frame.visible = true
 	_update_mouse_visibility()
@@ -184,6 +180,10 @@ func _set_slots_menu_visible(slots_is_visible : bool):
 
 func _set_world_map_visible(is_world_map_visible : bool):
 	world_map.visible = is_world_map_visible
+	if is_world_map_visible:
+		world_map.show_navigation()
+	else:
+		world_map.hide_navigation()
 
 func _pause_world_map(is_paused : bool):
 	get_tree().paused = is_paused
@@ -191,7 +191,7 @@ func _pause_world_map(is_paused : bool):
 func load_level(path_to_level : String, level_id : int):
 	if path_to_level != "":
 		current_level_path = path_to_level
-		#Cleanup previous level
+		# Cleanup previous level
 		_unload_level()
 
 		if current_level_path != "":

@@ -12,7 +12,7 @@ signal level_selected(level_id)
 @onready var sprite: Node2D = $Sprite
 @onready var label: Label = $Label
 #@onready var collectables_visual: CollectableVisual = $CollectablesVisual
-var parent : WorldMap
+var parent : LevelPick
 var is_selected : bool = false
 var init_scale : Vector2 = Vector2(1,1)
 
