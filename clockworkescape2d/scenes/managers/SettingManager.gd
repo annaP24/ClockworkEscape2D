@@ -9,9 +9,13 @@ const SETTINGS_PATH = "res://settings.cfg"
 
 # Default settings values
 var sfx_vol: float = 0.5
+var default_sfx_vol: float = 0.5
 var music_vol: float = 0.5
+var default_music_vol: float = 0.5
 var brightness: float = 1.0
+var default_brightness: float = 1.0
 var resolution: float = 0.0
+var default_resolution: float = 0.0
 var is_muted: bool = false
 
 
@@ -24,6 +28,7 @@ func load_setting(setting_name: String) -> float:
 
 ## Update a setting in the progress file
 func update_setting(setting_name: String, value: float) -> void:
+
 	var cf = ConfigFile.new()
 
 	# Load existing config if it exists
@@ -35,7 +40,7 @@ func update_setting(setting_name: String, value: float) -> void:
 
 	# Save to disk
 	cf.save(SETTINGS_PATH)
-
+	load_all_settings()
 
 ## Save brightness setting specifically
 func save_brightness_setting(value: float) -> void:
@@ -45,10 +50,10 @@ func save_brightness_setting(value: float) -> void:
 
 ## Initialize default settings in a config file
 func create_default_settings(cf: ConfigFile) -> void:
-	cf.set_value("settings", SFX_VOLUME, sfx_vol)
-	cf.set_value("settings", MUSIC_VOLUME, music_vol)
-	cf.set_value("settings", BRIGHTNESS, brightness)
-	cf.set_value("settings", RESOLUTION, resolution)
+	cf.set_value("settings", SFX_VOLUME, default_sfx_vol)
+	cf.set_value("settings", MUSIC_VOLUME, default_music_vol)
+	cf.set_value("settings", BRIGHTNESS, default_brightness)
+	cf.set_value("settings", RESOLUTION, default_resolution)
 
 
 ## Load all settings from progress file into member variables

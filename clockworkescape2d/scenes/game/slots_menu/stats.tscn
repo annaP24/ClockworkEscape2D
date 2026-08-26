@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://wbacg0o50cds"]
+
+[ext_resource type="Script" uid="uid://cg82ttf2k0gwf" path="res://scenes/game/slots_menu/stats.gd" id="1_yb37g"]
+[ext_resource type="Texture2D" uid="uid://nm4oim4i3y3e" path="res://scenes/game/slots_menu/assets/gear_dark.png" id="2_2ng6g"]
+[ext_resource type="FontFile" uid="uid://b20wtymmjh5a8" path="res://scenes/game/assets/Bangers-Regular.ttf" id="3_a6s4j"]
+[ext_resource type="Texture2D" uid="uid://6tty6e7onj71" path="res://scenes/game/slots_menu/assets/death_color_2.png" id="3_bplfy"]
+[ext_resource type="Texture2D" uid="uid://cnltpglmofh4e" path="res://scenes/game/slots_menu/assets/flagg.png" id="4_81xrm"]
+[ext_resource type="Texture2D" uid="uid://cu5t3rkxu7dea" path="res://scenes/game/slots_menu/assets/stopwatch_bw2.png" id="5_oqjoa"]
+
+[node name="Stats_sl1" type="VBoxContainer" unique_id=1799307487]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_yb37g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1179172290]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=863187518]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_2ng6g")
+expand_mode = 3
+
+[node name="Collectables" type="Label" parent="HBoxContainer" unique_id=1272289599]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("3_a6s4j")
+theme_override_font_sizes/font_size = 18
+text = "20"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1161257565]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2" unique_id=821465574]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("3_bplfy")
+expand_mode = 3
+
+[node name="Deaths" type="Label" parent="HBoxContainer2" unique_id=1162196019]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("3_a6s4j")
+theme_override_font_sizes/font_size = 18
+text = "20"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=72117656]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3" unique_id=585571671]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("4_81xrm")
+expand_mode = 3
+
+[node name="Level" type="Label" parent="HBoxContainer3" unique_id=477353033]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("3_a6s4j")
+theme_override_font_sizes/font_size = 18
+text = "20"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="." unique_id=961803628]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer4" unique_id=2017186072]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("5_oqjoa")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Timelaps" type="Label" parent="HBoxContainer4" unique_id=136661988]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("3_a6s4j")
+theme_override_font_sizes/font_size = 18
+text = "20"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1611142153]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="HBoxProgress" type="HBoxContainer" parent="." unique_id=1197868806]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxProgress" unique_id=544564576]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("3_a6s4j")
+text = "PROGRESS:"
+
+[node name="ProgressLabel" type="Label" parent="HBoxProgress" unique_id=2013826033]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+text = "25 %"

@@ -1,5 +1,5 @@
 extends Node2D
-class_name LevelPick2
+class_name LevelPick
 
 const LEVELS_PER_PAGE := 4
 const TOTAL_PAGES := 5

@@ -32,9 +32,26 @@ var slot_data : Dictionary = {
 }
 
 var is_joypad_connected : bool = false
+func _check_input_controller():
+	var joypads = Input.get_connected_joypads()
+	if joypads.size() > 0:
+		is_joypad_connected = true
+	else:
+		is_joypad_connected = false
+
+	#_update_mouse_visibility()
+	if not Input.joy_connection_changed.is_connected(_on_joypad_connection_changed):
+		# Subscribe to joypad connection
+		Input.joy_connection_changed.connect(_on_joypad_connection_changed)
+
+
+func _on_joypad_connection_changed(_device: int, connected: bool):
+	is_joypad_connected = connected
+	#_update_mouse_visibility()
 
 func _ready() -> void:
 	set_level_paths()
+	_check_input_controller()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("mute"):
@@ -43,7 +60,7 @@ func _process(_delta: float) -> void:
 			AudioManager.mute_all_sound(true)
 		else:
 			AudioManager.mute_all_sound(false)
-
+	_check_input_controller()
 func set_current_slot_id(slot_id: int) -> void:
 	current_progress_path = _get_file_name(slot_id)
 	current_save_slot = slot_id

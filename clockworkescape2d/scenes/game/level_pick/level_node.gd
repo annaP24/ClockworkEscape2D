@@ -1,0 +1,60 @@
+extends Area2D
+class_name LevelNode2
+signal level_selected(level_id)
+
+
+@export var level_id: int
+@export var is_unlocked: bool = false
+@export var neighbour_up : LevelNode
+@export var neighbour_down : LevelNode
+@onready var sprite_enabled: Sprite2D = %Sprite2D_Gear
+@onready var sprite_disabled: Sprite2D = %Sprite2D_Disabled
+@onready var sprite: Node2D = $Sprite
+@onready var label: Label = $Label
+#@onready var collectables_visual: CollectableVisual = $CollectablesVisual
+var parent : LevelPick
+var is_selected : bool = false
+var init_scale : Vector2 = Vector2(1,1)
+
+func _ready():
+	update_visual()
+	#collectables_visual.level_node = self
+	init_scale = sprite.scale
+
+func _input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton and event.pressed and is_unlocked:
+		trigger_button()
+
+func trigger_button():
+	AudioManager.play_sfx("click", 0.2)
+	level_selected.emit(level_id)
+
+func update_visual():
+	if is_unlocked:
+		sprite_enabled.visible = true
+		sprite_disabled.visible = false
+		set_highlight(is_selected)
+	else:
+		sprite_enabled.visible = false
+		sprite_disabled.visible = true
+	#collectables_visual.update_collected_count()
+	label.text = str(level_id)
+
+
+func set_highlight(active : bool):
+	is_selected = active
+	if is_selected and is_unlocked:
+		# Simple visual feedback (replace with an animation or shader)
+		sprite.modulate = Color(1.2, 1.2, 1.2) # Brighten
+		sprite.scale = Vector2(init_scale.x + 0.05, init_scale.y + 0.05)
+	else:
+		sprite.modulate = Color(1, 1, 1)
+		sprite.scale = init_scale
+
+func _on_mouse_entered() -> void:
+	is_selected = true
+	set_highlight(true)
+	#parent._change_focus(self, false)
+
+func _on_mouse_exited() -> void:
+	set_highlight(false)

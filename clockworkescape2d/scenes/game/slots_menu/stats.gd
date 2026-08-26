@@ -1,5 +1,5 @@
 extends VBoxContainer
-class_name  Stats2
+class_name  Stats
 
 @onready var collectables: Label = %Collectables
 @onready var deaths: Label = %Deaths

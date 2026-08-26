@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bwj5dpeyjhnkl"]
+
+[ext_resource type="Script" uid="uid://c4anpeq5fgh2x" path="res://scenes/game/start_menu/start_menu.gd" id="1_isqat"]
+[ext_resource type="Texture2D" uid="uid://cjm83aiqq2ros" path="res://scenes/game/assets/title_holder.png" id="2_ecxqb"]
+[ext_resource type="Theme" uid="uid://cx0xw7kuwquce" path="res://resources/label_theme.tres" id="3_yerm5"]
+[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="4_mxtvh"]
+[ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="5_fjnit"]
+[ext_resource type="Texture2D" uid="uid://c0x2x8mcyw5ht" path="res://scenes/game/assets/Button_idle.png" id="6_isqat"]
+
+[sub_resource type="Theme" id="Theme_m2m72"]
+
+[node name="StartMenu" type="Control" unique_id=339159820]
+process_mode = 2
+top_level = true
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_isqat")
+metadata/_edit_vertical_guides_ = [-273.0]
+metadata/_edit_horizontal_guides_ = [-226.0]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1131630118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m2m72")
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect" unique_id=1463294649]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 820.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer2" unique_id=1591018917]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer2" unique_id=802096779]
+custom_minimum_size = Vector2(900, 110)
+layout_mode = 2
+texture = ExtResource("2_ecxqb")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer2/TextureRect" unique_id=6694956]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -54.0
+offset_right = 329.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_yerm5")
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("4_mxtvh")
+theme_override_font_sizes/font_size = 100
+text = "CLOCKWORK ESCAPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="ColorRect/VBoxContainer2" unique_id=1405941991]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer2" unique_id=1085104694]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+
+[node name="StartButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=51180377 instance=ExtResource("5_fjnit")]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_isqat")
+texture_pressed = ExtResource("6_isqat")
+texture_hover = ExtResource("6_isqat")
+
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/StartButton" index="0" unique_id=1342168869]
+text = "PLAY"
+
+[node name="SettingsButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1949984531 instance=ExtResource("5_fjnit")]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_isqat")
+texture_pressed = ExtResource("6_isqat")
+texture_hover = ExtResource("6_isqat")
+
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" index="0" unique_id=1342168869]
+text = "SETTINGS"
+
+[node name="QuitButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1164782172 instance=ExtResource("5_fjnit")]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_isqat")
+texture_pressed = ExtResource("6_isqat")
+texture_hover = ExtResource("6_isqat")
+
+[node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" index="0" unique_id=1342168869]
+text = "QUIT"
+
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/StartButton"]
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton"]
+[editable path="ColorRect/VBoxContainer2/VBoxContainer/QuitButton"]
