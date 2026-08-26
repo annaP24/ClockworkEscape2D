@@ -4,7 +4,7 @@ extends Node2D
 @onready var world_map: LevelPick = $WorldMap
 @onready var brightness_mat : Material = %BrightnessLayer.material
 @onready var brightness_layer: ColorRect = %BrightnessLayer
-@onready var ui: Control = %UI
+@onready var background: Sprite2D = $Background
 @onready var frame: TileMapLayer = %TileMapLayer
 
 enum GameState {
@@ -93,13 +93,13 @@ func _update_mouse_visibility(force_hidden : bool = false) -> void:
 func _open_main_menu():
 
 	current_state = GameState.MAIN_MENU
-
+	background.visible = true
+	frame.visible = true
 	_set_start_menu_visible(true)
 	_set_settings_menu_visible(false)
 	_set_slots_menu_visible(false)
 	_set_world_map_visible(false)
 	_set_score_ui_visible(false)
-	frame.visible = true
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
 	_update_mouse_visibility()
 
@@ -113,7 +113,6 @@ func _open_settings():
 	_set_settings_menu_visible(true)
 	_set_world_map_visible(false)
 	_set_score_ui_visible(false)
-	frame.visible = true
 	_update_mouse_visibility()
 
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
@@ -121,17 +120,16 @@ func _open_settings():
 func _open_world_map():
 
 	current_state = GameState.WORLD_MAP
-
+	background.visible = true
+	frame.visible = true
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(false)
 	_set_slots_menu_visible(false)
 	_set_world_map_visible(true)
 	_set_score_ui_visible(true)
-	frame.visible = true
 
 	world_map.process_mode = Node.PROCESS_MODE_PAUSABLE
 
-	world_map.set_camera_enabled(true)
 	_update_mouse_visibility()
 
 	_pause_world_map(false)
@@ -140,9 +138,9 @@ func _open_save_slots():
 	current_state = GameState.SAVE_SLOTS
 	_set_start_menu_visible(false)
 	_set_slots_menu_visible(true)
+	_set_settings_menu_visible(false)
 	_set_world_map_visible(false)
 	_set_score_ui_visible(false)
-	frame.visible = true
 	_update_mouse_visibility()
 
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
@@ -154,13 +152,12 @@ func _enter_level():
 	_set_start_menu_visible(false)
 	_set_settings_menu_visible(false)
 	_set_score_ui_visible(false)
-	frame.visible = false
 
 	world_map.process_mode = Node.PROCESS_MODE_DISABLED
 
-	world_map.set_camera_enabled(false)
 	_update_mouse_visibility(true)
-
+	background.visible = false
+	frame.visible = false
 	_pause_world_map(false)
 
 func _set_start_menu_visible(sm_is_visible : bool):
@@ -180,6 +177,7 @@ func _set_slots_menu_visible(slots_is_visible : bool):
 
 func _set_world_map_visible(is_world_map_visible : bool):
 	world_map.visible = is_world_map_visible
+
 	if is_world_map_visible:
 		world_map.show_navigation()
 	else:
@@ -285,8 +283,6 @@ func _on_brightness_changed(value : float) -> void:
 
 func _on_slot_pressed(id : int) -> void:
 	GameSaveManager.set_current_slot_id(id)
-	# GameSaveManager.load_progress()
-	# SettingsManager.load_settings()
 	world_map.unlock_levels()
-	world_map.focus_last_played_level()
+	world_map.focus_first_level()
 	_open_world_map()

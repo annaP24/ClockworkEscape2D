@@ -30,7 +30,7 @@ func trigger_button():
 	level_selected.emit(level_id)
 
 func update_visual():
-	if true:
+	if is_unlocked:
 		sprite_enabled.visible = true
 		sprite_disabled.visible = false
 		set_highlight(is_selected)

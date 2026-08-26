@@ -10,6 +10,7 @@ const TOTAL_LEVELS := 20
 @onready var right_button: TextureButton = %ButtonRight
 @onready var control_button_left: Control = %ControlButtonLeft
 @onready var control_button_right: Control = %ControlButtonRight
+@onready var navigation_layer: CanvasLayer = $NavigationLayer
 
 var current_focused_level: Node = null
 var is_joypad_connected := false
@@ -21,13 +22,14 @@ func _ready() -> void:
 	_collect_levels()
 	_connect_nav_buttons()
 	unlock_levels()
-	focus_last_played_level()
+	focus_first_level()
 	_update_page_buttons()
 	_apply_page()
 
 func show_navigation() -> void:
 	visible = true
 	levels_root.visible = true
+	navigation_layer.visible = true
 	set_process_input(true)
 	set_process_unhandled_input(true)
 	_update_page_buttons()
@@ -142,28 +144,12 @@ func _update_page_buttons() -> void:
 func unlock_levels() -> void:
 	_apply_page()
 
-func focus_last_played_level() -> void:
-	var last_unlocked: Node = null
-	for level in all_levels:
-		if level.visible and level.is_unlocked:
-			last_unlocked = level
-	if last_unlocked == null:
-		return
-	current_focused_level = last_unlocked
-	#current_focused_level.set_highlight(true)
-	#_move_to_page_for_level(last_unlocked)
+func focus_first_level() -> void:
+	current_focused_level = all_levels[0]
+	current_focused_level.set_highlight(true)
 
 func set_joypad_connected(connected: bool) -> void:
 	is_joypad_connected = connected
-
-func set_camera_enabled(enabled: bool) -> void:
-	if has_node("Camera2D"):
-		var camera: Camera2D = $Camera2D
-		camera.enabled = enabled
-		camera.set_process(enabled)
-		camera.set_physics_process(enabled)
-		camera.set_process_input(enabled)
-		camera.set_process_unhandled_input(enabled)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !visible:
@@ -234,6 +220,7 @@ func _on_level_selected(level_id: int) -> void:
 func hide_navigation() -> void:
 	visible = false
 	levels_root.visible = false
+	navigation_layer.visible = false
 	if is_instance_valid(left_button):
 		left_button.visible = false
 		left_button.disabled = true

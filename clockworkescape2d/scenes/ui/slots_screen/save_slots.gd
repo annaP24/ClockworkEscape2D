@@ -11,7 +11,7 @@ var slot3_data : Dictionary
 @onready var empty_label_3: Label = %EmptyLabel3
 @onready var play_button: TextureButton = %Play
 @onready var delete_button: TextureButton = %DeleteButton
-
+@onready var slot_1_button: TextureButton = %Slot1Button
 var selected_slot : int = 0
 
 func _ready() -> void:
@@ -49,10 +49,37 @@ func _check_slot_data():
 		empty_label_3.visible = false
 		stats_sl_3.fill_data(slot3_data)
 
+func _enable_disable_buttons(slot : int, toggle_on : bool):
+	if toggle_on:
+		selected_slot = slot
+		play_button.disabled = false
+	else:
+		selected_slot = 0
+
+	if slot == 1:
+		if !slot1_data.is_empty():
+			delete_button.disabled = false
+		else:
+			delete_button.disabled = true
+	elif slot == 2:
+		if !slot2_data.is_empty():
+			delete_button.disabled = false
+		else:
+			delete_button.disabled = true
+	elif slot == 3:
+		if !slot3_data.is_empty():
+			delete_button.disabled = false
+		else:
+			delete_button.disabled = true
+	elif slot == 0:
+		delete_button.disabled = true
+		play_button.disabled = true
+#---------------------------- SIgnals ----------------------------------------
 
 func _world_hide_slots_view(is_show : bool)-> void:
 	visible = is_show
-
+	if visible and GameSaveManager.is_joypad_connected:
+		slot_1_button.grab_focus()
 func _on_back_button_pressed() -> void:
 	AudioManager.play_sfx("click")
 	EventBus.world_show_menu.emit(true)
@@ -83,29 +110,3 @@ func _on_delete_button_pressed() -> void:
 	GameSaveManager.delete_configuration(selected_slot)
 	AudioManager.play_sfx("click")
 	_check_slot_data()
-
-func _enable_disable_buttons(slot : int, toggle_on : bool):
-	if toggle_on:
-		selected_slot = slot
-		play_button.disabled = false
-	else:
-		selected_slot = 0
-
-	if slot == 1:
-		if !slot1_data.is_empty():
-			delete_button.disabled = false
-		else:
-			delete_button.disabled = true
-	elif slot == 2:
-		if !slot2_data.is_empty():
-			delete_button.disabled = false
-		else:
-			delete_button.disabled = true
-	elif slot == 3:
-		if !slot3_data.is_empty():
-			delete_button.disabled = false
-		else:
-			delete_button.disabled = true
-	elif slot == 0:
-		delete_button.disabled = true
-		play_button.disabled = true

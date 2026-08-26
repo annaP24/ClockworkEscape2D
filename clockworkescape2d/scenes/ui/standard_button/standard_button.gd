@@ -1,4 +1,5 @@
 extends TextureButton
+class_name StandardButton
 
 var is_toggled : bool = false
 var normal_scale : Vector2 = Vector2(1.0, 1.0)

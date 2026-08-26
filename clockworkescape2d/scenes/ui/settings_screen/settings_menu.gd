@@ -114,6 +114,7 @@ func _on_button_pressed(button : TextureButton) -> void:
 
 func _on_hide_received(is_show : bool)-> void:
 	visible = is_show
+
 	if is_show:
 		if GameSaveManager.is_joypad_connected:
 			music_slider.grab_focus()
