@@ -33,10 +33,11 @@ func _ready() -> void:
 		p.bus = &"SFX"
 		add_child(p)
 		sfx_players.append(p)
+	play_music("main_theme")
 
 func _start_track(stream: AudioStream, fade_duration: float) -> void:
 	music_player.stream = stream
-	music_player.volume_db = -80.0
+	music_player.volume_db = music_volume
 	music_player.play()
 
 	var tween = create_tween()
@@ -84,15 +85,6 @@ func set_bus_volume(bus_name: String, linear_volume: float) -> void:
 			music_volume = db
 		elif bus_name == "Master":
 			master_volume = db
-
-func play_sfx_for_object(sfx_name: String, _position: Vector3):
-	var p = AudioStreamPlayer2D.new()
-	p.stream = sounds[sfx_name]
-	p.bus = &"SFX"
-	get_tree().root.add_child(p)
-	p.play()
-	# Clean up after finished
-	p.finished.connect(p.queue_free)
 
 func mute_all_sound(is_muted : bool):
 	if is_muted:

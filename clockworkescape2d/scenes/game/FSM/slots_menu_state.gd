@@ -22,7 +22,8 @@ func _on_button_pressed(button : TextureButton) -> void:
 	if button == instance.back_button:
 		request_change.emit(self, "startmenu")
 	elif button == instance.play_button:
-		pass
+		request_change.emit(self, "LevelPickMenu")
+
 	elif button == instance.delete_button:
 		GameSaveManager.delete_configuration(instance.selected_slot)
 		instance.check_slot_data()

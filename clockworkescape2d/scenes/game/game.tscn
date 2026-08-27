@@ -1,57 +1,19 @@
-[gd_scene format=4 uid="uid://b3hweffqyikhj"]
+[gd_scene format=3 uid="uid://b3hweffqyikhj"]
 
 [ext_resource type="Script" uid="uid://c02sxgi8tpo23" path="res://scenes/game/FSM/StateMachine.gd" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://beltmc3acmp78" path="res://scenes/game/game.gd" id="1_87uf6"]
-[ext_resource type="Texture2D" uid="uid://b6vn2n10ejw6d" path="res://scenes/level_map/assets/Background_new.png" id="1_lfrn8"]
 [ext_resource type="Script" uid="uid://dd8562ulfetpu" path="res://scenes/game/FSM/start_menu_state.gd" id="2_0sr1o"]
-[ext_resource type="Texture2D" uid="uid://dxxdisa8ojqwv" path="res://assets/tilemap/frame.png" id="4_kelw5"]
-[ext_resource type="PackedScene" uid="uid://dl6s4pemla15g" path="res://scenes/ui/start_screen/start_menu.tscn" id="6_4j704"]
+[ext_resource type="PackedScene" uid="uid://bwj5dpeyjhnkl" path="res://scenes/game/start_menu/start_menu.tscn" id="6_5jirj"]
 [ext_resource type="Script" uid="uid://ds2g2ff4y6ob6" path="res://scenes/game/FSM/settings_menu_state.gd" id="6_bdhmt"]
 [ext_resource type="Script" uid="uid://dnrvc3qguskyh" path="res://scenes/game/FSM/slots_menu_state.gd" id="7_87uf6"]
 [ext_resource type="PackedScene" uid="uid://bvn47xwtv2a5t" path="res://scenes/game/settings_menu/settings_menu.tscn" id="8_kp23o"]
 [ext_resource type="PackedScene" uid="uid://dy4oeus5snk0x" path="res://scenes/ui/slots_screen/save_slots.tscn" id="10_4j704"]
+[ext_resource type="Script" uid="uid://b2mpdsvbsavf4" path="res://scenes/game/FSM/level_state.gd" id="11_5jirj"]
 [ext_resource type="Script" uid="uid://buoge1f076qp8" path="res://scenes/game/FSM/level_pick_state.gd" id="11_kp23o"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lfrn8"]
-texture = ExtResource("4_kelw5")
-texture_region_size = Vector2i(64, 64)
-2:0/0 = 0
-2:2/0 = 0
-0:0/0 = 0
-4:0/0 = 0
-4:2/0 = 0
-4:4/0 = 0
-2:4/0 = 0
-0:4/0 = 0
-0:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_5i0tg"]
-tile_size = Vector2i(64, 64)
-occlusion_layer_0/light_mask = 1
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Terrain 0"
-terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-terrain_set_0/terrain_1/name = "Terrain 1"
-terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-custom_data_layer_0/name = "tile_id"
-custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetAtlasSource_lfrn8")
+[ext_resource type="PackedScene" uid="uid://d03cn4rx7foca" path="res://scenes/game/level_pick/level_pick.tscn" id="12_5jirj"]
 
 [node name="Game" type="Node2D" unique_id=402861847]
 script = ExtResource("1_87uf6")
-
-[node name="Background" type="Sprite2D" parent="." unique_id=696168752]
-z_index = -1
-position = Vector2(639, -158)
-texture = ExtResource("1_lfrn8")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=827387401]
-unique_name_in_owner = true
-visibility_layer = 3
-z_index = 17
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAKAAAAAAACAAAAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAANAAAAAAACAAAAAAAOAAAAAAACAAAAAAAPAAAAAAACAAAAAAAQAAAAAAACAAAAAAARAAAAAAACAAAAAAASAAAAAAACAAAAAAATAAAAAAAEAAAAAAATAAEAAAAEAAIAAAATAAIAAAAEAAIAAAATAAMAAAAEAAIAAAATAAQAAAAEAAIAAAATAAUAAAAEAAIAAAATAAYAAAAEAAIAAAATAAcAAAAEAAIAAAATAAgAAAAEAAIAAAATAAkAAAAEAAIAAAATAAoAAAAEAAIAAAATAAwAAAAEAAQAAAASAAwAAAACAAQAAAARAAwAAAACAAQAAAAQAAwAAAACAAQAAAAPAAwAAAACAAQAAAAOAAwAAAACAAQAAAANAAwAAAACAAQAAAAMAAwAAAACAAQAAAALAAwAAAACAAQAAAAKAAwAAAACAAQAAAAJAAwAAAACAAQAAAAIAAwAAAACAAQAAAAHAAwAAAACAAQAAAAGAAwAAAACAAQAAAAFAAwAAAACAAQAAAAEAAwAAAACAAQAAAADAAwAAAACAAQAAAACAAwAAAACAAQAAAABAAwAAAACAAQAAAAAAAwAAAAAAAQAAAAAAAoAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAsAAAAAAAIAAAATAAsAAAAEAAIAAAA=")
-tile_set = SubResource("TileSet_5i0tg")
-collision_enabled = false
 
 [node name="FSM" type="Node2D" parent="." unique_id=918192613]
 
@@ -62,7 +24,7 @@ metadata/_custom_type_script = "uid://c02sxgi8tpo23"
 
 [node name="StartMenu" type="Node2D" parent="FSM/StateMachine" unique_id=582136383 node_paths=PackedStringArray("actor")]
 script = ExtResource("2_0sr1o")
-scene = ExtResource("6_4j704")
+scene = ExtResource("6_5jirj")
 actor = NodePath("../../../Scene")
 
 [node name="SettingsMenu" type="Node2D" parent="FSM/StateMachine" unique_id=1263302893 node_paths=PackedStringArray("actor")]
@@ -77,6 +39,11 @@ actor = NodePath("../../../Scene")
 
 [node name="LevelPickMenu" type="Node2D" parent="FSM/StateMachine" unique_id=1286467007 node_paths=PackedStringArray("actor")]
 script = ExtResource("11_kp23o")
+node_scene = ExtResource("12_5jirj")
+actor = NodePath("../../..")
+
+[node name="Level" type="Node2D" parent="FSM/StateMachine" unique_id=673027248 node_paths=PackedStringArray("actor")]
+script = ExtResource("11_5jirj")
 actor = NodePath("../../../Scene")
 
 [node name="Scene" type="Node2D" parent="." unique_id=1557977324]

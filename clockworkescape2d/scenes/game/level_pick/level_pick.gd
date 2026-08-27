@@ -1,6 +1,7 @@
 extends Node2D
 class_name LevelPick
 
+signal load_level(path_to_level: String, level_id: int)
 const LEVELS_PER_PAGE := 4
 const TOTAL_PAGES := 5
 const TOTAL_LEVELS := 20
@@ -215,7 +216,7 @@ func _on_level_selected(level_id: int) -> void:
 	if target_path == "":
 		push_error("No level path found for level %d" % level_id)
 		return
-	get_parent().load_level(target_path, level_id)
+	load_level.emit(target_path, level_id)
 
 func hide_navigation() -> void:
 	visible = false

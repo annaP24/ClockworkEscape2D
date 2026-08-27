@@ -11,8 +11,8 @@ var player : PlayerFsmCustomDataLayer
 
 func _process(_delta):
 	if Input.is_action_pressed("return"):
-		#If root node's name is not "World" then we are in debug mode and need restarting
-		if get_tree().current_scene.name != "World":
+		#If root node's name is not "Game" then we are in debug mode and need restarting
+		if get_tree().current_scene.name != "Game":
 				get_tree().quit()
 
 func _ready() -> void:

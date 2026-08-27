@@ -27,6 +27,7 @@ buses/audio_bus_layout="uid://bqkyourp723uy"
 
 Debug="*res://core/debug.gd"
 GameSaveManager="*res://scenes/managers/GameSaveManager.gd"
+GameSession="*res://scenes/managers/GameSession.gd"
 FadeScreen="*res://scenes/ui/fade_screen.tscn"
 EventBus="*uid://gsw0bmao2vkn"
 AudioManager="*uid://cu5pwy4jr3mrg"

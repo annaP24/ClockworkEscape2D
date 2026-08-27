@@ -1,13 +1,40 @@
-[gd_scene format=3 uid="uid://bwj5dpeyjhnkl"]
+[gd_scene format=4 uid="uid://bwj5dpeyjhnkl"]
 
 [ext_resource type="Script" uid="uid://c4anpeq5fgh2x" path="res://scenes/game/start_menu/start_menu.gd" id="1_isqat"]
 [ext_resource type="Texture2D" uid="uid://cjm83aiqq2ros" path="res://scenes/game/assets/title_holder.png" id="2_ecxqb"]
+[ext_resource type="Texture2D" uid="uid://d3pb0l68glq2n" path="res://scenes/game/assets/Background_new.png" id="2_mxtvh"]
 [ext_resource type="Theme" uid="uid://cx0xw7kuwquce" path="res://resources/label_theme.tres" id="3_yerm5"]
 [ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="4_mxtvh"]
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="5_fjnit"]
 [ext_resource type="Texture2D" uid="uid://c0x2x8mcyw5ht" path="res://scenes/game/assets/Button_idle.png" id="6_isqat"]
+[ext_resource type="Texture2D" uid="uid://dxxdisa8ojqwv" path="res://assets/tilemap/frame.png" id="8_fjnit"]
 
 [sub_resource type="Theme" id="Theme_m2m72"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxtvh"]
+texture = ExtResource("8_fjnit")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+2:2/0 = 0
+0:0/0 = 0
+4:0/0 = 0
+4:2/0 = 0
+4:4/0 = 0
+2:4/0 = 0
+0:4/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fjnit"]
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+custom_data_layer_0/name = "tile_id"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_mxtvh")
 
 [node name="StartMenu" type="Control" unique_id=339159820]
 process_mode = 2
@@ -23,11 +50,18 @@ script = ExtResource("1_isqat")
 metadata/_edit_vertical_guides_ = [-273.0]
 metadata/_edit_horizontal_guides_ = [-226.0]
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2104803026]
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 4000.0
+texture = ExtResource("2_mxtvh")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1131630118]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 3170.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_m2m72")
@@ -113,6 +147,14 @@ texture_hover = ExtResource("6_isqat")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" index="0" unique_id=1342168869]
 text = "QUIT"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=670809566]
+unique_name_in_owner = true
+visibility_layer = 3
+z_index = 17
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAKAAAAAAACAAAAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAANAAAAAAACAAAAAAAOAAAAAAACAAAAAAAPAAAAAAACAAAAAAAQAAAAAAACAAAAAAARAAAAAAACAAAAAAASAAAAAAACAAAAAAATAAAAAAAEAAAAAAATAAEAAAAEAAIAAAATAAIAAAAEAAIAAAATAAMAAAAEAAIAAAATAAQAAAAEAAIAAAATAAUAAAAEAAIAAAATAAYAAAAEAAIAAAATAAcAAAAEAAIAAAATAAgAAAAEAAIAAAATAAkAAAAEAAIAAAATAAoAAAAEAAIAAAATAAwAAAAEAAQAAAASAAwAAAACAAQAAAARAAwAAAACAAQAAAAQAAwAAAACAAQAAAAPAAwAAAACAAQAAAAOAAwAAAACAAQAAAANAAwAAAACAAQAAAAMAAwAAAACAAQAAAALAAwAAAACAAQAAAAKAAwAAAACAAQAAAAJAAwAAAACAAQAAAAIAAwAAAACAAQAAAAHAAwAAAACAAQAAAAGAAwAAAACAAQAAAAFAAwAAAACAAQAAAAEAAwAAAACAAQAAAADAAwAAAACAAQAAAACAAwAAAACAAQAAAABAAwAAAACAAQAAAAAAAwAAAAAAAQAAAAAAAoAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAsAAAAAAAIAAAATAAsAAAAEAAIAAAA=")
+tile_set = SubResource("TileSet_fjnit")
+collision_enabled = false
 
 [editable path="ColorRect/VBoxContainer2/VBoxContainer/StartButton"]
 [editable path="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton"]

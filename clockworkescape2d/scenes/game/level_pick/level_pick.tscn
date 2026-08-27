@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://d03cn4rx7foca"]
 
 [ext_resource type="Script" uid="uid://utx5mf7v6yhh" path="res://scenes/game/level_pick/level_pick.gd" id="1_i3w1w"]
-[ext_resource type="Texture2D" uid="uid://ddk0hlf7rregy" path="res://scenes/game/level_pick/assets/Background_new.png" id="2_j88q2"]
+[ext_resource type="Texture2D" uid="uid://d3pb0l68glq2n" path="res://scenes/game/assets/Background_new.png" id="2_c15aw"]
 [ext_resource type="PackedScene" uid="uid://c8h5qyo3d2bld" path="res://scenes/game/level_pick/level_node.tscn" id="3_tnps1"]
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="4_8vp0m"]
 [ext_resource type="Texture2D" uid="uid://b6id5mlbkuv80" path="res://scenes/game/level_pick/assets/arrow_left_normal.png" id="5_wwrvx"]
@@ -38,11 +38,10 @@ sources/0 = SubResource("TileSetAtlasSource_4ufpk")
 script = ExtResource("1_i3w1w")
 metadata/_edit_horizontal_guides_ = [337.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=44639868]
-visible = false
-z_index = -1
-position = Vector2(639, -158)
-texture = ExtResource("2_j88q2")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1794293577]
+offset_right = 1280.0
+offset_bottom = 4000.0
+texture = ExtResource("2_c15aw")
 
 [node name="Levels" type="Node2D" parent="." unique_id=703100845]
 unique_name_in_owner = true
