@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bwj5dpeyjhnkl" path="res://scenes/game/start_menu/start_menu.tscn" id="6_5jirj"]
 [ext_resource type="Script" uid="uid://ds2g2ff4y6ob6" path="res://scenes/game/FSM/settings_menu_state.gd" id="6_bdhmt"]
 [ext_resource type="Script" uid="uid://dnrvc3qguskyh" path="res://scenes/game/FSM/slots_menu_state.gd" id="7_87uf6"]
+[ext_resource type="PackedScene" uid="uid://5igbcuxjive3" path="res://scenes/game/slots_menu/slots_menu.tscn" id="8_5jirj"]
 [ext_resource type="PackedScene" uid="uid://bvn47xwtv2a5t" path="res://scenes/game/settings_menu/settings_menu.tscn" id="8_kp23o"]
-[ext_resource type="PackedScene" uid="uid://dy4oeus5snk0x" path="res://scenes/ui/slots_screen/save_slots.tscn" id="10_4j704"]
 [ext_resource type="Script" uid="uid://b2mpdsvbsavf4" path="res://scenes/game/FSM/level_state.gd" id="11_5jirj"]
 [ext_resource type="Script" uid="uid://buoge1f076qp8" path="res://scenes/game/FSM/level_pick_state.gd" id="11_kp23o"]
 [ext_resource type="PackedScene" uid="uid://d03cn4rx7foca" path="res://scenes/game/level_pick/level_pick.tscn" id="12_5jirj"]
@@ -34,7 +34,7 @@ actor = NodePath("../../../Scene")
 
 [node name="SlotsMenu" type="Node2D" parent="FSM/StateMachine" unique_id=302081226 node_paths=PackedStringArray("actor")]
 script = ExtResource("7_87uf6")
-scene = ExtResource("10_4j704")
+scene = ExtResource("8_5jirj")
 actor = NodePath("../../../Scene")
 
 [node name="LevelPickMenu" type="Node2D" parent="FSM/StateMachine" unique_id=1286467007 node_paths=PackedStringArray("actor")]

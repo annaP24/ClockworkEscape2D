@@ -1,5 +1,4 @@
 extends Control
-class_name SlotsMenu
 var slot1_data : Dictionary
 var slot2_data : Dictionary
 var slot3_data : Dictionary

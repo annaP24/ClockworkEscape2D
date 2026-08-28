@@ -43,6 +43,8 @@ visible = false
 z_index = -1
 position = Vector2(639, -158)
 texture = ExtResource("7_025iv")
+centered = true
+mouse_filter = 2
 
 [node name="Levels" type="Node2D" parent="." unique_id=703100845]
 unique_name_in_owner = true
@@ -148,6 +150,8 @@ mouse_filter = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
+focus_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_qmxkt")
 texture_pressed = ExtResource("7_qmxkt")
 texture_hover = ExtResource("7_qmxkt")
@@ -179,6 +183,8 @@ mouse_filter = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
+focus_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_kl1bo")
 texture_pressed = ExtResource("7_kl1bo")
 texture_hover = ExtResource("7_kl1bo")

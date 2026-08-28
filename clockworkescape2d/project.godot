@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="ClockworkEscape2D"
-run/main_scene="uid://cx885i6g6gwnh"
+run/main_scene="uid://b3hweffqyikhj"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

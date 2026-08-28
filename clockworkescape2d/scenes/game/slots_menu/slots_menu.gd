@@ -1,4 +1,5 @@
 extends Control
+class_name SlotsMenu
 
 var slot1_data : Dictionary
 var slot2_data : Dictionary
@@ -11,7 +12,10 @@ var slot3_data : Dictionary
 @onready var empty_label_3: Label = %EmptyLabel3
 @onready var start_button: TextureButton = %Play
 @onready var delete_button: TextureButton = %DeleteButton
+@onready var back_button: StandardButton = %BackButton
 @onready var slot_1_button: TextureButton = %Slot1Button
+@onready var slot_2_button: StandardButton = %Slot2Button
+@onready var slot_3_button: StandardButton = %Slot3Button
 var selected_slot : int = 0
 
 func _ready() -> void:
@@ -50,30 +54,40 @@ func _check_slot_data():
 		stats_sl_3.fill_data(slot3_data)
 
 func _enable_disable_buttons(slot : int, toggle_on : bool):
+	print("Slot pressed: ", slot, " toggle: ", toggle_on)
 	if toggle_on:
 		selected_slot = slot
 		start_button.disabled = false
+		GameSaveManager.set_current_slot_id(slot)
 	else:
 		selected_slot = 0
+		GameSaveManager.set_current_slot_id(-1)
 
 	if slot == 1:
 		if !slot1_data.is_empty():
 			delete_button.disabled = false
 		else:
 			delete_button.disabled = true
+		slot_2_button.is_toggled = false
+		slot_3_button.is_toggled = false
 	elif slot == 2:
 		if !slot2_data.is_empty():
 			delete_button.disabled = false
 		else:
 			delete_button.disabled = true
+		slot_1_button.is_toggled = false
+		slot_3_button.is_toggled = false
 	elif slot == 3:
 		if !slot3_data.is_empty():
 			delete_button.disabled = false
 		else:
 			delete_button.disabled = true
+		slot_1_button.is_toggled = false
+		slot_2_button.is_toggled = false
 	elif slot == 0:
 		delete_button.disabled = true
 		start_button.disabled = true
+	print("SLot pressed: ", slot_1_button.is_toggled, " ", slot_2_button.is_toggled, " ", slot_3_button.is_toggled)
 
 func update_data()-> void:
 	_check_slot_data()

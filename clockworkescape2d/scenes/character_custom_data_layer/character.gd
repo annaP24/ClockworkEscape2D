@@ -258,7 +258,7 @@ func _on_hurt_detection_area_body_entered(_body: Node2D) -> void:
 func _on_character_animated_animation_finished() -> void:
 	if player_died_received:
 		#If root node's name is not "World" then we are in debug mode and need restarting
-		if get_tree().current_scene.name != "World":
+		if get_tree().current_scene.name != "Game":
 			get_tree().reload_current_scene()
 		else:
 			player_died.emit()

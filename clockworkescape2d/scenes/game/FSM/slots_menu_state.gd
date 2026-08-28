@@ -2,6 +2,7 @@ extends WorldViewState
 
 var selected_slot
 func enter() -> void:
+	#GameSession.update_mouse_visibility(false)
 	if not EventBus.button_pressed.is_connected(_on_button_pressed):
 		EventBus.button_pressed.connect(_on_button_pressed)
 	instance = scene.instantiate() as SlotsMenu
@@ -21,9 +22,7 @@ func _on_button_pressed(button : TextureButton) -> void:
 		return
 	if button == instance.back_button:
 		request_change.emit(self, "startmenu")
-	elif button == instance.play_button:
+	elif button == instance.start_button:
 		request_change.emit(self, "LevelPickMenu")
-
 	elif button == instance.delete_button:
 		GameSaveManager.delete_configuration(instance.selected_slot)
-		instance.check_slot_data()

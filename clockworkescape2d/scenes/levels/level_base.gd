@@ -31,7 +31,7 @@ func _spawn_player():
 	player = player_scene.instantiate() as PlayerFsmCustomDataLayer
 	player.position = spawn_marker.position
 	add_child(player)
-	player.connect("player_died", _on_player_died)
+	player.player_died.connect(_on_player_died)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("return"):

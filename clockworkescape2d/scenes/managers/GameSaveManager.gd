@@ -21,7 +21,7 @@ var max_level_reached : int
 var max_collected : int = 0
 var session_start_time : int = 0
 var total_play_time_seconds : int = 0
-var current_save_slot : int = 1
+var current_save_slot : int = -1
 var current_progress_path : String = ""
 var max_deaths_for_slot : int = 0
 var slot_data : Dictionary = {
@@ -32,6 +32,8 @@ var slot_data : Dictionary = {
 }
 
 var is_joypad_connected : bool = false
+var mouse_forced_hidden : bool = false
+
 func _check_input_controller():
 	var joypads = Input.get_connected_joypads()
 	if joypads.size() > 0:
@@ -39,15 +41,21 @@ func _check_input_controller():
 	else:
 		is_joypad_connected = false
 
-	#_update_mouse_visibility()
+	#update_mouse_visibility(mouse_forced_hidden)
 	if not Input.joy_connection_changed.is_connected(_on_joypad_connection_changed):
 		# Subscribe to joypad connection
 		Input.joy_connection_changed.connect(_on_joypad_connection_changed)
 
+func update_mouse_visibility(force_hidden: bool = false) -> void:
+	mouse_forced_hidden = force_hidden
+	if mouse_forced_hidden or is_joypad_connected:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_joypad_connection_changed(_device: int, connected: bool):
 	is_joypad_connected = connected
-	#_update_mouse_visibility()
+	update_mouse_visibility(mouse_forced_hidden)
 
 func _ready() -> void:
 	set_level_paths()
@@ -61,7 +69,12 @@ func _process(_delta: float) -> void:
 		else:
 			AudioManager.mute_all_sound(false)
 	_check_input_controller()
+
 func set_current_slot_id(slot_id: int) -> void:
+	if slot_id < 1 or slot_id > 3:
+		current_progress_path = ""
+		current_save_slot = -1
+		return
 	current_progress_path = _get_file_name(slot_id)
 	current_save_slot = slot_id
 

@@ -1,6 +1,7 @@
 extends WorldViewState
 
 func enter() -> void:
+	# GameSession.update_mouse_visibility(false)
 	if not EventBus.button_pressed.is_connected(_on_button_pressed):
 		EventBus.button_pressed.connect(_on_button_pressed)
 	instance = scene.instantiate()
