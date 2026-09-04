@@ -19,7 +19,10 @@ func _ready() -> void:
 	if selected_slot == 0:
 		play_button.disabled = true
 	if GameSaveManager.is_joypad_connected:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		slot_1_button.grab_focus()
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func check_slot_data():
 	slot1_data = GameSaveManager.check_progress_data_for_slot(1)

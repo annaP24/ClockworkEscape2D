@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name World
 @onready var scene_placeholder: Node2D = $Scene
 
 var current_level_instance : Level = null

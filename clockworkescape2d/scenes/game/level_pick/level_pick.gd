@@ -26,6 +26,11 @@ func _ready() -> void:
 	focus_first_level()
 	_update_page_buttons()
 	_apply_page()
+	if GameSaveManager.is_joypad_connected:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 
 func show_navigation() -> void:
 	visible = true

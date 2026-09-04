@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b3hweffqyikhj"]
+
+[ext_resource type="Script" uid="uid://c02sxgi8tpo23" path="res://scenes/game/FSM/StateMachine.gd" id="1_7h61r"]
+[ext_resource type="Script" uid="uid://beltmc3acmp78" path="res://scenes/game/game.gd" id="1_87uf6"]
+[ext_resource type="Script" uid="uid://dd8562ulfetpu" path="res://scenes/game/FSM/start_menu_state.gd" id="2_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://bwj5dpeyjhnkl" path="res://scenes/game/start_menu/start_menu.tscn" id="6_5jirj"]
+[ext_resource type="Script" uid="uid://ds2g2ff4y6ob6" path="res://scenes/game/FSM/settings_menu_state.gd" id="6_bdhmt"]
+[ext_resource type="Script" uid="uid://dnrvc3qguskyh" path="res://scenes/game/FSM/slots_menu_state.gd" id="7_87uf6"]
+[ext_resource type="PackedScene" uid="uid://5igbcuxjive3" path="res://scenes/game/slots_menu/slots_menu.tscn" id="8_5jirj"]
+[ext_resource type="PackedScene" uid="uid://bvn47xwtv2a5t" path="res://scenes/game/settings_menu/settings_menu.tscn" id="8_kp23o"]
+[ext_resource type="Script" uid="uid://b2mpdsvbsavf4" path="res://scenes/game/FSM/level_state.gd" id="11_5jirj"]
+[ext_resource type="Script" uid="uid://buoge1f076qp8" path="res://scenes/game/FSM/level_pick_state.gd" id="11_kp23o"]
+[ext_resource type="PackedScene" uid="uid://d03cn4rx7foca" path="res://scenes/game/level_pick/level_pick.tscn" id="12_5jirj"]
+
+[node name="Game" type="Node2D" unique_id=402861847]
+script = ExtResource("1_87uf6")
+
+[node name="FSM" type="Node2D" parent="." unique_id=918192613]
+
+[node name="StateMachine" type="Node" parent="FSM" unique_id=2099398383 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_7h61r")
+initial_state = NodePath("StartMenu")
+metadata/_custom_type_script = "uid://c02sxgi8tpo23"
+
+[node name="StartMenu" type="Node2D" parent="FSM/StateMachine" unique_id=582136383 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_0sr1o")
+scene = ExtResource("6_5jirj")
+actor = NodePath("../../../Scene")
+
+[node name="SettingsMenu" type="Node2D" parent="FSM/StateMachine" unique_id=1263302893 node_paths=PackedStringArray("actor")]
+script = ExtResource("6_bdhmt")
+scene = ExtResource("8_kp23o")
+actor = NodePath("../../../Scene")
+
+[node name="SlotsMenu" type="Node2D" parent="FSM/StateMachine" unique_id=302081226 node_paths=PackedStringArray("actor")]
+script = ExtResource("7_87uf6")
+scene = ExtResource("8_5jirj")
+actor = NodePath("../../../Scene")
+
+[node name="LevelPickMenu" type="Node2D" parent="FSM/StateMachine" unique_id=1286467007 node_paths=PackedStringArray("actor")]
+script = ExtResource("11_kp23o")
+node_scene = ExtResource("12_5jirj")
+actor = NodePath("../../..")
+
+[node name="Level" type="Node2D" parent="FSM/StateMachine" unique_id=673027248 node_paths=PackedStringArray("actor")]
+script = ExtResource("11_5jirj")
+actor = NodePath("../../../Scene")
+
+[node name="Scene" type="Node2D" parent="." unique_id=1557977324]

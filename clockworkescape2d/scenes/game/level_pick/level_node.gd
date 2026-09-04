@@ -1,5 +1,5 @@
 extends Area2D
-class_name LevelNode2
+class_name LevelNode
 signal level_selected(level_id)
 
 
@@ -10,7 +10,7 @@ signal level_selected(level_id)
 @onready var sprite_enabled: Sprite2D = %Sprite2D_Gear
 @onready var sprite_disabled: Sprite2D = %Sprite2D_Disabled
 @onready var sprite: Node2D = $Sprite
-@onready var label: Label = $Label
+@onready var label: Label = %Label
 #@onready var collectables_visual: CollectableVisual = $CollectablesVisual
 var parent : LevelPick
 var is_selected : bool = false

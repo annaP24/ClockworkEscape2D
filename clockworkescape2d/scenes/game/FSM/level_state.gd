@@ -3,12 +3,6 @@ extends WorldViewState
 var current_level_instance : Node = null
 
 func enter() -> void:
-	# GameSession.update_mouse_visibility(true)
-	# if GameSession.is_joypad_connected:
-	# 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	# else:
-	# 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-
 	var request = GameSession.consume_level_request()
 	if request["path"] != "":
 		_load_level(request["path"], request["id"])

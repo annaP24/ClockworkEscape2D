@@ -12,15 +12,15 @@
 
 [sub_resource type="Theme" id="Theme_p1n1k"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_mhtg6"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_3bqfh"]
 allow_unpress = true
 
 [sub_resource type="Theme" id="Theme_r6r3v"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_4yll1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_mhtg6"]
 allow_unpress = true
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_k0ilx"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_4yll1"]
 allow_unpress = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sns4t"]
@@ -134,7 +134,7 @@ layout_mode = 2
 focus_neighbor_right = NodePath("../Slot2Button")
 focus_neighbor_bottom = NodePath("../../Buttons/Play")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_mhtg6")
+button_group = SubResource("ButtonGroup_3bqfh")
 texture_normal = ExtResource("5_k0ilx")
 texture_pressed = ExtResource("6_m3yyo")
 texture_hover = ExtResource("6_m3yyo")
@@ -208,7 +208,7 @@ focus_neighbor_left = NodePath("../Slot1Button")
 focus_neighbor_right = NodePath("../Slot3Button")
 focus_neighbor_bottom = NodePath("../../Buttons/DeleteButton")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_4yll1")
+button_group = SubResource("ButtonGroup_mhtg6")
 texture_normal = ExtResource("5_k0ilx")
 texture_pressed = ExtResource("6_m3yyo")
 texture_hover = ExtResource("6_m3yyo")
@@ -283,7 +283,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Slot2Button")
 focus_neighbor_bottom = NodePath("../../Buttons/BackButton")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_k0ilx")
+button_group = SubResource("ButtonGroup_4yll1")
 texture_normal = ExtResource("5_k0ilx")
 texture_pressed = ExtResource("6_m3yyo")
 texture_hover = ExtResource("6_m3yyo")

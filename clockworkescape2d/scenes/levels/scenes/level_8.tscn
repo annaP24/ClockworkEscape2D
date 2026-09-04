@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/projectiles/projectile_shooter/projectile_shooter.tscn" id="2_oj12l"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="3_l43d5"]
 [ext_resource type="PackedScene" uid="uid://d4lxpl5reul6v" path="res://scenes/obstacles/projectiles/star/throwing_star.tscn" id="4_7ghcb"]
-[ext_resource type="Texture2D" uid="uid://scg6u1she186" path="res://Screenshot 2026-06-11 190015.png" id="5_jjamq"]
 
 [node name="Level_8" unique_id=1162975536 instance=ExtResource("1_nmvks")]
 level_id = 8
@@ -89,10 +88,7 @@ current_direction = Vector2(-1, 0)
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 672)
 
-[node name="Screenshot20260611190015" type="Sprite2D" parent="." index="10" unique_id=25941635]
-visible = false
-modulate = Color(1, 1, 1, 0.43137255)
-position = Vector2(869, 663)
-texture = ExtResource("5_jjamq")
+[node name="SpriteArrow" parent="ExitPlatform" index="1" unique_id=686190412]
+position = Vector2(0, -39.169785)
 
 [editable path="ExitPlatform"]

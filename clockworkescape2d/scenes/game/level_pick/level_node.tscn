@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brhj6o2imtlph" path="res://scenes/game/level_pick/level_node.gd" id="1_ga0g2"]
 [ext_resource type="Texture2D" uid="uid://bkp0fkyhfwndh" path="res://scenes/game/level_pick/assets/level_pick.png" id="2_tkxpk"]
-[ext_resource type="Texture2D" uid="uid://cvvm7x02jbnrg" path="res://scenes/game/level_pick/assets/gear_disabed.png" id="3_xxy82"]
+[ext_resource type="Texture2D" uid="uid://bfyih6iexvkn0" path="res://scenes/game/level_pick/assets/gear_disabled.png" id="3_r8lm0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxuui"]
 radius = 65.03076
@@ -20,28 +20,19 @@ texture = ExtResource("2_tkxpk")
 [node name="Sprite2D_Disabled" type="Sprite2D" parent="Sprite" unique_id=1633753246]
 unique_name_in_owner = true
 visible = false
-texture = ExtResource("3_xxy82")
+texture = ExtResource("3_r8lm0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067932886]
 visible = false
 shape = SubResource("CircleShape2D_mxuui")
 
 [node name="Label" type="Label" parent="." unique_id=755305261]
+unique_name_in_owner = true
 offset_left = -21.0
 offset_top = -14.0
 offset_right = 19.0
 offset_bottom = 18.0
-theme_override_font_sizes/font_size = 23
-text = "1"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="." unique_id=1290332725]
-visible = false
-offset_left = -20.0
-offset_top = -17.0
-offset_right = 20.0
-offset_bottom = 15.0
-theme_override_colors/font_color = Color(0.3647059, 0.22745098, 0.101960786, 1)
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_font_sizes/font_size = 23
 text = "1"
 horizontal_alignment = 1
