@@ -4,6 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="2_18sy2"]
 [ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="3_p0jxc"]
 [ext_resource type="Texture2D" uid="uid://bc4th76uxmncd" path="res://scenes/ui/assets/icons.png" id="4_ueqc6"]
+[ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/ui/tutorial_arrow/tutorial_arrow.gd" id="6_arrowbob"]
+[ext_resource type="Texture2D" uid="uid://bcdc2efwww6i6" path="res://scenes/ui/tutorial_arrow/assets/arrow_curve_up_right.png" id="7_nwod2"]
+[ext_resource type="Script" uid="uid://pmvpm5kociet" path="res://scenes/levels/scenes/level_start_tutorial.gd" id="7_tutorial"]
+[ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/ui/tutorial_arrow/assets/left.png" id="8_nwod2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e11fs"]
+size = Vector2(127, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wallhint"]
+size = Vector2(193, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwod2"]
+size = Vector2(69.75, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_walljumphint"]
+size = Vector2(80, 200)
 
 [node name="Level_start" unique_id=575594771 instance=ExtResource("1_w2nlo")]
 level_id = 1
@@ -32,53 +48,128 @@ position = Vector2(800, 544)
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 416)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="10" unique_id=460368607]
-visible = false
+[node name="TutorialHints" type="Node2D" parent="." index="10" unique_id=460368607]
+unique_name_in_owner = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" index="0" unique_id=1821730140]
+[node name="TextureRect" type="TextureRect" parent="TutorialHints" index="0" unique_id=1821730140]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 36)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = -18.0
-offset_right = 18.0
-offset_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 329.0
+offset_top = 334.0
+offset_right = 365.0
+offset_bottom = 370.0
 texture = ExtResource("4_ueqc6")
 
-[node name="Label" type="Label" parent="CanvasLayer" index="1" unique_id=1457317265]
-offset_left = 96.0
-offset_top = 1073.0
-offset_right = 159.0
-offset_bottom = 1113.0
+[node name="LabelJump" type="Label" parent="TutorialHints" index="1" unique_id=1457317265]
+unique_name_in_owner = true
+offset_left = 602.0
+offset_top = 770.0
+offset_right = 665.0
+offset_bottom = 810.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 37
 text = "Jump"
 
-[node name="Label2" type="Label" parent="CanvasLayer" index="2" unique_id=1673604391]
-offset_left = 67.0
-offset_right = 227.0
-offset_bottom = 40.0
+[node name="LabelDoubleJump" type="Label" parent="TutorialHints" index="2" unique_id=1673604391]
+unique_name_in_owner = true
+offset_left = 147.0
+offset_top = 936.0
+offset_right = 307.0
+offset_bottom = 976.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 37
 text = "Double JUMP"
 
-[node name="Label3" type="Label" parent="CanvasLayer" index="3" unique_id=389122631]
-offset_left = 231.0
-offset_right = 328.0
-offset_bottom = 40.0
+[node name="LabelCollect" type="Label" parent="TutorialHints" index="3" unique_id=389122631]
+unique_name_in_owner = true
+offset_left = 368.0
+offset_top = 657.0
+offset_right = 465.0
+offset_bottom = 697.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 37
 text = "Collect"
 
-[node name="Label4" type="Label" parent="CanvasLayer" index="4" unique_id=1092285099]
-offset_left = 332.0
-offset_right = 414.0
-offset_bottom = 40.0
+[node name="LabelPressArrow" type="Label" parent="TutorialHints" index="4" unique_id=1092285099]
+unique_name_in_owner = true
+offset_left = 849.0
+offset_top = 660.0
+offset_right = 1124.0
+offset_bottom = 710.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 37
-text = "press "
+text = "press ↑ / W to climb"
+
+[node name="TutorialArrows" type="Node2D" parent="." index="11" unique_id=214306786]
+
+[node name="ArrowToCollectable" type="Sprite2D" parent="TutorialArrows" index="0" unique_id=207051312]
+unique_name_in_owner = true
+position = Vector2(291, 665.00006)
+rotation = 3.693781
+texture = ExtResource("8_nwod2")
+script = ExtResource("6_arrowbob")
+
+[node name="ArrowToWalkableWall" type="Sprite2D" parent="TutorialArrows" index="1" unique_id=1394767792]
+unique_name_in_owner = true
+position = Vector2(903, 841)
+rotation = -1.5575265
+texture = ExtResource("7_nwod2")
+flip_v = true
+script = ExtResource("6_arrowbob")
+
+[node name="ArrowWallJumpUpRight" type="Sprite2D" parent="TutorialArrows" index="2" unique_id=1394767793]
+unique_name_in_owner = true
+position = Vector2(1421.0001, 788.99994)
+rotation = -1.5848484
+texture = ExtResource("7_nwod2")
+script = ExtResource("6_arrowbob")
+
+[node name="ArrowToWall2" type="Sprite2D" parent="TutorialArrows/ArrowWallJumpUpRight" index="0" unique_id=1407195984]
+position = Vector2(-87.83684, -12.235531)
+rotation = 0.027321935
+texture = ExtResource("7_nwod2")
+flip_v = true
+script = ExtResource("6_arrowbob")
+
+[node name="WallDoubleJumpHintZoneExit" type="Area2D" parent="." index="12" unique_id=953512874]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDoubleJumpHintZoneExit" index="0" unique_id=1636318188]
+shape = SubResource("RectangleShape2D_e11fs")
+
+[node name="WalkableWallHintZoneEnter" type="Area2D" parent="." index="13" unique_id=1833649822]
+unique_name_in_owner = true
+position = Vector2(800, 811)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WalkableWallHintZoneEnter" index="0" unique_id=1867745901]
+shape = SubResource("RectangleShape2D_wallhint")
+
+[node name="WalkableWallHintZoneExit" type="Area2D" parent="." index="14" unique_id=1547530234]
+unique_name_in_owner = true
+position = Vector2(991, 470)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WalkableWallHintZoneExit" index="0" unique_id=1507808193]
+shape = SubResource("RectangleShape2D_nwod2")
+
+[node name="WallJumpHintZoneEnter" type="Area2D" parent="." index="15" unique_id=580157660]
+unique_name_in_owner = true
+position = Vector2(1409, 988)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallJumpHintZoneEnter" index="0" unique_id=1146688298]
+shape = SubResource("RectangleShape2D_e11fs")
+
+[node name="WallJumpHintZoneExit" type="Area2D" parent="." index="16" unique_id=1833649823]
+unique_name_in_owner = true
+position = Vector2(1236, 670)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallJumpHintZoneExit" index="0" unique_id=1867745902]
+shape = SubResource("RectangleShape2D_walljumphint")
+
+[node name="TutorialController" type="Node" parent="." index="17" unique_id=1748301551]
+script = ExtResource("7_tutorial")

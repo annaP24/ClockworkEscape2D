@@ -32,6 +32,9 @@ func _spawn_player():
 	player.position = spawn_marker.position
 	add_child(player)
 	player.player_died.connect(_on_player_died)
+	if has_node("TutorialController"):
+		var tutorial_controller = get_node("TutorialController") as Node
+		tutorial_controller.player = player
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("return"):

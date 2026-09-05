@@ -11,6 +11,9 @@ class_name CompFsmNode
 @export var initial_state: FsmNodeState
 @onready var platformer : PlayerFsmCustomDataLayer = $".."
 
+## Emitted after a state transition completes, with the new state's lowercased node name.
+signal fsm_state_changed(state_name: String)
+
 var states_dict: Dictionary = {}
 var current_state: FsmNodeState
 var state_change_timer : Timer
@@ -67,6 +70,7 @@ func change_state(state : FsmNodeState , new_state_name : String):
 
 		new_state.Enter(platformer)
 		current_state = new_state
+		fsm_state_changed.emit(new_state_name.to_lower())
 		#state_change_timer.start()
 		#state_changed = true
 
