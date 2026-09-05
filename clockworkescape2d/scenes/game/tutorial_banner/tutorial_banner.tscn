@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bc8gewx78rxtk"]
 
-[ext_resource type="Script" uid="uid://bohlq2w6vb53f" path="res://scenes/ui/tutorial_banner/tutorial_banner.gd" id="1_banner"]
+[ext_resource type="Script" uid="uid://bohlq2w6vb53f" path="res://scenes/game/tutorial_banner/tutorial_banner.gd" id="1_banner"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_banner"]
 bg_color = Color(0.16862746, 0.101960786, 0.02745098, 1)

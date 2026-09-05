@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bupcgkgwp0qpp" path="res://scenes/ui/assets/Button_idle.png" id="1_bvain"]
 [ext_resource type="Texture2D" uid="uid://mjxsh5b223gr" path="res://scenes/ui/assets/Button_hover.png" id="2_gjosv"]
 [ext_resource type="Script" uid="uid://b41cj6l234emm" path="res://scenes/ui/standard_button/standard_button.gd" id="3_gjosv"]
+[ext_resource type="FontFile" uid="uid://b20wtymmjh5a8" path="res://scenes/game/assets/Bangers-Regular.ttf" id="4_tooxe"]
 
 [node name="StandardButton" type="TextureButton" unique_id=51180377]
 process_mode = 3
@@ -26,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("4_tooxe")
 theme_override_font_sizes/font_size = 45
 text = "TEXT"
 

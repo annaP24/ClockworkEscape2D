@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://brhj6o2imtlph" path="res://scenes/game/level_pick/level_node.gd" id="1_ga0g2"]
 [ext_resource type="Texture2D" uid="uid://bkp0fkyhfwndh" path="res://scenes/game/level_pick/assets/level_pick.png" id="2_tkxpk"]
 [ext_resource type="Texture2D" uid="uid://bfyih6iexvkn0" path="res://scenes/game/level_pick/assets/gear_disabled.png" id="3_r8lm0"]
+[ext_resource type="FontFile" uid="uid://b20wtymmjh5a8" path="res://scenes/game/assets/Bangers-Regular.ttf" id="4_pjvf0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxuui"]
 radius = 65.03076
@@ -33,6 +34,7 @@ offset_top = -14.0
 offset_right = 19.0
 offset_bottom = 18.0
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_fonts/font = ExtResource("4_pjvf0")
 theme_override_font_sizes/font_size = 23
 text = "1"
 horizontal_alignment = 1

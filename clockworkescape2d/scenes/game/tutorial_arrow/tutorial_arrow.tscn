@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6vqf7vxurfts"]
 
 [ext_resource type="Texture2D" uid="uid://c8n02wkrratso" path="res://scenes/interactables/exit/assets/exit_arrow.png" id="1_5mcba"]
-[ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/ui/tutorial_arrow/tutorial_arrow.gd" id="2_mooqp"]
+[ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/game/tutorial_arrow/tutorial_arrow.gd" id="2_mooqp"]
 
 [node name="ArrowToCollectable1" type="Sprite2D" unique_id=1474079018]
 texture = ExtResource("1_5mcba")

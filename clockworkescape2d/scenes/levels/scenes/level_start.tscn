@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="2_18sy2"]
 [ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="3_p0jxc"]
 [ext_resource type="Texture2D" uid="uid://bc4th76uxmncd" path="res://scenes/ui/assets/icons.png" id="4_ueqc6"]
-[ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/ui/tutorial_arrow/tutorial_arrow.gd" id="6_arrowbob"]
-[ext_resource type="Texture2D" uid="uid://bcdc2efwww6i6" path="res://scenes/ui/tutorial_arrow/assets/arrow_curve_up_right.png" id="7_nwod2"]
+[ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/game/tutorial_arrow/tutorial_arrow.gd" id="6_arrowbob"]
+[ext_resource type="Texture2D" uid="uid://bcdc2efwww6i6" path="res://scenes/game/tutorial_arrow/assets/arrow_curve_up_right.png" id="7_nwod2"]
 [ext_resource type="Script" uid="uid://pmvpm5kociet" path="res://scenes/levels/scenes/level_start_tutorial.gd" id="7_tutorial"]
-[ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/ui/tutorial_arrow/assets/left.png" id="8_nwod2"]
+[ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/game/tutorial_arrow/assets/left.png" id="8_nwod2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e11fs"]
 size = Vector2(127, 200)

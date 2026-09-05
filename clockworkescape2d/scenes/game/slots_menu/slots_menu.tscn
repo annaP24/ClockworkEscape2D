@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cj1st26v570eg" path="res://scenes/game/slots_menu/slots_menu.gd" id="1_k6mot"]
 [ext_resource type="Texture2D" uid="uid://cjm83aiqq2ros" path="res://scenes/game/assets/title_holder.png" id="2_3bqfh"]
 [ext_resource type="Texture2D" uid="uid://d3pb0l68glq2n" path="res://scenes/game/assets/Background_new.png" id="2_mhtg6"]
-[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="3_mhtg6"]
+[ext_resource type="FontFile" uid="uid://b20wtymmjh5a8" path="res://scenes/game/assets/Bangers-Regular.ttf" id="3_mhtg6"]
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="4_4yll1"]
 [ext_resource type="Texture2D" uid="uid://bpn4peqxsttql" path="res://scenes/game/slots_menu/assets/slot_long.png" id="5_k0ilx"]
 [ext_resource type="Texture2D" uid="uid://dxh1irkebb35b" path="res://scenes/game/slots_menu/assets/slot_hower_long.png" id="6_m3yyo"]

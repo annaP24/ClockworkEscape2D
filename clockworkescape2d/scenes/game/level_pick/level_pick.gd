@@ -230,7 +230,7 @@ func _get_visible_levels() -> Array:
 			visible_levels.append(level)
 	return visible_levels
 
-func _change_focus(level: Node, is_joypad_selection: bool) -> void:
+func _change_focus(level: Node, _is_joypad_selection: bool) -> void:
 	if !level.is_unlocked:
 		return
 	if current_focused_level:

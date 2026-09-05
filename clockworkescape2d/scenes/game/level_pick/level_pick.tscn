@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="4_8vp0m"]
 [ext_resource type="Texture2D" uid="uid://b6id5mlbkuv80" path="res://scenes/game/level_pick/assets/arrow_left_normal.png" id="5_wwrvx"]
 [ext_resource type="Texture2D" uid="uid://br7hnuy0wo1ju" path="res://scenes/game/level_pick/assets/arrow_right_normal.png" id="6_ki3cg"]
-[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/stats_ui.tscn" id="7_efrcl"]
+[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/statistics/stats_ui.tscn" id="7_efrcl"]
 [ext_resource type="Texture2D" uid="uid://dxxdisa8ojqwv" path="res://assets/tilemap/frame.png" id="8_ukfjd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ufpk"]

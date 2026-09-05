@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dxxdisa8ojqwv" path="res://assets/tilemap/frame.png" id="1_ykrsh"]
 [ext_resource type="Texture2D" uid="uid://2nj5k21y77v0" path="res://assets/tilemap/brass_plate.png" id="2_g14j6"]
-[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/stats_ui.tscn" id="3_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/statistics/stats_ui.tscn" id="3_6uqi0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_00tp4"]
 texture = ExtResource("1_ykrsh")

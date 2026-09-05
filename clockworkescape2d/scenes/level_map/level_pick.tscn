@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b6vn2n10ejw6d" path="res://scenes/level_map/assets/Background_new.png" id="7_025iv"]
 [ext_resource type="Texture2D" uid="uid://civhgro2m2v0f" path="res://scenes/level_map/assets/arrow_right_normal.png" id="7_kl1bo"]
 [ext_resource type="Texture2D" uid="uid://njgciasb2v2w" path="res://scenes/level_map/assets/arrow_left_normal.png" id="7_qmxkt"]
-[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/stats_ui.tscn" id="8_s3y08"]
+[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/statistics/stats_ui.tscn" id="8_s3y08"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ufpk"]
 texture = ExtResource("3_dj0na")
@@ -43,8 +43,6 @@ visible = false
 z_index = -1
 position = Vector2(639, -158)
 texture = ExtResource("7_025iv")
-centered = true
-mouse_filter = 2
 
 [node name="Levels" type="Node2D" parent="." unique_id=703100845]
 unique_name_in_owner = true
@@ -150,7 +148,6 @@ mouse_filter = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
-focus_mode = 2
 mouse_filter = 1
 texture_normal = ExtResource("7_qmxkt")
 texture_pressed = ExtResource("7_qmxkt")
@@ -183,7 +180,6 @@ mouse_filter = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
-focus_mode = 2
 mouse_filter = 1
 texture_normal = ExtResource("7_kl1bo")
 texture_pressed = ExtResource("7_kl1bo")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjm83aiqq2ros" path="res://scenes/game/assets/title_holder.png" id="2_ecxqb"]
 [ext_resource type="Texture2D" uid="uid://d3pb0l68glq2n" path="res://scenes/game/assets/Background_new.png" id="2_mxtvh"]
 [ext_resource type="Theme" uid="uid://cx0xw7kuwquce" path="res://resources/label_theme.tres" id="3_yerm5"]
-[ext_resource type="FontFile" uid="uid://q4xxks1upnbr" path="res://scenes/ui/start_screen/assets/Bangers-Regular.ttf" id="4_mxtvh"]
+[ext_resource type="FontFile" uid="uid://b20wtymmjh5a8" path="res://scenes/game/assets/Bangers-Regular.ttf" id="4_mxtvh"]
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="5_fjnit"]
 [ext_resource type="Texture2D" uid="uid://c0x2x8mcyw5ht" path="res://scenes/game/assets/Button_idle.png" id="6_isqat"]
 [ext_resource type="Texture2D" uid="uid://dxxdisa8ojqwv" path="res://assets/tilemap/frame.png" id="8_fjnit"]
@@ -126,6 +126,7 @@ texture_pressed = ExtResource("6_isqat")
 texture_hover = ExtResource("6_isqat")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/StartButton" index="0" unique_id=1342168869]
+theme_override_fonts/font = ExtResource("4_mxtvh")
 text = "PLAY"
 
 [node name="SettingsButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1949984531 instance=ExtResource("5_fjnit")]
@@ -136,6 +137,7 @@ texture_pressed = ExtResource("6_isqat")
 texture_hover = ExtResource("6_isqat")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/SettingsButton" index="0" unique_id=1342168869]
+theme_override_fonts/font = ExtResource("4_mxtvh")
 text = "SETTINGS"
 
 [node name="QuitButton" parent="ColorRect/VBoxContainer2/VBoxContainer" unique_id=1164782172 instance=ExtResource("5_fjnit")]
@@ -146,6 +148,7 @@ texture_pressed = ExtResource("6_isqat")
 texture_hover = ExtResource("6_isqat")
 
 [node name="Label" parent="ColorRect/VBoxContainer2/VBoxContainer/QuitButton" index="0" unique_id=1342168869]
+theme_override_fonts/font = ExtResource("4_mxtvh")
 text = "QUIT"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=670809566]
