@@ -151,8 +151,11 @@ func unlock_levels() -> void:
 	_apply_page()
 
 func focus_first_level() -> void:
-	current_focused_level = all_levels[0]
-	current_focused_level.set_highlight(true)
+	if current_page != 0:
+		current_page = 0
+		_apply_page()
+		_update_page_buttons()
+	_focus_edge_level(1)
 
 func set_joypad_connected(connected: bool) -> void:
 	is_joypad_connected = connected
@@ -167,11 +170,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed("ui_left"):
-		_change_page(-1)
+		_navigate_horizontal(-1)
 		get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed("ui_right"):
-		_change_page(1)
+		_navigate_horizontal(1)
 		get_viewport().set_input_as_handled()
 		return
 	if current_focused_level == null:
@@ -182,8 +185,50 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("level_down"):
 		next_node = current_focused_level.neighbour_down
 	if next_node:
-		_change_focus(next_node, true)
+		_focus_level(next_node)
 		get_viewport().set_input_as_handled()
+
+func _focus_level(level: Node) -> void:
+	_change_focus(level, true)
+
+func _navigate_horizontal(direction: int) -> void:
+	if is_transitioning:
+		return
+	var visible_levels := _get_visible_levels()
+	if visible_levels.is_empty():
+		return
+	var index := visible_levels.find(current_focused_level)
+	if index == -1:
+		_focus_edge_level(direction)
+		return
+	var next_index := index + direction
+	if next_index >= 0 and next_index < visible_levels.size():
+		var next_level: Node = visible_levels[next_index]
+		if next_level.is_unlocked:
+			_focus_level(next_level)
+	else:
+		# At edge, change page directly
+		_change_page(direction)
+		_focus_edge_level(direction)
+
+func _focus_edge_level(direction: int) -> void:
+	var visible_levels := _get_visible_levels()
+	if direction < 0:
+		visible_levels.reverse()
+	for level in visible_levels:
+		if level.is_unlocked:
+			_focus_level(level)
+			return
+	current_focused_level = null
+
+func _get_visible_levels() -> Array:
+	var visible_levels: Array = []
+	var page_start_id := current_page * LEVELS_PER_PAGE + 1
+	var page_end_id: int = min(page_start_id + LEVELS_PER_PAGE - 1, TOTAL_LEVELS)
+	for level in all_levels:
+		if is_instance_valid(level) and level.visible and level.level_id >= page_start_id and level.level_id <= page_end_id:
+			visible_levels.append(level)
+	return visible_levels
 
 func _change_focus(level: Node, is_joypad_selection: bool) -> void:
 	if !level.is_unlocked:
@@ -192,27 +237,10 @@ func _change_focus(level: Node, is_joypad_selection: bool) -> void:
 		current_focused_level.set_highlight(false)
 	current_focused_level = level
 	current_focused_level.set_highlight(true)
-	_move_to_page_for_level(level)
-	if (
-		(is_joypad_connected and is_joypad_selection)
-		or Input.is_action_pressed("level_down")
-		or Input.is_action_pressed("level_up")
-	):
-		pass
-
-func _move_to_page_for_level(level) -> void:
-	if level == null:
-		return
-	var level_page_index := int(floor((level.level_id - 1) / LEVELS_PER_PAGE))
-	if level_page_index != current_page:
-		current_page = level_page_index
-		_apply_page()
-		_update_page_buttons()
 
 func _on_level_selected(level_id: int) -> void:
 	if level_id < 1 or level_id > TOTAL_LEVELS:
 		return
-	hide_navigation()
 	GameSaveManager.current_level = level_id - 1
 	GameSaveManager.current_level_id = level_id
 	GameSaveManager.set_level_paths()
@@ -222,23 +250,6 @@ func _on_level_selected(level_id: int) -> void:
 		push_error("No level path found for level %d" % level_id)
 		return
 	load_level.emit(target_path, level_id)
-
-func hide_navigation() -> void:
-	visible = false
-	levels_root.visible = false
-	navigation_layer.visible = false
-	if is_instance_valid(left_button):
-		left_button.visible = false
-		left_button.disabled = true
-		left_button.set_process_input(false)
-		left_button.set_process_unhandled_input(false)
-	if is_instance_valid(right_button):
-		right_button.visible = false
-		right_button.disabled = true
-		right_button.set_process_input(false)
-		right_button.set_process_unhandled_input(false)
-	set_process_input(false)
-	set_process_unhandled_input(false)
 
 func hide_level_buttons(is_hidden: bool)-> void:
 	levels_root.visible = not is_hidden

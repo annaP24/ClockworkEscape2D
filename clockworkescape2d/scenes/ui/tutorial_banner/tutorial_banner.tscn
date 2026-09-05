@@ -4,11 +4,11 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_banner"]
 bg_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.71256554, 0.5621961, 0.19566473, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -41,7 +41,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"LabelBody"
-theme_override_colors/font_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_colors/font_color = Color(0.7137255, 0.56078434, 0.19607843, 1)
 theme_override_colors/font_outline_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 text = "Placeholder"
 horizontal_alignment = 1

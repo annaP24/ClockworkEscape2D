@@ -27,6 +27,12 @@ func _on_focus_exited() -> void:
 	var label = get_child(0)
 	label.add_theme_color_override("font_color", Color("#2b1a07"))
 
+func set_highlighted(active: bool) -> void:
+	if active:
+		_on_focus_entered()
+	else:
+		_on_focus_exited()
+
 
 func _on_mouse_entered() -> void:
 	_on_focus_entered()
