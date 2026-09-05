@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bc8gewx78rxtk"]
+
+[ext_resource type="Script" uid="uid://bohlq2w6vb53f" path="res://scenes/ui/tutorial_banner/tutorial_banner.gd" id="1_banner"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_banner"]
+bg_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="TutorialBanner" type="PanelContainer" unique_id=2010000001]
+process_mode = 3
+custom_minimum_size = Vector2(520, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 24.0
+offset_right = 260.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_banner")
+script = ExtResource("1_banner")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2010000002]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=2010000004]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"LabelBody"
+theme_override_colors/font_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_colors/font_outline_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+text = "Placeholder"
+horizontal_alignment = 1
+autowrap_mode = 2
