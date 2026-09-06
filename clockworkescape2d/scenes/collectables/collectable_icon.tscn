@@ -1,32 +1,30 @@
 [gd_scene format=3 uid="uid://b3x34ffhjvqsr"]
 
 [ext_resource type="Script" uid="uid://vev20gn0s6jt" path="res://scenes/collectables/collectable_icon.gd" id="1_okukg"]
-[ext_resource type="Texture2D" uid="uid://n1xxipopvr8d" path="res://scenes/collectables/assets/collectable_full_icon.png" id="2_okukg"]
-[ext_resource type="Texture2D" uid="uid://43rfk2whghlb" path="res://scenes/collectables/assets/collectable_disabled_icon.png" id="3_y6qoh"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4wcen"]
-load_path = "res://.godot/imported/collectable.png-6667bed437c96855283c53fe432e8941.ctex"
+[ext_resource type="Texture2D" uid="uid://cjwyym7hj6ns3" path="res://scenes/collectables/assets/star.png" id="2_okukg"]
+[ext_resource type="Texture2D" uid="uid://duhjn1vb8gkq8" path="res://scenes/collectables/assets/star_disabled.png" id="3_oo1q3"]
 
 [node name="CollectablesVisual" type="Node2D" unique_id=781579502]
 script = ExtResource("1_okukg")
 sprite_img_full = ExtResource("2_okukg")
-sprite_img_empty = ExtResource("3_y6qoh")
+sprite_img_empty = ExtResource("3_oo1q3")
+metadata/_edit_horizontal_guides_ = [-75.0, -121.0, -122.0]
+metadata/_edit_vertical_guides_ = [27.0, -27.0, 33.0, -33.0]
 
 [node name="Sprites" type="Node2D" parent="." unique_id=978901584]
 position = Vector2(0, -80)
-scale = Vector2(1.14, 1.14)
 
 [node name="Coll_1" type="Sprite2D" parent="Sprites" unique_id=897740226]
-position = Vector2(-36.84211, 3.508774)
-scale = Vector2(0.6, 0.6)
-texture = SubResource("CompressedTexture2D_4wcen")
+position = Vector2(-38, 8.000002)
+scale = Vector2(0.47, 0.47)
+texture = ExtResource("2_okukg")
 
 [node name="Coll_2" type="Sprite2D" parent="Sprites" unique_id=765911008]
 position = Vector2(0, -11)
-scale = Vector2(0.8, 0.8)
-texture = SubResource("CompressedTexture2D_4wcen")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_okukg")
 
 [node name="Coll_3" type="Sprite2D" parent="Sprites" unique_id=1480121803]
-position = Vector2(36.842106, 3.5087729)
-scale = Vector2(0.6, 0.6)
-texture = SubResource("CompressedTexture2D_4wcen")
+position = Vector2(38, 8.000004)
+scale = Vector2(0.47, 0.47)
+texture = ExtResource("2_okukg")

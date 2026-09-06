@@ -38,7 +38,7 @@ one_way_collision_margin = 22.9
 
 [node name="SpriteArrow" type="Sprite2D" parent="." unique_id=686190412]
 z_index = 7
-position = Vector2(0, -24.358818)
+position = Vector2(0, -36.105995)
 texture = ExtResource("2_rqmy3")
 
 [node name="PointLight2D" type="PointLight2D" parent="SpriteArrow" unique_id=1834247295]

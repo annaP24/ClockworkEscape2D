@@ -2,7 +2,7 @@ extends Node
 ## Sequences level_start's tutorial arrows: first collectable, wall climb, then the wall-jump (up-right, then left) cue.
 ## Also shows a screen-space tutorial banner at each phase; banner pauses the game until confirmed.
 
-const TUTORIAL_BANNER := preload("res://scenes/ui/tutorial_banner/tutorial_banner.tscn")
+const TUTORIAL_BANNER = preload("res://scenes/game/tutorial_banner/tutorial_banner.tscn")
 
 @export var player : PlayerFsmCustomDataLayer
 @onready var arrow_collectable: Sprite2D = %ArrowToCollectable

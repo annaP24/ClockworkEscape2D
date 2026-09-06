@@ -6,8 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="4_8vp0m"]
 [ext_resource type="Texture2D" uid="uid://b6id5mlbkuv80" path="res://scenes/game/level_pick/assets/arrow_left_normal.png" id="5_wwrvx"]
 [ext_resource type="Texture2D" uid="uid://br7hnuy0wo1ju" path="res://scenes/game/level_pick/assets/arrow_right_normal.png" id="6_ki3cg"]
+[ext_resource type="Texture2D" uid="uid://2p5w6w6cd7gt" path="res://scenes/game/level_pick/assets/arrow_left_pressed.png" id="6_kid8w"]
+[ext_resource type="Texture2D" uid="uid://cxuywkoyhh8un" path="res://scenes/game/level_pick/assets/arrow_right_pressed.png" id="7_3emud"]
 [ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/statistics/stats_ui.tscn" id="7_efrcl"]
+[ext_resource type="Texture2D" uid="uid://dpx1ymgwcr5eb" path="res://scenes/game/level_pick/assets/arrow_left_hover.png" id="7_y0gj1"]
 [ext_resource type="Texture2D" uid="uid://dxxdisa8ojqwv" path="res://assets/tilemap/frame.png" id="8_ukfjd"]
+[ext_resource type="Texture2D" uid="uid://d7lrhgctefv" path="res://scenes/game/level_pick/assets/arrow_right_hover.png" id="10_qgave"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ufpk"]
 texture = ExtResource("8_ukfjd")
@@ -156,8 +160,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
 texture_normal = ExtResource("5_wwrvx")
-texture_pressed = ExtResource("5_wwrvx")
-texture_hover = ExtResource("5_wwrvx")
+texture_pressed = ExtResource("6_kid8w")
+texture_hover = ExtResource("7_y0gj1")
 stretch_mode = 0
 
 [node name="Label" parent="NavigationLayer/HBoxContainer/ButtonLeft" index="0" unique_id=1342168869]
@@ -187,8 +191,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 150)
 layout_mode = 2
 texture_normal = ExtResource("6_ki3cg")
-texture_pressed = ExtResource("6_ki3cg")
-texture_hover = ExtResource("6_ki3cg")
+texture_pressed = ExtResource("7_3emud")
+texture_hover = ExtResource("10_qgave")
 stretch_mode = 0
 
 [node name="Label" parent="NavigationLayer/HBoxContainer/ButtonRight" index="0" unique_id=1342168869]

@@ -84,7 +84,6 @@ func _on_exit_area_body_exited(body: Node2D) -> void:
 		is_player_on_platform = false
 		current_state = State.MOVE_DOWN
 
-
 func _on_end_timer_timeout() -> void:
 	if is_player_on_platform:
 		EventBus.exit_animation_finished.emit()

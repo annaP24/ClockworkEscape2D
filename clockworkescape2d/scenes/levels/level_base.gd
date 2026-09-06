@@ -48,9 +48,14 @@ func _on_player_died():
 
 func _on_exit_platform_level_finished() -> void:
 	#If root node's name is not "World" then we are in debug mode and need restarting
-	if get_tree().current_scene.name != "World":
+	if get_tree().current_scene.name != "Game":
 		get_tree().call_deferred("reload_current_scene")
 	else:
 		#Save current collected count to progress.cfg
 		GameSaveManager.save_collectables_count_for_level(level_id, player.get_nr_of_collected_items())
+		#Unlock the next level if this one wasn't already the highest reached
+		var new_max_level = min(level_id + 1, GameSaveManager.MAX_NUM_OF_LEVELS)
+		if new_max_level > GameSaveManager.max_level_reached:
+			GameSaveManager.save_progress(new_max_level)
+			GameSaveManager.max_level_reached = new_max_level
 		EventBus.level_return_to_map.emit(level_id)

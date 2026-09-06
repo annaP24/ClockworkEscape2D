@@ -67,8 +67,8 @@ func _change_page(offset: int) -> void:
 		return
 	if is_transitioning:
 		return
-	var previous_page := current_page
-	var direction := 1 if offset > 0 else -1
+	var previous_page = current_page
+	var direction = 1 if offset > 0 else -1
 	current_page = clamp(current_page + offset, 0, TOTAL_PAGES - 1)
 	if current_page == previous_page:
 		return
@@ -107,32 +107,35 @@ func _animate_page_transition(direction: int) -> void:
 		)
 
 func _apply_page() -> void:
-	var max_level_unlocked: int = GameSaveManager.load_progress()
-	var page_start_index := current_page * LEVELS_PER_PAGE + 1
-	var slot_index := 0
+	var max_level_unlocked : int = GameSaveManager.load_progress()
+	var page_start_index = current_page * LEVELS_PER_PAGE + 1
+	var slot_index = 0
 	for level in all_levels:
-		var actual_level_id := page_start_index + slot_index
-		var is_in_page := actual_level_id <= TOTAL_LEVELS
+		var actual_level_id = page_start_index + slot_index
+		var is_in_page = actual_level_id <= TOTAL_LEVELS
 		level.visible = is_in_page
 		if !is_in_page:
 			level.set_highlight(false)
 			if current_focused_level == level:
 				current_focused_level = null
 			level.is_unlocked = false
-			level.update_visual()
 			slot_index += 1
 			continue
-		level.level_id = actual_level_id
+		level.update_id(actual_level_id)
 		level.parent = self
 		level.is_unlocked = actual_level_id <= max_level_unlocked
+		if level.is_unlocked:
+			level.set_sprite_state(level.ButtonState.IDLE)
+		else:
+			level.set_sprite_state(level.ButtonState.DISABLED)
 		if !level.level_selected.is_connected(_on_level_selected):
 			level.level_selected.connect(_on_level_selected)
-		level.update_visual()
+
 		slot_index += 1
 
 func _update_page_buttons() -> void:
-	var can_go_left := current_page > 0 and !is_transitioning
-	var can_go_right := current_page < TOTAL_PAGES - 1 and !is_transitioning
+	var can_go_left = current_page > 0 and !is_transitioning
+	var can_go_right = current_page < TOTAL_PAGES - 1 and !is_transitioning
 
 	if is_instance_valid(left_button):
 		left_button.visible = current_page > 0
@@ -189,19 +192,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _focus_level(level: Node) -> void:
-	_change_focus(level, true)
+	if !level.is_unlocked:
+		return
+	current_focused_level = level
 
 func _navigate_horizontal(direction: int) -> void:
 	if is_transitioning:
 		return
-	var visible_levels := _get_visible_levels()
+	var visible_levels = _get_visible_levels()
 	if visible_levels.is_empty():
 		return
-	var index := visible_levels.find(current_focused_level)
+	var index = visible_levels.find(current_focused_level)
 	if index == -1:
 		_focus_edge_level(direction)
 		return
-	var next_index := index + direction
+	var next_index = index + direction
 	if next_index >= 0 and next_index < visible_levels.size():
 		var next_level: Node = visible_levels[next_index]
 		if next_level.is_unlocked:
@@ -229,14 +234,6 @@ func _get_visible_levels() -> Array:
 		if is_instance_valid(level) and level.visible and level.level_id >= page_start_id and level.level_id <= page_end_id:
 			visible_levels.append(level)
 	return visible_levels
-
-func _change_focus(level: Node, _is_joypad_selection: bool) -> void:
-	if !level.is_unlocked:
-		return
-	if current_focused_level:
-		current_focused_level.set_highlight(false)
-	current_focused_level = level
-	current_focused_level.set_highlight(true)
 
 func _on_level_selected(level_id: int) -> void:
 	if level_id < 1 or level_id > TOTAL_LEVELS:

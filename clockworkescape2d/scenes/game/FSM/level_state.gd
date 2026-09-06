@@ -10,7 +10,8 @@ func enter() -> void:
 		EventBus.level_quit_requested.connect(_on_quit_level_received)
 	if not EventBus.level_restart_requested.is_connected(_on_restart_level_received):
 		EventBus.level_restart_requested.connect(_on_restart_level_received)
-
+	if not EventBus.level_return_to_map.is_connected(_on_return_to_map_received):
+		EventBus.level_return_to_map.connect(_on_return_to_map_received)
 
 func exit() -> void:
 	_unload_level()
@@ -18,8 +19,8 @@ func exit() -> void:
 		EventBus.level_quit_requested.disconnect(_on_quit_level_received)
 	if EventBus.level_restart_requested.is_connected(_on_restart_level_received):
 		EventBus.level_restart_requested.disconnect(_on_restart_level_received)
-
-
+	if EventBus.level_return_to_map.is_connected(_on_return_to_map_received):
+		EventBus.level_return_to_map.disconnect(_on_return_to_map_received)
 func _load_level(path_to_level : String, level_id : int):
 	if path_to_level == "":
 		return
@@ -45,10 +46,10 @@ func _unload_level():
 
 #----------------- Signals -----------------------------------------
 func _on_quit_level_received() -> void:
-	# GameSession.update_mouse_visibility(false)
 	request_change.emit(self, "LevelPickMenu")
 
 func _on_restart_level_received() -> void:
-	# GameSession.update_mouse_visibility(true)
 	request_change.emit(self, "Level")
-	#FadeScreen.fade_out()
+
+func _on_return_to_map_received(level_id: int) -> void:
+	request_change.emit(self, "LevelPickMenu")

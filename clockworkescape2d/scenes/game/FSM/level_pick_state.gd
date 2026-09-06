@@ -4,7 +4,6 @@ extends WorldViewState
 var node : Node2D
 
 func enter() -> void:
-	#GameSession.update_mouse_visibility(false)
 	node = node_scene.instantiate() as LevelPick
 	actor.add_child(node)
 	node.load_level.connect(_on_load_level)

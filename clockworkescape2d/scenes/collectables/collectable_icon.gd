@@ -19,6 +19,9 @@ func _ready() -> void:
 	update_collected_count()
 
 func update_collected_count():
+	if level_node != null:
+		level_id = level_node.level_id
+		is_unlocked = level_node.is_unlocked
 	collected_count = GameSaveManager.get_collected_count_for_level(level_id)
 	set_images()
 

@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://brhj6o2imtlph" path="res://scenes/game/level_pick/level_node.gd" id="1_ga0g2"]
 [ext_resource type="Texture2D" uid="uid://bkp0fkyhfwndh" path="res://scenes/game/level_pick/assets/level_pick.png" id="2_tkxpk"]
-[ext_resource type="Texture2D" uid="uid://bfyih6iexvkn0" path="res://scenes/game/level_pick/assets/gear_disabled.png" id="3_r8lm0"]
+[ext_resource type="Texture2D" uid="uid://cvri216cd4yqg" path="res://scenes/game/level_pick/assets/level_pick_disabled.png" id="3_cwwcc"]
+[ext_resource type="Texture2D" uid="uid://s8sx4jrqx4sc" path="res://scenes/game/level_pick/assets/level_pick_hover.png" id="4_8wfpf"]
 [ext_resource type="FontFile" uid="uid://b20wtymmjh5a8" path="res://scenes/game/assets/Bangers-Regular.ttf" id="4_pjvf0"]
+[ext_resource type="Texture2D" uid="uid://bvgniofv4pkp1" path="res://scenes/game/level_pick/assets/level_pick_pressed.png" id="5_usmp4"]
+[ext_resource type="PackedScene" uid="uid://b3x34ffhjvqsr" path="res://scenes/collectables/collectable_icon.tscn" id="7_8wfpf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxuui"]
 radius = 65.03076
@@ -21,13 +24,24 @@ texture = ExtResource("2_tkxpk")
 [node name="Sprite2D_Disabled" type="Sprite2D" parent="Sprite" unique_id=1633753246]
 unique_name_in_owner = true
 visible = false
-texture = ExtResource("3_r8lm0")
+texture = ExtResource("3_cwwcc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067932886]
+[node name="Sprite2D_Hover" type="Sprite2D" parent="Sprite" unique_id=2016887476]
+unique_name_in_owner = true
 visible = false
-shape = SubResource("CircleShape2D_mxuui")
+texture = ExtResource("4_8wfpf")
 
-[node name="Label" type="Label" parent="." unique_id=755305261]
+[node name="Sprite2D_Pressed" type="Sprite2D" parent="Sprite" unique_id=1514171250]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("5_usmp4")
+
+[node name="Sprite2D_Focused" type="Sprite2D" parent="Sprite" unique_id=1048748521]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("5_usmp4")
+
+[node name="Label" type="Label" parent="Sprite" unique_id=755305261]
 unique_name_in_owner = true
 offset_left = -21.0
 offset_top = -14.0
@@ -38,6 +52,13 @@ theme_override_fonts/font = ExtResource("4_pjvf0")
 theme_override_font_sizes/font_size = 23
 text = "1"
 horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067932886]
+visible = false
+shape = SubResource("CircleShape2D_mxuui")
+
+[node name="CollectablesVisual" parent="." unique_id=781579502 instance=ExtResource("7_8wfpf")]
+position = Vector2(0, -50.666668)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
