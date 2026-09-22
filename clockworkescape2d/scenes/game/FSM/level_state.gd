@@ -51,5 +51,5 @@ func _on_quit_level_received() -> void:
 func _on_restart_level_received() -> void:
 	request_change.emit(self, "Level")
 
-func _on_return_to_map_received(level_id: int) -> void:
+func _on_return_to_map_received(_level_id: int) -> void:
 	request_change.emit(self, "LevelPickMenu")

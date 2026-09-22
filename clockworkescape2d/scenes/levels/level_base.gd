@@ -5,7 +5,7 @@ class_name Level
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
 @onready var player_scene = preload("res://scenes/character_custom_data_layer/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
-
+@onready var camera_2d: Camera2D
 var engine_start := Time.get_ticks_msec()
 var player : PlayerFsmCustomDataLayer
 
@@ -23,6 +23,7 @@ func _ready() -> void:
 	#print("Zeit bis erstes _ready():", delta, "ms")
 	print("Level ", str(level_id), " starting")
 	EventBus.exit_animation_finished.connect(_on_exit_platform_level_finished)
+	camera_2d = %Camera2D
 
 func _on_fade_in_finished():
 	_spawn_player( )
@@ -59,3 +60,14 @@ func _on_exit_platform_level_finished() -> void:
 			GameSaveManager.save_progress(new_max_level)
 			GameSaveManager.max_level_reached = new_max_level
 		EventBus.level_return_to_map.emit(level_id)
+
+func get_camera() -> Camera2D:
+	return camera_2d
+
+func set_gameplay_frozen(frozen: bool) -> void:
+	if frozen:
+		while not player.is_on_floor():
+			await get_tree().physics_frame
+		process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		process_mode = Node.PROCESS_MODE_INHERIT

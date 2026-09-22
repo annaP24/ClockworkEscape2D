@@ -74,6 +74,15 @@ enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
 
 # TODO Spawn State und Die State hinzufügen
 
+#--------------- DEBUG -------------------
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_debug_1"):
+		GameSaveManager.collected_objects = 20
+		EventBus.collectables_changed.emit()
+	if event.is_action_pressed("ui_debug_2"):
+		GameSaveManager.collected_objects = 40
+		EventBus.collectables_changed.emit()
 
 func _ready() -> void:
 	is_movable = true
@@ -126,6 +135,7 @@ func update_animation(new_animation : animations):
 func update_collectables_number():
 	curr_nr_collectables += 1
 	GameSaveManager.collected_objects += 1
+	EventBus.collectables_changed.emit()
 
 func reset_collectables():
 	#Reset number of collected objects to the number before this level

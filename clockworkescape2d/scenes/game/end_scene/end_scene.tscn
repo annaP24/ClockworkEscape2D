@@ -1,0 +1,452 @@
+[gd_scene format=3 uid="uid://sn5oaox1clri"]
+
+[ext_resource type="Texture2D" uid="uid://c7j25gcdgofxa" path="res://scenes/ui/assets/bg_gears/BG_E4.png" id="1_2y230"]
+[ext_resource type="Script" uid="uid://c4jv4mfgd2gxg" path="res://scenes/game/end_scene/end_scene.gd" id="1_lmmpq"]
+[ext_resource type="Texture2D" uid="uid://djtf3hakpg6a2" path="res://scenes/ui/assets/collectable.png" id="2_lmmpq"]
+[ext_resource type="Texture2D" uid="uid://fjc46ljuaafa" path="res://scenes/ui/assets/bg_gears/BG_E3.png" id="3_35tty"]
+[ext_resource type="Texture2D" uid="uid://pdqxlhw8nfj3" path="res://icon.svg" id="3_qopn5"]
+[ext_resource type="Texture2D" uid="uid://ygib0gctnxp" path="res://scenes/ui/assets/bg_gears/BG_E2.png" id="4_i5fb1"]
+[ext_resource type="Texture2D" uid="uid://dn2xusbnjdrb8" path="res://scenes/ui/assets/bg_gears/BG_E1.png" id="5_vbrfv"]
+
+[sub_resource type="Animation" id="Animation_04fur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Bg_E1_1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.17453292]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/Bg_E3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lmmpq"]
+resource_name = "place_collectables_left"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1, 0.23333333, 0.46666667, 0.6333333, 0.8333333, 1, 1.1666666, 1.2333333, 1.3333334, 1.4333333, 1.6, 1.8333334, 1.9333333, 2.2, 2.3666668, 2.5666666, 2.7, 2.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}, {
+"args": [],
+"method": &"_fly_in_the_gear"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xfyql"]
+resource_name = "rotate_bg_1"
+length = 180.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Bg_E1_1:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 34.533333, 69.76667, 105.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586, -12.566370614359172, -18.84955592153876]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/Bg_E3:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 34.533333, 69.76667, 105.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172, 18.84955592153876]
+}
+
+[sub_resource type="Animation" id="Animation_35tty"]
+resource_name = "rotate_bg_2"
+length = 180.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Bg_E1_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 175),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/Bg_E2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 175),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qopn5"]
+_data = {
+&"RESET": SubResource("Animation_04fur"),
+&"place_collectables": SubResource("Animation_lmmpq"),
+&"rotate_bg_1": SubResource("Animation_xfyql"),
+&"rotate_bg_2": SubResource("Animation_35tty")
+}
+
+[node name="EndScene" type="Node2D" unique_id=120951872]
+script = ExtResource("1_lmmpq")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=638344716]
+color = Color(0.78039217, 0.70980394, 0.6627451, 1)
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=1545324882]
+position = Vector2(994.00006, 637)
+scale = Vector2(1.55, 1.5406059)
+texture = ExtResource("1_2y230")
+
+[node name="Node" type="Node2D" parent="." unique_id=785031507]
+
+[node name="Bg_E3" type="Sprite2D" parent="Node" unique_id=2044781114]
+position = Vector2(457, 116.000015)
+scale = Vector2(2.165625, 2.165625)
+texture = ExtResource("3_35tty")
+
+[node name="Bg_E2" type="Sprite2D" parent="Node" unique_id=275120522]
+position = Vector2(1176, 787.8)
+scale = Vector2(1.38, 1.38)
+texture = ExtResource("4_i5fb1")
+
+[node name="Bg_E1_1" type="Sprite2D" parent="Node" unique_id=1668811140]
+position = Vector2(2080, 268)
+rotation = 0.17453292
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("5_vbrfv")
+
+[node name="Bg_E1_2" type="Sprite2D" parent="Node" unique_id=279886320]
+position = Vector2(871, 1023.7999)
+scale = Vector2(1.38125, 1.38125)
+texture = ExtResource("5_vbrfv")
+
+[node name="Collectables" type="Node2D" parent="." unique_id=1320078773]
+z_index = 3
+
+[node name="First" type="Node2D" parent="Collectables" unique_id=1069430754]
+unique_name_in_owner = true
+position = Vector2(39, -470)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Collectables/First" unique_id=695184693]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(25.5, 820.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Collectables/First" unique_id=431625882]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(14.5, 789)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Collectables/First" unique_id=912500]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(37, 766.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Collectables/First" unique_id=162810015]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(43.999992, 736.5)
+rotation = 0.033542495
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Collectables/First" unique_id=1090490471]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(68.5, 715)
+rotation = 0.06818309
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Collectables/First" unique_id=127987612]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(91.5, 693.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Collectables/First" unique_id=305116207]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(100, 663.5)
+rotation = -0.078255795
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Collectables/First" unique_id=458739457]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(128, 654.99994)
+rotation = 0.00039894745
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Collectables/First" unique_id=1936507348]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(157.5, 646)
+rotation = -0.19046645
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Collectables/First" unique_id=282199866]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(166.00002, 616)
+rotation = 0.09971315
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Collectables/First" unique_id=215571306]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(189, 595.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Collectables/First" unique_id=1704275595]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(202.5, 567)
+rotation = 0.23122291
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Collectables/First" unique_id=139504394]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(227.50002, 548)
+rotation = 0.061758757
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Collectables/First" unique_id=641269953]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(251, 526)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Collectables/First" unique_id=1189762903]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(279, 532.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Collectables/First" unique_id=1122780004]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(304.00003, 511)
+rotation = 0.1539568
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Collectables/First" unique_id=1107644219]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(328, 490.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Collectables/First" unique_id=579272871]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(350.5, 470.00006)
+rotation = 0.14294988
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Collectables/First" unique_id=595154493]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(376.49997, 452.5)
+rotation = 0.28321308
+texture = ExtResource("2_lmmpq")
+
+[node name="Second" type="Node2D" parent="Collectables" unique_id=1386945104]
+unique_name_in_owner = true
+position = Vector2(2798, 444)
+rotation = 1.5707964
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Collectables/Second" unique_id=1708620447]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(25.5, 820.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Collectables/Second" unique_id=1617362724]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(14.5, 789)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Collectables/Second" unique_id=1922603462]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(37, 766.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Collectables/Second" unique_id=1081263753]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(43.999992, 736.5)
+rotation = 0.033542495
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Collectables/Second" unique_id=983350329]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(68.5, 715)
+rotation = 0.06818309
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Collectables/Second" unique_id=1880336968]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(91.5, 693.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Collectables/Second" unique_id=1864752200]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(100, 663.5)
+rotation = -0.078255795
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Collectables/Second" unique_id=1036377588]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(128, 654.99994)
+rotation = 0.00039894745
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Collectables/Second" unique_id=574955931]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(157.5, 646)
+rotation = -0.19046645
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Collectables/Second" unique_id=1352876746]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(166.00002, 616)
+rotation = 0.09971315
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Collectables/Second" unique_id=1655021788]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(189, 595.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Collectables/Second" unique_id=1544327627]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(202.5, 567)
+rotation = 0.23122291
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Collectables/Second" unique_id=532831309]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(227.50002, 548)
+rotation = 0.061758757
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Collectables/Second" unique_id=828946203]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(251, 526)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Collectables/Second" unique_id=1674621311]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(279, 532.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Collectables/Second" unique_id=1838769780]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(304.00003, 511)
+rotation = 0.1539568
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Collectables/Second" unique_id=551988083]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(328, 490.5)
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Collectables/Second" unique_id=1391668992]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(350.5, 470.00006)
+rotation = 0.14294988
+texture = ExtResource("2_lmmpq")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Collectables/Second" unique_id=1334147204]
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+position = Vector2(376.49997, 452.5)
+rotation = 0.28321308
+texture = ExtResource("2_lmmpq")
+
+[node name="Clock" type="Sprite2D" parent="." unique_id=496293180]
+position = Vector2(983, 375)
+texture = ExtResource("3_qopn5")
+
+[node name="AnimationPlayer_first_part" type="AnimationPlayer" parent="." unique_id=1332103595]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_qopn5")
+
+[node name="AnimationPlayer_second_part" type="AnimationPlayer" parent="." unique_id=1314178361]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_qopn5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1156961617]
+anchor_mode = 0
+zoom = Vector2(0.645, 0.65)
+
+[node name="TimeoutTimer" type="Timer" parent="." unique_id=708655403]
+one_shot = true

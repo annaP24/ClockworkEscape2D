@@ -36,3 +36,4 @@ func _on_request_change(source_state: WorldViewState, new_state_id: String) -> v
 	current_state.exit()
 	new_state.enter()
 	current_state = new_state
+

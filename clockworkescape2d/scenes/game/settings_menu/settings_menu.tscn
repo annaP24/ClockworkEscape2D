@@ -196,7 +196,6 @@ texture_pressed = ExtResource("8_gabnu")
 texture_hover = ExtResource("9_5hofy")
 
 [node name="Label" parent="TextureRect/VBoxContainer2/VBoxContainer/HBoxContainerMusic/MusicMuteButton" index="0" unique_id=1342168869]
-theme_override_fonts/font = ExtResource("3_edxcd")
 text = ""
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer2/VBoxContainer" unique_id=771476892]
@@ -279,7 +278,6 @@ texture_pressed = ExtResource("8_gabnu")
 texture_hover = ExtResource("9_5hofy")
 
 [node name="Label" parent="TextureRect/VBoxContainer2/VBoxContainer/HBoxContainer/SfxMuteButton" index="0" unique_id=1342168869]
-theme_override_fonts/font = ExtResource("3_edxcd")
 text = ""
 
 [node name="HBoxContainerBrightness" type="HBoxContainer" parent="TextureRect/VBoxContainer2/VBoxContainer" unique_id=147691924]
@@ -425,7 +423,6 @@ texture_pressed = ExtResource("10_q2c6d")
 texture_hover = ExtResource("10_q2c6d")
 
 [node name="Label" parent="TextureRect/VBoxContainer2/HBoxContainer/DefaultButton" index="0" unique_id=1342168869]
-theme_override_fonts/font = ExtResource("3_edxcd")
 text = "default"
 
 [node name="BackButton" parent="TextureRect/VBoxContainer2/HBoxContainer" unique_id=1343990414 instance=ExtResource("5_5hofy")]
@@ -439,7 +436,6 @@ texture_pressed = ExtResource("10_q2c6d")
 texture_hover = ExtResource("10_q2c6d")
 
 [node name="Label" parent="TextureRect/VBoxContainer2/HBoxContainer/BackButton" index="0" unique_id=1342168869]
-theme_override_fonts/font = ExtResource("3_edxcd")
 text = "back"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=420694839]

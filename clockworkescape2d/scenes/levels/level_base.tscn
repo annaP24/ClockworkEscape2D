@@ -325,6 +325,7 @@ tile_set = SubResource("TileSet_pwolw")
 [node name="Interactables" type="Node2D" parent="." unique_id=1109194341]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1004786378]
+unique_name_in_owner = true
 anchor_mode = 0
 zoom = Vector2(0.645, 0.65)
 

@@ -18,6 +18,7 @@ script = ExtResource("1_87uf6")
 [node name="FSM" type="Node2D" parent="." unique_id=918192613]
 
 [node name="StateMachine" type="Node" parent="FSM" unique_id=2099398383 node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
 script = ExtResource("1_7h61r")
 initial_state = NodePath("StartMenu")
 metadata/_custom_type_script = "uid://c02sxgi8tpo23"

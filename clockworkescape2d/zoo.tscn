@@ -69,3 +69,11 @@ position = Vector2(129, 131)
 
 [node name="Character" parent="." unique_id=1244984988 instance=ExtResource("13_i7v0e")]
 position = Vector2(129, 36)
+
+[node name="CollisionShape2D" parent="Character" index="3" unique_id=858918230]
+visible = false
+
+[node name="ShapeCast2D" parent="Character" index="4" unique_id=1653585586]
+visible = false
+
+[editable path="Character"]

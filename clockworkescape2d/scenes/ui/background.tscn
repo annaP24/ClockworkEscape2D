@@ -118,6 +118,7 @@ _data = {
 z_index = -2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1993750934]
+visible = false
 anchor_mode = 0
 enabled = false
 zoom = Vector2(0.65, 0.65)
@@ -151,4 +152,3 @@ texture = ExtResource("4_abqpp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1777822618]
 libraries/ = SubResource("AnimationLibrary_60cg2")
-autoplay = &"rotate"
