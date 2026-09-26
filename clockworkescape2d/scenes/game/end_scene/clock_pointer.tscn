@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b4i2b6m3ah0e1"]
+
+[ext_resource type="Script" uid="uid://qxlcfuyndv2n" path="res://scenes/game/end_scene/clock_pointer.gd" id="1_b2kri"]
+[ext_resource type="Texture2D" uid="uid://dftxmx4n6gmlf" path="res://scenes/game/end_scene/assets/pointer_small.png" id="1_ogqw3"]
+
+[node name="ClockPointer" type="Node2D" unique_id=477554473]
+scale = Vector2(2, 2)
+script = ExtResource("1_b2kri")
+
+[node name="PointerSmall" type="Sprite2D" parent="." unique_id=1655163743]
+position = Vector2(0, -65)
+texture = ExtResource("1_ogqw3")

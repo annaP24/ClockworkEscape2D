@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b2ejin4uly61f"]
+
+[ext_resource type="Texture2D" uid="uid://bpmb6s8jipnmn" path="res://scenes/game/end_scene/assets/gear_big.png" id="1_2nrs0"]
+[ext_resource type="Script" uid="uid://bh7wx4124hkmi" path="res://scenes/game/end_scene/gear_in_clock.gd" id="1_46d0u"]
+
+[node name="GearInClock" type="Node2D" unique_id=396872413]
+script = ExtResource("1_46d0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2045121057]
+texture = ExtResource("1_2nrs0")

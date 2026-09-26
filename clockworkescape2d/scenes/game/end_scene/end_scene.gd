@@ -3,6 +3,7 @@ class_name MidPointCutScene
 
 signal animation_finished
 @export var timeout : float = 5.0
+const GearInClockScript = preload("res://scenes/game/end_scene/gear_in_clock.gd")
 @onready var animation_player_first: AnimationPlayer = %AnimationPlayer_first_part
 @onready var first_gears: Node2D = $Collectables/First
 @onready var second_gears: Node2D = $Collectables/Second
@@ -77,14 +78,27 @@ func _fly_in_the_gear():
 	await tween.finished
 	target.modulate = Color(1, 1, 1, 0)
 
+func _start_clock_gears_rotating() -> void:
+	var clock_hands: Node2D = %ClockHands
+	var is_clockwise: bool = true
+	var direction: GearInClockScript.RotationDirection
+	for gear: Node2D in clock_hands.get_children():
+		if is_clockwise:
+			direction = GearInClockScript.RotationDirection.CLOCKWISE
+		else:
+			direction = GearInClockScript.RotationDirection.COUNTERCLOCKWISE
+		gear.start_rotation(direction)
+		is_clockwise = !is_clockwise
 # ---------------------- Signals ----------------------------------
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "place_collectables":
 		if isEndScene:
+			_start_clock_gears_rotating()
 			animation_player_first.play("rotate_bg_2")
 		else:
 			animation_player_first.play("rotate_bg_1")
 	timeout_timer.start(timeout)
+
 
 func _on_timeout() -> void:
 	animation_finished.emit()

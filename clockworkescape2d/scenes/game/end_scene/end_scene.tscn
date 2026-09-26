@@ -4,9 +4,12 @@
 [ext_resource type="Script" uid="uid://c4jv4mfgd2gxg" path="res://scenes/game/end_scene/end_scene.gd" id="1_lmmpq"]
 [ext_resource type="Texture2D" uid="uid://djtf3hakpg6a2" path="res://scenes/ui/assets/collectable.png" id="2_lmmpq"]
 [ext_resource type="Texture2D" uid="uid://fjc46ljuaafa" path="res://scenes/ui/assets/bg_gears/BG_E3.png" id="3_35tty"]
-[ext_resource type="Texture2D" uid="uid://pdqxlhw8nfj3" path="res://icon.svg" id="3_qopn5"]
 [ext_resource type="Texture2D" uid="uid://ygib0gctnxp" path="res://scenes/ui/assets/bg_gears/BG_E2.png" id="4_i5fb1"]
 [ext_resource type="Texture2D" uid="uid://dn2xusbnjdrb8" path="res://scenes/ui/assets/bg_gears/BG_E1.png" id="5_vbrfv"]
+[ext_resource type="Texture2D" uid="uid://cdw33obcv2k02" path="res://scenes/game/end_scene/assets/clock3.png" id="7_04fur"]
+[ext_resource type="PackedScene" uid="uid://b2ejin4uly61f" path="res://scenes/game/end_scene/gear_in_clock.tscn" id="8_04fur"]
+[ext_resource type="PackedScene" uid="uid://b4i2b6m3ah0e1" path="res://scenes/game/end_scene/clock_pointer.tscn" id="8_i5fb1"]
+[ext_resource type="Texture2D" uid="uid://0368xcmjr4ix" path="res://scenes/game/end_scene/assets/pointer_big.png" id="9_vbrfv"]
 
 [sub_resource type="Animation" id="Animation_04fur"]
 length = 0.001
@@ -163,6 +166,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 6.283185307179586]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClockFace/ClockPointerSeconds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.56666666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [6.0],
+"method": &"start_rotating"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qopn5"]
 _data = {
@@ -191,7 +208,7 @@ scale = Vector2(2.165625, 2.165625)
 texture = ExtResource("3_35tty")
 
 [node name="Bg_E2" type="Sprite2D" parent="Node" unique_id=275120522]
-position = Vector2(1176, 787.8)
+position = Vector2(969, 1008)
 scale = Vector2(1.38, 1.38)
 texture = ExtResource("4_i5fb1")
 
@@ -202,7 +219,7 @@ scale = Vector2(4.5, 4.5)
 texture = ExtResource("5_vbrfv")
 
 [node name="Bg_E1_2" type="Sprite2D" parent="Node" unique_id=279886320]
-position = Vector2(871, 1023.7999)
+position = Vector2(593.00006, 1064)
 scale = Vector2(1.38125, 1.38125)
 texture = ExtResource("5_vbrfv")
 
@@ -216,225 +233,282 @@ scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Collectables/First" unique_id=695184693]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(25.5, 820.5)
+position = Vector2(41.5, 851)
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Collectables/First" unique_id=431625882]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(14.5, 789)
+position = Vector2(12, 845.5)
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Collectables/First" unique_id=912500]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(37, 766.5)
+position = Vector2(15.5, 815.5)
+rotation = -0.27885112
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Collectables/First" unique_id=162810015]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(43.999992, 736.5)
+position = Vector2(20.5, 785.50006)
 rotation = 0.033542495
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Collectables/First" unique_id=1090490471]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(68.5, 715)
+position = Vector2(30, 757.49994)
 rotation = 0.06818309
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Collectables/First" unique_id=127987612]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(91.5, 693.5)
+position = Vector2(58.5, 749)
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Collectables/First" unique_id=305116207]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(100, 663.5)
+position = Vector2(87.5, 740.5)
 rotation = -0.078255795
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Collectables/First" unique_id=458739457]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(128, 654.99994)
-rotation = 0.00039894745
+position = Vector2(79, 711.49994)
+rotation = 0.20156844
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D9" type="Sprite2D" parent="Collectables/First" unique_id=1936507348]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(157.5, 646)
+position = Vector2(87.5, 682.5)
 rotation = -0.19046645
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D10" type="Sprite2D" parent="Collectables/First" unique_id=282199866]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(166.00002, 616)
+position = Vector2(78.500015, 653.5)
 rotation = 0.09971315
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D11" type="Sprite2D" parent="Collectables/First" unique_id=215571306]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(189, 595.5)
+position = Vector2(100.5, 632.5)
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D12" type="Sprite2D" parent="Collectables/First" unique_id=1704275595]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(202.5, 567)
+position = Vector2(73, 620.5)
 rotation = 0.23122291
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D13" type="Sprite2D" parent="Collectables/First" unique_id=139504394]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(227.50002, 548)
+position = Vector2(86, 593)
 rotation = 0.061758757
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D14" type="Sprite2D" parent="Collectables/First" unique_id=641269953]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(251, 526)
+position = Vector2(96, 565)
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D15" type="Sprite2D" parent="Collectables/First" unique_id=1189762903]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(279, 532.5)
+position = Vector2(118.5, 543.5)
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D16" type="Sprite2D" parent="Collectables/First" unique_id=1122780004]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(304.00003, 511)
+position = Vector2(112.5, 513)
 rotation = 0.1539568
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D17" type="Sprite2D" parent="Collectables/First" unique_id=1107644219]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(328, 490.5)
+position = Vector2(143, 508)
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D18" type="Sprite2D" parent="Collectables/First" unique_id=579272871]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(350.5, 470.00006)
-rotation = 0.14294988
+position = Vector2(172.5, 500.5)
+rotation = -0.03057079
 texture = ExtResource("2_lmmpq")
 
 [node name="Sprite2D19" type="Sprite2D" parent="Collectables/First" unique_id=595154493]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(376.49997, 452.5)
+position = Vector2(195.99997, 483)
 rotation = 0.28321308
 texture = ExtResource("2_lmmpq")
 
-[node name="Second" type="Node2D" parent="Collectables" unique_id=1386945104]
+[node name="Second" type="Node2D" parent="Collectables" unique_id=293655153]
 unique_name_in_owner = true
-position = Vector2(2798, 444)
-rotation = 1.5707964
+position = Vector2(2905, 1434.9999)
+rotation = 2.1799161
 scale = Vector2(2, 2)
 
-[node name="Sprite2D" type="Sprite2D" parent="Collectables/Second" unique_id=1708620447]
+[node name="Sprite2D" type="Sprite2D" parent="Collectables/Second" unique_id=1719532276]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(25.5, 820.5)
+position = Vector2(41.5, 851)
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Collectables/Second" unique_id=1617362724]
+[node name="Sprite2D2" type="Sprite2D" parent="Collectables/Second" unique_id=1822863776]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(14.5, 789)
+position = Vector2(12, 845.5)
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Collectables/Second" unique_id=1922603462]
+[node name="Sprite2D3" type="Sprite2D" parent="Collectables/Second" unique_id=650480687]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(37, 766.5)
+position = Vector2(15.5, 815.5)
+rotation = -0.27885112
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Collectables/Second" unique_id=1081263753]
+[node name="Sprite2D4" type="Sprite2D" parent="Collectables/Second" unique_id=1616215874]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(43.999992, 736.5)
+position = Vector2(20.5, 785.50006)
 rotation = 0.033542495
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Collectables/Second" unique_id=983350329]
+[node name="Sprite2D5" type="Sprite2D" parent="Collectables/Second" unique_id=1422993385]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(68.5, 715)
+position = Vector2(30, 757.49994)
 rotation = 0.06818309
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Collectables/Second" unique_id=1880336968]
+[node name="Sprite2D6" type="Sprite2D" parent="Collectables/Second" unique_id=2116589140]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(91.5, 693.5)
+position = Vector2(58.5, 749)
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D7" type="Sprite2D" parent="Collectables/Second" unique_id=1864752200]
+[node name="Sprite2D7" type="Sprite2D" parent="Collectables/Second" unique_id=118023867]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(100, 663.5)
+position = Vector2(87.5, 740.5)
 rotation = -0.078255795
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D8" type="Sprite2D" parent="Collectables/Second" unique_id=1036377588]
+[node name="Sprite2D8" type="Sprite2D" parent="Collectables/Second" unique_id=873215076]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(128, 654.99994)
-rotation = 0.00039894745
+position = Vector2(79, 711.49994)
+rotation = 0.20156844
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D9" type="Sprite2D" parent="Collectables/Second" unique_id=574955931]
+[node name="Sprite2D9" type="Sprite2D" parent="Collectables/Second" unique_id=940726398]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(157.5, 646)
+position = Vector2(87.5, 682.5)
 rotation = -0.19046645
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D10" type="Sprite2D" parent="Collectables/Second" unique_id=1352876746]
+[node name="Sprite2D10" type="Sprite2D" parent="Collectables/Second" unique_id=1695203116]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(166.00002, 616)
+position = Vector2(78.500015, 653.5)
 rotation = 0.09971315
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D11" type="Sprite2D" parent="Collectables/Second" unique_id=1655021788]
+[node name="Sprite2D11" type="Sprite2D" parent="Collectables/Second" unique_id=509245449]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(189, 595.5)
+position = Vector2(100.5, 632.5)
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D12" type="Sprite2D" parent="Collectables/Second" unique_id=1544327627]
+[node name="Sprite2D12" type="Sprite2D" parent="Collectables/Second" unique_id=2130819904]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(202.5, 567)
+position = Vector2(73, 620.5)
 rotation = 0.23122291
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D13" type="Sprite2D" parent="Collectables/Second" unique_id=532831309]
+[node name="Sprite2D13" type="Sprite2D" parent="Collectables/Second" unique_id=1316714848]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(227.50002, 548)
+position = Vector2(86, 593)
 rotation = 0.061758757
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D14" type="Sprite2D" parent="Collectables/Second" unique_id=828946203]
+[node name="Sprite2D14" type="Sprite2D" parent="Collectables/Second" unique_id=1497146988]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(251, 526)
+position = Vector2(96, 565)
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D15" type="Sprite2D" parent="Collectables/Second" unique_id=1674621311]
+[node name="Sprite2D15" type="Sprite2D" parent="Collectables/Second" unique_id=1939167796]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(279, 532.5)
+position = Vector2(118.5, 543.5)
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D16" type="Sprite2D" parent="Collectables/Second" unique_id=1838769780]
+[node name="Sprite2D16" type="Sprite2D" parent="Collectables/Second" unique_id=2065531851]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(304.00003, 511)
+position = Vector2(112.5, 513)
 rotation = 0.1539568
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D17" type="Sprite2D" parent="Collectables/Second" unique_id=551988083]
+[node name="Sprite2D17" type="Sprite2D" parent="Collectables/Second" unique_id=381071907]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(328, 490.5)
+position = Vector2(143, 508)
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D18" type="Sprite2D" parent="Collectables/Second" unique_id=1391668992]
+[node name="Sprite2D18" type="Sprite2D" parent="Collectables/Second" unique_id=2055133844]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(350.5, 470.00006)
-rotation = 0.14294988
+position = Vector2(172.5, 500.5)
+rotation = -0.03057079
 texture = ExtResource("2_lmmpq")
 
-[node name="Sprite2D19" type="Sprite2D" parent="Collectables/Second" unique_id=1334147204]
+[node name="Sprite2D19" type="Sprite2D" parent="Collectables/Second" unique_id=1334212733]
 modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-position = Vector2(376.49997, 452.5)
+position = Vector2(195.99997, 483)
 rotation = 0.28321308
 texture = ExtResource("2_lmmpq")
 
-[node name="Clock" type="Sprite2D" parent="." unique_id=496293180]
-position = Vector2(983, 375)
-texture = ExtResource("3_qopn5")
+[node name="ClockFace" type="Node2D" parent="." unique_id=2127683339]
+
+[node name="Clock" type="Sprite2D" parent="ClockFace" unique_id=496293180]
+position = Vector2(956.9999, 506)
+scale = Vector2(2.027495, 2.027495)
+texture = ExtResource("7_04fur")
+metadata/_edit_lock_ = true
+
+[node name="ClockHands" type="Node2D" parent="ClockFace" unique_id=530722924]
+unique_name_in_owner = true
+
+[node name="GearInClock2" parent="ClockFace/ClockHands" unique_id=2022657660 instance=ExtResource("8_04fur")]
+position = Vector2(1097, 379)
+scale = Vector2(1.19, 1.19)
+
+[node name="GearInClock" parent="ClockFace/ClockHands" unique_id=396872413 instance=ExtResource("8_04fur")]
+position = Vector2(994, 322)
+scale = Vector2(2, 2)
+
+[node name="GearInClock7" parent="ClockFace/ClockHands" unique_id=1798077464 instance=ExtResource("8_04fur")]
+position = Vector2(932, 444)
+scale = Vector2(1.8, 1.8)
+
+[node name="GearInClock4" parent="ClockFace/ClockHands" unique_id=1185084382 instance=ExtResource("8_04fur")]
+position = Vector2(794, 473)
+scale = Vector2(2.125, 2.125)
+
+[node name="GearInClock3" parent="ClockFace/ClockHands" unique_id=1173642519 instance=ExtResource("8_04fur")]
+position = Vector2(851, 579)
+scale = Vector2(1.19, 1.19)
+
+[node name="GearInClock5" parent="ClockFace/ClockHands" unique_id=1752011712 instance=ExtResource("8_04fur")]
+position = Vector2(881, 667)
+scale = Vector2(1.335, 1.335)
+
+[node name="GearInClock6" parent="ClockFace/ClockHands" unique_id=1808044011 instance=ExtResource("8_04fur")]
+position = Vector2(807.00006, 672)
+scale = Vector2(0.705, 0.705)
+
+[node name="ClockPointerHour" parent="ClockFace" unique_id=477554473 instance=ExtResource("8_i5fb1")]
+position = Vector2(948, 501)
+
+[node name="ClockPointerMinutes" parent="ClockFace" unique_id=742894242 instance=ExtResource("8_i5fb1")]
+position = Vector2(948, 501)
+rotation = -0.66497046
+
+[node name="PointerSmall" parent="ClockFace/ClockPointerMinutes" index="0" unique_id=1655163743]
+position = Vector2(0, -96)
+texture = ExtResource("9_vbrfv")
+
+[node name="ClockPointerSeconds" parent="ClockFace" unique_id=1216278927 instance=ExtResource("8_i5fb1")]
+position = Vector2(948, 501)
+rotation = 1.8360864
+
+[node name="PointerSmall" parent="ClockFace/ClockPointerSeconds" index="0" unique_id=1655163743]
+position = Vector2(0, -97.5)
+scale = Vector2(0.5, 1)
+texture = ExtResource("9_vbrfv")
 
 [node name="AnimationPlayer_first_part" type="AnimationPlayer" parent="." unique_id=1332103595]
 unique_name_in_owner = true
@@ -450,3 +524,6 @@ zoom = Vector2(0.645, 0.65)
 
 [node name="TimeoutTimer" type="Timer" parent="." unique_id=708655403]
 one_shot = true
+
+[editable path="ClockFace/ClockPointerMinutes"]
+[editable path="ClockFace/ClockPointerSeconds"]

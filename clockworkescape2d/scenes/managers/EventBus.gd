@@ -46,6 +46,8 @@ signal level_completed
 ## Emitted when player touches ground (includes footstep sound name)
 signal player_touched_ground(sound: String)
 signal collectables_changed
+signal key_collected
+
 # ========== PLATFORM/EXIT SIGNALS ==========
 ## Emitted when exit platform finishes transition
 signal exit_animation_finished

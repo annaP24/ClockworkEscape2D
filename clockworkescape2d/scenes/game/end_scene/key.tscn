@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bdp3bl0nscswn"]
+
+[ext_resource type="Texture2D" uid="uid://da3iqiob0ca7c" path="res://scenes/game/end_scene/assets/key.png" id="1_e87i6"]
+[ext_resource type="Script" uid="uid://dugoyc6d466y" path="res://scenes/game/end_scene/key.gd" id="1_jsdco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03acl"]
+size = Vector2(106, 402)
+
+[node name="Key" type="Node2D" unique_id=768095985]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_jsdco")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=45672252]
+rotation = -1.5707964
+texture = ExtResource("1_e87i6")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=2030681974]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=908673605]
+position = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_03acl")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
