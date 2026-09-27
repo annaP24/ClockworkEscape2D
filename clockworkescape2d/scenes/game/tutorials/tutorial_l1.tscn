@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://ctlvjjesveo0h"]
+
+[ext_resource type="Script" uid="uid://bcamslijxp7a6" path="res://scenes/game/tutorials/tutorial_l1.gd" id="1_2akpw"]
+[ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/game/tutorial_arrow/assets/left.png" id="2_npcbv"]
+[ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/game/tutorial_arrow/tutorial_arrow.gd" id="3_5ctyw"]
+[ext_resource type="Texture2D" uid="uid://bcdc2efwww6i6" path="res://scenes/game/tutorial_arrow/assets/arrow_curve_up_right.png" id="4_dmm8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dla5f"]
+size = Vector2(129.25, 297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e11fs"]
+size = Vector2(84.5, 297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a467a"]
+size = Vector2(84.5, 297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wallhint"]
+size = Vector2(100.5, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwod2"]
+size = Vector2(69.75, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_walljumphint"]
+size = Vector2(80, 200)
+
+[node name="TutorialController" type="Node" unique_id=398079176]
+script = ExtResource("1_2akpw")
+
+[node name="TutorialArrows" type="Node2D" parent="." unique_id=431104065]
+
+[node name="ArrowToCollectable" type="Sprite2D" parent="TutorialArrows" unique_id=513559664]
+unique_name_in_owner = true
+position = Vector2(168, 520)
+rotation = 0.58296037
+texture = ExtResource("2_npcbv")
+script = ExtResource("3_5ctyw")
+
+[node name="ArrowToDoubleJump" type="Sprite2D" parent="TutorialArrows" unique_id=1989940628]
+unique_name_in_owner = true
+position = Vector2(278.00006, 980)
+rotation = -1.5575265
+texture = ExtResource("4_dmm8t")
+flip_v = true
+script = ExtResource("3_5ctyw")
+
+[node name="ArrowToWalkableWall" type="Sprite2D" parent="TutorialArrows" unique_id=1706431894]
+unique_name_in_owner = true
+position = Vector2(903, 841)
+rotation = -1.5575265
+texture = ExtResource("4_dmm8t")
+flip_v = true
+script = ExtResource("3_5ctyw")
+
+[node name="ArrowWallJumpUpRight" type="Sprite2D" parent="TutorialArrows" unique_id=337758296]
+unique_name_in_owner = true
+position = Vector2(1421.0001, 788.99994)
+rotation = -1.5848484
+texture = ExtResource("4_dmm8t")
+script = ExtResource("3_5ctyw")
+
+[node name="ArrowToWall2" type="Sprite2D" parent="TutorialArrows/ArrowWallJumpUpRight" unique_id=608485915]
+position = Vector2(-87.83684, -12.235531)
+rotation = 0.027321935
+texture = ExtResource("4_dmm8t")
+flip_v = true
+script = ExtResource("3_5ctyw")
+
+[node name="CollectableZoneEnter" type="Area2D" parent="." unique_id=1186042090]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableZoneEnter" unique_id=1670875432]
+position = Vector2(-268, 372)
+shape = SubResource("RectangleShape2D_dla5f")
+
+[node name="WallDoubleJumpHintZoneEnter" type="Area2D" parent="." unique_id=2075008446]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDoubleJumpHintZoneEnter" unique_id=736575592]
+position = Vector2(-118.625, 245)
+shape = SubResource("RectangleShape2D_dla5f")
+
+[node name="WallDoubleJumpHintZoneExit" type="Area2D" parent="." unique_id=38156451]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDoubleJumpHintZoneExit" unique_id=172439797]
+position = Vector2(-6, 0)
+shape = SubResource("RectangleShape2D_e11fs")
+
+[node name="JumpHintZoneEnter" type="Area2D" parent="." unique_id=2059268841]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHintZoneEnter" unique_id=1322689315]
+position = Vector2(87.25, -2)
+shape = SubResource("RectangleShape2D_e11fs")
+
+[node name="JumpHintZoneExit" type="Area2D" parent="." unique_id=1159842715]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHintZoneExit" unique_id=849617674]
+position = Vector2(363, 75.5)
+shape = SubResource("RectangleShape2D_a467a")
+
+[node name="WalkableWallHintZoneEnter" type="Area2D" parent="." unique_id=853995765]
+unique_name_in_owner = true
+position = Vector2(800, 811)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WalkableWallHintZoneEnter" unique_id=163757277]
+position = Vector2(46.25, 0)
+shape = SubResource("RectangleShape2D_wallhint")
+
+[node name="WalkableWallHintZoneExit" type="Area2D" parent="." unique_id=1512239472]
+unique_name_in_owner = true
+position = Vector2(991, 470)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WalkableWallHintZoneExit" unique_id=117383794]
+shape = SubResource("RectangleShape2D_nwod2")
+
+[node name="WallJumpHintZoneEnter" type="Area2D" parent="." unique_id=572563666]
+unique_name_in_owner = true
+position = Vector2(1409, 988)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallJumpHintZoneEnter" unique_id=788756063]
+shape = SubResource("RectangleShape2D_e11fs")
+
+[node name="WallJumpHintZoneExit" type="Area2D" parent="." unique_id=262561367]
+unique_name_in_owner = true
+position = Vector2(1236, 670)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallJumpHintZoneExit" unique_id=271329642]
+shape = SubResource("RectangleShape2D_walljumphint")

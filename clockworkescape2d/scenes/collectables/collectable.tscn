@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2d4snixdg62a"]
 
 [ext_resource type="Script" uid="uid://dt7f0qf4515w8" path="res://scenes/collectables/collectable.gd" id="1_vtu06"]
-[ext_resource type="Texture2D" uid="uid://ch34854mwjr1o" path="res://scenes/collectables/assets/collectable.png" id="2_vtu06"]
+[ext_resource type="Texture2D" uid="uid://c2bj58xwfafaw" path="res://scenes/collectables/assets/collectable_new.png" id="2_vtu06"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtu06"]
 radius = 13.152946
@@ -23,7 +23,7 @@ collision_layer = 0
 script = ExtResource("1_vtu06")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2063392076]
-scale = Vector2(2, 2)
+scale = Vector2(0.585, 0.585)
 texture = ExtResource("2_vtu06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1767080387]
@@ -38,9 +38,10 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_88g45")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1687910829]
+visible = false
 position = Vector2(0, 1)
 color = Color(1, 0.6156863, 0, 1)
-energy = 0.59
+energy = 0.77
 texture = SubResource("GradientTexture2D_88g45")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

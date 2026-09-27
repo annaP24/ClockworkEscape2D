@@ -91,12 +91,12 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="ColorRect" type="TextureRect" parent="TextureRect/VBoxContainer2" unique_id=1413190783]
+[node name="TextureRect" type="TextureRect" parent="TextureRect/VBoxContainer2" unique_id=1413190783]
 custom_minimum_size = Vector2(900, 110)
 layout_mode = 2
 texture = ExtResource("2_edxcd")
 
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer2/ColorRect" unique_id=1569512907]
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer2/TextureRect" unique_id=1569512907]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

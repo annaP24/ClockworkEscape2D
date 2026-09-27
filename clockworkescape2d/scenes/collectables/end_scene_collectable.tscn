@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dk222uxp2jq1b"]
 
 [ext_resource type="Script" uid="uid://dew4khwg55sx7" path="res://scenes/collectables/end_scene_collectable.gd" id="1_xaanj"]
-[ext_resource type="Texture2D" uid="uid://n1xxipopvr8d" path="res://scenes/collectables/assets/collectable_full_icon.png" id="2_0qmw6"]
+[ext_resource type="Texture2D" uid="uid://c2bj58xwfafaw" path="res://scenes/collectables/assets/collectable_new.png" id="2_xaanj"]
 
 [node name="EndSceneCollectable" type="Node2D" unique_id=1392974061]
 script = ExtResource("1_xaanj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1073959027]
-texture = ExtResource("2_0qmw6")
+texture = ExtResource("2_xaanj")

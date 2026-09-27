@@ -303,8 +303,10 @@ sources/5 = SubResource("TileSetAtlasSource_40ga3")
 [node name="Level_base" type="Node2D" unique_id=575594771]
 process_mode = 3
 script = ExtResource("1_dje0g")
+level_id = null
 
 [node name="Background" parent="." unique_id=750593274 instance=ExtResource("7_g7p6o")]
+unique_name_in_owner = true
 
 [node name="SpawnMarker" type="Marker2D" parent="." unique_id=630440161]
 position = Vector2(268, 441)

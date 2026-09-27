@@ -7,14 +7,16 @@
 size = Vector2(106, 402)
 
 [node name="Key" type="Node2D" unique_id=768095985]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.165, 0.165)
 script = ExtResource("1_jsdco")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=45672252]
+position = Vector2(6.0606055, -236.36362)
 rotation = -1.5707964
 texture = ExtResource("1_e87i6")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=2030681974]
+position = Vector2(12.121211, -224.2424)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=908673605]
 position = Vector2(3, 1)

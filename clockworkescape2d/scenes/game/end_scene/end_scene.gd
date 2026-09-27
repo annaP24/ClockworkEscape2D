@@ -7,13 +7,13 @@ const GearInClockScript = preload("res://scenes/game/end_scene/gear_in_clock.gd"
 @onready var animation_player_first: AnimationPlayer = %AnimationPlayer_first_part
 @onready var first_gears: Node2D = $Collectables/First
 @onready var second_gears: Node2D = $Collectables/Second
-@onready var camera_target: Camera2D = $Camera2D
 @onready var timeout_timer: Timer = $TimeoutTimer
 @onready var animation_player_second: AnimationPlayer = %AnimationPlayer_second_part
 var gear_scene : PackedScene = preload("res://scenes/collectables/end_scene_collectable.tscn")
 var marker_counter : int = 0
 var isRotateRight: bool = true
 var isEndScene : bool = false
+var camera_zoom: Vector2 = Vector2(1, 1)
 
 func _ready() -> void:
 	animation_player_first.animation_finished.connect(_on_animation_finished)
@@ -26,17 +26,26 @@ func set_is_end_scene(value: bool) -> void:
 	isEndScene = value
 
 func get_camera_target() -> Vector2:
-	return camera_target.global_position
-
+	return global_position
+func set_camera_zoom(zoom: Vector2) -> void:
+	camera_zoom = zoom
 func play() -> void:
 	animation_player_first.play("place_collectables")
 
+func start_end_scene_immediately() -> void:
+	_fill_gear_group(second_gears)
+	_start_clock_gears_rotating()
+	animation_player_first.play("rotate_bg_2")
+
 func _fill_left_side()-> void:
-	for i in range(first_gears.get_child_count()):
-		var gear_target : Node2D = first_gears.get_child(i)
+	_fill_gear_group(first_gears)
+
+func _fill_gear_group(gear_targets: Node2D) -> void:
+	for i in range(gear_targets.get_child_count()):
+		var gear_target : Node2D = gear_targets.get_child(i)
 		var gear : Node2D = gear_scene.instantiate() as EndSceneCollectable
 		add_child(gear)
-		gear.scale = Vector2(2.0, 2.0)
+		gear.scale = gear_target.scale
 		gear.modulate = Color("#ffffff")
 		if isRotateRight:
 			gear.set_rotation_direction(EndSceneCollectable.Direction.RIGHT)
@@ -54,9 +63,8 @@ func _fly_in_the_gear():
 	add_child(gear)
 	gear.scale = Vector2(2.0, 2.0)
 	# Divide by zoom to convert pixel viewport size into world-space size.
-	var viewport_size : Vector2 = get_viewport_rect().size / camera_target.zoom
+	var viewport_size : Vector2 = get_viewport_rect().size / camera_zoom
 	gear.global_position = global_position + Vector2(randf_range(0.0, viewport_size.x), viewport_size.y)
-
 	if isRotateRight:
 		gear.set_rotation_direction(EndSceneCollectable.Direction.RIGHT)
 	else:
@@ -70,6 +78,7 @@ func _fly_in_the_gear():
 		target = second_gears.get_child(marker_counter)
 	else:
 		return
+	gear.scale = target.scale
 	var target_position : Vector2 = target.global_position
 	gear.global_rotation = target.global_rotation
 	var tween : Tween = get_tree().create_tween()

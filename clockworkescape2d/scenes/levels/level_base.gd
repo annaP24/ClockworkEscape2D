@@ -5,6 +5,7 @@ class_name Level
 @onready var collectable_scene = preload("res://scenes/collectables/collectable.tscn")
 @onready var player_scene = preload("res://scenes/character_custom_data_layer/character.tscn")
 @onready var spawn_marker: Marker2D = $SpawnMarker
+@onready var background: Background = %Background
 @onready var camera_2d: Camera2D
 var engine_start := Time.get_ticks_msec()
 var player : PlayerFsmCustomDataLayer
@@ -14,6 +15,8 @@ func _process(_delta):
 		#If root node's name is not "Game" then we are in debug mode and need restarting
 		if get_tree().current_scene.name != "Game":
 				get_tree().quit()
+	if CutSceneManager.is_mid_scene_finished and !background.is_background_running() == false:
+		background.rotate_gears()
 
 func _ready() -> void:
 	FadeScreen.connect("fade_in_finished",_on_fade_in_finished)
