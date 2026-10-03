@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/projectiles/projectile_shooter/projectile_shooter.tscn" id="3_lwiex"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="4_bb0v1"]
 [ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="4_k6cnd"]
+[ext_resource type="PackedScene" uid="uid://dhh2uo6hm7p47" path="res://scenes/decoration/web/spider_web_full.tscn" id="8_dvtdm"]
 
 [node name="Level_13" unique_id=803383242 instance=ExtResource("1_bb0v1")]
 level_id = 13
@@ -59,3 +60,12 @@ is_left_wind = false
 
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 1120)
+
+[node name="SpiderWeb_Full" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1513705380 instance=ExtResource("8_dvtdm")]
+position = Vector2(66, 699)
+
+[node name="SpiderWeb_Full3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=1189382342 instance=ExtResource("8_dvtdm")]
+position = Vector2(1916, 1213)
+
+[node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=192179932 instance=ExtResource("8_dvtdm")]
+position = Vector2(641, 1144)

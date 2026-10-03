@@ -22,8 +22,14 @@ var is_transitioning := false
 func _ready() -> void:
 	_collect_levels()
 	_connect_nav_buttons()
+	var next_level_id := clampi(GameSession.current_level_id + 1, 1, TOTAL_LEVELS)
+	current_page = (next_level_id - 1) / LEVELS_PER_PAGE
 	unlock_levels()
-	focus_first_level()
+	_focus_edge_level(1)
+	for level in _get_visible_levels():
+		if level.level_id == next_level_id:
+			_focus_level(level)
+			break
 	_update_page_buttons()
 	_apply_page()
 	if GameSaveManager.is_joypad_connected:

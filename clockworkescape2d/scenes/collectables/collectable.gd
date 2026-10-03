@@ -9,4 +9,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.has_method("update_collectables_number"):
 			body.update_collectables_number()
 		collected.emit()
+		EventBus.collectables_changed.emit()
 		queue_free()

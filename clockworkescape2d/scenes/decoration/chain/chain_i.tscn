@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b8sn8c8d06lns" path="res://scenes/decoration/assets/chain_i.png" id="1_0gqy1"]
 
-[node name="ChainU" type="Node2D" unique_id=1653464195]
+[node name="ChainI" type="Node2D" unique_id=1653464195]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1941986416]
 z_index = -1

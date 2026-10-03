@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://c2rmycd6yq3gc" path="res://scenes/obstacles/projectiles/projectile_shooter/projectile_shooter.tscn" id="4_vkojn"]
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="5_e6vuf"]
 [ext_resource type="PackedScene" uid="uid://bdp3bl0nscswn" path="res://scenes/game/end_scene/key.tscn" id="5_f1lfs"]
+[ext_resource type="PackedScene" uid="uid://dhh2uo6hm7p47" path="res://scenes/decoration/web/spider_web_full.tscn" id="6_ftifp"]
+[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain/chain_i.tscn" id="7_qhe51"]
+[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="8_j7wsh"]
+[ext_resource type="PackedScene" uid="uid://3vn5xl5f5fkl" path="res://scenes/decoration/chain/chain_ui.tscn" id="9_or3ua"]
 
 [node name="Level_21" unique_id=575594771 instance=ExtResource("1_kvjlm")]
 
@@ -39,6 +43,33 @@ position = Vector2(1590, 59)
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 visible = false
 position = Vector2(2464, 928)
+
+[node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1773725823 instance=ExtResource("6_ftifp")]
+position = Vector2(893, 322)
+
+[node name="SpiderWeb_Full3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=2057333746 instance=ExtResource("6_ftifp")]
+position = Vector2(1914, 1207)
+
+[node name="SpiderWeb_Full4" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=585263170 instance=ExtResource("6_ftifp")]
+position = Vector2(75, 73)
+
+[node name="ChainI" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=1653464195 instance=ExtResource("7_qhe51")]
+position = Vector2(1082, 161)
+
+[node name="ChainI2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=381007810 instance=ExtResource("7_qhe51")]
+position = Vector2(1141, 163)
+
+[node name="ChainI3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="5" unique_id=1928927908 instance=ExtResource("7_qhe51")]
+position = Vector2(128, 720)
+
+[node name="ChainU" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="6" unique_id=1919257468 instance=ExtResource("8_j7wsh")]
+position = Vector2(479, 63)
+
+[node name="ChainU2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="7" unique_id=507624610 instance=ExtResource("8_j7wsh")]
+position = Vector2(663, 63)
+
+[node name="ChainUI_long" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="8" unique_id=703692013 instance=ExtResource("9_or3ua")]
+position = Vector2(684, 887)
 
 [node name="Key" parent="." index="12" unique_id=768095985 instance=ExtResource("5_f1lfs")]
 position = Vector2(1888, 288)

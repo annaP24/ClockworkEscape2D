@@ -5,7 +5,6 @@ class_name Switch
 signal is_active
 signal is_not_active
 
-@export var is_left_wind : bool = true
 @onready var switch_sprite: Sprite2D = $Sprite2D
 @onready var switch_sprite_small: Sprite2D = $Sprite2D2
 

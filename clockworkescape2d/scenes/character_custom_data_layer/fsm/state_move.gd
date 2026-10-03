@@ -46,7 +46,7 @@ func Physics_Update(delta):
 		player.coyote_timer.start(player.coyote_timeout)
 
 	#Change states
-	if Input.is_action_pressed("jump") and player.jump_buffer:
+	if Input.is_action_just_pressed("jump") and player.jump_buffer:
 		change_state("JumpState")
 	elif Input.is_action_just_pressed("jump"):
 		change_state("JumpState")

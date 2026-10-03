@@ -89,6 +89,7 @@ func _ready() -> void:
 	jump_count = max_jump_count
 	player_died_received = false
 	wall_jump_count = wall_jump_count_max
+	gear_with_animation.animation_finished.connect(_on_die_animation_finished)
 	update_animation(animations.SPAWN)		#TODO Ins den spawn state schieben
 	jump_velocity = -(sqrt(2 * jump_gravity * jump_height))
 	wall_jump_velocity = jump_velocity
@@ -257,17 +258,19 @@ func _on_wall_jump_coyote_timer_timeout() -> void:
 
 # -------------------- On Signal Received -------------------------------------
 func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:
-	update_animation(animations.DIE)
+	player_died_received = true
+	fsm.change_state(fsm.current_state, "DieState")
 
 func _on_hurt_detection_area_body_entered(_body: Node2D) -> void:
 	is_movable = false
 	player_died_received = true
 	reset_collectables()
-	update_animation(animations.DIE)
+	fsm.change_state(fsm.current_state, "DieState")
 
-func _on_character_animated_animation_finished() -> void:
+
+func _on_die_animation_finished() -> void:
 	if player_died_received:
-		#If root node's name is not "World" then we are in debug mode and need restarting
+		#If root node's name is not "Game" then we are in debug mode and need restarting
 		if get_tree().current_scene.name != "Game":
 			get_tree().reload_current_scene()
 		else:

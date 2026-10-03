@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_18vaq"]
 [ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="2_5nwd0"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="3_ifrfd"]
+[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="4_dnafq"]
+[ext_resource type="PackedScene" uid="uid://dhh2uo6hm7p47" path="res://scenes/decoration/web/spider_web_full.tscn" id="5_sed06"]
 
 [node name="Level_12" unique_id=1008334403 instance=ExtResource("1_18vaq")]
 level_id = 12
@@ -38,6 +40,21 @@ position = Vector2(544, 940.9231)
 position = Vector2(1952, 160)
 
 [node name="SpriteArrow" parent="ExitPlatform" index="1" unique_id=686190412]
-position = Vector2(0, -34.145905)
+position = Vector2(0, -48.79474)
+
+[node name="ChainU" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1653464195 instance=ExtResource("4_dnafq")]
+position = Vector2(159, 574)
+
+[node name="ChainU2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=1628374745 instance=ExtResource("4_dnafq")]
+position = Vector2(1488, 428)
+
+[node name="SpiderWeb_Full" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=1513705380 instance=ExtResource("5_sed06")]
+position = Vector2(538, 77)
+
+[node name="SpiderWeb_Full3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=2085899613 instance=ExtResource("5_sed06")]
+position = Vector2(72, 1215)
+
+[node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=280621473 instance=ExtResource("5_sed06")]
+position = Vector2(1002, 70)
 
 [editable path="ExitPlatform"]

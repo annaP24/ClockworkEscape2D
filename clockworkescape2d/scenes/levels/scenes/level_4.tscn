@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="5_x75rp"]
 [ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="6_l5so8"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="6_yp4yq"]
+[ext_resource type="PackedScene" uid="uid://dhh2uo6hm7p47" path="res://scenes/decoration/web/spider_web_full.tscn" id="8_r37kt"]
+[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="9_yp4yq"]
+[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain/chain_i.tscn" id="10_l8uya"]
 
 [node name="Level_2" unique_id=817650125 instance=ExtResource("1_e3suf")]
 level_id = 4
@@ -50,3 +53,33 @@ switch_1 = NodePath("../Switch")
 
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 352)
+
+[node name="SpiderWeb_Full" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1513705380 instance=ExtResource("8_r37kt")]
+position = Vector2(889, 65)
+
+[node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=89275971 instance=ExtResource("8_r37kt")]
+z_index = -1
+position = Vector2(192, 577)
+
+[node name="SpiderWeb_Full4" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=1117580921 instance=ExtResource("8_r37kt")]
+z_index = -1
+position = Vector2(1903, 1184)
+
+[node name="SpiderWeb_Full3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=1211769180 instance=ExtResource("8_r37kt")]
+z_index = -1
+position = Vector2(1155, 577)
+
+[node name="ChainU" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=1653464195 instance=ExtResource("9_yp4yq")]
+position = Vector2(30, 715)
+
+[node name="ChainU5" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="5" unique_id=445651444 instance=ExtResource("9_yp4yq")]
+position = Vector2(335, 220)
+
+[node name="ChainU4" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="6" unique_id=1517464986 instance=ExtResource("9_yp4yq")]
+position = Vector2(1081, 303)
+
+[node name="ChainU2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="7" unique_id=448607161 instance=ExtResource("10_l8uya")]
+position = Vector2(1763, 588)
+
+[node name="ChainU3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="8" unique_id=248600649 instance=ExtResource("10_l8uya")]
+position = Vector2(603, 945)

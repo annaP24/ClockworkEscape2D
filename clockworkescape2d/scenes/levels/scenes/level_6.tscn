@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="4_nueci"]
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="5_nueci"]
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="6_6nur0"]
+[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="7_enyeh"]
+[ext_resource type="PackedScene" uid="uid://dhh2uo6hm7p47" path="res://scenes/decoration/web/spider_web_full.tscn" id="8_a0is3"]
+[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain/chain_i.tscn" id="9_fgph2"]
 
 [node name="Level_6" unique_id=458611843 instance=ExtResource("1_1fkex")]
 level_id = 6
@@ -79,6 +82,32 @@ polygon = PackedVector2Array(-16.986206, -6.3361816, 33.013794, -6.3361816, 34.0
 one_way_collision_margin = 4.2
 
 [node name="SpriteArrow" parent="ExitPlatform" index="1" unique_id=686190412]
-position = Vector2(0, -39.33867)
+position = Vector2(0, -66.51323)
+
+[node name="ChainU" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1653464195 instance=ExtResource("7_enyeh")]
+position = Vector2(766, 94)
+
+[node name="ChainU2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=585042169 instance=ExtResource("7_enyeh")]
+z_index = -1
+position = Vector2(1026, 857)
+
+[node name="SpiderWeb_Full" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=1513705380 instance=ExtResource("8_a0is3")]
+position = Vector2(1912, 1203)
+
+[node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=1865920857 instance=ExtResource("8_a0is3")]
+position = Vector2(77, 321)
+
+[node name="SpiderWeb_Full3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=1095874472 instance=ExtResource("8_a0is3")]
+position = Vector2(451, 129)
+
+[node name="SpiderWeb_Full4" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="5" unique_id=444961560 instance=ExtResource("8_a0is3")]
+z_index = -1
+position = Vector2(1044, 126)
+
+[node name="ChainI" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="6" unique_id=1937562728 instance=ExtResource("9_fgph2")]
+position = Vector2(530, 992)
+
+[node name="ChainI2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="7" unique_id=1379945514 instance=ExtResource("9_fgph2")]
+position = Vector2(1286, 0)
 
 [editable path="ExitPlatform"]

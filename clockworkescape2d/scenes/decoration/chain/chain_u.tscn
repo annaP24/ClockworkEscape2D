@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cre37if323edj" path="res://scenes/decoration/assets/chain_u.png" id="1_xfvie"]
 
 [node name="ChainU" type="Node2D" unique_id=1653464195]
+z_index = -2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1941986416]
 scale = Vector2(1.7, 1.7)

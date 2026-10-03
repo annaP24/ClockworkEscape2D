@@ -155,6 +155,7 @@ _data = {
 }
 
 [node name="Dissapearing_platform" type="StaticBody2D" unique_id=1201871484]
+scale = Vector2(1, 0.7)
 script = ExtResource("1_0rreu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=35164095]

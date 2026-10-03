@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c35feoy2jbarb" path="res://scenes/character_custom_data_layer/sparks.tscn" id="10_3iojc"]
 [ext_resource type="Script" uid="uid://csgxd816r0b5i" path="res://scenes/character_custom_data_layer/fsm/wall_jump_state.gd" id="10_cq04i"]
 [ext_resource type="Texture2D" uid="uid://n3s1l2y5peir" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0001.png" id="11_8ynvr"]
+[ext_resource type="Script" uid="uid://b455uq1mwmwcw" path="res://scenes/character_custom_data_layer/die_state.gd" id="11_k0gvg"]
 [ext_resource type="Texture2D" uid="uid://d3mqh8ph0ycrb" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0002.png" id="12_x1518"]
 [ext_resource type="Texture2D" uid="uid://cw053k1voyw3t" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0003.png" id="13_qy84f"]
 [ext_resource type="Texture2D" uid="uid://pxe2sa5xxtvj" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0004.png" id="14_7de4y"]
@@ -244,6 +245,10 @@ metadata/_custom_type_script = "uid://jh8i4uv87bqn"
 
 [node name="WallJumpState" type="Node" parent="FSM" unique_id=1462290601]
 script = ExtResource("10_cq04i")
+
+[node name="DieState" type="Node" parent="FSM" unique_id=564998358]
+script = ExtResource("11_k0gvg")
+metadata/_custom_type_script = "uid://jh8i4uv87bqn"
 
 [node name="Sparks" parent="." unique_id=1224538931 instance=ExtResource("10_3iojc")]
 emitting = false

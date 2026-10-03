@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dlw5hya6y6fxl"]
 
 [ext_resource type="Script" uid="uid://b34ecwj7sgp6j" path="res://scenes/interactables/switch/switch.gd" id="1_j1cy3"]
-[ext_resource type="Texture2D" uid="uid://vs7lmtr3pai" path="res://scenes/interactables/switch/assets/switch.png" id="2_70f4f"]
-[ext_resource type="Texture2D" uid="uid://c7qx5qdtdj0pe" path="res://scenes/interactables/switch/assets/switch_stand.png" id="3_70f4f"]
+[ext_resource type="Texture2D" uid="uid://b07ojbslkhup2" path="res://scenes/interactables/switch/assets/Switch_brass_64x64.png" id="2_70f4f"]
+[ext_resource type="Texture2D" uid="uid://bkmbfyvbksob3" path="res://scenes/interactables/switch/assets/switch_stand2.png" id="3_70f4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2o0j4"]
 radius = 27.018513
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j1cy3"]
-radius = 32.06244
+radius = 34.0147
 
 [node name="Switch" type="StaticBody2D" unique_id=353889786]
 collision_mask = 0
@@ -17,12 +17,15 @@ metadata/_edit_vertical_guides_ = [-117.0]
 metadata/_edit_horizontal_guides_ = [32.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1257959428]
-rotation = 2.019346
+rotation = -6.2831855
+scale = Vector2(0.42, 0.42)
 texture = ExtResource("2_70f4f")
-offset = Vector2(0.18, 5)
+offset = Vector2(-1.8214478, -1.1900563)
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1424408349]
 show_behind_parent = true
+position = Vector2(0, 18)
+scale = Vector2(0.395, 0.4)
 texture = ExtResource("3_70f4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2055734053]
@@ -30,10 +33,10 @@ visible = false
 shape = SubResource("CircleShape2D_2o0j4")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1914724456]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=972431558]
+visible = false
 shape = SubResource("CircleShape2D_j1cy3")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="6_wm7rj"]
 [ext_resource type="PackedScene" uid="uid://cylflqif6vvyq" path="res://scenes/interactables/platform/switch_platform.tscn" id="7_0mkrg"]
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="8_0mkrg"]
+[ext_resource type="PackedScene" uid="uid://dhh2uo6hm7p47" path="res://scenes/decoration/web/spider_web_full.tscn" id="9_q67yq"]
 
 [node name="Level_16" unique_id=730751651 instance=ExtResource("1_tpfwo")]
 level_id = 16
@@ -65,3 +66,15 @@ switch_1 = NodePath("../Switch_for_door2")
 
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
 position = Vector2(1952, 416)
+
+[node name="SpiderWeb_Full" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1513705380 instance=ExtResource("9_q67yq")]
+position = Vector2(1596, 1217)
+
+[node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=1321964114 instance=ExtResource("9_q67yq")]
+position = Vector2(72, 66)
+
+[node name="SpiderWeb_Full3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=1459919568 instance=ExtResource("9_q67yq")]
+position = Vector2(639, 578)
+
+[node name="SpiderWeb_Full4" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=1289629282 instance=ExtResource("9_q67yq")]
+position = Vector2(1238, 102)

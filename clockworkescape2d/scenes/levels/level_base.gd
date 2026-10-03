@@ -67,10 +67,11 @@ func _on_exit_platform_level_finished() -> void:
 func get_camera() -> Camera2D:
 	return camera_2d
 
-func set_gameplay_frozen(frozen: bool) -> void:
+func set_gameplay_frozen(frozen: bool, is_check_player: bool = true) -> void:
 	if frozen:
-		while not player.is_on_floor():
-			await get_tree().physics_frame
+		if is_check_player:
+			while not player.is_on_floor():
+				await get_tree().physics_frame
 		process_mode = Node.PROCESS_MODE_DISABLED
 	else:
 		process_mode = Node.PROCESS_MODE_INHERIT

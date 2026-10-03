@@ -35,7 +35,7 @@ size = Vector2(68, 15)
 size = Vector2(26.000004, 58)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1sro"]
-size = Vector2(52, 320)
+size = Vector2(52, 100)
 
 [sub_resource type="Gradient" id="Gradient_folvt"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -67,6 +67,7 @@ script = ExtResource("1_gjjtp")
 warrning_time = 0.5
 
 [node name="BlitzLine" type="Line2D" parent="." unique_id=1781101274]
+visible = false
 texture_repeat = 2
 points = PackedVector2Array(32, 10, 32, 90)
 width = 70.0
@@ -74,6 +75,7 @@ texture = SubResource("AnimatedTexture_y1sro")
 texture_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703527519]
+visible = false
 shape = SubResource("RectangleShape2D_kf46m")
 
 [node name="LowerGuard" type="Sprite2D" parent="." unique_id=1679950281]
@@ -84,10 +86,12 @@ flip_h = true
 [node name="StaticBody2D" type="StaticBody2D" parent="LowerGuard" unique_id=1228319329]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowerGuard/StaticBody2D" unique_id=587098154]
+visible = false
 position = Vector2(-1, 24)
 shape = SubResource("RectangleShape2D_w6mcs")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LowerGuard/StaticBody2D" unique_id=2142977369]
+visible = false
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_6054b")
 
@@ -99,16 +103,22 @@ texture = ExtResource("6_gjjtp")
 [node name="StaticBody" type="StaticBody2D" parent="UpperGuard" unique_id=95659840]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperGuard/StaticBody" unique_id=1824603031]
+visible = false
 position = Vector2(2.000002, 23.5)
 shape = SubResource("RectangleShape2D_kyv88")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="UpperGuard/StaticBody" unique_id=1916272175]
+visible = false
 position = Vector2(2.000002, 1.9999999)
 shape = SubResource("RectangleShape2D_bnxsf")
 
 [node name="Comp2dHitbox" type="Area2D" parent="." unique_id=1949732109]
+visible = false
 collision_layer = 0
+monitoring = false
+monitorable = false
 script = ExtResource("7_gjjtp")
+is_enable = false
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox" unique_id=1283912412]
