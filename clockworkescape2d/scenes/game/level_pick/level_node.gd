@@ -19,6 +19,7 @@ signal level_selected(level_id)
 var parent : LevelPick
 var is_selected : bool = false
 var init_scale : Vector2 = Vector2(1,1)
+var shake_tween :Tween
 
 enum  ButtonState { IDLE, HOVER, PRESSED, FOCUSED, DISABLED }
 
@@ -37,14 +38,16 @@ func _input_event(_viewport, event, _shape_idx):
 			_shake_locked_button()
 
 func _shake_locked_button():
-	var tween = get_tree().create_tween()
+	if shake_tween != null and shake_tween.is_running():
+		return
+	shake_tween = get_tree().create_tween()
 	#Shake the locked button diagonally: up-left, down-right, back to initial position
 	var shake_offset = Vector2(-4, -4)
 	var original_position = sprite.position
-	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(sprite, "position", original_position + shake_offset, 0.08)
-	tween.tween_property(sprite, "position", original_position - shake_offset, 0.12)
-	tween.tween_property(sprite, "position", original_position, 0.1)
+	shake_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	shake_tween.tween_property(sprite, "position", original_position + shake_offset, 0.08)
+	shake_tween.tween_property(sprite, "position", original_position - shake_offset, 0.12)
+	shake_tween.tween_property(sprite, "position", original_position, 0.1)
 
 func trigger_button():
 	AudioManager.play_sfx("click", 0.2)

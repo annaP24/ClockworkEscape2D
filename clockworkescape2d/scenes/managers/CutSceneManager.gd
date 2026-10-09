@@ -36,8 +36,6 @@ func _process(_delta: float) -> void:
 
 func _ready() -> void:
 
-	if not EventBus.collectables_changed.is_connected(_on_collectables_changed):
-		EventBus.collectables_changed.connect(_on_collectables_changed)
 	if not EventBus.key_collected.is_connected(_on_key_collected):
 		EventBus.key_collected.connect(_on_key_collected)
 
@@ -64,17 +62,18 @@ func _on_key_collected() -> void:
 	spawned_end_scene.start_end_scene_immediately()
 
 
-func _on_collectables_changed() -> void:
-	if is_playing:
-		return
+## Plays a cutscene whose collectable threshold was reached on a completed run, once per save slot.
+func play_pending_cutscene() -> void:
+	var total := GameSaveManager.get_total_collected()
+	if total >= MIDPOINT_COUNT and not GameSaveManager.is_scene_seen(GameSaveManager.MID_SCENE_SEEN_TAG):
+		GameSaveManager.mark_scene_seen(GameSaveManager.MID_SCENE_SEEN_TAG)
+		await start_cutscene(true)
+	elif total >= END_COUNT and not GameSaveManager.is_scene_seen(GameSaveManager.END_SCENE_SEEN_TAG):
+		GameSaveManager.mark_scene_seen(GameSaveManager.END_SCENE_SEEN_TAG)
+		await start_cutscene(false)
 
-	if GameSaveManager.collected_objects == MIDPOINT_COUNT:
-		_startcutscene(true)
-	elif GameSaveManager.collected_objects == END_COUNT:
-		_startcutscene(false)
 
-
-func _startcutscene(is_midpoint: bool) -> void:
+func start_cutscene(is_midpoint: bool) -> void:
 	if is_playing:
 		return
 

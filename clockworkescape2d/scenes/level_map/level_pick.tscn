@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b6vn2n10ejw6d" path="res://scenes/level_map/assets/Background_new.png" id="7_025iv"]
 [ext_resource type="Texture2D" uid="uid://civhgro2m2v0f" path="res://scenes/level_map/assets/arrow_right_normal.png" id="7_kl1bo"]
 [ext_resource type="Texture2D" uid="uid://njgciasb2v2w" path="res://scenes/level_map/assets/arrow_left_normal.png" id="7_qmxkt"]
-[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/ui/statistics/stats_ui.tscn" id="8_s3y08"]
+[ext_resource type="PackedScene" uid="uid://dui4j26cdjcr8" path="res://scenes/game/statistics/stats_ui.tscn" id="8_s3y08"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ufpk"]
 texture = ExtResource("3_dj0na")

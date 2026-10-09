@@ -3,6 +3,7 @@ var was_on_wall : bool = false
 
 func Enter(player_node):
 	super(player_node)
+	player.set_can_grab(true)
 
 func Physics_Update(delta):
 	if not player.is_movable:

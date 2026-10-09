@@ -7,6 +7,6 @@ class_name StartMenu
 func _ready() -> void:
 	if GameSaveManager.is_joypad_connected:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		start_button.grab_focus()
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	start_button.grab_focus()

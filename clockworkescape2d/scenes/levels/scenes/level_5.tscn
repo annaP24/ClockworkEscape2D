@@ -79,8 +79,8 @@ position = Vector2(64, 73)
 position = Vector2(1471, 1180)
 
 [node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=1235933769 instance=ExtResource("10_7pjua")]
-position = Vector2(803, 110)
-scale = Vector2(2.199998, 2.199998)
+position = Vector2(800.00006, 96)
+scale = Vector2(1.3924721, 1.3924721)
 
 [node name="ChainU2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=371555247 instance=ExtResource("11_5vvfx")]
 position = Vector2(1907, 129)

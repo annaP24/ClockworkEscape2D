@@ -68,7 +68,7 @@ switch_1 = NodePath("../Switch_Platform")
 is_move_vertical = false
 
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
-position = Vector2(1888, 1216)
+position = Vector2(1888, 1184)
 move_range = 384.0
 
 [node name="SpiderWeb_Full" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1513705380 instance=ExtResource("8_4rtnf")]
@@ -84,4 +84,4 @@ position = Vector2(196, 448)
 position = Vector2(1726, 1056)
 
 [node name="ChainUI_long" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=1393748553 instance=ExtResource("10_gk7si")]
-position = Vector2(1254, 591)
+position = Vector2(1120, 160)

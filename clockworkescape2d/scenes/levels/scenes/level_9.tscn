@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="3_tyhfa"]
 [ext_resource type="PackedScene" uid="uid://dwb5qoh4vb8ry" path="res://scenes/platforms/rotate_anchor/rotation_anchor_clock.tscn" id="4_8thdu"]
 [ext_resource type="PackedScene" uid="uid://bw48g65rbks06" path="res://scenes/obstacles/pendent/pendent.tscn" id="4_afdjd"]
-[ext_resource type="PackedScene" uid="uid://bjww3w1a45857" path="res://scenes/platforms/small_platform/small_platform.tscn" id="5_pq5nq"]
+[ext_resource type="PackedScene" uid="uid://c3nduxsl25m5d" path="res://scenes/platforms/rotating_platform/rotating_platform.tscn" id="5_ccltd"]
 [ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="6_q7m2p"]
 [ext_resource type="PackedScene" uid="uid://ddt76rnhhboub" path="res://scenes/platforms/moving_platform/platform_move.tscn" id="7_x8cqq"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="8_i7s8t"]
@@ -46,7 +46,7 @@ rotation_timeout = 1.5
 start_delay = 2.0
 rotation_duration = 0.35
 
-[node name="Small_platform" parent="Platforms/RotationAnchorClock" index="2" unique_id=1620481334 instance=ExtResource("5_pq5nq")]
+[node name="RotatingPlatform" parent="Platforms/RotationAnchorClock" index="4" unique_id=962943329 instance=ExtResource("5_ccltd")]
 
 [node name="DisappearingPlatform" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="1" unique_id=2086983986 instance=ExtResource("6_q7m2p")]
 position = Vector2(544, 544)
@@ -86,7 +86,7 @@ switch_1 = NodePath("../Switch")
 position = Vector2(1952, 800)
 
 [node name="SpriteArrow" parent="ExitPlatform" index="1" unique_id=686190412]
-position = Vector2(0, -153.82036)
+position = Vector2(0, -154.15477)
 
 [node name="ChainUI" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1126533338 instance=ExtResource("13_t3386")]
 position = Vector2(518, 95)

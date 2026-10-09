@@ -7,7 +7,10 @@ var levels_path : String = "res://scenes/levels/scenes/"
 
 const PROGRESS_PATH = "res://"
 const LEVELS_PATH = "res://levels.cfg"
-const COLLECTED_IN_LEVEL_TAG = "collected_per_level"
+const COLLECTED_IN_LEVEL_TAG = "collected_per_level" # legacy: count per level
+const COLLECTED_MASK_TAG = "collected_mask"
+const MID_SCENE_SEEN_TAG = "mid_scene_seen"
+const END_SCENE_SEEN_TAG = "end_scene_seen"
 const MAX_LEVEL_TAG = "max_level"
 const MAX_COLLECTED_TAG = "max_collected"
 const TOTAL_DEATHS_TAG = "deaths"
@@ -16,7 +19,6 @@ const NR_OF_LEVLES_TAG = "nr_of_levels"
 const MAX_NUM_OF_LEVELS = 20
 const TOTAL_COLLECTABLES = MAX_NUM_OF_LEVELS * 3
 
-var collected_objects : int = 0
 var max_level_reached : int
 var max_collected : int = 0
 var session_start_time : int = 0
@@ -113,9 +115,51 @@ func save_progress(new_max_level : int ):
 func get_collected_count_for_level(level_id : int) -> int:
 	var cfg = ConfigFile.new()
 	if cfg.load(current_progress_path) == OK:
-		var ret_value = cfg.get_value(COLLECTED_IN_LEVEL_TAG, str(level_id))
-		return ret_value
+		return _count_bits(_read_mask(cfg, level_id))
 	return 0
+
+## Bit i is set when collectable i of the level was collected on a completed run.
+func get_collected_mask(level_id : int) -> int:
+	var cfg = ConfigFile.new()
+	if cfg.load(current_progress_path) == OK:
+		return _read_mask(cfg, level_id)
+	return 0
+
+func _read_mask(cfg : ConfigFile, level_id : int) -> int:
+	if cfg.has_section_key(COLLECTED_MASK_TAG, str(level_id)):
+		return int(cfg.get_value(COLLECTED_MASK_TAG, str(level_id), 0))
+	# Old saves stored only a count; treat it as the first n collectables.
+	var legacy_count : int = int(cfg.get_value(COLLECTED_IN_LEVEL_TAG, str(level_id), 0))
+	return (1 << legacy_count) - 1
+
+func _count_bits(mask : int) -> int:
+	var n := 0
+	while mask > 0:
+		n += mask & 1
+		mask >>= 1
+	return n
+
+func get_total_collected() -> int:
+	var cfg = ConfigFile.new()
+	if cfg.load(current_progress_path) != OK:
+		return 0
+	var total := 0
+	for i in range(1, MAX_NUM_OF_LEVELS + 1):
+		total += _count_bits(_read_mask(cfg, i))
+	return total
+
+func is_scene_seen(tag : String) -> bool:
+	var cfg = ConfigFile.new()
+	if cfg.load(current_progress_path) != OK:
+		return false
+	return cfg.get_value("progress", tag, false)
+
+func mark_scene_seen(tag : String) -> void:
+	var cfg = ConfigFile.new()
+	if cfg.load(current_progress_path) != OK:
+		return
+	cfg.set_value("progress", tag, true)
+	cfg.save(current_progress_path)
 
 func delete_configuration(slot : int):
 	var path_name = _get_file_name(slot)
@@ -141,42 +185,35 @@ func _create_default_progress(filename : String):
 	#-------- Levels progress ----------------------------
 	#Initialize empty array of level-collectables_nr for progress
 	for i in range(1,MAX_NUM_OF_LEVELS + 1):
-		cf.set_value(COLLECTED_IN_LEVEL_TAG, str(i), 0)
+		cf.set_value(COLLECTED_MASK_TAG, str(i), 0)
 
 	#------ Settings -------------------------------------
 	SettingManager.create_default_settings(cf)
 	cf.save(filename)
 	max_level_reached = 1
 
-func save_collectables_count_for_level(level_id : int, count : int):
+## Merges the collectables picked up in a completed run into the saved mask.
+func commit_level_collectables(level_id : int, run_mask : int):
 	var cf = ConfigFile.new()
-	#Check if dile exists
 	if FileAccess.file_exists(current_progress_path):
 		cf.load(current_progress_path)
-	#Get current value
-	var current_max = cf.get_value(COLLECTED_IN_LEVEL_TAG, str(level_id), 0)
-	#If newly gathered collectables are more than previously saved number
-	if count > current_max:
-		#Update value
-		cf.set_value(COLLECTED_IN_LEVEL_TAG, str(level_id), count)
-		#Write to disk
-		cf.save(current_progress_path)
-		#If max count of collected per level increased
-		_update_total_collected()
+	var saved_mask := _read_mask(cf, level_id)
+	var new_mask := saved_mask | run_mask
+	if new_mask == saved_mask and cf.has_section_key(COLLECTED_MASK_TAG, str(level_id)):
+		return
+	cf.set_value(COLLECTED_MASK_TAG, str(level_id), new_mask)
+	cf.save(current_progress_path)
+	_update_total_collected()
 
 func _update_total_collected():
 	var cf = ConfigFile.new()
-	#Check if dile exists
 	if FileAccess.file_exists(current_progress_path):
 		cf.load(current_progress_path)
 	max_collected = 0
 	for i in range(1, MAX_NUM_OF_LEVELS + 1):
-		max_collected += cf.get_value(COLLECTED_IN_LEVEL_TAG, str(i))
-	#Update value
+		max_collected += _count_bits(_read_mask(cf, i))
 	cf.set_value("progress", MAX_COLLECTED_TAG, max_collected)
-	#Write to disk
 	cf.save(current_progress_path)
-	collected_objects = 0
 
 func set_level_paths():
 	all_level_paths.clear()

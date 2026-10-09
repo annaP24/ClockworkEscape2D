@@ -60,7 +60,6 @@ var player_died_received : bool = false
 var wall_jump_count : int
 var can_grab : bool = true
 var fall_velocity : float = 1200.0
-var curr_nr_collectables : int = 0
 var is_player_moving : bool = false
 var last_wall_direction : WallSide = WallSide.NONE
 
@@ -78,11 +77,9 @@ enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_debug_1"):
-		GameSaveManager.collected_objects = 20
-		EventBus.collectables_changed.emit()
+		CutSceneManager.start_cutscene(true)
 	if event.is_action_pressed("ui_debug_2"):
-		GameSaveManager.collected_objects = 40
-		EventBus.collectables_changed.emit()
+		CutSceneManager.start_cutscene(false)
 
 func _ready() -> void:
 	is_movable = true
@@ -132,19 +129,6 @@ func update_animation(new_animation : animations):
 			gear_with_animation.play("break")
 		animations.SPAWN:
 			is_movable = true
-
-func update_collectables_number():
-	curr_nr_collectables += 1
-	GameSaveManager.collected_objects += 1
-	EventBus.collectables_changed.emit()
-
-func reset_collectables():
-	#Reset number of collected objects to the number before this level
-	GameSaveManager.collected_objects = GameSaveManager.collected_objects - curr_nr_collectables
-	curr_nr_collectables = 0
-
-func get_nr_of_collected_items()->int:
-	return curr_nr_collectables
 
 func normalize_movement(direction : float) -> float:
 	if direction < 0.0:
@@ -264,7 +248,6 @@ func _on_comp_2d_hurtbox_hurt(_damage: Variant) -> void:
 func _on_hurt_detection_area_body_entered(_body: Node2D) -> void:
 	is_movable = false
 	player_died_received = true
-	reset_collectables()
 	fsm.change_state(fsm.current_state, "DieState")
 
 

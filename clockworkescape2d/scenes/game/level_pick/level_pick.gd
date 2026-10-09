@@ -14,7 +14,7 @@ const TOTAL_LEVELS := 20
 @onready var navigation_layer: CanvasLayer = $NavigationLayer
 
 var current_focused_level: Node = null
-var is_joypad_connected := false
+var is_joypad_connected : bool= false
 var current_page := 0
 var all_levels: Array = []
 var is_transitioning := false

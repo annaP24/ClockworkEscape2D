@@ -20,9 +20,9 @@ func _ready() -> void:
 	_load_settings()
 	if GameSaveManager.is_joypad_connected:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		music_slider.grab_focus()
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	music_slider.grab_focus()
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_bus_volume("Music", value)

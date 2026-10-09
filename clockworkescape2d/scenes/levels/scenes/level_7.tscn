@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_u3ff6"]
 [ext_resource type="PackedScene" uid="uid://bd0enwr66l8nf" path="res://scenes/obstacles/lightning/lightning.tscn" id="2_xc1de"]
-[ext_resource type="PackedScene" uid="uid://bjww3w1a45857" path="res://scenes/platforms/small_platform/small_platform.tscn" id="3_lddlp"]
 [ext_resource type="PackedScene" uid="uid://dwb5qoh4vb8ry" path="res://scenes/platforms/rotate_anchor/rotation_anchor_clock.tscn" id="4_knxv1"]
 [ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="4_re3mj"]
+[ext_resource type="PackedScene" uid="uid://c3nduxsl25m5d" path="res://scenes/platforms/rotating_platform/rotating_platform.tscn" id="5_2ihao"]
 [ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="5_ppxxq"]
 [ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="7_2ihao"]
 [ext_resource type="PackedScene" uid="uid://dhh2uo6hm7p47" path="res://scenes/decoration/web/spider_web_full.tscn" id="8_gg501"]
@@ -43,7 +43,7 @@ rotation_deg = 180.0
 rotation_timeout = 2.0
 rotation_duration = 0.35
 
-[node name="Small_platform" parent="Platforms/RotationAnchorClock" index="2" unique_id=1620481334 instance=ExtResource("3_lddlp")]
+[node name="RotatingPlatform" parent="Platforms/RotationAnchorClock" index="4" unique_id=962943329 instance=ExtResource("5_2ihao")]
 
 [node name="Lightning" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="0" unique_id=736740945 instance=ExtResource("2_xc1de")]
 position = Vector2(672, 480)

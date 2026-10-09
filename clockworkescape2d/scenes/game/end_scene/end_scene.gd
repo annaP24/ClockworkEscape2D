@@ -2,7 +2,7 @@ extends Node2D
 class_name MidPointCutScene
 
 signal animation_finished
-@export var timeout : float = 5.0
+@export var timeout : float = 2.0
 const GearInClockScript = preload("res://scenes/game/end_scene/gear_in_clock.gd")
 @onready var animation_player_first: AnimationPlayer = %AnimationPlayer_first_part
 @onready var first_gears: Node2D = $Collectables/First

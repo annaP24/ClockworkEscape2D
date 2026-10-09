@@ -17,6 +17,8 @@ var slot3_data : Dictionary
 @onready var slot_2_button: StandardButton = %Slot2Button
 @onready var slot_3_button: StandardButton = %Slot3Button
 var selected_slot : int = 0
+const CONFIRM_POPUP_SCENE := preload("res://scenes/game/slots_menu/confirm_popup.tscn")
+var _confirm_popup : ConfirmPopup
 
 func _ready() -> void:
 	update_data()
@@ -25,9 +27,9 @@ func _ready() -> void:
 		start_button.disabled = true
 	if GameSaveManager.is_joypad_connected:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		slot_1_button.grab_focus()
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	slot_1_button.grab_focus()
 
 func _check_slot_data():
 	slot1_data = GameSaveManager.check_progress_data_for_slot(1)
@@ -64,6 +66,7 @@ func _enable_disable_buttons(slot : int, toggle_on : bool):
 		GameSaveManager.set_current_slot_id(slot)
 	else:
 		selected_slot = 0
+		start_button.disabled = true
 		GameSaveManager.set_current_slot_id(-1)
 
 	if slot == 1:
@@ -111,5 +114,21 @@ func _on_play_pressed() -> void:
 		EventBus.save_slot_selected.emit(selected_slot)
 
 func _on_delete_button_pressed() -> void:
+	if selected_slot == 0 or _confirm_popup != null:
+		return
+	_confirm_popup = CONFIRM_POPUP_SCENE.instantiate()
+	add_child(_confirm_popup)
+	_confirm_popup.confirmed.connect(_on_confirm_delete_yes)
+	_confirm_popup.tree_exited.connect(_on_popup_closed)
+
+func _on_confirm_delete_yes() -> void:
 	GameSaveManager.delete_configuration(selected_slot)
 	_check_slot_data()
+	delete_button.disabled = true
+
+func _on_popup_closed() -> void:
+	_confirm_popup = null
+	if delete_button.disabled:
+		slot_1_button.grab_focus()
+	else:
+		delete_button.grab_focus()

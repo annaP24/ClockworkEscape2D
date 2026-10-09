@@ -9,6 +9,8 @@ class_name Level
 @onready var camera_2d: Camera2D
 var engine_start := Time.get_ticks_msec()
 var player : PlayerFsmCustomDataLayer
+## Collectables picked up in this run; saved only when the exit is reached.
+var run_mask : int = 0
 
 func _process(_delta):
 	if Input.is_action_pressed("return"):
@@ -27,6 +29,26 @@ func _ready() -> void:
 	print("Level ", str(level_id), " starting")
 	EventBus.exit_animation_finished.connect(_on_exit_platform_level_finished)
 	camera_2d = %Camera2D
+	CutSceneManager.is_mid_scene_finished = GameSaveManager.is_scene_seen(GameSaveManager.MID_SCENE_SEEN_TAG)
+	_setup_collectables()
+
+func _setup_collectables() -> void:
+	var saved_mask := GameSaveManager.get_collected_mask(level_id)
+	var index := 0
+	for node in get_tree().get_nodes_in_group("collectable"):
+		if not is_ancestor_of(node):
+			continue
+		node.index = index
+		if saved_mask & (1 << index):
+			# Notify listeners (e.g. tutorials) as if it was picked up, then remove it.
+			node.collected.emit()
+			node.queue_free()
+		else:
+			node.collected.connect(_on_collectable_collected.bind(index))
+		index += 1
+
+func _on_collectable_collected(index : int) -> void:
+	run_mask |= 1 << index
 
 func _on_fade_in_finished():
 	_spawn_player( )
@@ -39,6 +61,7 @@ func _spawn_player():
 	if has_node("TutorialController"):
 		var tutorial_controller = get_node("TutorialController") as Node
 		tutorial_controller.player = player
+	await CutSceneManager.play_pending_cutscene()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("return"):
@@ -55,8 +78,7 @@ func _on_exit_platform_level_finished() -> void:
 	if get_tree().current_scene.name != "Game":
 		get_tree().call_deferred("reload_current_scene")
 	else:
-		#Save current collected count to progress.cfg
-		GameSaveManager.save_collectables_count_for_level(level_id, player.get_nr_of_collected_items())
+		GameSaveManager.commit_level_collectables(level_id, run_mask)
 		#Unlock the next level if this one wasn't already the highest reached
 		var new_max_level = min(level_id + 1, GameSaveManager.MAX_NUM_OF_LEVELS)
 		if new_max_level > GameSaveManager.max_level_reached:

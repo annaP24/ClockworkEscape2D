@@ -1,10 +1,9 @@
-[gd_scene format=3 uid="uid://dui4j26cdjcr8"]
+[gd_scene format=3 uid="uid://dg4jwymeuro56"]
 
-[ext_resource type="Script" uid="uid://dehsfx7cfqh6s" path="res://scenes/ui/statistics/stats_ui.gd" id="1_td7ru"]
+[ext_resource type="Script" path="res://scenes/game/statistics/stats_ui.gd" id="1_td7ru"]
 [ext_resource type="Texture2D" uid="uid://crqt4x23v6twv" path="res://scenes/ui/assets/icons_bg.png" id="2_jvvq5"]
-[ext_resource type="Texture2D" uid="uid://3cvq16rlufld" path="res://scenes/ui/statistics/assets/collectables.png" id="3_dyj56"]
-[ext_resource type="Texture2D" uid="uid://nm4oim4i3y3e" path="res://scenes/ui/statistics/assets/gear_dark.png" id="4_eey43"]
-[ext_resource type="Texture2D" uid="uid://6tty6e7onj71" path="res://scenes/ui/statistics/assets/death_color_2.png" id="5_wfd7e"]
+[ext_resource type="Texture2D" uid="uid://3cvq16rlufld" path="res://scenes/ui/statistics/assets/collectables.png" id="3_6fct1"]
+[ext_resource type="Texture2D" uid="uid://6tty6e7onj71" path="res://scenes/ui/statistics/assets/death_color_2.png" id="4_2pjic"]
 
 [node name="UI" type="Control" unique_id=299092503]
 layout_mode = 3
@@ -47,7 +46,7 @@ layout_mode = 2
 [node name="ColectablesTeyture" type="TextureRect" parent="VBoxContainer/TextureRect/HBoxContainer" unique_id=1962415697]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
-texture = ExtResource("3_dyj56")
+texture = ExtResource("3_6fct1")
 expand_mode = 3
 stretch_mode = 4
 
@@ -67,7 +66,7 @@ layout_mode = 2
 [node name="LevelIcon" type="TextureRect" parent="VBoxContainer/TextureRect/HBoxContainer" unique_id=1755484835]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
-texture = ExtResource("4_eey43")
+texture = ExtResource("4_2pjic")
 expand_mode = 3
 stretch_mode = 4
 
@@ -87,7 +86,6 @@ layout_mode = 2
 [node name="DeathTexture" type="TextureRect" parent="VBoxContainer/TextureRect/HBoxContainer" unique_id=787945482]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
-texture = ExtResource("5_wfd7e")
 expand_mode = 3
 stretch_mode = 4
 

@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bko34aaackhcg"]
+
+[ext_resource type="Script" uid="uid://csq2uahsn2axr" path="res://scenes/game/slots_menu/confirm_popup.gd" id="1_popup"]
+[ext_resource type="Texture2D" uid="uid://cjm83aiqq2ros" path="res://scenes/game/assets/title_holder.png" id="2_banner"]
+[ext_resource type="FontFile" uid="uid://b20wtymmjh5a8" path="res://scenes/game/assets/Bangers-Regular.ttf" id="3_font"]
+[ext_resource type="PackedScene" uid="uid://dsexqvha4djrl" path="res://scenes/ui/standard_button/standard_button.tscn" id="4_button"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.17, 0.1, 0.03, 0.95)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="ConfirmPopup" type="ColorRect" unique_id=1217517957]
+process_mode = 3
+z_index = 20
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+script = ExtResource("1_popup")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2326622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1887239295]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1773704882]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Banner" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1814078365]
+custom_minimum_size = Vector2(900, 110)
+layout_mode = 2
+texture = ExtResource("2_banner")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MessageLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/Banner" unique_id=815798442]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.94509804, 0.78039217, 0.41960785, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 51
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2116625408]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="YesButton" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=429458670 instance=ExtResource("4_button")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_right = NodePath("../CancelButton")
+
+[node name="Label" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons/YesButton" index="0" unique_id=1342168869]
+text = "YES"
+
+[node name="CancelButton" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=2125978612 instance=ExtResource("4_button")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../YesButton")
+focus_neighbor_right = NodePath("../YesButton")
+
+[node name="Label" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons/CancelButton" index="0" unique_id=1342168869]
+text = "CANCEL"
+
+[editable path="CenterContainer/PanelContainer/VBoxContainer/Buttons/YesButton"]
+[editable path="CenterContainer/PanelContainer/VBoxContainer/Buttons/CancelButton"]

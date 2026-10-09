@@ -64,10 +64,8 @@ color_ramp = SubResource("GradientTexture1D_1b3d4")
 [node name="Lightning" type="StaticBody2D" unique_id=1597034869]
 collision_layer = 0
 script = ExtResource("1_gjjtp")
-warrning_time = 0.5
 
 [node name="BlitzLine" type="Line2D" parent="." unique_id=1781101274]
-visible = false
 texture_repeat = 2
 points = PackedVector2Array(32, 10, 32, 90)
 width = 70.0
@@ -115,10 +113,7 @@ shape = SubResource("RectangleShape2D_bnxsf")
 [node name="Comp2dHitbox" type="Area2D" parent="." unique_id=1949732109]
 visible = false
 collision_layer = 0
-monitoring = false
-monitorable = false
 script = ExtResource("7_gjjtp")
-is_enable = false
 metadata/_custom_type_script = "uid://wujupbok4pj0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Comp2dHitbox" unique_id=1283912412]

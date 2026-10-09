@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c3nduxsl25m5d"]
+
+[ext_resource type="Texture2D" uid="uid://sdcn3m3g02ih" path="res://scenes/platforms/rotating_platform/assets/rotating_platform.png" id="1_gmby8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03acl"]
+size = Vector2(128, 32)
+
+[node name="RotatingPlatform" type="StaticBody2D" unique_id=962943329]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=769617409]
+texture = ExtResource("1_gmby8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=500129022]
+visible = false
+shape = SubResource("RectangleShape2D_03acl")
