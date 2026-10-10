@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bymnpebrbbpjp" path="res://scenes/platforms/dissapearing_platform/dissapearing_platform.tscn" id="3_cq73i"]
 [ext_resource type="PackedScene" uid="uid://ctlvjjesveo0h" path="res://scenes/game/tutorials/tutorial_l1.tscn" id="4_ueqc6"]
 
-[node name="Level_start_2" unique_id=575594771 instance=ExtResource("1_u2xm3")]
+[node name="Level_start" unique_id=575594771 instance=ExtResource("1_u2xm3")]
+level_id = 1
 
 [node name="Background" parent="." index="0" unique_id=750593274]
 position = Vector2(9, 0)

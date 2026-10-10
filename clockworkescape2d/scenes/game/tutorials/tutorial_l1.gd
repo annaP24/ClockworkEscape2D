@@ -11,6 +11,7 @@ const TUTORIAL_BANNER = preload("res://scenes/game/tutorial_banner/tutorial_bann
 @onready var arrow_wall_jump_up_right: Sprite2D =%ArrowWallJumpUpRight
 @onready var collectable_2: StaticBody2D = %Collectable2
 @onready var arrow_to_double_jump: Sprite2D = %ArrowToDoubleJump
+@onready var arrow_to_jump: Sprite2D = %ArrowToJump
 
 @onready var collectable_zone_enter: Area2D = %CollectableZoneEnter
 @onready var wall_double_jump_hint_zone_enter: Area2D = %WallDoubleJumpHintZoneEnter
@@ -63,7 +64,7 @@ func _setup_banner() -> void:
 	banner = TUTORIAL_BANNER.instantiate()
 	layer.add_child(banner)
 
-enum Phase {DOUBLE_JUMP, COLLECT, JUMP, WALL_CLIMB, WALL_JUMP, IDLE}
+enum Phase {DOUBLE_JUMP, COLLECT, JUMP, WALL_CLIMB, WALL_JUMP, WALL_JUMP_CLIMB, IDLE}
 
 func _get_banner_text(phase: Phase) -> Array[String]:
 	var joy = GameSession.is_joypad_connected
@@ -75,9 +76,11 @@ func _get_banner_text(phase: Phase) -> Array[String]:
 		Phase.JUMP:
 			return ["Jump", "press %s" % ["(A)" if joy else "Space"]]
 		Phase.WALL_CLIMB:
-			return ["Wall climb", "hold %s while touching the wall" % ["D-Pad/Stick Up" if joy else "↑ / W"]]
+			return ["Wall climb", "hold %s while touching the wall" % ["D-Pad/Stick Up" if joy else "W"]]
 		Phase.WALL_JUMP:
-			return ["Wall jump", "press %s while on a wall" % ["(A)" if joy else "Space"]]
+			return ["Wall jump", "jump toward the wall and on impact press %s and %s to jump off it" % ["(A)" if joy else "Space", "D-Pad/Stick Left" if joy else "A"]]
+		Phase.WALL_JUMP_CLIMB:
+			return ["Wall jump and climb", "jump toward the wall and press %s while touching it" % ["D-Pad/Stick Up" if joy else "W"]]
 		Phase.IDLE:
 			return [""]
 	return []
@@ -91,6 +94,8 @@ func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
 	if banner.visible and current_banner_base_text.size() > 0:
 		# Rebuild the text with the new device phrasing so the same banner refreshes in place.
 		banner.show_banner(current_banner_base_text)
+
+# Collectable Zone Enter
 func _on_collectable_zone_enter_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not is_collect_finished:
 		_show_banner_for_phase(Phase.WALL_CLIMB)
@@ -101,12 +106,15 @@ func _on_collectable_zone_enter_body_entered(body: Node2D) -> void:
 	else:
 		banner.hide_banner()
 
+# Collectable Zone Exit
 func _on_collectable_zone_enter_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		arrow_to_collectable.visible = false
 		if is_collect_finished:
+			_show_banner_for_phase(Phase.IDLE)
 			banner.hide_banner()
 
+# Collectable Collected
 func _on_collectable_collected() -> void:
 	is_collect_finished = true
 	arrow_to_collectable.visible = false
@@ -115,6 +123,7 @@ func _on_collectable_collected() -> void:
 	_show_banner_for_phase(Phase.IDLE)
 	banner.hide_banner()
 
+# Wall Double Jump Hint Zone Enter
 func _on_wall_double_jump_hint_zone_enter_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not is_double_jump_finished:
 		_show_banner_for_phase(Phase.DOUBLE_JUMP)
@@ -125,6 +134,7 @@ func _on_wall_double_jump_hint_zone_enter_body_entered(body: Node2D) -> void:
 	else:
 		banner.hide_banner()
 
+# Wall Double Jump Hint Zone Exit
 func _on_wall_double_jump_hint_zone_enter_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		arrow_to_double_jump.visible = false
@@ -137,7 +147,7 @@ func _on_wall_double_jump_hint_zone_enter_body_exited(body: Node2D) -> void:
 			arrow_to_collectable.visible = true
 			_show_banner_for_phase(Phase.WALL_CLIMB)
 
-
+# Wall Double Jump Hint Zone Exit Body Entered
 func _on_wall_double_jump_hint_zone_exit_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		_show_banner_for_phase(Phase.IDLE)
@@ -147,7 +157,7 @@ func _on_wall_double_jump_hint_zone_exit_body_entered(body: Node2D) -> void:
 		arrow_wall_jump_up_right.visible = false
 		arrow_to_collectable.visible = false
 		banner.hide_banner()
-
+# Jump Zone Enter
 func _on_jump_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not is_jump_finished:
 		_show_banner_for_phase(Phase.JUMP)
@@ -156,35 +166,41 @@ func _on_jump_entered(body: Node2D) -> void:
 		arrow_to_walkable_wall.visible = false
 	else:
 		banner.hide_banner()
+
+# Jump Zone Exit
 func _on_jump_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		is_jump_finished = true
+		arrow_to_jump.visible = false
 		_show_banner_for_phase(Phase.IDLE)
 		banner.hide_banner()
 
-
+# Walkable Wall Hint Zone Enter
 func _on_walkable_wall_hint_zone_enter_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not is_walkable_finished:
 		arrow_to_walkable_wall.visible = true
 		arrow_to_collectable.visible = false
 		arrow_wall_jump_up_right.visible = false
-		_show_banner_for_phase(Phase.WALL_CLIMB)
+		_show_banner_for_phase(Phase.WALL_JUMP_CLIMB)
 	else:
 		banner.hide_banner()
 		arrow_wall_jump_up_right.visible = false
 
+# Walkable Wall Hint Zone Exit
 func _on_walkable_wall_hint_zone_exit_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		arrow_to_walkable_wall.visible = false
 		is_walkable_finished = true
 		banner.hide_banner()
 
+# Wall Jump Hint Zone Enter
 func _on_wall_jump_hint_zone_enter_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not is_wall_jump_finished:
 		arrow_wall_jump_up_right.visible = true
 		arrow_to_walkable_wall.visible = false
 		_show_banner_for_phase(Phase.WALL_JUMP)
 
+# Wall Jump Hint Zone Exit
 func _on_wall_jump_hint_zone_exit_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		arrow_wall_jump_up_right.visible = false

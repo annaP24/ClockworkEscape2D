@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ctlvjjesveo0h"]
 
 [ext_resource type="Script" uid="uid://bcamslijxp7a6" path="res://scenes/game/tutorials/tutorial_l1.gd" id="1_2akpw"]
-[ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/game/tutorial_arrow/assets/left.png" id="2_npcbv"]
+[ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/game/tutorial_arrow/assets/up.png" id="2_npcbv"]
 [ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/game/tutorial_arrow/tutorial_arrow.gd" id="3_5ctyw"]
-[ext_resource type="Texture2D" uid="uid://bcdc2efwww6i6" path="res://scenes/game/tutorial_arrow/assets/arrow_curve_up_right.png" id="4_dmm8t"]
+[ext_resource type="PackedScene" uid="uid://b6vqf7vxurfts" path="res://scenes/game/tutorial_arrow/tutorial_arrow.tscn" id="5_4jmnc"]
+[ext_resource type="Texture2D" uid="uid://ccx5va60y1ig2" path="res://scenes/game/tutorial_arrow/assets/jump.png" id="5_ip60o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dla5f"]
 size = Vector2(129.25, 297)
@@ -31,39 +32,49 @@ script = ExtResource("1_2akpw")
 [node name="ArrowToCollectable" type="Sprite2D" parent="TutorialArrows" unique_id=513559664]
 unique_name_in_owner = true
 position = Vector2(168, 520)
-rotation = 0.58296037
+rotation = -0.9473878
 texture = ExtResource("2_npcbv")
 script = ExtResource("3_5ctyw")
+
+[node name="ArrowWallUp" parent="TutorialArrows/ArrowToCollectable" unique_id=1183621836 instance=ExtResource("5_4jmnc")]
+unique_name_in_owner = true
+position = Vector2(-477.20886, 254.46365)
+rotation = 0.9473878
+texture = ExtResource("2_npcbv")
 
 [node name="ArrowToDoubleJump" type="Sprite2D" parent="TutorialArrows" unique_id=1989940628]
 unique_name_in_owner = true
 position = Vector2(278.00006, 980)
-rotation = -1.5575265
-texture = ExtResource("4_dmm8t")
-flip_v = true
+rotation = -1.4331305
+texture = ExtResource("5_ip60o")
 script = ExtResource("3_5ctyw")
 
-[node name="ArrowToWalkableWall" type="Sprite2D" parent="TutorialArrows" unique_id=1706431894]
+[node name="ArrowToJump" type="Sprite2D" parent="TutorialArrows" unique_id=81983558]
 unique_name_in_owner = true
-position = Vector2(903, 841)
-rotation = -1.5575265
-texture = ExtResource("4_dmm8t")
-flip_v = true
+position = Vector2(608, 736)
+texture = ExtResource("5_ip60o")
 script = ExtResource("3_5ctyw")
 
-[node name="ArrowWallJumpUpRight" type="Sprite2D" parent="TutorialArrows" unique_id=337758296]
+[node name="ArrowToWalkableWall" parent="TutorialArrows" unique_id=1474079018 instance=ExtResource("5_4jmnc")]
 unique_name_in_owner = true
-position = Vector2(1421.0001, 788.99994)
-rotation = -1.5848484
-texture = ExtResource("4_dmm8t")
-script = ExtResource("3_5ctyw")
+position = Vector2(919, 814.99994)
+rotation = -0.8813349
 
-[node name="ArrowToWall2" type="Sprite2D" parent="TutorialArrows/ArrowWallJumpUpRight" unique_id=608485915]
-position = Vector2(-87.83684, -12.235531)
-rotation = 0.027321935
-texture = ExtResource("4_dmm8t")
+[node name="ArrowWallJumpAndUp" parent="TutorialArrows/ArrowToWalkableWall" unique_id=152650366 instance=ExtResource("5_4jmnc")]
+unique_name_in_owner = true
+position = Vector2(104.712425, 4.393753)
+rotation = 0.88133496
+texture = ExtResource("2_npcbv")
+
+[node name="ArrowWallJumpUpRight" parent="TutorialArrows" unique_id=410934969 instance=ExtResource("5_4jmnc")]
+unique_name_in_owner = true
+position = Vector2(1397.9999, 934.99994)
+rotation = -0.8813349
+
+[node name="ArrowToWall" parent="TutorialArrows/ArrowWallJumpUpRight" unique_id=1400518480 instance=ExtResource("5_4jmnc")]
+position = Vector2(87.902405, -12.852041)
+rotation = -1.1448336
 flip_v = true
-script = ExtResource("3_5ctyw")
 
 [node name="CollectableZoneEnter" type="Area2D" parent="." unique_id=1186042090]
 unique_name_in_owner = true
