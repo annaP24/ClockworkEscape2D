@@ -79,11 +79,9 @@ func _on_exit_platform_level_finished() -> void:
 		get_tree().call_deferred("reload_current_scene")
 	else:
 		GameSaveManager.commit_level_collectables(level_id, run_mask)
-		#Unlock the next level if this one wasn't already the highest reached
-		var new_max_level = min(level_id + 1, GameSaveManager.MAX_NUM_OF_LEVELS)
-		if new_max_level > GameSaveManager.max_level_reached:
-			GameSaveManager.save_progress(new_max_level)
-			GameSaveManager.max_level_reached = new_max_level
+		#Record this level as finished if it is the furthest one so far
+		if level_id > GameSaveManager.max_level_reached:
+			GameSaveManager.save_progress(level_id)
 		EventBus.level_return_to_map.emit(level_id)
 
 func get_camera() -> Camera2D:

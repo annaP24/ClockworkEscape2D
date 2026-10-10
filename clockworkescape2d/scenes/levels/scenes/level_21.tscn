@@ -41,8 +41,7 @@ shoot_cooldown = 5.0
 position = Vector2(1590, 59)
 
 [node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
-visible = false
-position = Vector2(2464, 928)
+position = Vector2(2351, 664)
 
 [node name="SpiderWeb_Full2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1773725823 instance=ExtResource("6_ftifp")]
 position = Vector2(893, 322)

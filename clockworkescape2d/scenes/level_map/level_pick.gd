@@ -1,9 +1,9 @@
 extends Node2D
 class_name LevelPick2
 
-const LEVELS_PER_PAGE := 4
-const TOTAL_PAGES := 5
-const TOTAL_LEVELS := 20
+const LEVELS_PER_PAGE : int= 4
+const TOTAL_PAGES : int= 5
+const TOTAL_LEVELS : int= 20
 
 @onready var levels_root: Node2D = %Levels
 @onready var left_button: TextureButton = %ButtonLeft
@@ -101,7 +101,7 @@ func _animate_page_transition(direction: int) -> void:
 		)
 
 func _apply_page() -> void:
-	var max_level_unlocked: int = GameSaveManager.load_progress()
+	var max_level_unlocked: int = min(GameSaveManager.load_progress() + 1, GameSaveManager.MAX_NUM_OF_LEVELS)
 	var page_start_index := current_page * LEVELS_PER_PAGE + 1
 	var slot_index := 0
 	for level in all_levels:

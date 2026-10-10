@@ -19,7 +19,7 @@ const NR_OF_LEVLES_TAG = "nr_of_levels"
 const MAX_NUM_OF_LEVELS = 20
 const TOTAL_COLLECTABLES = MAX_NUM_OF_LEVELS * 3
 
-var max_level_reached : int
+var max_level_reached : int = 0 # Number of finished levels
 var max_collected : int = 0
 var session_start_time : int = 0
 var total_play_time_seconds : int = 0
@@ -91,7 +91,7 @@ func load_progress() -> int:
 
 	if cf.load(current_progress_path) == OK:
 		start_play_session()
-		max_level_reached = cf.get_value("progress", MAX_LEVEL_TAG,1)
+		max_level_reached = cf.get_value("progress", MAX_LEVEL_TAG, 0)
 		max_collected = cf.get_value("progress", MAX_COLLECTED_TAG,1)
 		total_play_time_seconds = cf.get_value("progress", TOTAL_TIME_PLAYED_TAG,0.0)
 		max_deaths_for_slot = cf.get_value("progress", TOTAL_DEATHS_TAG,0)
@@ -111,7 +111,8 @@ func save_progress(new_max_level : int ):
 	cf.set_value("progress", MAX_LEVEL_TAG, new_max_level)
 	#Write to disk
 	cf.save(current_progress_path)
-
+	max_level_reached = new_max_level
+	
 func get_collected_count_for_level(level_id : int) -> int:
 	var cfg = ConfigFile.new()
 	if cfg.load(current_progress_path) == OK:
@@ -177,7 +178,7 @@ func delete_configuration(slot : int):
 func _create_default_progress(filename : String):
 	var cf := ConfigFile.new()
 	#------------ MAX/MIN Level reached ------------------
-	cf.set_value("progress", MAX_LEVEL_TAG, 1) # Starting at level 1
+	cf.set_value("progress", MAX_LEVEL_TAG, 0) # Number of finished levels
 	cf.set_value("progress", MAX_COLLECTED_TAG, 0)
 	cf.set_value("progress", TOTAL_DEATHS_TAG, max_deaths_for_slot) # Starting at level 1
 	cf.set_value("progress", TOTAL_TIME_PLAYED_TAG, 0) # Starting at level 1
@@ -190,7 +191,7 @@ func _create_default_progress(filename : String):
 	#------ Settings -------------------------------------
 	SettingManager.create_default_settings(cf)
 	cf.save(filename)
-	max_level_reached = 1
+	max_level_reached = 0
 
 ## Merges the collectables picked up in a completed run into the saved mask.
 func commit_level_collectables(level_id : int, run_mask : int):
@@ -302,7 +303,7 @@ func check_progress_data_for_slot(slot_id: int) -> Dictionary:
 		return dic
 
 	if cf.load(file_name) == OK:
-		dic["level"] = cf.get_value("progress", MAX_LEVEL_TAG, 1)
+		dic["level"] = cf.get_value("progress", MAX_LEVEL_TAG, 0)
 		dic["collected"] = cf.get_value("progress", MAX_COLLECTED_TAG, 0)
 		dic["time"] = cf.get_value("progress", TOTAL_TIME_PLAYED_TAG, 0)
 		dic["deaths"] = cf.get_value("progress", TOTAL_DEATHS_TAG, 0)
