@@ -266,6 +266,7 @@ autoplay = "full"
 shape = SubResource("CircleShape2D_fgi2k")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1653585586]
+visible = false
 shape = SubResource("CircleShape2D_wh2hg")
 target_position = Vector2(0, 0)
 collision_mask = 2
@@ -316,6 +317,7 @@ rotation = -1.5707964
 target_position = Vector2(0, -45)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1696154025]
+visible = false
 position = Vector2(0, 1)
 color = Color(0.81, 0.4995, 0, 1)
 energy = 1.5

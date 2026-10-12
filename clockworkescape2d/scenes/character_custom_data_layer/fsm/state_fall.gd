@@ -39,7 +39,6 @@ func Physics_Update(delta):
 	elif player.is_on_floor():
 		squash_on_land()
 		AudioManager.play_sfx("ground_reached")
-
 		change_state("IdleState")
 	elif player.get_walkable_wall_side() != player.WallSide.NONE:
 		if player.get_can_grab():

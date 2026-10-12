@@ -1,5 +1,5 @@
 extends Control
-## Top-center tutorial banner. Stays visible until the tutorial controller dismisses it via hide_banner().
+class_name TutorialBanner
 
 @onready var title_label: Label = %TitleLabel
 @onready var text_label: Label = %TextLabel

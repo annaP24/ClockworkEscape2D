@@ -1,0 +1,190 @@
+[gd_scene format=4 uid="uid://cd0862kpx7r11"]
+
+[ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_0byn8"]
+[ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="2_wvn0s"]
+[ext_resource type="PackedScene" uid="uid://phl4klxt2yja" path="res://scenes/decoration/web/spider_web_quarter.tscn" id="3_wvn0s"]
+[ext_resource type="Script" uid="uid://bcamslijxp7a6" path="res://scenes/game/tutorials/tutorial_t2.gd" id="3_x5mrm"]
+[ext_resource type="PackedScene" uid="uid://c5awtyrau1lon" path="res://scenes/decoration/chain/chain_u.tscn" id="4_oseto"]
+[ext_resource type="PackedScene" uid="uid://3vn5xl5f5fkl" path="res://scenes/decoration/chain/chain_ui.tscn" id="5_ayovg"]
+[ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/game/tutorial_arrow/tutorial_arrow.gd" id="5_q0iy1"]
+[ext_resource type="Texture2D" uid="uid://ccx5va60y1ig2" path="res://scenes/game/tutorial_arrow/assets/jump.png" id="7_0byn8"]
+[ext_resource type="PackedScene" uid="uid://b6vqf7vxurfts" path="res://scenes/game/tutorial_arrow/tutorial_arrow.tscn" id="8_03loc"]
+[ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/game/tutorial_arrow/assets/up.png" id="9_qqsl2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu0hy"]
+size = Vector2(129.25, 652.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysy4u"]
+size = Vector2(185.5, 297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5vdd"]
+size = Vector2(84.5, 297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as4is"]
+size = Vector2(100.5, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0qfg"]
+size = Vector2(192, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxodo"]
+size = Vector2(80, 200)
+
+[node name="Level_start" unique_id=575594771 instance=ExtResource("1_0byn8")]
+level_id = 1
+
+[node name="Background" parent="." index="0" unique_id=750593274]
+position = Vector2(9, 0)
+
+[node name="SpawnMarker" parent="." index="1" unique_id=630440161]
+position = Vector2(124, 1143)
+
+[node name="TileMapLayer_2" parent="." index="2" unique_id=1834929103]
+tile_map_data = PackedByteArray("AAAAAAAABQAGAAAAAAABAAAABQAGAAAAAAACAAAABQAGAAAAAAADAAAABQACAAIAAAAEAAAABQACAAIAAAAFAAAABQAGAAAAAAAGAAAABQACAAIAAAAHAAAABQAGAAAAAAAIAAAABQAGAAAAAAAJAAAABQACAAIAAAAKAAAABQACAAIAAAALAAAABQAGAAAAAAAMAAAABQAGAAAAAAANAAAABQACAAIAAAAOAAAABQAGAAAAAAAPAAAABQAGAAAAAAAQAAAABQACAAIAAAARAAAABQAGAAAAAAASAAAABQACAAIAAAATAAAABQAGAAAAAAAUAAAABQACAAIAAAAVAAAABQAGAAAAAAAWAAAABQAGAAAAAAAXAAAABQACAAIAAAAYAAAABQACAAIAAAAZAAAABQAGAAAAAAAaAAAABQAGAAAAAAAbAAAABQAGAAAAAAAcAAAABQAGAAAAAAAdAAAABgACAAIAAAAeAAAABQACAAIAAAABABMABQACAAIAAAACABMABQACAAIAAAADABMABQAGAAAAAAAEABMABQAGAAAAAAAFABMABQAGAAAAAAAGABMABQACAAIAAAAHABMABQAGAAAAAAAIABMABQAGAAAAAAAJABMABQAGAAAAAAAKABMABQAGAAAAAAALABMABQAGAAAAAAAMABMABQAGAAAAAAANABMABQACAAIAAAAOABMABQAGAAAAAAAPABMABQAGAAAAAAAQABMABQAGAAAAAAARABMABQAGAAAAAAASABMABQAGAAAAAAATABMABQAGAAAAAAAUABMABQACAAAAAAAVABMABQAGAAAAAAAWABMABQACAAIAAAAZABMABQACAAIAAAAaABMABQACAAIAAAAbABMABQAGAAAAAAAcABMABQAGAAAAAAAdABMABQAGAAAAAAAeABMABQAGAAAAAAAeABIABQAGAAAAAAAeABEABQAGAAAAAAAeABAABQAGAAAAAAAeAA8ABQAGAAAAAAAeAA4ABQAGAAAAAAAeAA0ABQAGAAAAAAAeAAwABQAGAAAAAAAeAAsABQAGAAAAAAAeAAoABQAGAAAAAAAeAAkABQACAAIAAAAeAAgABQACAAIAAAAeAAcABQACAAIAAAAeAAMABgAIAAAAAAAeAAIABQAGAAAAAAAeAAEABQAGAAAAAAAAAAEABQACAAIAAAAAAAIABQACAAIAAAAAAAMABQACAAIAAAAAAAQABQACAAIAAAAAAAUABQACAAIAAAAAAAYABQAGAAAAAAAAAAcABgAGAAAAAAAAAAgABgAEAAIAAAAAAAkABgAEAAIAAAAAAAoABgAEAAIAAAAAAAsABgAEAAIAAAAAAAwABgAEAAIAAAAAAA0ABgAEAAIAAAAAAA4ABgAEAAIAAAAAAA8ABgAEAAIAAAAAABAABgAEAAIAAAAAABEABgAEAAIAAAAAABIABgAEAAIAAAAAABMABgAGAAIAAAAMAA8ABQACAAAAAAAMABAABQAGAAAAAAAMABEABQAGAAAAAAAMABIABQACAAQAAAANAA8ABQAEAAAAAAANABAABQAEAAIAAAANABEABQAEAAIAAAANABIABQAEAAIAAAADABEABQAAAAIAAAADABIABQAAAAIAAAAEABEABQAGAAAAAAAEABIABQAGAAAAAAAHABIABQAEAAIAAAAHABEABQACAAIAAAAHABAABQAGAAAAAAAHAA8ABQAGAAAAAAAHAA4ABQAGAAAAAAAHAA0ABQACAAIAAAAGABIABQAGAAAAAAAGABEABQAGAAAAAAAGABAABQAGAAAAAAAGAA8ABQAGAAAAAAAGAA4ABQAGAAAAAAAGAA0ABQACAAIAAAAFABIABQAGAAAAAAAFABEABQAGAAAAAAAFABAABQACAAIAAAAFAA8ABQAGAAAAAAAFAA4ABQAGAAAAAAAFAA0ABQAGAAAAAAALABIABQAAAAQAAAALABEABQAAAAIAAAALABAABQAAAAIAAAALAA8ABQACAAAAAAAIABIAAgACAAQAAAAJABIAAgACAAQAAAAKABIAAgACAAQAAAAQAAEABQAGAAAAAAAQAAIABQAGAAAAAAAQAAMABQAGAAAAAAAQAAQABQAEAAIAAAAQAAUABQACAAIAAAAQAAYABgAIAAAAAAAQAAcABgAAAAIAAAAQAAgABgAAAAIAAAAXAA0ABQAGAAAAAAAXAA4ABQAGAAAAAAAXAA8ABQAGAAAAAAAXABAABQAGAAAAAAAXABEABQAGAAAAAAAYAA0ABQAGAAAAAAAYAA4ABQACAAIAAAAYAA8ABQAGAAAAAAAYABAABQAGAAAAAAAYABEABQAGAAAAAAAZAA0ABQAGAAAAAAAZAA4ABQACAAIAAAAZAA8ABQACAAIAAAAZABAABQACAAIAAAAZABEABQAGAAAAAAAZABIABQAAAAAAAAAVABEABQAGAAAAAAAVABIABQAGAAAAAAAWABEABQAGAAAAAAAWABIABQAGAAAAAAAQAAwABgAAAAIAAAAQAA0ABgAIAAIAAAARAA0ABQACAAIAAAASAA0ABQAGAAAAAAATAA0ABQAGAAAAAAAQAAkABgAAAAIAAAAQAAoABgAAAAIAAAAQAAsABgAAAAIAAAARAAwABgACAAIAAAASAAwABQACAAAAAAATAAwABQAEAAAAAAARAAQABgAEAAIAAAARAAUABgAEAAIAAAARAAYABgAEAAIAAAARAAcABgAEAAIAAAARAAgABgAEAAIAAAARAAkABgAEAAIAAAARAAoABgAEAAIAAAARAAsABgAGAAIAAAARAAEABQAGAAAAAAARAAIABQACAAIAAAARAAMABgAGAAAAAAAXAAsABQACAAIAAAAXAAwABQAGAAAAAAAYAAsABQAGAAAAAAAYAAwABQAGAAAAAAAZAAsABQAGAAAAAAAZAAwABQACAAIAAAAXAAoABQAGAAAAAAAYAAoABQAGAAAAAAAZAAoABQAGAAAAAAAXAAkABQAGAAAAAAAYAAkABQAGAAAAAAAZAAkABQACAAIAAAAXABIABQAIAAAAAAAaAA4ABQAGAAAAAAAaAA0ABQAGAAAAAAAbAA0ABQAGAAAAAAAbAA4ABQACAAIAAAAaABIAAgACAAQAAAAbABIAAgACAAQAAAAcABIAAgACAAQAAAAdABIAAgACAAQAAAAEAAYABQAGAAAAAAAEAAcABQAGAAAAAAAFAAcABQAGAAAAAAAGAAcABQAGAAAAAAAEAAgABQACAAIAAAAFAAgABQAGAAAAAAAGAAgABQAGAAAAAAAHAAgABQAGAAAAAAAHAAcABQAGAAAAAAAHAAYABgACAAIAAAASAAMABgACAAQAAAATAAMABgACAAQAAAAUAAMABgACAAQAAAAVAAMABgACAAQAAAAWAAMABgACAAQAAAAXAAMABgACAAQAAAAcAAcABQAIAAAAAAAbAAMABgACAAQAAAAcAAMABgACAAQAAAAdAAMABgACAAQAAAASAAIABQAGAAAAAAASAAEABQAGAAAAAAAUAAEABQAGAAAAAAATAAEABQAGAAAAAAATAAIABQAGAAAAAAAUAAIABQAGAAAAAAAVAAEABQACAAIAAAAVAAIABQAGAAAAAAAWAAEABQAGAAAAAAAWAAIABQAGAAAAAAAXAAEABQACAAIAAAAXAAIABQACAAIAAAAaAAEABQACAAIAAAAbAAEABQAGAAAAAAAbAAIABQAGAAAAAAAcAAEABQAGAAAAAAAcAAIABQAGAAAAAAAdAAEABgACAAIAAAAdAAIABgACAAIAAAAYAAEABQAIAAAAAAAaAAIABQAGAAAAAAAaAAMABgACAAQAAAAZAAMABgACAAQAAAAYAAMABgACAAQAAAAFAAYABgACAAIAAAAGAAYABgACAAIAAAAEAAUABQAGAAAAAAAFAAUABQAGAAAAAAAGAAUABQAGAAAAAAAHAAUABQAGAAAAAAAEAAQABQAGAAAAAAAFAAQABQACAAIAAAAGAAQABQAGAAAAAAAHAAQABQAGAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAIAAAAKAAgABgAAAAQAAAALAAYABgACAAAAAAALAAgABgACAAQAAAAMAAYABgACAAAAAAAMAAgABgACAAQAAAANAAYABgAEAAAAAAANAAcABgAEAAIAAAANAAgABgAEAAQAAAA=")
+
+[node name="Collectable" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="0" unique_id=2006787885]
+position = Vector2(770, 608)
+
+[node name="Collectable2" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="1" unique_id=1935967838 instance=ExtResource("2_wvn0s")]
+unique_name_in_owner = true
+position = Vector2(96, 480)
+
+[node name="Collectable3" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="2" unique_id=1893455657 instance=ExtResource("2_wvn0s")]
+position = Vector2(1888, 864)
+
+[node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
+position = Vector2(1952, 416)
+
+[node name="SpiderWeb_Quarter" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1513705380 instance=ExtResource("3_wvn0s")]
+position = Vector2(118, 119)
+rotation = -1.5707964
+
+[node name="SpiderWeb_Quarter2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=618753142 instance=ExtResource("3_wvn0s")]
+position = Vector2(1166, 280)
+rotation = -1.5707964
+
+[node name="SpiderWeb_Quarter3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=1438947206 instance=ExtResource("3_wvn0s")]
+position = Vector2(1444, 1057)
+rotation = 1.163201
+
+[node name="ChainU" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=1653464195 instance=ExtResource("4_oseto")]
+position = Vector2(764, 164)
+
+[node name="ChainU2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=1893966842 instance=ExtResource("4_oseto")]
+position = Vector2(1611, 1066)
+
+[node name="ChainUI_long" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="5" unique_id=488772032 instance=ExtResource("5_ayovg")]
+position = Vector2(378, 620)
+
+[node name="TutorialManager" type="Node2D" parent="." index="12" unique_id=1328668581]
+script = ExtResource("3_x5mrm")
+
+[node name="TutorialArrows" type="Node2D" parent="TutorialManager" index="0" unique_id=73239961]
+
+[node name="ArrowToCollectable" type="Sprite2D" parent="TutorialManager/TutorialArrows" index="0" unique_id=1984935969]
+unique_name_in_owner = true
+position = Vector2(168, 520)
+rotation = -0.9473878
+texture = ExtResource("9_qqsl2")
+script = ExtResource("5_q0iy1")
+
+[node name="ArrowWallUp" parent="TutorialManager/TutorialArrows/ArrowToCollectable" index="0" unique_id=1474079018 instance=ExtResource("8_03loc")]
+unique_name_in_owner = true
+position = Vector2(-477.20886, 254.46365)
+rotation = 0.9473878
+texture = ExtResource("9_qqsl2")
+
+[node name="ArrowToJump" type="Sprite2D" parent="TutorialManager/TutorialArrows" index="1" unique_id=184551363]
+unique_name_in_owner = true
+position = Vector2(608, 736)
+texture = ExtResource("7_0byn8")
+script = ExtResource("5_q0iy1")
+
+[node name="ArrowToWalkableWall" parent="TutorialManager/TutorialArrows" index="2" unique_id=2054908810 instance=ExtResource("8_03loc")]
+unique_name_in_owner = true
+position = Vector2(919, 814.99994)
+rotation = -0.8813349
+
+[node name="ArrowWallJumpAndUp" parent="TutorialManager/TutorialArrows/ArrowToWalkableWall" index="0" unique_id=429946938 instance=ExtResource("8_03loc")]
+unique_name_in_owner = true
+position = Vector2(104.712425, 4.393753)
+rotation = 0.88133496
+texture = ExtResource("9_qqsl2")
+
+[node name="ArrowJumpOffWalkable" type="Sprite2D" parent="TutorialManager/TutorialArrows/ArrowToWalkableWall" index="1" unique_id=1500551169]
+unique_name_in_owner = true
+position = Vector2(306.00284, -168.03645)
+rotation = -1.5884572
+texture = ExtResource("7_0byn8")
+flip_v = true
+script = ExtResource("5_q0iy1")
+
+[node name="ArrowWallJumpUpRight" parent="TutorialManager/TutorialArrows" index="3" unique_id=111330162 instance=ExtResource("8_03loc")]
+unique_name_in_owner = true
+position = Vector2(1397.9999, 934.99994)
+rotation = -0.8813349
+
+[node name="ArrowToWall" parent="TutorialManager/TutorialArrows/ArrowWallJumpUpRight" index="0" unique_id=155449193 instance=ExtResource("8_03loc")]
+position = Vector2(87.902405, -12.852041)
+rotation = -1.1448336
+flip_v = true
+
+[node name="CollectableZoneEnter" type="Area2D" parent="TutorialManager" index="1" unique_id=627967474]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialManager/CollectableZoneEnter" index="0" unique_id=774405096]
+position = Vector2(-268, 194.25)
+shape = SubResource("RectangleShape2D_nu0hy")
+
+[node name="JumpHintZoneEnter" type="Area2D" parent="TutorialManager" index="2" unique_id=125817861]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialManager/JumpHintZoneEnter" index="0" unique_id=2109150102]
+position = Vector2(36.75, -2)
+shape = SubResource("RectangleShape2D_ysy4u")
+
+[node name="JumpHintZoneExit" type="Area2D" parent="TutorialManager" index="3" unique_id=326998418]
+unique_name_in_owner = true
+position = Vector2(382, 732)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialManager/JumpHintZoneExit" index="0" unique_id=1269098889]
+position = Vector2(363, 75.5)
+shape = SubResource("RectangleShape2D_b5vdd")
+
+[node name="WalkableWallHintZoneEnter" type="Area2D" parent="TutorialManager" index="4" unique_id=625276832]
+unique_name_in_owner = true
+position = Vector2(800, 811)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialManager/WalkableWallHintZoneEnter" index="0" unique_id=1525178035]
+position = Vector2(46.25, 0)
+shape = SubResource("RectangleShape2D_as4is")
+
+[node name="WalkableWallHintZoneExit" type="Area2D" parent="TutorialManager" index="5" unique_id=1730238574]
+unique_name_in_owner = true
+position = Vector2(825, 485)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialManager/WalkableWallHintZoneExit" index="0" unique_id=1220584272]
+position = Vector2(-55, -11)
+shape = SubResource("RectangleShape2D_x0qfg")
+
+[node name="WallJumpHintZoneEnter" type="Area2D" parent="TutorialManager" index="6" unique_id=1385985478]
+unique_name_in_owner = true
+position = Vector2(1409, 988)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialManager/WallJumpHintZoneEnter" index="0" unique_id=1757806613]
+shape = SubResource("RectangleShape2D_ysy4u")
+
+[node name="WallJumpHintZoneExit" type="Area2D" parent="TutorialManager" index="7" unique_id=1183789401]
+unique_name_in_owner = true
+position = Vector2(1236, 670)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialManager/WallJumpHintZoneExit" index="0" unique_id=182580768]
+shape = SubResource("RectangleShape2D_bxodo")

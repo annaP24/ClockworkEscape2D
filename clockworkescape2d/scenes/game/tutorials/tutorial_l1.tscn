@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://ctlvjjesveo0h"]
 
-[ext_resource type="Script" uid="uid://bcamslijxp7a6" path="res://scenes/game/tutorials/tutorial_l1.gd" id="1_2akpw"]
+[ext_resource type="Script" uid="uid://bcamslijxp7a6" path="res://scenes/game/tutorials/tutorial_t2.gd" id="1_2akpw"]
 [ext_resource type="Texture2D" uid="uid://e7m2gf5hp5pb" path="res://scenes/game/tutorial_arrow/assets/up.png" id="2_npcbv"]
 [ext_resource type="Script" uid="uid://bhi67pqvvum7s" path="res://scenes/game/tutorial_arrow/tutorial_arrow.gd" id="3_5ctyw"]
 [ext_resource type="PackedScene" uid="uid://b6vqf7vxurfts" path="res://scenes/game/tutorial_arrow/tutorial_arrow.tscn" id="5_4jmnc"]
 [ext_resource type="Texture2D" uid="uid://ccx5va60y1ig2" path="res://scenes/game/tutorial_arrow/assets/jump.png" id="5_ip60o"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jmnc"]
+size = Vector2(129.25, 652.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dla5f"]
-size = Vector2(129.25, 297)
+size = Vector2(129.25, 394.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e11fs"]
 size = Vector2(84.5, 297)
@@ -24,7 +27,7 @@ size = Vector2(69.75, 300)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_walljumphint"]
 size = Vector2(80, 200)
 
-[node name="TutorialController" type="Node" unique_id=398079176]
+[node name="TutorialController" type="Node2D" unique_id=61934593]
 script = ExtResource("1_2akpw")
 
 [node name="TutorialArrows" type="Node2D" parent="." unique_id=431104065]
@@ -82,16 +85,16 @@ position = Vector2(382, 732)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableZoneEnter" unique_id=1670875432]
-position = Vector2(-268, 372)
-shape = SubResource("RectangleShape2D_dla5f")
+position = Vector2(-268, 194.25)
+shape = SubResource("RectangleShape2D_4jmnc")
 
 [node name="WallDoubleJumpHintZoneEnter" type="Area2D" parent="." unique_id=2075008446]
 unique_name_in_owner = true
-position = Vector2(382, 732)
+position = Vector2(-109, 638)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallDoubleJumpHintZoneEnter" unique_id=736575592]
-position = Vector2(-118.625, 245)
+position = Vector2(365, 270.25)
 shape = SubResource("RectangleShape2D_dla5f")
 
 [node name="WallDoubleJumpHintZoneExit" type="Area2D" parent="." unique_id=38156451]
