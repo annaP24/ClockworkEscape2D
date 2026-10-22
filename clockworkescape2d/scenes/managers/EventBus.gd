@@ -41,11 +41,15 @@ signal level_restart_requested
 signal level_return_to_map(level_id: int)
 ## Emitted when player completes a level
 signal level_completed
+## Emitted when the last exit is entered
+signal last_exit_entered
 
 # ========== PLAYER/ENVIRONMENT SIGNALS ==========
 ## Emitted when player touches ground (includes footstep sound name)
 signal player_touched_ground(sound: String)
+## Emitted when the number of collectables changes
 signal collectables_changed
+## Emitted when a key is collected
 signal key_collected
 
 # ========== PLATFORM/EXIT SIGNALS ==========

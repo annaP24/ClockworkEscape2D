@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b7s6nduat6sdn"]
+
+[ext_resource type="Script" uid="uid://bkl4v7vy48806" path="res://scenes/interactables/exit/last_exit.gd" id="1_cvg7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03acl"]
+size = Vector2(208, 33)
+
+[node name="LastExit" type="Area2D" unique_id=1714007475]
+script = ExtResource("1_cvg7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832701807]
+position = Vector2(89, 6.5)
+shape = SubResource("RectangleShape2D_03acl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

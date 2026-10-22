@@ -3,8 +3,9 @@ class_name LevelPick
 
 signal load_level(path_to_level: String, level_id: int)
 const LEVELS_PER_PAGE := 4
-const TOTAL_PAGES := 5
-const TOTAL_LEVELS := 20
+const PAGE_WIDTH := 1280.0
+const TOTAL_PAGES := 6
+const TOTAL_LEVELS := 24
 
 @onready var levels_root: Node2D = %Levels
 @onready var left_button: TextureButton = %ButtonLeft
@@ -18,9 +19,13 @@ var is_joypad_connected : bool= false
 var current_page := 0
 var all_levels: Array = []
 var is_transitioning := false
+var initial_levels_position := Vector2.ZERO
 
 func _ready() -> void:
 	_collect_levels()
+	initial_levels_position = levels_root.position
+	if GameSaveManager.all_level_paths.is_empty():
+		GameSaveManager.set_level_paths()
 	_connect_nav_buttons()
 	var next_level_id := clampi(GameSession.current_level_id + 1, 1, TOTAL_LEVELS)
 	current_page = (next_level_id - 1) / LEVELS_PER_PAGE
@@ -113,19 +118,28 @@ func _animate_page_transition(direction: int) -> void:
 		)
 
 func _apply_page() -> void:
-	var max_level_unlocked : int = min(GameSaveManager.load_progress() + 1, GameSaveManager.MAX_NUM_OF_LEVELS)
-	var page_start_index = current_page * LEVELS_PER_PAGE + 1
-	var slot_index = 0
+	var max_level_unlocked: int = min(
+		GameSaveManager.load_progress() + 1,
+		min(GameSaveManager.MAX_NUM_OF_LEVELS, GameSaveManager.all_level_paths.size())
+	)
+	var page_start_index := current_page * LEVELS_PER_PAGE + 1
+	var page_end_index : int= min(page_start_index + LEVELS_PER_PAGE - 1, TOTAL_LEVELS)
+	levels_root.position = initial_levels_position - Vector2(PAGE_WIDTH * current_page, 0)
+
 	for level in all_levels:
-		var actual_level_id = page_start_index + slot_index
-		var is_in_page = actual_level_id <= TOTAL_LEVELS
+		var actual_level_id: int = level.level_id
+		var is_valid_level := actual_level_id >= 1 and actual_level_id <= TOTAL_LEVELS
+		var is_in_page: bool = (
+			is_valid_level
+			and actual_level_id >= page_start_index
+			and actual_level_id <= page_end_index
+		)
 		level.visible = is_in_page
 		if !is_in_page:
 			level.set_highlight(false)
 			if current_focused_level == level:
 				current_focused_level = null
 			level.is_unlocked = false
-			slot_index += 1
 			continue
 		level.update_id(actual_level_id)
 		level.parent = self
@@ -136,8 +150,6 @@ func _apply_page() -> void:
 			level.set_sprite_state(level.ButtonState.DISABLED)
 		if !level.level_selected.is_connected(_on_level_selected):
 			level.level_selected.connect(_on_level_selected)
-
-		slot_index += 1
 
 func _update_page_buttons() -> void:
 	var can_go_left = current_page > 0 and !is_transitioning

@@ -7,8 +7,9 @@ extends Node2D
 @onready var sprites: Node2D = $Sprites
 @onready var move_delay_timer: Timer = $MoveDelayTimer
 @onready var sparks: GPUParticles2D = $Sparks
+@export_enum("Vertical", "Horizontal") var movement_direction: String = "Vertical"
+@export_storage var move_vertical: bool = false
 
-var is_move_up : bool = true
 var max_move_offset : float = 2 * 64.0
 var init_position : Vector2 = Vector2.ZERO
 var target_position : Vector2 = Vector2.ZERO
@@ -20,21 +21,19 @@ func _ready() -> void:
 	init_position = global_position
 	move_speed = move_up_speed
 	sparks.emitting = false
-	var offset : Vector2 = Vector2.ZERO
-
-	if is_move_up:
-		offset = Vector2(0, max_move_offset * -1)
-	else:
-		offset = Vector2(0, max_move_offset * 1)
-
-	target_position = init_position + offset
+	var movement_offset := Vector2.UP if movement_direction == "Vertical" else Vector2.LEFT
+	target_position = init_position + movement_offset * max_move_offset
 	current_target = init_position
-
-	switch_1.is_active.connect(_on_switch_is_active)
-	switch_1.is_not_active.connect(_on_switch_is_not_active)
+	if not switch_1.is_active.is_connected(_on_switch_is_active):
+		switch_1.is_active.connect(_on_switch_is_active)
+	if not switch_1.is_not_active.is_connected(_on_switch_is_not_active):
+		switch_1.is_not_active.connect(_on_switch_is_not_active)
+	# Removed duplicate connection to avoid multiple connections
 	if switch_2:
-		switch_2.is_active.connect(_on_switch_is_active)
-		switch_2.is_not_active.connect(_on_switch_is_not_active)
+		if not switch_2.is_active.is_connected(_on_switch_is_active):
+			switch_2.is_active.connect(_on_switch_is_active)
+		if not switch_2.is_not_active.is_connected(_on_switch_is_not_active):
+			switch_2.is_not_active.connect(_on_switch_is_not_active)
 
 func _physics_process(delta: float) -> void:
 	sprites.global_position = sprites.global_position.move_toward(current_target, move_speed * delta)

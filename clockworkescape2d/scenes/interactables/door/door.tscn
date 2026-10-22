@@ -52,7 +52,6 @@ shape = SubResource("RectangleShape2D_70ylm")
 one_shot = true
 
 [node name="Sparks" parent="." unique_id=894752949 instance=ExtResource("5_tcsf3")]
-visible = false
 position = Vector2(0, -32)
 process_material = SubResource("ParticleProcessMaterial_6q1cg")
 script = null

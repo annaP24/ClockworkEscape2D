@@ -494,7 +494,7 @@ color = Color(0.78039217, 0.70980394, 0.6627451, 1)
 
 [node name="Bg" type="Sprite2D" parent="." unique_id=1545324882]
 z_index = -2
-position = Vector2(994.00006, 637)
+position = Vector2(991.00006, 679)
 scale = Vector2(1.55, 1.5406059)
 texture = ExtResource("1_2y230")
 

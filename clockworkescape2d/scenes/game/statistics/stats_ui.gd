@@ -9,7 +9,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	score_label.text = str(GameSaveManager.max_collected) + "/ 60"
 	deaths_label.text = str(GameSaveManager.max_deaths_for_slot)
-	levels_label.text = str(GameSaveManager.max_level_reached) + "/ 20"
+	levels_label.text = str(GameSaveManager.max_level_reached) + "/ " + str(GameSaveManager.MAX_NUM_OF_LEVELS)
 
 func _on_hide_socore(is_score_visible : bool) -> void:
 	visible = is_score_visible

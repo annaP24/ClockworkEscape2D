@@ -6,7 +6,7 @@ extends FsmNodeState
 
 func Enter(player_node):
 	super(player_node)
-
+	player.reset_dash()
 	falldown_timer.start(falldown_time)
 
 	player.update_animation(player.animations.IDLE)

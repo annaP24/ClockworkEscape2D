@@ -30,6 +30,10 @@ signal player_died
 @export var move_acc : float = 50.0
 @export var move_dec : float = 100.0
 @export var wall_jump_count_max : int = 1
+@export var dash_enabled : bool = true
+@export var dash_speed : float = 900.0
+@export var dash_duration : float = 0.18
+@export var dash_cooldown : float = 0.3
 
 @onready var fsm: CompFsmNode = $FSM
 @onready var animation_player_rotate: AnimationPlayer = $AnimationPlayer
@@ -62,13 +66,15 @@ var can_grab : bool = true
 var fall_velocity : float = 1200.0
 var is_player_moving : bool = false
 var last_wall_direction : WallSide = WallSide.NONE
+var dash_available : bool = true # one dash per ground/wall contact
+var dash_cooldown_left : float = 0.0
+var facing_direction : float = 1.0
 
 var wall_kick_acceleration = 500
 var wall_kick_deceleration = 100
 var wall_jump_y_speed_peak = 0 # y-speeed at witchh the wall jump will end and chage to fall state
 var wall_jump_velocity = -800
 var wall_jump_h_speed = 300
-
 enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
 
 # TODO Spawn State und Die State hinzufügen
@@ -92,7 +98,8 @@ func _ready() -> void:
 	wall_jump_velocity = jump_velocity
 	fsm.start()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	dash_cooldown_left = max(dash_cooldown_left - delta, 0.0)
 	# Debug.print_value("State: ", fsm.current_state)
 	# ruecksetzen wenn keine berüehrung mehr vorhanden
 	if not get_can_grab() and get_collision_points().size() == 0:
@@ -104,8 +111,15 @@ func apply_gravity(new_gravity : float, delta : float):
 	velocity.y += new_gravity * delta
 	velocity.y = min(velocity.y, fall_velocity)
 
+func can_start_dash() -> bool:
+	return dash_enabled and dash_available and dash_cooldown_left <= 0.0 and is_movable
+
+func reset_dash():
+	dash_available = true
+
 func move_player_x(directionX : float, acc : float = move_acc, dec : float = move_dec):
 	if directionX != 0:
+		facing_direction = sign(directionX)
 		velocity.x = move_toward(velocity.x, move_speed * directionX, acc)  #speed * directionX
 	else:
 		velocity.x = move_toward(velocity.x, 0, dec)

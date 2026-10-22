@@ -93,7 +93,7 @@ position = Vector2(1056, 167)
 [node name="ChainUI_long2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=645746045 instance=ExtResource("6_ug7oc")]
 position = Vector2(1545, 1115)
 
-[node name="TutorialManager" type="Node" parent="." index="12" unique_id=182926812]
+[node name="TutorialManager" type="Node2D" parent="." index="12" unique_id=670870468]
 script = ExtResource("7_chbwm")
 
 [node name="Arrows" type="Node2D" parent="TutorialManager" index="0" unique_id=370200819]

@@ -73,7 +73,4 @@ position = Vector2(129, 36)
 [node name="CollisionShape2D" parent="Character" index="3" unique_id=858918230]
 visible = false
 
-[node name="ShapeCast2D" parent="Character" index="4" unique_id=1653585586]
-visible = false
-
 [editable path="Character"]

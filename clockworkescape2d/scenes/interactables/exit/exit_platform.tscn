@@ -31,6 +31,7 @@ position = Vector2(0, -32)
 texture = ExtResource("1_iysvq")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Platform" unique_id=706137717]
+visible = false
 position = Vector2(-1.0137506, 26.336178)
 polygon = PackedVector2Array(-27.98625, -6.336178, 27.01375, -6.3361783, 39.013752, 5.663822, -42.986248, 5.663822)
 one_way_collision = true
@@ -56,6 +57,7 @@ texture_scale = 3.0
 collision_layer = 0
 
 [node name="ExitAreaCollision" type="CollisionShape2D" parent="ExitArea" unique_id=163874187]
+visible = false
 position = Vector2(0, -196.75)
 shape = SubResource("RectangleShape2D_rqmy3")
 

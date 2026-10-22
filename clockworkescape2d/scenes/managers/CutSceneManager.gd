@@ -38,8 +38,13 @@ func _ready() -> void:
 
 	if not EventBus.key_collected.is_connected(_on_key_collected):
 		EventBus.key_collected.connect(_on_key_collected)
+	if not EventBus.last_exit_entered.is_connected(_on_last_exit_entered):
+		EventBus.last_exit_entered.connect(_on_last_exit_entered)
 
-
+func _on_last_exit_entered() -> void:
+	#Play last exit cutscene
+	start_cutscene(false)
+	
 func _on_key_collected() -> void:
 	if is_instance_valid(spawned_end_scene):
 		return

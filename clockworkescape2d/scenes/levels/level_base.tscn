@@ -13,19 +13,15 @@ texture = ExtResource("5_ynct0")
 texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 21.036812, 25.408096, -12.840652, 32, -24.861687, 7.376541)
-2:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 22.129639, 26.500916, -15.026295, 32)
 2:0/0/custom_data_0 = "damage"
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.655006, -23.222462, 32, -32, 32, 32, -26.50092, 21.583221, -32, -10.655014)
-4:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-27.047329, -19.943996, 32, -32, 32, 32, -32, 18.851166)
 4:2/0/custom_data_0 = "damage"
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 26.500923, -24.86169, 23.222458, 21.036812, -32, 32)
-0:2/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -22.129639, 32, 19.397575, -32, 32)
 0:2/0/custom_data_0 = "damage"
 2:4/0 = 0
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.583221, -27.593746, 12.294243, -32, 26.500923, -5.737316, 32, 32, -32, 32)
-2:4/0/physics_layer_2/polygon_0/points = PackedVector2Array(-21.583221, -25.408104, 16.119118, -32, 32, 32, -32, 32)
 2:4/0/custom_data_0 = "damage"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ynct0"]

@@ -16,7 +16,7 @@ const MAX_COLLECTED_TAG = "max_collected"
 const TOTAL_DEATHS_TAG = "deaths"
 const TOTAL_TIME_PLAYED_TAG = "play_time_seconds"
 const NR_OF_LEVLES_TAG = "nr_of_levels"
-const MAX_NUM_OF_LEVELS = 20
+const MAX_NUM_OF_LEVELS = 24
 const TOTAL_COLLECTABLES = MAX_NUM_OF_LEVELS * 3
 
 var max_level_reached : int = 0 # Number of finished levels

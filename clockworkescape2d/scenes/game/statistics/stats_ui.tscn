@@ -77,7 +77,7 @@ custom_minimum_size = Vector2(80, 23.965)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.02745098, 1)
 theme_override_font_sizes/font_size = 40
-text = "20"
+text = "0/ 24"
 vertical_alignment = 1
 
 [node name="Control3" type="Control" parent="VBoxContainer/TextureRect/HBoxContainer" unique_id=1498024431]

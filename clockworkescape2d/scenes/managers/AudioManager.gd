@@ -33,7 +33,7 @@ func _ready() -> void:
 		p.bus = &"SFX"
 		add_child(p)
 		sfx_players.append(p)
-	play_music("main_theme")
+	# play_music("main_theme")
 
 func _start_track(stream: AudioStream, fade_duration: float) -> void:
 	music_player.stream = stream

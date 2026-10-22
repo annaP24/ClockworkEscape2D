@@ -1,16 +1,27 @@
 [gd_scene format=3 uid="uid://bplsendp5hnvw"]
 
 [ext_resource type="Texture2D" uid="uid://c3ytoog7rivhl" path="res://scenes/obstacles/spikes/assets/spikes.png" id="1_4kaec"]
+[ext_resource type="Script" uid="uid://wujupbok4pj0" path="res://core/comp_2d_hitbox.gd" id="3_f3oi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03acl"]
+size = Vector2(52, 49)
 
 [node name="Spikes" type="StaticBody2D" unique_id=344753760]
-collision_layer = 4
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1144814241]
-position = Vector2(0, 16)
 texture = ExtResource("1_4kaec")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2098462865]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="." unique_id=1810735569]
 visible = false
-position = Vector2(0, 16)
-polygon = PackedVector2Array(-11, 19, -3, -24, 4, 19, 11, -33, 19, 13, 23, -8, 31, 32, -32, 32, -21, -31)
+position = Vector2(1, 7.5)
+shape = SubResource("RectangleShape2D_03acl")
+
+[node name="Comp2dHitbox" type="Area2D" parent="." unique_id=1073077396]
+visible = false
+script = ExtResource("3_f3oi2")
+metadata/_custom_type_script = "uid://wujupbok4pj0"
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Comp2dHitbox" unique_id=1370048739]
+position = Vector2(0, 4)
+polygon = PackedVector2Array(-21, -32, -4, -26, 12, -35, 32, 27, -32, 28)
