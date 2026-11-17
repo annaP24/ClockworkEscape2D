@@ -1,0 +1,121 @@
+[gd_scene format=4 uid="uid://dgqjbyf7hs1fs"]
+
+[ext_resource type="PackedScene" uid="uid://dtoercglc7src" path="res://scenes/levels/level_base.tscn" id="1_ai2ni"]
+[ext_resource type="PackedScene" uid="uid://d2d4snixdg62a" path="res://scenes/collectables/collectable.tscn" id="2_fjuib"]
+[ext_resource type="PackedScene" uid="uid://dwb5qoh4vb8ry" path="res://scenes/platforms/rotate_anchor/rotation_anchor_clock.tscn" id="2_gfxw7"]
+[ext_resource type="PackedScene" uid="uid://bjww3w1a45857" path="res://scenes/platforms/small_platform/small_platform.tscn" id="3_fjuib"]
+[ext_resource type="PackedScene" uid="uid://bplsendp5hnvw" path="res://scenes/obstacles/spikes/spikes.tscn" id="4_dn0x1"]
+[ext_resource type="PackedScene" uid="uid://dlw5hya6y6fxl" path="res://scenes/interactables/switch/switch.tscn" id="6_waguw"]
+[ext_resource type="PackedScene" uid="uid://o7ga5atf5uvp" path="res://scenes/interactables/door/door.tscn" id="7_6scnn"]
+[ext_resource type="PackedScene" uid="uid://phl4klxt2yja" path="res://scenes/decoration/web/spider_web_quarter.tscn" id="8_lumjs"]
+[ext_resource type="PackedScene" uid="uid://5b2m78kae04p" path="res://scenes/decoration/chain/chain_i.tscn" id="9_lumjs"]
+[ext_resource type="PackedScene" uid="uid://3vn5xl5f5fkl" path="res://scenes/decoration/chain/chain_ui.tscn" id="10_vsbud"]
+
+[node name="Level_36" unique_id=575594771 instance=ExtResource("1_ai2ni")]
+
+[node name="Background" parent="." index="0" unique_id=750593274]
+position = Vector2(32, 32)
+metadata/_edit_lock_ = true
+
+[node name="SpawnMarker" parent="." index="1" unique_id=630440161]
+position = Vector2(160, 160)
+
+[node name="TileMapLayer_2" parent="." index="2" unique_id=1834929103]
+tile_map_data = PackedByteArray("AAAAAAAABQAAAAAAAAABAAAABQAAAAAAAAACAAAABQAAAAAAAAADAAAABQAAAAAAAAAEAAAABQACAAAAAAAFAAAABQACAAAAAAAGAAAABQACAAAAAAAHAAAABQACAAAAAAAIAAAABQACAAAAAAAJAAAABQACAAAAAAAKAAAABQACAAAAAAALAAAABQACAAAAAAAMAAAABQACAAAAAAANAAAABQACAAAAAAAOAAAABQACAAAAAAAPAAAABQACAAAAAAAQAAAABQACAAAAAAARAAAABQACAAAAAAASAAAABQACAAAAAAATAAAABQACAAAAAAAUAAAABQACAAAAAAAVAAAABQAAAAAAAAAWAAAABQAAAAAAAAAXAAAABQAAAAAAAAAYAAAABQAAAAAAAAAZAAAABQAAAAAAAAAaAAAABQAAAAAAAAAbAAAABQAAAAAAAAAcAAAABQAAAAAAAAAdAAAABQAAAAAAAAAeAAAABQAAAAAAAAABABMABQAAAAAAAAACABMABQAAAAAAAAADABMABQAAAAAAAAAEABMABQAAAAAAAAAFABMABQAAAAAAAAAGABMABQAAAAAAAAAHABMABQAAAAAAAAAIABMABQAAAAAAAAAJABMABQAAAAAAAAAKABMABQAAAAAAAAALABMABQAAAAAAAAAMABMABQAAAAAAAAANABMABQAAAAAAAAAOABMABQAAAAAAAAAPABMABQAAAAAAAAAQABMABQAAAAAAAAARABMABQAAAAAAAAASABMABQAAAAAAAAATABMABQAAAAAAAAAUABMABQAAAAAAAAAVABMABQAAAAAAAAAWABMABQAAAAAAAAAXABMABQAAAAAAAAAYABMABQAAAAAAAAAZABMABQAAAAAAAAAaABMABQAAAAAAAAAbABMABQAAAAAAAAAcABMABQAAAAAAAAAdABMABQAAAAAAAAAeABMABQAAAAAAAAAeAAoABQAAAAAAAAAeAAkABQAAAAAAAAAeAAgABQAAAAAAAAAeAAcABQAAAAAAAAAeAAYABQAAAAAAAAAeAAUABQAAAAAAAAAeAAQABQAAAAAAAAAeAAMABQAAAAAAAAAeAAIABQAAAAAAAAAeAAEABQAAAAAAAAAAAAEABQAAAAAAAAAAAAIABQAAAAAAAAAAAAMABQAAAAAAAAAAAAQABQAAAAAAAAAAAAUABQAAAAAAAAAAAAYABQAAAAAAAAAAAAcABQAAAAAAAAAAABAABQAGAAAAAAAAABEABQAGAAAAAAAAABIABQAGAAAAAAAAABMABQAAAAAAAAAAAAgABQAAAAAAAAAAAAkABQAAAAAAAAAAAAoABQAAAAAAAAAAAAsABQAGAAAAAAAAAAwABQAGAAAAAAAAAA0ABQAGAAAAAAAAAA4ABQAGAAAAAAAAAA8ABQAGAAAAAAAeAAsABQAAAAAAAAAeAAwABQAAAAAAAAAeAA0ABQACAAIAAAAeAA4ABQACAAIAAAAeAA8ABQACAAIAAAABAAQABQAGAAAAAAABAAUABQAEAAAAAAABAAYABQAEAAAAAAACAAQABQAGAAAAAAACAAUABQAEAAAAAAACAAYABQAEAAAAAAADAAQABQACAAIAAAADAAUABQAGAAAAAAADAAYABQAGAAAAAAAJAA0ABQAGAAAAAAAJAA4ABQAGAAAAAAAJAA8ABQAGAAAAAAAJABAABQAGAAAAAAAKAA0ABQAGAAAAAAAKAA4ABQAGAAAAAAAKAA8ABQAGAAAAAAAKABAABQAGAAAAAAAJABEABQAGAAAAAAAJABIABQAGAAAAAAAKABEABQAGAAAAAAAKABIABQAGAAAAAAABABIABQAGAAAAAAACABIABQAGAAAAAAADAAsABQACAAIAAAADAAwABQAGAAAAAAADAA0ABQAGAAAAAAADAA4ABQAGAAAAAAADAA8ABQAGAAAAAAADABAABQAGAAAAAAADABEABQAGAAAAAAADABIABQAGAAAAAAADAAcABQAGAAAAAAADAAgABQAGAAAAAAADAAkABQACAAIAAAADAAoABQAGAAAAAAABAAcABQAGAAAAAAABAAgABQAGAAAAAAABAAkABQAGAAAAAAABAAoABQAGAAAAAAABAAsABQACAAIAAAABAAwABQAGAAAAAAABAA0ABQACAAIAAAABAA4ABQAGAAAAAAABAA8ABQAGAAAAAAABABAABQAGAAAAAAABABEABQAGAAAAAAACAAcABQAGAAAAAAACAAgABQAGAAAAAAACAAkABQAGAAAAAAACAAoABQACAAIAAAACAAsABQAGAAAAAAACAAwABQAGAAAAAAACAA0ABQAGAAAAAAACAA4ABQAGAAAAAAACAA8ABQAGAAAAAAACABAABQAGAAAAAAACABEABQAGAAAAAAALAAEABQAGAAAAAAALAAIABQAGAAAAAAALAAMABQAGAAAAAAALAAQABQAGAAAAAAALAAUABQAGAAAAAAALAAYABQAGAAAAAAALAAcABQAGAAAAAAALAAgABQAGAAAAAAAMAAEABQAGAAAAAAAMAAIABQAGAAAAAAAMAAMABQAGAAAAAAAMAAQABQAGAAAAAAAMAAUABQAGAAAAAAAMAAYABQAGAAAAAAAMAAcABQAGAAAAAAAMAAgABQAGAAAAAAANAAEABQAGAAAAAAANAAIABQAGAAAAAAANAAMABQAGAAAAAAANAAQABQAGAAAAAAANAAUABQAGAAAAAAANAAYABQAGAAAAAAANAAcABQAGAAAAAAANAAgABQAGAAAAAAAUAAUABgAAAAIAAAAUAAYABgAAAAIAAAAUAAcABgAAAAIAAAAUAAgABgAAAAIAAAAUAAkABgAAAAIAAAAUAAoABgAAAAIAAAAUAAsABgAAAAIAAAAUAAQABgAAAAAAAAAUAAwABgAAAAIAAAAVAAQABgAIAAIAAAAVAAUABQAGAAAAAAAVAAYABQAGAAAAAAAVAAcABQACAAIAAAAVAAgABQAGAAAAAAAVAAkABQAGAAAAAAAVAAoABQAGAAAAAAAVAAsABQAGAAAAAAAVAAwABgACAAIAAAAdAAMABQAGAAAAAAAcAAMABQACAAIAAAAJAAEABQAGAAAAAAAJAAIABQAGAAAAAAAJAAMABQAGAAAAAAAJAAQABQAGAAAAAAAJAAUABQAGAAAAAAAKAAEABQAGAAAAAAAKAAIABQAGAAAAAAAKAAMABQAGAAAAAAAKAAQABQACAAIAAAAKAAUABQAGAAAAAAAOAAEABQACAAIAAAAOAAIABQACAAIAAAAOAAMABQAGAAAAAAAOAAQABQAGAAAAAAAOAAUABQACAAIAAAAPAAEABQAGAAAAAAAPAAIABQAGAAAAAAAPAAMABQAGAAAAAAAPAAQABQAGAAAAAAAPAAUABQAGAAAAAAAUAA8ABQAGAAAAAAAUABAABQAGAAAAAAAUABEABQAGAAAAAAAUABIABQAGAAAAAAAVAA8ABQAGAAAAAAAUAA0ABgAIAAIAAAAUAA4ABQACAAIAAAAVAA0ABQAGAAAAAAAVAA4ABQAGAAAAAAAWAA8ABQAGAAAAAAAXAA8ABQAGAAAAAAAWAA4ABQAGAAAAAAAXAA4ABQAGAAAAAAAXABAABQAGAAAAAAA=")
+
+[node name="Collectable" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="0" unique_id=2006787885]
+position = Vector2(416, 1091)
+
+[node name="Collectable2" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="1" unique_id=1935967838 instance=ExtResource("2_fjuib")]
+position = Vector2(1248, 480)
+
+[node name="Collectable3" parent="Collectables" parent_id_path=PackedInt32Array(1785709842) index="2" unique_id=961323317 instance=ExtResource("2_fjuib")]
+position = Vector2(1440, 1120)
+
+[node name="RotationAnchorClock" parent="Platforms" parent_id_path=PackedInt32Array(1986093315) index="0" unique_id=2068553683 instance=ExtResource("2_gfxw7")]
+position = Vector2(1632, 416)
+rotation_deg = 180.0
+rotation_timeout = 2.0
+rotation_duration = 0.35
+
+[node name="Small_platform" parent="Platforms/RotationAnchorClock" index="4" unique_id=1620481334 instance=ExtResource("3_fjuib")]
+
+[node name="Spikes" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="0" unique_id=344753760 instance=ExtResource("4_dn0x1")]
+position = Vector2(288, 1184)
+
+[node name="Spikes2" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="1" unique_id=1053831546 instance=ExtResource("4_dn0x1")]
+position = Vector2(352, 1184)
+
+[node name="Spikes3" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="2" unique_id=48876658 instance=ExtResource("4_dn0x1")]
+position = Vector2(416, 1184)
+
+[node name="Spikes4" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="3" unique_id=453997061 instance=ExtResource("4_dn0x1")]
+position = Vector2(480, 1184)
+
+[node name="Spikes5" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="4" unique_id=1748151330 instance=ExtResource("4_dn0x1")]
+position = Vector2(544, 1184)
+
+[node name="Spikes6" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="5" unique_id=2073548445 instance=ExtResource("4_dn0x1")]
+position = Vector2(736, 1184)
+
+[node name="Spikes7" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="6" unique_id=519899570 instance=ExtResource("4_dn0x1")]
+position = Vector2(800, 1184)
+
+[node name="Spikes8" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="7" unique_id=1956162152 instance=ExtResource("4_dn0x1")]
+position = Vector2(864, 1184)
+
+[node name="Spikes9" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="8" unique_id=1216897226 instance=ExtResource("4_dn0x1")]
+position = Vector2(928, 1184)
+
+[node name="Spikes10" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="9" unique_id=1528793431 instance=ExtResource("4_dn0x1")]
+position = Vector2(992, 1184)
+
+[node name="Spikes11" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="10" unique_id=2024007565 instance=ExtResource("4_dn0x1")]
+position = Vector2(1056, 1184)
+
+[node name="Spikes12" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="11" unique_id=786510090 instance=ExtResource("4_dn0x1")]
+position = Vector2(1120, 1184)
+
+[node name="Spikes13" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="12" unique_id=2058561002 instance=ExtResource("4_dn0x1")]
+position = Vector2(1184, 1184)
+
+[node name="Spikes14" parent="Obstacles" parent_id_path=PackedInt32Array(819539281) index="13" unique_id=737717632 instance=ExtResource("4_dn0x1")]
+position = Vector2(1248, 1184)
+
+[node name="Switch" parent="Interactables" parent_id_path=PackedInt32Array(1109194341) index="0" unique_id=353889786 instance=ExtResource("6_waguw")]
+position = Vector2(1888, 160)
+
+[node name="Switch2" parent="Interactables" parent_id_path=PackedInt32Array(1109194341) index="1" unique_id=1627833412 instance=ExtResource("6_waguw")]
+position = Vector2(1376, 1184)
+
+[node name="Door" parent="Interactables" parent_id_path=PackedInt32Array(1109194341) index="2" unique_id=1331937860 node_paths=PackedStringArray("switch_1", "switch_2") instance=ExtResource("7_6scnn")]
+position = Vector2(1504, 1120)
+switch_1 = NodePath("../Switch")
+switch_2 = NodePath("../Switch2")
+
+[node name="ExitPlatform" parent="." index="9" unique_id=1776802071]
+position = Vector2(1952, 1184)
+
+[node name="SpiderWeb_Quarter" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="0" unique_id=1513705380 instance=ExtResource("8_lumjs")]
+position = Vector2(96, 96)
+rotation = -1.5707964
+
+[node name="SpiderWeb_Quarter2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="1" unique_id=1795204041 instance=ExtResource("8_lumjs")]
+position = Vector2(1056, 96)
+rotation = -1.5707964
+
+[node name="SpiderWeb_Quarter3" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="2" unique_id=818157739 instance=ExtResource("8_lumjs")]
+position = Vector2(928, 416)
+rotation = -1.5707964
+
+[node name="SpiderWeb_Quarter4" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="3" unique_id=399979031 instance=ExtResource("8_lumjs")]
+position = Vector2(672, 416)
+
+[node name="ChainI" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="4" unique_id=1653464195 instance=ExtResource("9_lumjs")]
+position = Vector2(1491, 1045)
+
+[node name="ChainUI_long" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="5" unique_id=20537021 instance=ExtResource("10_vsbud")]
+position = Vector2(800, 608)
+
+[node name="ChainUI_long2" parent="Deco" parent_id_path=PackedInt32Array(1046691773) index="6" unique_id=299033802 instance=ExtResource("10_vsbud")]
+position = Vector2(416, 160)

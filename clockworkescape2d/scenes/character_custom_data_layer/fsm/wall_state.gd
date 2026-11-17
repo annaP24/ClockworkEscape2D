@@ -8,12 +8,11 @@ var pressed_direction : int = 0
 
 func Enter(player_node):
 	super(player_node)
-	player.jump_count = player.max_jump_count
 	player.can_wall_coyote_jump = true
 	player.wall_jump_coyote_timer.start(player.wall_coyote_timeout)
 	# cw und ccw detection
 	roll_direction = get_roll_direction()
-
+	player.jump_count = player.max_jump_count
 	if roll_direction == 0:
 		player.set_can_grab(false)
 		change_state("FallState")

@@ -29,4 +29,6 @@ func try_dash() -> bool:
 	return false
 
 func change_state(next_state):
+	Debug.print_value("Changing state to: ", next_state)
+	print("State: ", next_state)
 	get_parent().change_state(self, next_state)

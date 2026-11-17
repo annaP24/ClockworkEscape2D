@@ -38,5 +38,4 @@ func Physics_Update(delta):
 		if player.is_on_floor():
 			change_state("IdleState")
 		else:
-			player.jump_count = 0
 			change_state("FallState")

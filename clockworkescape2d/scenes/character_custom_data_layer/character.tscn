@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://dnad4vbt44v1e" path="res://scenes/character_custom_data_layer/fsm/wall_contact_state.gd" id="8_320r6"]
 [ext_resource type="Script" uid="uid://bgweh73s66ash" path="res://scenes/character_custom_data_layer/fsm/wall_movable_state.gd" id="9_c2rhr"]
 [ext_resource type="PackedScene" uid="uid://c35feoy2jbarb" path="res://scenes/character_custom_data_layer/sparks.tscn" id="10_3iojc"]
-[ext_resource type="Script" uid="uid://csgxd816r0b5i" path="res://scenes/character_custom_data_layer/fsm/wall_jump_state.gd" id="10_cq04i"]
 [ext_resource type="Texture2D" uid="uid://n3s1l2y5peir" path="res://scenes/character_custom_data_layer/assets/broken_dark/gear_dead001.png0001.png" id="11_8ynvr"]
 [ext_resource type="Script" uid="uid://b455uq1mwmwcw" path="res://scenes/character_custom_data_layer/die_state.gd" id="11_k0gvg"]
 [ext_resource type="Script" uid="uid://cqnndptyld2jy" path="res://scenes/character_custom_data_layer/fsm/dash_state.gd" id="12_30eo1"]
@@ -207,6 +206,7 @@ z_index = -2
 collision_layer = 25
 collision_mask = 29
 script = ExtResource("1_w8owe")
+debug_unlock_all_abilities = true
 jump_buffer_timeout = 0.1
 idle_fall_coyote_timeout = 0.4
 wall_coyote_timeout = 0.5
@@ -243,9 +243,6 @@ one_shot = true
 [node name="WallMovableState" type="Node" parent="FSM" unique_id=1798845195]
 script = ExtResource("9_c2rhr")
 metadata/_custom_type_script = "uid://jh8i4uv87bqn"
-
-[node name="WallJumpState" type="Node" parent="FSM" unique_id=1462290601]
-script = ExtResource("10_cq04i")
 
 [node name="DieState" type="Node" parent="FSM" unique_id=564998358]
 script = ExtResource("11_k0gvg")

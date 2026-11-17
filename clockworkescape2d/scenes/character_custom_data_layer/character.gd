@@ -18,6 +18,9 @@ class_name PlayerFsmCustomDataLayer
 signal player_died
 
 @export var move_speed : float = 300.0
+var debug_dash : bool = false
+var debug_double_jump : bool = false
+@export var debug_unlock_all_abilities : bool = false # testing only: ignored in release builds
 @export var max_jump_count : int = 1
 @export var jump_height : float = 192 # 3*64px
 @export var jump_gravity : float = 2000.0
@@ -50,6 +53,8 @@ signal player_died
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
 enum animations {RUN_LEFT, RUN_RIGHT, JUMP, IDLE, DIE, SPAWN}
+enum JumpKind {NORMAL, WALL}
+var jump_kind : JumpKind = JumpKind.NORMAL
 
 var gravity : float = 0.0
 var jump_buffer : bool = false
@@ -82,13 +87,36 @@ enum WallSide {LEFT = -1, RIGHT = 1, NONE = 0, DOWN = 2, UP = -2}
 #--------------- DEBUG -------------------
 
 func _unhandled_input(event):
+	if OS.is_debug_build() and event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_O:
+			debug_dash = not debug_dash
+			apply_abilities()
+			print("DEBUG dash: ", debug_dash)
+		elif event.keycode == KEY_P:
+			debug_double_jump = not debug_double_jump
+			apply_abilities()
+			print("DEBUG double jump: ", debug_double_jump)
 	if event.is_action_pressed("ui_debug_1"):
 		CutSceneManager.start_cutscene(true)
 	if event.is_action_pressed("ui_debug_2"):
 		CutSceneManager.start_cutscene(false)
 
+func apply_abilities() -> void:
+	var debug : bool = OS.is_debug_build()
+	dash_enabled = (debug and (debug_unlock_all_abilities or debug_dash)) or GameSaveManager.has_ability(GameSaveManager.ABILITY_DASH)
+	var double_jump : bool = (debug and (debug_unlock_all_abilities or debug_double_jump)) or GameSaveManager.has_ability(GameSaveManager.ABILITY_DOUBLE_JUMP)
+	if double_jump:
+		max_jump_count = 2
+	else:
+		max_jump_count = 1
+
+func _on_ability_unlocked(_ability: String) -> void:
+	apply_abilities()
+
 func _ready() -> void:
 	is_movable = true
+	apply_abilities()
+	EventBus.ability_unlocked.connect(_on_ability_unlocked)
 	jump_count = max_jump_count
 	player_died_received = false
 	wall_jump_count = wall_jump_count_max

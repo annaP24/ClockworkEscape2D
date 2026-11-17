@@ -25,10 +25,11 @@ func Physics_Update(delta):
 
 	if try_dash():
 		return
-	elif jump_pressed and player.jump_count > 0:
-		change_state("JumpState")
 	elif jump_pressed and player.can_wall_coyote_jump and player.wall_jump_count > 0:
 		player.wall_jump_count = 0
+		player.jump_kind = player.JumpKind.WALL
+		change_state("JumpState")
+	elif jump_pressed and player.jump_count > 0:
 		change_state("JumpState")
 	elif jump_pressed and player.can_coyote_jump:
 		change_state("JumpState")

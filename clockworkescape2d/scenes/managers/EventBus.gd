@@ -59,6 +59,8 @@ signal exit_animation_finished
 # ========== PROGRESSION SIGNALS ==========
 ## Emitted when a save slot is selected
 signal save_slot_selected(slot_id: int)
+## Emitted when the player unlocks an ability (e.g. "dash", "double_jump")
+signal ability_unlocked(ability: String)
 
 #========== BUTTON SIGNALS ==========
 signal button_pressed(id : TextureButton)

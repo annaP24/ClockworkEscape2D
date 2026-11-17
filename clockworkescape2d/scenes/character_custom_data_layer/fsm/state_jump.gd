@@ -3,7 +3,13 @@ extends FsmNodeState
 func Enter(player_node):
 	super(player_node)
 	player.velocity.y = player.jump_velocity
-	player.jump_count -= 1
+	if player.jump_kind != player.JumpKind.WALL:
+		player.jump_count -= 1
+	else:
+		# Wall jump also consumes a normal jump to prevent: jump -> wall jump -> air jump combo
+		if player.jump_count > 0:
+			player.jump_count -= 1
+	player.jump_kind = player.JumpKind.NORMAL
 	player.jump_buffer = false
 	player.can_coyote_jump = false
 
@@ -22,6 +28,7 @@ func Physics_Update(delta):
 	elif (Input.is_action_just_pressed("jump") or player.jump_buffer) and \
 			player.last_wall_direction != player.WallSide.NONE and player.wall_jump_count > 0:
 		player.wall_jump_count = 0
+		player.jump_kind = player.JumpKind.WALL
 		change_state("JumpState")
 	elif player.velocity.y >= 0:
 		change_state("FallState")

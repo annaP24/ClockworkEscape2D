@@ -26,7 +26,6 @@ func Physics_Update(delta):
 	if Input.is_action_just_pressed("jump"):
 		change_state("JumpState")
 	elif !player.is_on_floor():
-		player.jump_count -= 1
 		player.set_can_grab(false)
 		change_state("FallState")
 	elif try_dash():

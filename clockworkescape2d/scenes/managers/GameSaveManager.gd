@@ -15,6 +15,9 @@ const MAX_LEVEL_TAG = "max_level"
 const MAX_COLLECTED_TAG = "max_collected"
 const TOTAL_DEATHS_TAG = "deaths"
 const TOTAL_TIME_PLAYED_TAG = "play_time_seconds"
+const ABILITIES_TAG = "abilities"
+const ABILITY_DASH = "dash"
+const ABILITY_DOUBLE_JUMP = "double_jump"
 const NR_OF_LEVLES_TAG = "nr_of_levels"
 const MAX_NUM_OF_LEVELS = 24
 const TOTAL_COLLECTABLES = MAX_NUM_OF_LEVELS * 3
@@ -161,6 +164,20 @@ func mark_scene_seen(tag : String) -> void:
 		return
 	cfg.set_value("progress", tag, true)
 	cfg.save(current_progress_path)
+
+func has_ability(ability : String) -> bool:
+	var cfg = ConfigFile.new()
+	if cfg.load(current_progress_path) != OK:
+		return false
+	return cfg.get_value(ABILITIES_TAG, ability, false)
+
+func unlock_ability(ability : String) -> void:
+	var cfg = ConfigFile.new()
+	if cfg.load(current_progress_path) != OK:
+		return
+	cfg.set_value(ABILITIES_TAG, ability, true)
+	cfg.save(current_progress_path)
+	EventBus.ability_unlocked.emit(ability)
 
 func delete_configuration(slot : int):
 	var path_name = _get_file_name(slot)
